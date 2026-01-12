@@ -1,0 +1,31 @@
+
+> frontend@1.0.0 build
+> next build
+
+⚠ `images.domains` is deprecated in favor of `images.remotePatterns`. Please update next.config.js to protect your application from malicious users.
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of D:\Demo\pnpm-lock.yaml as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * D:\Demo\frontend\package-lock.json
+
+▲ Next.js 16.1.1 (Turbopack)
+- Experiments (use with caution):
+  ✓ optimizeCss
+  · optimizePackageImports
+
+  Running TypeScript ...
+Failed to compile.
+
+./components/learning/PersonalizedLearningDashboard.tsx:269:28
+Type error: Property 'slice' does not exist on type '{ content: never[]; isLoading: boolean; }'.
+
+[0m [90m 267 |[39m
+ [90m 268 |[39m             [33m<[39m[33mdiv[39m className[33m=[39m[32m"space-y-3"[39m[33m>[39m
+[31m[1m>[22m[39m[90m 269 |[39m               {pathContent[33m.[39mslice([35m0[39m[33m,[39m [35m6[39m)[33m.[39mmap((content[33m,[39m index) [33m=>[39m (
+ [90m     |[39m                            [31m[1m^[22m[39m
+ [90m 270 |[39m                 [33m<[39m[33mdiv[39m
+ [90m 271 |[39m                   key[33m=[39m{content[33m.[39mid}
+ [90m 272 |[39m                   className[33m=[39m{[32m`flex items-center p-4 rounded-lg border-2 transition-all ${[39m[0m
+Next.js build worker exited with code: 1 and signal: null

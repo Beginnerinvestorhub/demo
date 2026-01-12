@@ -1,0 +1,91 @@
+/* Critical CSS - Above the fold styles */
+@tailwind base;
+@tailwind components;
+
+/* Critical mechanica variables and base styles */
+:root {
+  /* Primary Colors */
+  --mechanica-moonlight-blue: #4f738e;
+  --mechanica-moonlight-blue-light: #6b8ca3;
+  --mechanica-moonlight-blue-dark: #385a73;
+  
+  /* Text Colors */
+  --mechanica-text-primary: #1a1a1a;
+  --mechanica-text-secondary: #4f738e;
+  
+  /* Background Colors */
+  --mechanica-bg-primary: #ffffff;
+  --mechanica-bg-metallic: #f8f9fa;
+}
+
+/* Base styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f5e6d3 100%);
+  color: var(--mechanica-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* Critical layout components */
+.global-loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loading-spinner {
+  padding: 20px;
+  font-family: monospace;
+  color: var(--mechanica-moonlight-blue);
+}
+
+/* Critical button styles */
+.mechanica-button-mechanical {
+  background: linear-gradient(135deg, #4f738e 0%, #6b8ca3 50%, #385a73 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.mechanica-button-mechanical:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(31, 45, 56, 0.4);
+}
+
+/* Critical card styles */
+.mechanica-card-mechanical {
+  background: white;
+  border: 1px solid var(--mechanica-moonlight-blue);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 4px 8px rgba(31, 45, 56, 0.3), 0 2px 4px rgba(31, 45, 56, 0.2);
+}
+
+/* Responsive critical styles */
+@media (max-width: 768px) {
+  .mechanica-button-mechanical {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  .mechanica-card-mechanical {
+    padding: 16px;
+  }
+}

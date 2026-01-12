@@ -1,0 +1,653 @@
+/*
+ * mechanica-Inspired Design System for BeginnerInvestorHub
+ * Combining Ordinatus Professionalism with Mechanical Beauty
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* ===== mechanica + Ordinatus COLOR PALETTE ===== */
+
+  /* Primary - Moonlight Drive Blue Metallic */
+  --mechanica-moonlight-blue: #4f738e;
+  --mechanica-moonlight-blue-rgb: 31, 45, 56;
+  --mechanica-moonlight-blue-light: #6b8ca3;
+  --mechanica-moonlight-blue-dark: #385a73;
+  --mechanica-moonlight-blue-metallic: linear-gradient(
+    135deg,
+    #4f738e 0%,
+    #6b8ca3 50%,
+    #385a73 100%
+  );
+
+  /* Ordinatus Professional Colors - Enhanced */
+  --Ordinatus-professional-blue: #1a365d;
+  --Ordinatus-accent-silver: #c0c0c0;
+  --Ordinatus-brass-gold: #b8860b;
+  --Ordinatus-steel-gray: #708090;
+
+  /* Wood Finish Palette */
+  --mechanica-birch-light: #f5e6d3;
+  --mechanica-birch-medium: #e8d4b0;
+  --mechanica-birch-dark: #d4a574;
+  --mechanica-oak-light: #e6d2b5;
+  --mechanica-oak-medium: #d4a574;
+  --mechanica-oak-dark: #b8935f;
+
+  /* Metallic Finishes */
+  --mechanica-brushed-copper: #b87333;
+  --mechanica-polished-brass: #b8860b;
+  --mechanica-stainless-steel: #8b8d8e;
+  --mechanica-cast-iron: #434b4d;
+
+  /* Mechanical Component Colors */
+  --mechanica-gear-teeth: #2c3e50;
+  --mechanica-spring-steel: #7f8c8d;
+  --mechanica-bushing-bronze: #cd7f32;
+  --mechanica-bearing-dark: #1c2833;
+
+  /* Text Colors */
+  --mechanica-text-primary: #1a1a1a;
+  --mechanica-text-secondary: #4f738e;
+  --mechanica-text-wood: #8b4513;
+  --mechanica-text-metallic: #708090;
+
+  /* Background Colors */
+  --mechanica-bg-primary: #ffffff;
+  --mechanica-bg-wood: #f5e6d3;
+  --mechanica-bg-metallic: #f8f9fa;
+  --mechanica-bg-mechanical: #ecf0f1;
+
+  /* ===== mechanica TYPOGRAPHY ===== */
+
+  /* Mechanical Engineering Fonts */
+  --mechanica-font-mechanical: 'Roboto Mono', 'Courier New', monospace;
+  --mechanica-font-technical: 'Source Code Pro', 'Fira Code', monospace;
+  --mechanica-font-professional: 'Inter', 'Helvetica Neue', sans-serif;
+  --mechanica-font-elegant: 'Playfair Display', 'Georgia', serif;
+
+  /* ===== mechanica SPACING SYSTEM ===== */
+
+  /* Precision-based spacing (mechanical tolerances) */
+  --mechanica-tolerance-xs: 0.125rem; /* 2px -精密配合 */
+  --mechanica-tolerance-sm: 0.25rem; /* 4px -滑动配合 */
+  --mechanica-tolerance-md: 0.5rem; /* 8px -过渡配合 */
+  --mechanica-tolerance-lg: 1rem; /* 16px -间隙配合 */
+  --mechanica-tolerance-xl: 1.5rem; /* 24px -宽松配合 */
+  --mechanica-tolerance-xxl: 2rem; /* 32px -装配间隙 */
+
+  /* Gear ratio-based spacing */
+  --mechanica-gear-1: 0.5rem; /* 1:1 ratio */
+  --mechanica-gear-2: 1rem; /* 2:1 ratio */
+  --mechanica-gear-3: 1.5rem; /* 3:1 ratio */
+  --mechanica-gear-4: 2rem; /* 4:1 ratio */
+
+  /* ===== mechanica MECHANICAL COMPONENTS ===== */
+
+  /* Gear Styles */
+  --mechanica-gear-size-mini: 1rem;
+  --mechanica-gear-size-small: 1.5rem;
+  --mechanica-gear-size-medium: 2rem;
+  --mechanica-gear-size-large: 3rem;
+  --mechanica-gear-size-xl: 4rem;
+
+  /* Animation Speeds */
+  --mechanica-rotation-slow: 20s;
+  --mechanica-rotation-medium: 10s;
+  --mechanica-rotation-fast: 5s;
+  --mechanica-rotation-reverse: 15s;
+
+  /* ===== mechanica SHADOWS & DEPTH ===== */
+
+  /* Mechanical shadows */
+  --mechanica-shadow-emboss:
+    0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --mechanica-shadow-engraved:
+    inset 0 1px 3px rgba(0, 0, 0, 0.12), inset 0 1px 2px rgba(0, 0, 0, 0.24);
+  --mechanica-shadow-mechanical:
+    0 4px 8px rgba(31, 45, 56, 0.3), 0 2px 4px rgba(31, 45, 56, 0.2);
+  --mechanica-shadow-wood-grain: inset 0 0 20px rgba(212, 165, 116, 0.3);
+
+  /* Metallic gradients */
+  --mechanica-metallic-gradient: linear-gradient(
+    135deg,
+    #b87333 0%,
+    #cd7f32 50%,
+    #b87333 100%
+  );
+  --mechanica-steel-gradient: linear-gradient(
+    135deg,
+    #8b8d8e 0%,
+    #b8b8b8 50%,
+    #8b8d8e 100%
+  );
+  --mechanica-brass-gradient: linear-gradient(
+    135deg,
+    #b8860b 0%,
+    #daa520 50%,
+    #b8860b 100%
+  );
+
+  /* ===== mechanica BORDER STYLES ===== */
+
+  /* Mechanical borders */
+  --mechanica-border-machined: 1px solid var(--mechanica-moonlight-blue);
+  --mechanica-border-engraved: 2px solid var(--mechanica-gear-teeth);
+  --mechanica-border-wood: 1px solid var(--mechanica-birch-dark);
+  --mechanica-border-metallic: 2px solid var(--mechanica-brushed-copper);
+}
+
+/* ===== mechanica ANIMATIONS ===== */
+
+@keyframes mechanica-rotate-clockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes mechanica-rotate-counter-clockwise {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes mechanica-oscillate {
+  0%,
+  100% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+}
+
+@keyframes mechanica-piston {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes mechanica-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(79, 115, 142, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 115, 142, 0.8);
+  }
+}
+
+@keyframes mechanica-wood-grain {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes mechanica-hum {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.005);
+    filter: brightness(1.05);
+  }
+}
+
+@keyframes mechanica-steam {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-5px) scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10px) scale(1.2);
+  }
+}
+
+@keyframes mechanica-pulse-technical {
+  0% {
+    box-shadow: 0 0 0 0 rgba(79, 115, 142, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(79, 115, 142, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 115, 142, 0);
+  }
+}
+
+@keyframes mechanica-ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ===== mechanica BASE STYLES ===== */
+body {
+  font-family: var(--mechanica-font-professional);
+  background: linear-gradient(
+    135deg,
+    var(--mechanica-bg-primary) 0%,
+    var(--mechanica-bg-metallic) 50%,
+    var(--mechanica-bg-wood) 100%
+  );
+  background-attachment: fixed;
+  color: var(--mechanica-text-primary);
+}
+
+/* ===== mechanica MECHANICAL COMPONENTS ===== */
+
+/* Gear Components */
+.mechanica-gear {
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  background: var(--mechanica-steel-gradient);
+  box-shadow: var(--mechanica-shadow-mechanical);
+}
+
+.mechanica-gear::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  background: var(--mechanica-bearing-dark);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mechanica-gear-teeth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 3px solid var(--mechanica-gear-teeth);
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+/* Wood Finish Components */
+.mechanica-wood-panel {
+  background: linear-gradient(
+    45deg,
+    var(--mechanica-birch-light) 0%,
+    var(--mechanica-birch-medium) 50%,
+    var(--mechanica-birch-dark) 100%
+  );
+  box-shadow: var(--mechanica-shadow-wood-grain);
+  border: 1px solid var(--mechanica-birch-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.mechanica-wood-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 2px,
+    rgba(212, 165, 116, 0.1) 2px,
+    rgba(212, 165, 116, 0.1) 4px
+  );
+  pointer-events: none;
+}
+
+/* Metallic Components */
+.mechanica-metallic-surface {
+  background: var(--mechanica-metallic-gradient);
+  border-radius: 4px;
+  box-shadow: var(--mechanica-shadow-emboss);
+  position: relative;
+  overflow: hidden;
+}
+
+.mechanica-metallic-surface::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: mechanica-wood-grain 3s ease-in-out infinite;
+}
+
+/* ===== mechanica TYPOGRAPHY ===== */
+.mechanica-heading-mechanical {
+  font-family: var(--mechanica-font-mechanical);
+  font-weight: 700;
+  color: var(--mechanica-moonlight-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+.mechanica-heading-professional {
+  font-family: var(--mechanica-font-elegant);
+  font-weight: 600;
+  color: var(--mechanica-moonlight-blue);
+  position: relative;
+}
+
+.mechanica-text-technical {
+  font-family: var(--mechanica-font-technical);
+  color: var(--mechanica-text-secondary);
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+/* ===== mechanica BUTTONS ===== */
+.mechanica-button-mechanical {
+  background: var(--mechanica-moonlight-blue-metallic);
+  color: white;
+  border: none;
+  padding: var(--mechanica-tolerance-md) var(--mechanica-gear-3);
+  font-family: var(--mechanica-font-mechanical);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--mechanica-shadow-emboss);
+}
+
+.mechanica-button-mechanical:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(31, 45, 56, 0.4);
+}
+
+.mechanica-button-mechanical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.mechanica-button-mechanical:hover::before {
+  left: 100%;
+}
+
+.mechanica-button-wood {
+  background: var(--mechanica-wood-panel);
+  color: var(--mechanica-text-wood);
+  border: var(--mechanica-border-wood);
+  padding: var(--mechanica-tolerance-md) var(--mechanica-gear-3);
+  font-family: var(--mechanica-font-professional);
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ===== mechanica CARDS ===== */
+.mechanica-card-mechanical {
+  background: white;
+  border: var(--mechanica-border-machined);
+  border-radius: 8px;
+  padding: var(--mechanica-gear-3);
+  box-shadow: var(--mechanica-shadow-mechanical);
+  position: relative;
+  overflow: hidden;
+}
+
+.mechanica-card-mechanical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--mechanica-metallic-gradient);
+}
+
+.mechanica-card-wood {
+  background: var(--mechanica-wood-panel);
+  border: var(--mechanica-border-wood);
+  border-radius: 8px;
+  padding: var(--mechanica-gear-3);
+  box-shadow: var(--mechanica-shadow-wood-grain);
+}
+
+.mechanica-card-brass {
+  background: linear-gradient(135deg, #fff 0%, #fffbf0 100%);
+  border: 2px solid var(--mechanica-polished-brass);
+  border-radius: 8px;
+  padding: var(--mechanica-gear-3);
+  box-shadow: 0 4px 6px rgba(184, 134, 11, 0.2);
+}
+
+/* ===== mechanica BUTTONS ===== */
+.mechanica-button-brass {
+  background: linear-gradient(
+    135deg,
+    var(--mechanica-polished-brass) 0%,
+    #daa520 100%
+  );
+  color: white;
+  border: none;
+  padding: var(--mechanica-tolerance-md) var(--mechanica-gear-3);
+  font-family: var(--mechanica-font-professional);
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(184, 134, 11, 0.3);
+  transition: all 0.3s ease;
+}
+
+.mechanica-button-brass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(184, 134, 11, 0.4);
+}
+
+/* ===== mechanica INPUTS ===== */
+.mechanica-input-mechanical {
+  background: white;
+  border: 2px solid var(--mechanica-moonlight-blue);
+  border-radius: 4px;
+  padding: var(--mechanica-tolerance-md) var(--mechanica-gear-2);
+  font-family: var(--mechanica-font-technical);
+  font-size: 14px;
+  color: var(--mechanica-text-primary);
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.mechanica-input-mechanical:focus {
+  outline: none;
+  border-color: var(--mechanica-brushed-copper);
+  box-shadow:
+    0 0 0 3px rgba(184, 115, 51, 0.2),
+    inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== mechanica NAVIGATION ===== */
+.mechanica-nav-mechanical {
+  background: var(--mechanica-metallic-surface);
+  border-radius: 8px;
+  padding: var(--mechanica-gear-2);
+  box-shadow: var(--mechanica-shadow-mechanical);
+}
+
+.mechanica-nav-item {
+  background: transparent;
+  border: none;
+  padding: var(--mechanica-tolerance-md) var(--mechanica-gear-2);
+  font-family: var(--mechanica-font-mechanical);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--mechanica-moonlight-blue);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.mechanica-nav-item:hover {
+  background: rgba(79, 115, 142, 0.1);
+  border-radius: 4px;
+}
+
+.mechanica-nav-item.active {
+  background: var(--mechanica-moonlight-blue);
+  color: white;
+  border-radius: 4px;
+}
+
+/* ===== mechanica ANIMATION CLASSES ===== */
+.mechanica-rotate-slow {
+  animation: mechanica-rotate-clockwise var(--mechanica-rotation-slow) linear
+    infinite;
+}
+
+.mechanica-rotate-medium {
+  animation: mechanica-rotate-clockwise var(--mechanica-rotation-medium) linear
+    infinite;
+}
+
+.mechanica-rotate-fast {
+  animation: mechanica-rotate-clockwise var(--mechanica-rotation-fast) linear
+    infinite;
+}
+
+.mechanica-rotate-reverse {
+  animation: mechanica-rotate-counter-clockwise
+    var(--mechanica-rotation-reverse) linear infinite;
+}
+
+.mechanica-oscillate {
+  animation: mechanica-oscillate 2s ease-in-out infinite;
+}
+
+.mechanica-piston {
+  animation: mechanica-piston 1s ease-in-out infinite;
+}
+
+.mechanica-glow {
+  animation: mechanica-glow 2s ease-in-out infinite;
+}
+
+.mechanica-hum {
+  animation: mechanica-hum 4s ease-in-out infinite;
+}
+
+.mechanica-steam {
+  animation: mechanica-steam 3s ease-out infinite;
+}
+
+.mechanica-pulse-technical {
+  animation: mechanica-pulse-technical 2s infinite;
+}
+
+.animate-mechanica-ticker-scroll {
+  animation: mechanica-ticker-scroll 30s linear infinite;
+}
+
+/* ===== mechanica RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  :root {
+    --mechanica-tolerance-xs: 0.1rem;
+    --mechanica-tolerance-sm: 0.2rem;
+    --mechanica-tolerance-md: 0.4rem;
+    --mechanica-tolerance-lg: 0.8rem;
+    --mechanica-tolerance-xl: 1.2rem;
+    --mechanica-tolerance-xxl: 1.6rem;
+  }
+
+  .mechanica-gear-size-large {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .mechanica-gear-size-xl {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+/* ===== mechanica ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  .mechanica-rotate-slow,
+  .mechanica-rotate-medium,
+  .mechanica-rotate-fast,
+  .mechanica-rotate-reverse,
+  .mechanica-oscillate,
+  .mechanica-piston,
+  .mechanica-glow {
+    animation: none;
+  }
+
+  .mechanica-metallic-surface::before,
+  .mechanica-button-mechanical::before {
+    animation: none;
+  }
+}
+
+/* ===== mechanica UTILITY CLASSES ===== */
+.mechanica-text-shadow-mechanical {
+  text-shadow: 0 1px 3px rgba(31, 45, 56, 0.3);
+}
+
+.mechanica-border-radius-mechanical {
+  border-radius: 4px;
+}
+
+.mechanica-border-radius-wood {
+  border-radius: 8px;
+}
+
+.mechanica-transition-smooth {
+  transition: all 0.3s ease;
+}
+
+.mechanica-transition-bounce {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}

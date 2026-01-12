@@ -1,0 +1,65 @@
+import React from 'react';
+import Link from 'next/link';
+import { MechanicaGear } from '../ui/mechanicaGear';
+
+interface MechanicaHeaderProps {
+    showBackButton?: boolean;
+    title?: string;
+    subtitle?: string;
+    className?: string;
+}
+
+export const MechanicaHeader: React.FC<MechanicaHeaderProps> = ({
+    showBackButton = false,
+    title,
+    subtitle,
+    className = ''
+}) => {
+    return (
+        <header className={`mechanica-header overflow-hidden py-12 ${className}`}>
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="text-center">
+                    {/* Back button */}
+                    {showBackButton && (
+                        <div className="mb-6">
+                            <Link
+                                href="/"
+                                className="inline-flex items-center text-blue-100 hover:text-white transition-colors duration-300 mechanica-text-technical"
+                            >
+                                <span className="mr-2">←</span>
+                                Back to Home
+                            </Link>
+                        </div>
+                    )}
+
+                    {/* Header content */}
+                    <div className="text-center">
+                        {title && (
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 mechanica-heading-professional text-white">
+                                <span className="relative inline-block">
+                                    {title}
+                                    <span className="absolute bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-mechanica-polished-brass via-yellow-200 to-mechanica-polished-brass rounded-full" />
+                                </span>
+                            </h1>
+                        )}
+
+                        {subtitle && (
+                            <p className="text-xl md:text-2xl text-blue-100 font-light max-w-3xl mx-auto mechanica-text-technical">
+                                {subtitle}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Professional decorative elements */}
+                    <div className="flex justify-center items-center space-x-8 mt-8">
+                        <MechanicaGear size="lg" color="brass" speed="slow" />
+                        <MechanicaGear size="medium" color="steel" speed="reverse" />
+                        <MechanicaGear size="small" color="copper" speed="medium" />
+                    </div>
+                </div>
+            </div>
+        </header>
+    );
+};
+
+export default MechanicaHeader;
