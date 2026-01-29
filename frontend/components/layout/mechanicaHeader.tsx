@@ -17,7 +17,7 @@ export const MechanicaHeader: React.FC<MechanicaHeaderProps> = ({
 }) => {
     return (
         <header className={`mechanica-header overflow-hidden py-12 ${className}`}>
-            <div className="container mx-auto px-4 relative z-10">
+            <div <div className="max-w-5xl mx-auto px-6 relative z-10">
                 <div className="text-center">
                     {/* Back button */}
                     {showBackButton && (
