@@ -19,10 +19,10 @@ export const MechanicaFooter: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-12 text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-center md:text-left">
 
           {/* Left Column: Quick Links */}
-          <div className="flex-1 order-2 md:order-1">
+          <div className="md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6">
               Quick Links
             </h4>
@@ -40,7 +40,7 @@ export const MechanicaFooter: React.FC = () => {
           </div>
 
           {/* Center Column: Branding */}
-          <div className="flex-[2] order-1 md:order-2 text-center py-4">
+          <div className="text-center py-4">
             <div className="flex justify-center items-center space-x-4 mb-6">
               <MechanicaGear size="lg" color="brass" speed="slow" className="opacity-80" />
               <h3 className="text-3xl font-extrabold tracking-tighter text-white font-serif">
@@ -54,7 +54,7 @@ export const MechanicaFooter: React.FC = () => {
           </div>
 
           {/* Right Column: Legal & Support */}
-          <div className="flex-1 order-3 text-center md:text-right">
+          <div className="md:text-right text-center">
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 font-serif">
               Legal & Support
             </h4>
