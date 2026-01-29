@@ -16,8 +16,8 @@ export const MechanicaHeader: React.FC<MechanicaHeaderProps> = ({
     className = ''
 }) => {
     return (
-        <header className="mechanica-header overflow-hidden py-8 md:py-12">
-            <div <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <header className={`mechanica-header overflow-hidden py-8 md:py-12 ${className}`}>
+            <div className="max-w-5xl mx-auto px-6 relative z-10">
                 <div className="text-center">
                     {/* Back button */}
                     {showBackButton && (
@@ -33,22 +33,20 @@ export const MechanicaHeader: React.FC<MechanicaHeaderProps> = ({
                     )}
 
                     {/* Header content */}
-                    <div className="text-center">
-                        {title && (
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 mechanica-heading-professional text-white leading-tight">
-                                <span className="relative inline-block">
-                                    {title}
-                                    <span className="hidden md:block absolute bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-mechanica-polished-brass via-yellow-200 to-mechanica-polished-brass rounded-full" />
-                                </span>
-                            </h1>
-                        )}
+                    {title && (
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 mechanica-heading-professional text-white leading-tight">
+                            <span className="relative inline-block">
+                                {title}
+                                <span className="hidden md:block absolute bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-mechanica-polished-brass via-yellow-200 to-mechanica-polished-brass rounded-full" />
+                            </span>
+                        </h1>
+                    )}
 
-                        {subtitle && (
-                            <p className="text-lg md:text-xl text-blue-100 font-light max-w-3xl mx-auto mechanica-text-technical">
-                                {subtitle}
-                            </p>
-                        )}
-                    </div>
+                    {subtitle && (
+                        <p className="text-lg md:text-xl text-blue-100 font-light max-w-3xl mx-auto mechanica-text-technical">
+                            {subtitle}
+                        </p>
+                    )}
 
                     {/* Professional decorative elements */}
                     <div className="flex justify-center items-center space-x-8 mt-6 md:mt-8 scale-90 md:scale-100">
