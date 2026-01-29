@@ -261,6 +261,12 @@ body {
   color: var(--mechanica-text-primary);
 }
 
+@media (max-width: 1024px) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
 /* ===== mechanica MECHANICAL COMPONENTS ===== */
 
 /* Gear Components */
