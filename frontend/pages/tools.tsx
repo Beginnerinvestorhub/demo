@@ -93,15 +93,26 @@ const tools = [
     gearColor: 'steel' as const,
   },
   {
-    name: 'Learning Dashboard',
+    name: 'Learning Hub',
     icon: '📚',
     description:
-      'Track your educational progress, achievements, and unlock new features.',
-    href: '/learning',
+      'Access your personalized learning dashboard with progress tracking and educational content.',
+    href: '/dashboard',
     category: 'Learning',
     status: 'active',
     features: ['Progress tracking', 'Achievements', 'Gamification'],
     gearColor: 'brass' as const,
+  },
+  {
+    name: 'VARK Assessment',
+    icon: '🧠',
+    description:
+      'Discover your learning style with Visual, Auditory, Read/Write, and Kinesthetic assessment.',
+    href: '/vark-assessment',
+    category: 'Learning',
+    status: 'active',
+    features: ['Learning style analysis', 'Personalized recommendations', 'Study strategies'],
+    gearColor: 'copper' as const,
   },
 ];
 
@@ -149,17 +160,21 @@ export default function ToolsOverview() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white uppercase tracking-tighter">
-                  Investment <span className="text-yellow-400">Tools</span>
+                  Professional <span className="text-yellow-400">Tools</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Precision-engineered tactical modules designed to accelerate your investing mastery and system calibration.
+              <h2 className="text-xl md:text-2xl text-blue-100 mb-4 max-w-3xl mx-auto font-light leading-relaxed">
+                Built for Your Success
+              </h2>
+
+              <p className="text-lg text-blue-200 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+                We've simplified complex investing strategies into easy-to-use modules. Think of this as your personal financial workshop—calibrated for clarity and growth.
               </p>
 
-              <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500/80">
-                Module Inventory: Active
+              <div className="text-xs font-black uppercase tracking-[0.3em] text-green-400/90">
+                Status: [ All Systems Ready ]
               </div>
             </div>
           </div>

@@ -54,9 +54,9 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
                       }`}
                       aria-current={currentPath === item.href ? 'page' : undefined}
                     >
-                      {item.label === 'My Journey' ? 'Simulations' : 
+                      {item.label === 'My Journey' ? 'My Dashboard' : 
                        item.label === 'Learn' ? 'Learning Paths' : 
-                       item.label === 'Practice' ? 'Simulations' : 
+                       item.label === 'Practice' ? 'Practice Simulations' : 
                        item.label === 'Explore' ? 'Demo / Tour' : 
                        item.label === 'Dashboard' ? 'Simulations' : 
                        item.label}
@@ -95,9 +95,9 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
                       aria-current={currentPath === item.href ? 'page' : undefined}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.label === 'My Journey' ? 'Simulations' : 
+                      {item.label === 'My Journey' ? 'My Dashboard' : 
                        item.label === 'Learn' ? 'Learning Paths' : 
-                       item.label === 'Practice' ? 'Simulations' : 
+                       item.label === 'Practice' ? 'Practice Simulations' : 
                        item.label === 'Explore' ? 'Demo / Tour' : 
                        item.label === 'Dashboard' ? 'Simulations' : 
                        item.label}

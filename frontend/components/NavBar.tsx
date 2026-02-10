@@ -42,6 +42,7 @@ export const NAV_LINKS: NavItem[] = [
     href: '/community',
     label: 'Community',
     subItems: [
+      { href: 'https://discord.gg/xkzq3gsnx', label: 'Discord Chat' },
       { href: '/community/leaderboards', label: 'Leaderboards' },
       { href: '/community/achievements', label: 'Achievements' },
       { href: '/community/discussions', label: 'Discussions' },
