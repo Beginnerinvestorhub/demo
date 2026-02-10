@@ -9,6 +9,22 @@ interface TickerData {
 
 export const MechanicaTicker: React.FC = () => {
     const [tickers, setTickers] = useState<TickerData[]>([]);
+    const [animationState, setAnimationState] = useState<'running' | 'paused'>('running');
+
+    useEffect(() => {
+        // Check for reduced motion preference on client side only
+        if (typeof window !== 'undefined') {
+            const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+            setAnimationState(mediaQuery.matches ? 'paused' : 'running');
+            
+            const handleChange = (e: MediaQueryListEvent) => {
+                setAnimationState(e.matches ? 'paused' : 'running');
+            };
+            
+            mediaQuery.addEventListener('change', handleChange);
+            return () => mediaQuery.removeEventListener('change', handleChange);
+        }
+    }, []);
 
     useEffect(() => {
         // Fetch initial ticker data
@@ -38,7 +54,7 @@ export const MechanicaTicker: React.FC = () => {
                 className="flex whitespace-nowrap animate-mechanica-ticker-scroll hover:[animation-play-state:paused]"
                 aria-live="polite"
                 style={{
-                    animationPlayState: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'paused' : 'running'
+                    animationPlayState: animationState
                 }}
             >
                 {tickers.map((item, idx) => (

@@ -104,9 +104,13 @@ function MyApp({
         </div>
       )}
       
-      {/* Vercel Analytics and SpeedInsights */}
-      <Analytics />
-      <SpeedInsights />
+      {/* Vercel Analytics and SpeedInsights with error handling */}
+      {process.env.NODE_ENV === 'production' && (
+        <>
+          <Analytics />
+          <SpeedInsights />
+        </>
+      )}
     </>
   )
 }
@@ -114,6 +118,19 @@ function MyApp({
 // Fetch feature flags server-side using getInitialProps
 MyApp.getInitialProps = async () => {
   try {
+    // Skip feature flags fetch in development to avoid errors
+    if (process.env.NODE_ENV === 'development') {
+      return {
+        pageProps: {
+          featureFlags: {
+            newFeature: false,
+            betaAccess: false,
+            enableTrading: false,
+          }
+        }
+      };
+    }
+    
     // Use absolute URL in production, localhost in development
     const baseUrl = process.env.NODE_ENV === 'production' 
       ? 'https://beginnerinvestorhub-demo.vercel.app' 
