@@ -26,18 +26,14 @@ export default function DashboardPage() {
   const { userProgress, loading: gamificationLoading, trackEvent } = useGamification(user?.uid || '');
 
   useEffect(() => {
-    // Check for demo mode or authenticated user
-    const isDemoMode = process.env.NODE_ENV === 'development' || 
-                      (typeof window !== 'undefined' && window.location.search.includes('demo=true'));
+    // Enable demo mode in development
+    const isDemoMode = process.env.NODE_ENV === 'development';
     
     if (!loading && !user && !isDemoMode) {
       setIsRedirecting(true);
       router.replace('/login');
-    } else if (user || isDemoMode) {
-      // Track dashboard view
-      trackEvent('page_view', { page: 'dashboard' }).catch(console.error);
     }
-  }, [user, loading, router, trackEvent]);
+  }, [user, loading, router]);
 
   if (loading || isRedirecting || gamificationLoading) {
     return (

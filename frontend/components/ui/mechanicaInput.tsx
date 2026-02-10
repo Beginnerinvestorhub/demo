@@ -37,7 +37,7 @@ export const MechanicaInput: React.FC<MechanicaInputProps> = ({
     min,
     step
 }) => {
-    const inputId = id || name || `input-${Math.random().toString(36).substr(2, 9)}`;
+    const inputId = id || name || 'mechanica-input';
 
     const baseClasses = 'mechanica-input-mechanical';
     const errorClasses = error ? 'border-red-500 focus:border-red-500 focus:ring-red-200' : '';

@@ -146,9 +146,6 @@ export default function HomePage() {
         <meta name="twitter:title" content="Precision Investment Mastery | BeginnerInvestorHub" />
         <meta name="twitter:description" content="Master investing with guided simulations built for first-time investors." />
         <meta name="twitter:image" content="https://beginnerinvestorhub-demo.vercel.app/og-image.jpg" />
-        
-        {/* Preload Critical Resources */}
-        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </Head>
       {/* Hero Section */}
       <header>
