@@ -43,7 +43,7 @@ export default function HomePage() {
       if (statsRef.current && isElementInView(statsRef.current) && !statsAnimated) {
         setStatsAnimated(true);
 
-        // Set final stats
+        // Set final stats with realistic demo values
         setTimeout(() => {
           setStats({
             portfoliosBuilt: 12847,
@@ -131,9 +131,27 @@ export default function HomePage() {
     <MechanicaLayout>
       <Head>
         <title>Precision Investment Mastery | BeginnerInvestorHub</title>
-        <meta name="description" content="Master investing with our precision-engineered platform featuring real-time simulations and AI-powered coaching." />
+        <meta name="description" content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies, visualize risk metrics, and build confidence with virtual money." />
+        
+        {/* Open Graph Tags */}
+        <meta property="og:title" content="Precision Investment Mastery | BeginnerInvestorHub" />
+        <meta property="og:description" content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies with virtual money." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beginnerinvestorhub-demo.vercel.app/" />
+        <meta property="og:image" content="https://beginnerinvestorhub-demo.vercel.app/og-image.jpg" />
+        <meta property="og:site_name" content="BeginnerInvestorHub" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Precision Investment Mastery | BeginnerInvestorHub" />
+        <meta name="twitter:description" content="Master investing with guided simulations built for first-time investors." />
+        <meta name="twitter:image" content="https://beginnerinvestorhub-demo.vercel.app/og-image.jpg" />
+        
+        {/* Preload Critical Resources */}
+        <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </Head>
       {/* Hero Section */}
+      <header>
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
         {/* Mechanical background */}
         <div className="absolute inset-0 opacity-10">
@@ -150,55 +168,50 @@ export default function HomePage() {
 
         {/* Animated gears */}
         <div className="absolute top-20 left-10 opacity-30">
-          <MechanicaGear size="xl" color="brass" speed="slow" />
+          <MechanicaGear size="xl" color="brass" speed="slow" aria-label="Animated decorative gear" />
         </div>
         <div className="absolute top-40 right-20 opacity-30">
-          <MechanicaGear size="large" color="steel" speed="reverse" />
+          <MechanicaGear size="large" color="steel" speed="reverse" aria-label="Animated decorative gear" />
         </div>
         <div className="absolute bottom-20 left-20 opacity-30">
-          <MechanicaGear size="medium" color="copper" speed="medium" />
+          <MechanicaGear size="medium" color="copper" speed="medium" aria-label="Animated decorative gear" />
         </div>
         <div className="absolute bottom-40 right-10 opacity-30">
-          <MechanicaGear size="small" color="brass" speed="fast" />
+          <MechanicaGear size="small" color="brass" speed="fast" aria-label="Animated decorative gear" />
         </div>
 
         {/* Demo Banner - Mission Protocol Bar */}
-        <div className="absolute top-0 left-0 right-0 z-30 flex justify-center p-4">
+        <nav className="absolute top-0 left-0 right-0 z-30 flex justify-center p-4" role="banner">
           <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border-x border-b border-yellow-500/30 rounded-b-2xl shadow-2xl">
             <span className="flex h-2 w-2 relative">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
             </span>
-            <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-yellow-100/90">
+            <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-yellow-100/90" role="status">
               Protocol: This is a production-quality demo showcasing frontend architecture, UX, and system design for a larger AI-driven financial education platform
             </p>
           </div>
-        </div>
+        </nav>
 
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             {/* Mechanical logo */}
             <div className="flex justify-center items-center space-x-6 mb-8">
-              <MechanicaGear size="large" color="brass" speed="slow" />
+              <MechanicaGear size="large" color="brass" speed="slow" aria-label="Animated decorative gear" />
               <div className="text-6xl font-bold font-serif text-yellow-400">
                 BeginnerInvestorHub
               </div>
-              <MechanicaGear size="large" color="brass" speed="reverse" />
+              <MechanicaGear size="large" color="brass" speed="reverse" aria-label="Animated decorative gear" />
             </div>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
-              <span className="relative inline-block">
-                Precision Investment
-                <span className="absolute bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-400 rounded-full" />
-              </span>
-              <br />
-              <span className="text-yellow-400">Mastery</span>
+              Master investing with guided simulations — built for first-time investors.
             </h1>
 
-            <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal">
-              Master investing with our structured, data-driven platform featuring real-time simulations,
-              AI-powered coaching, and a focus on strategic learning.
-            </p>
+            <h2 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal">
+              Practice with portfolio simulations, visualize risk metrics, and build confidence — 
+              all with virtual money, no real investment required.
+            </h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
               <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm flex flex-col sm:flex-row gap-2 w-full max-w-md">
@@ -206,10 +219,12 @@ export default function HomePage() {
                   type="email"
                   placeholder="Enter your email address"
                   className="px-4 py-3 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 flex-grow mechanica-text-technical"
+                  aria-label="Email address for simulation signup"
+                  tabIndex={0}
                 />
                 <Link href="/signup">
                   <MechanicaButton variant="mechanical" size="md" className="w-full sm:w-auto whitespace-nowrap">
-                    Get Started
+                    Start a 5-minute Simulation
                   </MechanicaButton>
                 </Link>
               </div>
@@ -217,7 +232,7 @@ export default function HomePage() {
             <div className="flex justify-center gap-4 text-sm text-blue-200">
               <Link href="/login" className="hover:text-white underline decoration-yellow-400/50">Already have an account? Sign in</Link>
               <span>•</span>
-              <Link href="/tools" className="hover:text-white underline decoration-yellow-400/50">Explore Tools</Link>
+              <Link href="/tools" className="hover:text-white underline decoration-yellow-400/50">See how it works</Link>
             </div>
           </div>
         </div>
@@ -226,6 +241,25 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
         <div className="absolute bottom-0 left-0 right-0">
           <MechanicaTicker />
+        </div>
+      </section>
+    </header>
+
+    <main>
+      {/* Trust Signals */}
+      <section id="trust-signals" className="py-12 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center space-y-4">
+            <p className="text-lg font-mono text-gray-600">
+              Educational simulations only
+            </p>
+            <p className="text-lg font-mono text-gray-600">
+              No real money required
+            </p>
+            <p className="text-lg font-mono text-gray-600">
+              No brokerage access
+            </p>
+          </div>
         </div>
       </section>
 
@@ -299,6 +333,13 @@ export default function HomePage() {
             </MechanicaCard>
           </div>
         </div>
+        
+        {/* Sample Data Disclaimer */}
+        <div className="text-center mt-8">
+          <p className="text-sm font-mono text-gray-500 uppercase tracking-wide">
+            Sample demo data — not real assets
+          </p>
+        </div>
       </section>
 
       {/* Features Section */}
@@ -324,7 +365,7 @@ export default function HomePage() {
               >
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
-                    <MechanicaGear size="large" color={feature.gearColor} speed="medium" />
+                    <MechanicaGear size="large" color={feature.gearColor} speed="medium" aria-label="Animated decorative gear" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-2xl font-bold mb-3 text-mechanica-moonlight-blue font-serif">
@@ -368,7 +409,7 @@ export default function HomePage() {
                 className="text-center group hover:scale-105 transition-transform duration-300"
               >
                 <div className="mb-6">
-                  <MechanicaGear size="large" color={path.gearColor} speed="slow" />
+                  <MechanicaGear size="large" color={path.gearColor} speed="slow" aria-label="Animated decorative gear" />
                 </div>
                 <h3 className="text-2xl font-bold mb-3 text-mechanica-moonlight-blue font-serif">
                   {path.title}
@@ -392,6 +433,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </main>
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-mechanica-moonlight-blue to-mechanica-moonlight-blue-dark text-white relative overflow-hidden">
@@ -411,11 +453,11 @@ export default function HomePage() {
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-center items-center space-x-6 mb-8">
-              <MechanicaGear size="large" color="brass" speed="slow" />
+              <MechanicaGear size="large" color="brass" speed="slow" aria-label="Animated decorative gear" />
               <div className="text-5xl font-bold font-serif text-yellow-400">
                 Start Your Journey
               </div>
-              <MechanicaGear size="large" color="brass" speed="reverse" />
+              <MechanicaGear size="large" color="brass" speed="reverse" aria-label="Animated decorative gear" />
             </div>
 
             <h2 className="text-4xl font-bold mb-6 font-serif">

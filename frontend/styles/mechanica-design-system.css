@@ -402,6 +402,23 @@ body {
   box-shadow: 0 6px 12px rgba(31, 45, 56, 0.4);
 }
 
+.mechanica-button-mechanical:focus {
+  outline: 2px solid var(--mechanica-moonlight-blue);
+  outline-offset: 2px;
+}
+
+.mechanica-button-mechanical:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 4px rgba(31, 45, 56, 0.2);
+}
+
+.mechanica-button-mechanical:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--mechanica-shadow-emboss);
+}
+
 .mechanica-button-mechanical::before {
   content: '';
   position: absolute;
@@ -492,6 +509,23 @@ body {
 .mechanica-button-brass:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(184, 134, 11, 0.4);
+}
+
+.mechanica-button-brass:focus {
+  outline: 2px solid var(--mechanica-polished-brass);
+  outline-offset: 2px;
+}
+
+.mechanica-button-brass:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 4px rgba(184, 134, 11, 0.2);
+}
+
+.mechanica-button-brass:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(184, 134, 11, 0.3);
 }
 
 /* ===== mechanica INPUTS ===== */
