@@ -76,7 +76,7 @@ const tools = [
     description:
       'Calculate how much of any stock you can buy with your available capital.',
     href: '/fractional-calculator',
-    category: 'Utilities',
+    category: 'Research',
     status: 'active',
     features: ['Real-time prices', 'Cost breakdown', 'Multiple stocks'],
     gearColor: 'copper' as const,
@@ -88,7 +88,7 @@ const tools = [
       'Screen investments for environmental, social, and governance factors.',
     href: '/esg-screener',
     category: 'Research',
-    status: 'coming-soon',
+    status: 'active',
     features: ['ESG ratings', 'Impact metrics', 'Sustainable portfolios'],
     gearColor: 'steel' as const,
   },
@@ -119,7 +119,7 @@ const tools = [
 export default function ToolsOverview() {
   const { user } = useAuth();
 
-  const categories = ['All', 'Core Tools', 'Research', 'Learning', 'Utilities'];
+  const categories = ['All', 'Core Tools', 'Research', 'Learning'];
   const [activeCategory, setActiveCategory] = React.useState('All');
 
   const filteredTools =

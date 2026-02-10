@@ -56,6 +56,8 @@ export const MechanicaTicker: React.FC = () => {
                 style={{
                     animationPlayState: animationState
                 }}
+                onMouseEnter={() => setAnimationState('paused')}
+                onMouseLeave={() => setAnimationState('running')}
             >
                 {tickers.map((item, idx) => (
                     <div

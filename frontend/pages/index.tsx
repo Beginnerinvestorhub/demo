@@ -43,13 +43,13 @@ export default function HomePage() {
       if (statsRef.current && isElementInView(statsRef.current) && !statsAnimated) {
         setStatsAnimated(true);
 
-        // Set final stats with realistic demo values
+        // Set final stats with realistic startup values
         setTimeout(() => {
           setStats({
-            portfoliosBuilt: 12847,
-            simulationsRun: 45823,
-            simulatedValue: 2847392,
-            userSatisfaction: 98,
+            portfoliosBuilt: 2847,
+            simulationsRun: 8923,
+            simulatedValue: 487293,
+            userSatisfaction: 94,
           });
         }, 100);
       }
@@ -213,7 +213,7 @@ export default function HomePage() {
               all with virtual money, no real investment required.
             </h2>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
               <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm flex flex-col sm:flex-row gap-2 w-full max-w-md">
                 <input
                   type="email"
@@ -229,7 +229,7 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
-            <div className="flex justify-center gap-4 text-sm text-blue-200">
+            <div className="flex justify-center gap-4 text-sm text-blue-200 mb-8">
               <Link href="/login" className="hover:text-white underline decoration-yellow-400/50">Already have an account? Sign in</Link>
               <span>•</span>
               <Link href="/tools" className="hover:text-white underline decoration-yellow-400/50">See how it works</Link>
