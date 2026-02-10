@@ -6,6 +6,9 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import Head from 'next/head'
 // Import Google Font Inter
 import { Inter } from 'next/font/google';
+// Import Vercel Analytics and SpeedInsights
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 // Initialize Inter font
 const inter = Inter({
@@ -100,6 +103,10 @@ function MyApp({
           </div>
         </div>
       )}
+      
+      {/* Vercel Analytics and SpeedInsights */}
+      <Analytics />
+      <SpeedInsights />
     </>
   )
 }
