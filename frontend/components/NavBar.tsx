@@ -7,25 +7,7 @@ export interface NavItem {
 
 export const NAV_LINKS: NavItem[] = [
   { href: '/', label: 'Home' },
-  { href: '/dashboard', label: 'My Journey' },
-  {
-    href: '/learn',
-    label: 'Learn',
-    subItems: [
-      { href: '/learn/my-path', label: 'My Learning Path' },
-      { href: '/learn/challenges', label: 'Challenges' },
-      { href: '/learn', label: 'Content Library' },
-      { href: '/learn/glossary', label: 'Glossary' },
-    ],
-  },
-  {
-    href: '/practice',
-    label: 'Practice',
-    subItems: [
-      { href: '/portfolio-monitor', label: 'Virtual Portfolio' },
-      { href: '/practice/sandbox', label: 'Investment Sandbox' },
-    ],
-  },
+  { href: '/dashboard', label: 'My Dashboard' },
   {
     href: '/tools',
     label: 'Tools',
