@@ -92,7 +92,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(false);
   }, [persistAuth]);
 
-  const signup = useCallback(async (email: string, password: string) => {
+  const signup = useCallback(async (email: string, _: string) => {
     setLoading(true);
     setError(null);
 

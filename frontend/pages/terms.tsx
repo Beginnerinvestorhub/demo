@@ -84,7 +84,7 @@ export default function TermsOfService() {
                   </h2 >
                 </div >
                 <p className="text-amber-950 text-xl font-medium italic border-l-4 border-amber-600 pl-8 py-2">
-                  "By initializing transmission with our platform, you acknowledge and adhere to the following architecture of engagement."
+                  &quot;By initializing transmission with our platform, you acknowledge and adhere to the following architecture of engagement.&quot;
                 </p >
               </div >
             </MechanicaCard >
@@ -160,7 +160,7 @@ export default function TermsOfService() {
                         <span className="text-orange-700 text-2xl filter drop-shadow-sm">⚙️</span >
                         <div>
                           <div className="text-[11px] font-black uppercase tracking-[0.2em] text-orange-800 mb-2">{item.label}</div>
-                          <div className="text-lg font-black text-amber-950 italic leading-snug">"{item.text}"</div >
+                          <div className="text-lg font-black text-amber-950 italic leading-snug">&quot;{item.text}&quot;</div >
                         </div >
                       </div >
                     ))}
@@ -198,7 +198,7 @@ export default function TermsOfService() {
                     <MechanicaGear size="xl" color="brass" speed="slow" />
                   </div >
                   <p className="text-amber-100 font-mono text-xs leading-relaxed relative z-10 font-bold uppercase tracking-wider">
-                    SYSTEM_NOTICE: THE PLATFORM AND ITS OPERATORS ARE NOT LIABLE FOR INVESTMENT LOSSES, DATA ANOMALIES, OR EXTERNAL MARKET VOLATILITY.ALL TOOLS ARE DEPLOYED"AS-IS"FOR EDUCATIONAL ARCHITECTURE ONLY.BY USING THE SYSTEM, YOU WAIVE ALL CLAIMS RELATED TO FINANCIAL OUTCOMES.
+                    SYSTEM_NOTICE: THE PLATFORM AND ITS OPERATORS ARE NOT LIABLE FOR INVESTMENT LOSSES, DATA ANOMALIES, OR EXTERNAL MARKET VOLATILITY.ALL TOOLS ARE DEPLOYED &quot;AS-IS&quot; FOR EDUCATIONAL ARCHITECTURE ONLY.BY USING THE SYSTEM, YOU WAIVE ALL CLAIMS RELATED TO FINANCIAL OUTCOMES.
                   </p >
                 </div >
               </div >

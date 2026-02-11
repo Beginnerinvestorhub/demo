@@ -58,7 +58,7 @@ export default function ProfileForm() {
     fetchProfile();
   }, [user, reset]);
 
-  const onSubmit = async (_data: ProfileFormData) => {
+  const onSubmit = async () => {
     if (!user) return;
     setStatusMessage(null);
 
