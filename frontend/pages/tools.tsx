@@ -12,7 +12,7 @@ const tools = [
     icon: '⚙️',
     description:
       'Build and test investment strategies in a risk-free environment with virtual capital.',
-    href: '/portfolio-simulation',
+    href: '/portfolio-monitor',
     category: 'Core Tools',
     status: 'active',
     features: ['Virtual trading', 'Historical data', 'Performance tracking'],
@@ -64,7 +64,7 @@ const tools = [
     icon: '🧮',
     description:
       'Calculate how much of any stock you can buy with your available capital.',
-    href: '/fractional-calculator',
+    href: '/fractional-share-calculator',
     category: 'Research',
     status: 'active',
     features: ['Real-time prices', 'Cost breakdown', 'Multiple stocks'],
@@ -86,7 +86,7 @@ const tools = [
     icon: '📚',
     description:
       'Access your personalized learning dashboard with progress tracking and educational content.',
-    href: '/dashboard',
+    href: '/learning-hub',
     category: 'Learning',
     status: 'active',
     features: ['Progress tracking', 'Achievements', 'Gamification'],
@@ -193,7 +193,8 @@ export default function ToolsOverview() {
             </div>
 
             {/* Tools Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 w-full max-w-7xl">
+           
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 w-full max-w-7xl lg:justify-items-center">
               {filteredTools.map(tool => (
                 <MechanicaCard
                   key={tool.name}
