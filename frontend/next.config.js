@@ -89,8 +89,6 @@ const nextConfig = withBundleAnalyzer(
       return config;
     },
 
-    // Acknowledge Turbopack usage (suppress error about missing config with webpack config present)
-    turbopack: {},
 
 
 
