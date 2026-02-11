@@ -7,8 +7,8 @@ import Head from 'next/head'
 // Import Google Font Inter
 import { Inter } from 'next/font/google';
 // Import Vercel Analytics and SpeedInsights
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 // Import AuthProvider
 import { AuthProvider } from '../hooks/useAuth'
 
