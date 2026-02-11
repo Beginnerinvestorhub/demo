@@ -64,7 +64,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setLoading(true);
     setError(null);
 
-    // Check for Luke's specific credentials
+    // Check for demo user credentials from environment variables
+    const demoModeEnabled = process.env.DEMO_MODE_ENABLED === 'true';
+    const demoEmail = process.env.DEMO_USER_EMAIL;
+    const demoPassword = process.env.DEMO_USER_PASSWORD;
+    const demoDisplayName = process.env.DEMO_USER_DISPLAY_NAME || 'Demo User';
+    const demoUid = process.env.DEMO_USER_UID || 'demo-user-prod-001';
+
+    // Check for demo user login
+    if (demoModeEnabled && email === demoEmail && password === demoPassword) {
+      await new Promise(resolve => setTimeout(resolve, 800));
+      const mockUser: User = {
+        uid: demoUid,
+        email: email,
+        displayName: demoDisplayName,
+      };
+      setUser(mockUser);
+      setRole('user');
+      persistAuth(mockUser, 'user');
+      setLoading(false);
+      return;
+    }
+
+    // Legacy Luke credentials (for backward compatibility)
     if (email === 'Luke' && password === 'demo123abc') {
       await new Promise(resolve => setTimeout(resolve, 800));
       const mockUser: User = {
