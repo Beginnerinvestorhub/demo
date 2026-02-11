@@ -255,7 +255,7 @@ export default function Contact() {
                           <option value="technical">Technical Calibration</option>
                           <option value="account">Account Access</option>
                           <option value="feature">Component Request</option>
-                          <option value="bug">Anomally Report</option>
+                          <option value="bug">Anomaly Report</option>
                           <option value="partnership">Ecosystem Scaling</option>
                           <option value="feedback">System Feedback</option>
                         </select>

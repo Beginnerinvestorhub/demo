@@ -27,7 +27,6 @@ export default function SignupPage() {
   return (
     <MechanicaLayout title="Sign Up | Beginner Investor Hub">
       <Head>
-        <title>Sign Up | BeginnerInvestorHub</title>
         <meta name="description" content="Create your BeginnerInvestorHub account and begin your precision-engineered investment education journey. Master portfolio assembly today." />
       </Head>
       <div className="min-h-screen flex items-center justify-center p-4 sm:p-8 bg-gradient-to-br from-gray-50 to-amber-50">

@@ -1,6 +1,7 @@
 /* Critical CSS - Above the fold styles */
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 /* Critical mechanica variables and base styles */
 :root {
@@ -8,11 +9,11 @@
   --mechanica-moonlight-blue: #4f738e;
   --mechanica-moonlight-blue-light: #6b8ca3;
   --mechanica-moonlight-blue-dark: #385a73;
-  
+
   /* Text Colors */
   --mechanica-text-primary: #1a1a1a;
   --mechanica-text-secondary: #4f738e;
-  
+
   /* Background Colors */
   --mechanica-bg-primary: #ffffff;
   --mechanica-bg-metallic: #f8f9fa;
@@ -20,8 +21,19 @@
 
 /* Base styles */
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    'Inter',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
   background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 50%, #f5e6d3 100%);
   color: var(--mechanica-text-primary);
   margin: 0;
@@ -61,7 +73,9 @@ body {
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .mechanica-button-mechanical:hover {
@@ -75,7 +89,9 @@ body {
   border: 1px solid var(--mechanica-moonlight-blue);
   border-radius: 8px;
   padding: 24px;
-  box-shadow: 0 4px 8px rgba(31, 45, 56, 0.3), 0 2px 4px rgba(31, 45, 56, 0.2);
+  box-shadow:
+    0 4px 8px rgba(31, 45, 56, 0.3),
+    0 2px 4px rgba(31, 45, 56, 0.2);
 }
 
 /* Responsive critical styles */
@@ -84,7 +100,7 @@ body {
     padding: 10px 20px;
     font-size: 14px;
   }
-  
+
   .mechanica-card-mechanical {
     padding: 16px;
   }

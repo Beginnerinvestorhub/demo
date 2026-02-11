@@ -45,7 +45,7 @@
     "firebase-admin": "^12.0.0",
     "gray-matter": "4.0.3",
     "lucide-react": "^0.525.0",
-    "next": "canary",
+    "next": "^14.2.3",
     "next-auth": "^4.24.7",
     "next-mdx-remote": "4.3.0",
     "react": "^18.3.1",

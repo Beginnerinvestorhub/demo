@@ -4,7 +4,7 @@ import { MechanicaGear } from '../ui/mechanicaGear';
 
 export const MechanicaFooter: React.FC = () => {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 to-gray-800 text-white border-t border-gray-700">
+    <footer className="relative bg-gradient-to-br from-gray-900 to-gray-800 text-white border-t border-gray-700">
       {/* Mechanical background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div
@@ -21,7 +21,7 @@ export const MechanicaFooter: React.FC = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-center md:text-left">
 
-{/* Center Column: Branding */}
+          {/* Center Column: Branding */}
           <div className="text-center py-4">
             <div className="flex justify-center items-center space-x-4 mb-6">
               <MechanicaGear size="lg" color="brass" speed="slow" className="opacity-80" />
@@ -52,7 +52,7 @@ export const MechanicaFooter: React.FC = () => {
             </nav>
           </div>
 
-          
+
 
           {/* Right Column: Legal & Support */}
           <div className="md:text-right text-center">

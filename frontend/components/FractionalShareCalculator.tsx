@@ -182,20 +182,20 @@ export default function FractionalShareCalculator() {
       </div>
 
       <div className="pt-6 border-t border-gray-100 flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center space-x-3 text-mechanica-moonlight-blue">
+        <div className="flex items-center space-x-3 text-mechanica-moonlight-blue" title="This is the total number of shares you can buy with your investment amount.">
           <div className="w-10 h-10 bg-mechanica-moonlight-blue/10 rounded-xl flex items-center justify-center mechanica-pulse-technical">
-            <span className="text-xl">⚙️</span>
+            <span className="text-xl">📊</span>
           </div>
           <div>
-            <div className="text-[10px] font-black uppercase tracking-widest text-gray-400">Yield Prediction</div>
+            <div className="text-[10px] font-black uppercase tracking-widest text-gray-400">Estimated Shares</div>
             <div className="text-2xl font-black font-mono">
-              {calcShares(Number(amount), Number(price), brokers.find(b => b.name === selectedBroker)?.fee ?? 0).toFixed(6)}{' '} <span className="text-sm font-bold text-gray-400">Components</span>
+              {calcShares(Number(amount), Number(price), brokers.find(b => b.name === selectedBroker)?.fee ?? 0).toFixed(6)}{' '} <span className="text-sm font-bold text-gray-400">Shares</span>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col items-center md:items-end">
-          <div className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Precision Assembly</div>
+        <div className="flex flex-col items-center md:items-end" title="Visual representation of your investment relative to a single share price.">
+          <div className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Investment Allocation</div>
           <div className="flex items-center space-x-2">
             <div className="h-2 w-32 bg-gray-200 rounded-full overflow-hidden">
               <div

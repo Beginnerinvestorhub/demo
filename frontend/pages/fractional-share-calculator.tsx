@@ -66,12 +66,11 @@ export default function FractionalShareCalculatorPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   <MechanicaGear size="md" color="steel" speed="medium" />
                   <h2 className="text-2xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                    🔧 Component Calculation Engine
+                    Investment Value Calculator
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Configure your investment parameters below to construct your
-                  fractional share specifications.
+                  Enter your investment details below to calculate exactly how many shares you can own.
                 </p>
               </div>
 
@@ -83,7 +82,7 @@ export default function FractionalShareCalculatorPage() {
           <div className="mt-20 w-full max-w-6xl">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-extrabold text-mechanica-moonlight-blue font-serif mb-4 uppercase tracking-tighter">
-                📐 Assembly Instructions
+                How It Works
               </h3>
               <div className="w-20 h-1 bg-yellow-500 mx-auto rounded-full"></div>
             </div>
@@ -92,24 +91,24 @@ export default function FractionalShareCalculatorPage() {
               <MechanicaCard variant="default" animated className="border-t-4 border-t-mechanica-moonlight-blue bg-white">
                 <div className="p-8 text-center">
                   <div className="w-12 h-12 bg-mechanica-moonlight-blue text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">1</div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Input Specs</h4>
-                  <p className="text-gray-500 text-sm font-medium leading-relaxed">Enter investment amount and target stock price for blueprint initiation.</p>
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Enter Details</h4>
+                  <p className="text-gray-500 text-sm font-medium leading-relaxed">Input how much money you want to invest and the current stock price.</p>
                 </div>
               </MechanicaCard>
 
               <MechanicaCard variant="mechanical" animated className="border-t-4 border-t-yellow-500 bg-white">
                 <div className="p-8 text-center">
                   <div className="w-12 h-12 bg-yellow-500 text-mechanica-moonlight-blue rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">2</div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Process Data</h4>
-                  <p className="text-gray-500 text-sm font-medium leading-relaxed">Our precision engine calculates exact fractional shares and compares global broker fee structures.</p>
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Calculate Shares</h4>
+                  <p className="text-gray-500 text-sm font-medium leading-relaxed">We automatically calculate exactly how many shares (or partial shares) you'll own.</p>
                 </div>
               </MechanicaCard>
 
               <MechanicaCard variant="wood" animated className="border-t-4 border-t-mechanica-polished-brass bg-white">
                 <div className="p-8 text-center">
                   <div className="w-12 h-12 bg-mechanica-polished-brass text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">3</div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Deploy Result</h4>
-                  <p className="text-gray-500 text-sm font-medium leading-relaxed">Review final visual blueprints and detailed cost assessments for informed investment deployment.</p>
+                  <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">View Results</h4>
+                  <p className="text-gray-500 text-sm font-medium leading-relaxed">See your estimated shares and compare fees across different brokers.</p>
                 </div>
               </MechanicaCard>
             </div>

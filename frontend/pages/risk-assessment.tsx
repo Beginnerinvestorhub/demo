@@ -5,7 +5,6 @@ import { MechanicaLayout } from '../components/layout/mechanicaLayout';
 import Head from 'next/head';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
-import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 
 // Define interface for risk data
 interface RiskData {
@@ -61,9 +60,6 @@ export default function RiskAssessmentPage() {
           </div>
 
           <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
-          <div className="absolute bottom-0 left-0 right-0">
-            <MechanicaTicker />
-          </div>
         </section>
 
         <div className="container mx-auto px-4 relative z-10 py-12 flex flex-col items-center">

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useAuth } from '../hooks/useAuth';
 
 interface AuthFormProps {
   mode?: 'login' | 'signup';
@@ -8,22 +9,28 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [formError, setFormError] = useState<string | null>(null);
+  const { login, signup, loading, error } = useAuth();
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setFormError(null);
 
     // Basic client-side validation check
     if (!email || !password) {
-        setFormError("Please enter both email and password.");
-        return;
+      setFormError("Please enter both email and password.");
+      return;
     }
 
-    // Demo mode - show success message
-    if (mode === 'login') {
-      setFormError("Demo mode: Login functionality disabled");
-    } else {
-      setFormError("Demo mode: Signup functionality disabled");
+    try {
+      if (mode === 'login') {
+        await login(email, password);
+      } else {
+        await signup(email, password);
+      }
+      // Successful auth will trigger redirect in login page
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Authentication failed. Please try again.';
+      setFormError(errorMessage);
     }
   }
 
@@ -37,7 +44,7 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
           onChange={e => setEmail(e.target.value)}
           required
           autoComplete="email" // Added autocomplete for better UX
-          className="mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
         />
       </label>
       <label className="flex flex-col w-full text-sm">
@@ -48,20 +55,21 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
           onChange={e => setPassword(e.target.value)}
           required
           autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
-          className="mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="mt-1 px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-amber-400"
         />
       </label>
       <button
         type="submit"
-        className="mt-4 w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:opacity-50"
+        disabled={loading}
+        className="mt-4 w-full px-4 py-2 bg-mechanica-moonlight-blue text-white rounded-md hover:bg-mechanica-moonlight-blue-dark disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {mode === 'login' ? 'Login' : 'Sign Up'}
+        {loading ? (mode === 'login' ? 'Signing in...' : 'Signing up...') : (mode === 'login' ? 'Login' : 'Sign Up')}
       </button>
-      
-      {/* Display the friendly formError */}
-      {formError && (
+
+      {/* Display form errors and auth errors */}
+      {(formError || error) && (
         <div className="mt-2 text-red-600 text-sm p-3 bg-red-50 border border-red-200 rounded-md">
-          {formError}
+          {formError || error}
         </div>
       )}
     </form>

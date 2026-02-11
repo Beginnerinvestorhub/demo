@@ -1,5 +1,4 @@
 import React, { Suspense, useEffect, useState, useMemo } from 'react';
-import { useApiGet } from '../hooks/useApi';
 
 const Pie = React.lazy(() =>
   import('react-chartjs-2').then(mod => ({ default: mod.Pie }))
@@ -24,8 +23,39 @@ type PortfolioMonitoringData = {
   timestamp?: string;
 };
 
+// Mock data for frontend-only implementation
+const mockPortfolioData: PortfolioMonitoringData = {
+  assets: [
+    { name: 'Stocks', value: 50000, allocation: 60 },
+    { name: 'Bonds', value: 25000, allocation: 30 },
+    { name: 'Real Estate', value: 8333, allocation: 10 },
+  ],
+  history: [
+    { date: 'Jan', total: 75000 },
+    { date: 'Feb', total: 78000 },
+    { date: 'Mar', total: 82000 },
+    { date: 'Apr', total: 81000 },
+    { date: 'May', total: 83333 },
+  ],
+  riskMetrics: {
+    volatility: 0.15,
+    var_95: 5000,
+    sharpe_ratio: 1.2,
+    max_drawdown: 0.08,
+  },
+  marketStatus: 'healthy',
+  servicesStatus: {
+    'Data Feed': true,
+    'Analytics': true,
+    'Alerts': true,
+  },
+  timestamp: new Date().toISOString(),
+};
+
 const PortfolioMonitor = React.memo(function PortfolioMonitor() {
   const [showAsset, setShowAsset] = useState<string | null>(null);
+  const [portfolioAssets, setPortfolioAssets] = useState<PortfolioAsset[]>(mockPortfolioData.assets);
+  const [newAsset, setNewAsset] = useState({ ticker: '', amount: '', price: '' });
 
   // Persistent Alert Sensitivity
   const [alertSensitivity, setAlertSensitivity] = useState<number>(() => {
@@ -39,12 +69,22 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
     localStorage.setItem('portfolio_alert_sensitivity', alertSensitivity.toString());
   }, [alertSensitivity]);
 
-  // Use the new useApi hook for cleaner API state management
-  const {
-    data: portfolioData,
-    loading,
-    error,
-  } = useApiGet<PortfolioMonitoringData>('/portfolio/monitoring-data');
+  // Calculate total portfolio value and allocations
+  const portfolioData = useMemo(() => {
+    const totalValue = portfolioAssets.reduce((sum, asset) => sum + asset.value, 0);
+    const assetsWithAllocation = portfolioAssets.map(asset => ({
+      ...asset,
+      allocation: totalValue > 0 ? (asset.value / totalValue) * 100 : 0
+    }));
+
+    return {
+      ...mockPortfolioData,
+      assets: assetsWithAllocation,
+    };
+  }, [portfolioAssets]);
+
+  const loading = false;
+  const error = null;
 
   // Memoize chart data to prevent unnecessary recalculations - MUST be before early returns
   const pieData = useMemo(
@@ -169,8 +209,10 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
         <h3 className="text-xl font-semibold text-indigo-800 mb-4">
           Portfolio Allocation
         </h3>
-        <Suspense fallback={<div>Loading chart...</div>}>
-          <Pie data={pieData} options={pieOptions} />
+        <Suspense fallback={<div className="h-[300px] flex items-center justify-center">Loading chart...</div>}>
+          <div className="h-[300px] relative">
+            <Pie data={pieData} options={pieOptions} redraw={true} />
+          </div>
         </Suspense>
       </div>
 
@@ -178,8 +220,10 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
         <h3 className="text-xl font-semibold text-indigo-800 mb-4">
           Performance Over Time
         </h3>
-        <Suspense fallback={<div>Loading chart...</div>}>
-          <Line data={lineData} options={lineOptions} />
+        <Suspense fallback={<div className="h-[300px] flex items-center justify-center">Loading chart...</div>}>
+          <div className="h-[300px] relative">
+            <Line data={lineData} options={lineOptions} redraw={true} />
+          </div>
         </Suspense>
       </div>
 
@@ -284,6 +328,55 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
         ) : (
           <div className="text-gray-700">Select an asset to view details.</div>
         )}
+      </div>
+
+      {/* Portfolio Input Form */}
+      <div className="mt-8 p-6 bg-gray-50 rounded-lg">
+        <h3 className="text-lg font-semibold text-indigo-800 mb-4">
+          Add New Asset
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <input
+            type="text"
+            placeholder="Ticker (e.g., AAPL)"
+            value={newAsset.ticker}
+            onChange={(e) => setNewAsset({ ...newAsset, ticker: e.target.value })}
+            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <input
+            type="number"
+            placeholder="Amount"
+            value={newAsset.amount}
+            onChange={(e) => setNewAsset({ ...newAsset, amount: e.target.value })}
+            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <input
+            type="number"
+            placeholder="Price per share"
+            value={newAsset.price}
+            onChange={(e) => setNewAsset({ ...newAsset, price: e.target.value })}
+            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          />
+          <button
+            onClick={() => {
+              if (newAsset.ticker && newAsset.amount && newAsset.price) {
+                const value = parseFloat(newAsset.amount) * parseFloat(newAsset.price);
+                setPortfolioAssets([
+                  ...portfolioAssets,
+                  {
+                    name: newAsset.ticker.toUpperCase(),
+                    value,
+                    allocation: 0 // Will be calculated in useMemo
+                  }
+                ]);
+                setNewAsset({ ticker: '', amount: '', price: '' });
+              }
+            }}
+            className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+          >
+            Add Asset
+          </button>
+        </div>
       </div>
     </div>
   );

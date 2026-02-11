@@ -1,9 +1,14 @@
-import React, { useState, useEffect, Suspense } from 'react';
-import { apiClient } from '@/services/apiClient';
+import React, { useState, useEffect, Suspense, useMemo } from 'react';
 import { MechanicaGear } from './ui/mechanicaGear';
 
 const Bubble = React.lazy(() =>
   import('react-chartjs-2').then(mod => ({ default: mod.Bubble }))
+);
+const Radar = React.lazy(() =>
+  import('react-chartjs-2').then(mod => ({ default: mod.Radar }))
+);
+const Bar = React.lazy(() =>
+  import('react-chartjs-2').then(mod => ({ default: mod.Bar }))
 );
 
 import { registerMechanicaCharts, getMechanicaTheme, MECHANICA_COLORS } from '@/utils/mechanicaCharts';
@@ -15,15 +20,62 @@ type ESGData = {
   name: string;
   sector: string;
   esg: number;
+  environmental: number;
+  social: number;
+  governance: number;
   flagged: boolean;
   marketCap: number;
+  baseESG?: number;
+  baseMarketCap?: number;
 };
 
-// ... imports
+// Dynamic ESG data generator
+const generateDynamicESGData = (): ESGData[] => {
+  const baseData = [
+    { name: 'Apple Inc.', sector: 'Technology', baseESG: 85, baseMarketCap: 2800 },
+    { name: 'Microsoft Corp.', sector: 'Technology', baseESG: 88, baseMarketCap: 2500 },
+    { name: 'Tesla Inc.', sector: 'Automotive', baseESG: 72, baseMarketCap: 800 },
+    { name: 'Exxon Mobil', sector: 'Energy', baseESG: 45, baseMarketCap: 400 },
+    { name: 'Johnson & Johnson', sector: 'Healthcare', baseESG: 78, baseMarketCap: 450 },
+    { name: 'Amazon.com Inc.', sector: 'Technology', baseESG: 68, baseMarketCap: 1500 },
+    { name: 'Walmart Inc.', sector: 'Retail', baseESG: 75, baseMarketCap: 400 },
+    { name: 'BP plc', sector: 'Energy', baseESG: 52, baseMarketCap: 350 },
+  ];
+
+  const hour = new Date().getHours();
+  const dayMultiplier = hour >= 9 && hour <= 17 ? 1.1 : 0.9;
+  const randomVariation = () => (Math.random() - 0.5) * 10; // ±5 variation
+
+  return baseData.map(company => {
+    const dynamicESG = Math.max(0, Math.min(100, company.baseESG + randomVariation()));
+    const dynamicMarketCap = Math.max(100, company.baseMarketCap * dayMultiplier * (1 + (Math.random() - 0.5) * 0.2));
+
+    // Generate pillar scores that sum to approximately the ESG score
+    const environmental = Math.max(0, Math.min(100, dynamicESG + randomVariation()));
+    const social = Math.max(0, Math.min(100, dynamicESG + randomVariation()));
+    const governance = Math.max(0, Math.min(100, dynamicESG + randomVariation()));
+
+    // Flag companies with low ESG scores
+    const flagged = dynamicESG < 60;
+
+    return {
+      name: company.name,
+      sector: company.sector,
+      esg: Math.round(dynamicESG),
+      environmental: Math.round(environmental),
+      social: Math.round(social),
+      governance: Math.round(governance),
+      flagged,
+      marketCap: Math.round(dynamicMarketCap),
+    };
+  });
+};
+
+const mockESGData = generateDynamicESGData();
 
 export default function ESGScreener() {
-  const [data, setData] = useState<ESGData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [data, setData] = useState<ESGData[]>(mockESGData);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
   // Persistent Filters using localStorage
@@ -41,6 +93,10 @@ export default function ESGScreener() {
     return 0;
   });
 
+  // Negative screening filters
+  const [excludeEnergy, setExcludeEnergy] = useState(false);
+  const [excludeAutomotive, setExcludeAutomotive] = useState(false);
+
   useEffect(() => {
     localStorage.setItem('esg_sector_filter', sector);
   }, [sector]);
@@ -49,24 +105,18 @@ export default function ESGScreener() {
     localStorage.setItem('esg_threshold_filter', threshold.toString());
   }, [threshold]);
 
-  useEffect(() => {
-    setLoading(true);
-    setError(null);
-    apiClient.get<{ stocks: ESGData[] }>('/marketdata/esg')
-      .then((res) => {
-        setData(res.data.stocks || []);
-      })
-      .catch((err: any) => {
-        setError(err.response?.data?.error || err.message || 'Failed to fetch ESG data');
-      })
-      .finally(() => setLoading(false));
-  }, []);
-
   const sectors = Array.from(new Set(data.map(d => d.sector)));
 
-  const filtered = data.filter(
-    d => (sector === '' || d.sector === sector) && d.esg >= threshold
-  );
+  const filtered = useMemo(() => {
+    return data.filter(d => {
+      const sectorMatch = sector === '' || d.sector === sector;
+      const thresholdMatch = d.esg >= threshold;
+      const energyFilter = !excludeEnergy || d.sector !== 'Energy';
+      const automotiveFilter = !excludeAutomotive || d.sector !== 'Automotive';
+
+      return sectorMatch && thresholdMatch && energyFilter && automotiveFilter;
+    });
+  }, [data, sector, threshold, excludeEnergy, excludeAutomotive]);
 
   const bubbleData = {
     datasets: filtered.map(d => ({
@@ -77,6 +127,43 @@ export default function ESGScreener() {
       borderWidth: 1,
     })),
   };
+
+  // Radar chart data for ESG pillars (using first company as example)
+  const radarData = useMemo(() => {
+    if (filtered.length === 0) return null;
+    const example = filtered[0];
+    return {
+      labels: ['Environmental', 'Social', 'Governance'],
+      datasets: [{
+        label: example.name,
+        data: [example.environmental, example.social, example.governance],
+        backgroundColor: 'rgba(79, 115, 142, 0.2)',
+        borderColor: 'rgba(79, 115, 142, 1)',
+        borderWidth: 2,
+        pointBackgroundColor: 'rgba(79, 115, 142, 1)',
+      }],
+    };
+  }, [filtered]);
+
+  // Bar chart data for industry peer comparison
+  const barData = useMemo(() => {
+    const sectorAverages = sectors.map(sector => {
+      const sectorCompanies = data.filter(d => d.sector === sector);
+      const avgESG = sectorCompanies.reduce((sum, d) => sum + d.esg, 0) / sectorCompanies.length;
+      return { sector, avgESG };
+    });
+
+    return {
+      labels: sectorAverages.map(s => s.sector),
+      datasets: [{
+        label: 'Average ESG Score by Sector',
+        data: sectorAverages.map(s => s.avgESG),
+        backgroundColor: MECHANICA_COLORS.primary,
+        borderColor: MECHANICA_COLORS.accent,
+        borderWidth: 1,
+      }],
+    };
+  }, [data, sectors]);
 
   if (loading) {
     return (
@@ -111,7 +198,7 @@ export default function ESGScreener() {
                 Scanner Interrupted
               </h3>
               <p className="text-red-700 font-medium text-sm italic mb-4 leading-relaxed max-w-2xl">
-                "{error.includes('Network Error') ? 'Our precision data streams are currently recalibrating. Please verify your connection architecture.' : error}"
+                {error.includes('Network Error') ? 'Our precision data streams are currently recalibrating. Please verify your connection architecture.' : error}
               </p>
               <button
                 onClick={() => window.location.reload()}
@@ -160,6 +247,31 @@ export default function ESGScreener() {
             </div>
           </div>
         </form>
+
+        {/* Negative Screening Filters */}
+        <div className="mt-6 pt-6 border-t border-gray-200">
+          <h4 className="text-sm font-black uppercase tracking-[0.2em] text-gray-400 mb-4">Negative Screening Filters</h4>
+          <div className="flex flex-wrap gap-4">
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={excludeEnergy}
+                onChange={(e) => setExcludeEnergy(e.target.checked)}
+                className="mr-2 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+              <span className="text-sm font-medium text-gray-700">Exclude Energy Sector</span>
+            </label>
+            <label className="flex items-center cursor-pointer">
+              <input
+                type="checkbox"
+                checked={excludeAutomotive}
+                onChange={(e) => setExcludeAutomotive(e.target.checked)}
+                className="mr-2 h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+              />
+              <span className="text-sm font-medium text-gray-700">Exclude Automotive Sector</span>
+            </label>
+          </div>
+        </div>
       </div>
 
       <div className="mb-12">
@@ -178,12 +290,13 @@ export default function ESGScreener() {
           }>
             <Bubble
               data={bubbleData}
+              redraw={true}
               options={getMechanicaTheme({
                 plugins: {
                   tooltip: {
                     callbacks: {
-                      label: (ctx: any) => {
-                        const raw = ctx.raw as { x: number; y: number; r: number };
+                      label: (ctx: { raw: { x: number; y: number; r: number }; dataset: { label?: string } }) => {
+                        const raw = ctx.raw;
                         return ` COMPONENT: ${ctx.dataset.label} | INTEGRITY: ${raw.y}% | CAP: $${raw.x}B`;
                       },
                     },
@@ -205,6 +318,100 @@ export default function ESGScreener() {
         </div>
       </div>
 
+      {/* ESG Pillars Radar Chart */}
+      {radarData && (
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
+            <h3 className="text-sm font-black uppercase tracking-[0.2em] text-gray-400 flex items-center">
+              <span className="w-2 h-2 bg-mechanica-moonlight-blue rounded-full mr-3 animate-pulse"></span>
+              ESG Pillar Analysis
+            </h3>
+            <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
+              {radarData.datasets[0].label}
+            </div>
+          </div>
+          <div className="relative w-full h-[400px] p-4 bg-gray-50/30 rounded-2xl border border-gray-50">
+            <Suspense fallback={
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="animate-spin rounded-full h-8 w-8 border-2 border-mechanica-moonlight-blue border-t-transparent"></div>
+              </div>
+            }>
+              <Radar
+                data={radarData}
+                redraw={true}
+                options={getMechanicaTheme({
+                  plugins: {
+                    legend: {
+                      display: true,
+                      position: 'top' as const,
+                    }
+                  },
+                  scales: {
+                    r: {
+                      beginAtZero: true,
+                      max: 100,
+                      ticks: {
+                        stepSize: 20
+                      }
+                    }
+                  }
+                })}
+              />
+            </Suspense>
+          </div>
+        </div>
+      )}
+
+      {/* Industry Peer Comparison Bar Chart */}
+      <div className="mb-12">
+        <div className="flex items-center justify-between mb-8 border-b border-gray-100 pb-4">
+          <h3 className="text-sm font-black uppercase tracking-[0.2em] text-gray-400 flex items-center">
+            <span className="w-2 h-2 bg-mechanica-moonlight-blue rounded-full mr-3 animate-pulse"></span>
+            Industry Peer Comparison
+          </h3>
+          <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Sector Analysis</div>
+        </div>
+        <div className="relative w-full h-[400px] p-4 bg-gray-50/30 rounded-2xl border border-gray-50">
+          <Suspense fallback={
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-2 border-mechanica-moonlight-blue border-t-transparent"></div>
+            </div>
+          }>
+            <Bar
+              data={barData}
+              redraw={true}
+              options={getMechanicaTheme({
+                plugins: {
+                  legend: {
+                    display: false
+                  }
+                },
+                scales: {
+                  y: {
+                    beginAtZero: true,
+                    max: 100,
+                    title: {
+                      display: true,
+                      text: 'Average ESG Score',
+                      font: { size: 12, weight: 'bold' },
+                      color: '#94a3b8'
+                    }
+                  },
+                  x: {
+                    title: {
+                      display: true,
+                      text: 'Industry Sectors',
+                      font: { size: 12, weight: 'bold' },
+                      color: '#94a3b8'
+                    }
+                  }
+                }
+              })}
+            />
+          </Suspense>
+        </div>
+      </div>
+
       <div className="bg-red-50/50 rounded-2xl border border-red-100 p-8">
         <div className="flex items-center space-x-3 mb-6 border-b border-red-100 pb-4">
           <span className="text-xl">🚨</span>
@@ -214,7 +421,7 @@ export default function ESGScreener() {
           {filtered.filter(d => d.flagged).length === 0 ? (
             <li className="flex items-center text-green-700 font-bold italic text-sm">
               <div className="w-1.5 h-1.5 bg-green-500 rounded-full mr-3"></div>
-              "No red flag anomalies detected in current component stream."
+              No red flag anomalies detected in current component stream.
             </li>
           ) : (
             filtered

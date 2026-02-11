@@ -22,16 +22,7 @@ const nextConfig = withBundleAnalyzer(
     // Image optimization for static export
     images: {
       // unoptimized: true, // Only for static export
-      remotePatterns: [
-        {
-          protocol: 'https',
-          hostname: 'your-cdn.com',
-        },
-        {
-          protocol: 'https',
-          hostname: 'cdn.example.com',
-        },
-      ],
+      remotePatterns: [],
       formats: ['image/webp', 'image/avif'],
       minimumCacheTTL: 60 * 60 * 24 * 30,
       dangerouslyAllowSVG: false,

@@ -37,7 +37,6 @@ export default function LoginPage() {
   return (
     <MechanicaLayout title="Sign In | Beginner Investor Hub">
       <Head>
-        <title>Sign In | BeginnerInvestorHub</title>
         <meta name="description" content="Sign in to your BeginnerInvestorHub account to access your portfolio assembly, mastery tools, and AI behavioral coach." />
       </Head>
       <div className="min-h-screen flex items-center justify-center p-4 sm:p-8 bg-gradient-to-br from-gray-50 to-amber-50">

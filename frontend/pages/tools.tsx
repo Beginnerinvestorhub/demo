@@ -34,17 +34,6 @@ const tools = [
     gearColor: 'brass' as const,
   },
   {
-    name: 'Risk Analysis Dashboard',
-    icon: '📊',
-    description:
-      'Understand portfolio risk metrics with advanced analytics powered by Python.',
-    href: '/risk-analysis',
-    category: 'Core Tools',
-    status: 'active',
-    features: ['Sharpe ratio', 'Beta analysis', 'Volatility metrics'],
-    gearColor: 'copper' as const,
-  },
-  {
     name: 'Market Data Explorer',
     icon: '📈',
     description:
@@ -247,25 +236,14 @@ export default function ToolsOverview() {
 
                     <div className="mt-auto">
                       {tool.status === 'active' ? (
-                        user ? (
-                          <MechanicaButton
-                            variant="mechanical"
-                            size="lg"
-                            className="w-full py-4 text-xs font-black uppercase tracking-[0.2em] shadow-lg active:scale-95"
-                            href={tool.href}
-                          >
-                            Launch Module
-                          </MechanicaButton>
-                        ) : (
-                          <MechanicaButton
-                            variant="wood"
-                            size="lg"
-                            className="w-full py-4 text-xs font-black uppercase tracking-[0.2em] shadow-lg active:scale-95"
-                            href="/signup"
-                          >
-                            Sign Up to Access
-                          </MechanicaButton>
-                        )
+                        <MechanicaButton
+                          variant="mechanical"
+                          size="lg"
+                          className="w-full py-4 text-xs font-black uppercase tracking-[0.2em] shadow-lg active:scale-95"
+                          href={tool.href}
+                        >
+                          Launch Module
+                        </MechanicaButton>
                       ) : (
                         <MechanicaButton variant="wood" size="lg" className="w-full py-4 text-xs font-black uppercase tracking-[0.2em] opacity-50 cursor-not-allowed" disabled>
                           Under Construction

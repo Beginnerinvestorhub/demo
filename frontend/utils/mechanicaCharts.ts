@@ -10,6 +10,7 @@ import {
     Legend,
     Filler,
     BubbleController,
+    RadialLinearScale,
     Title,
 } from 'chart.js';
 
@@ -26,6 +27,7 @@ export const registerMechanicaCharts = () => {
         BarElement,
         ArcElement,
         BubbleController,
+        RadialLinearScale,
         Tooltip,
         Legend,
         Filler,
