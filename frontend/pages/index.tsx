@@ -402,17 +402,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Learning Paths */}
-        <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
-                Structured Investment Curricula
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Structured learning with a focus on skill development and strategic application
-              </p>
-            </div>
+       
 
             {/* Founderlings CTA Section */}
             <MechanicaCard variant="brass" animated className="max-w-6xl mx-auto mb-16">
