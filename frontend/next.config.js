@@ -89,17 +89,10 @@ const nextConfig = withBundleAnalyzer(
       return config;
     },
 
-    // Turbopack configuration
-    turbopack: {
-      resolveAlias: {
-        '@': path.resolve(__dirname),
-        '@/components': path.resolve(__dirname, 'components'),
-        '@/store': path.resolve(__dirname, 'store'),
-        '@/hooks': path.resolve(__dirname, 'hooks'),
-        '@/lib': path.resolve(__dirname, 'lib'),
-        '@/styles': path.resolve(__dirname, 'styles'),
-      },
-    },
+    // Acknowledge Turbopack usage (suppress error about missing config with webpack config present)
+    turbopack: {},
+
+
 
     // Headers are not supported in static export
     // async headers() { ... }

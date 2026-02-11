@@ -1,32 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { MechanicaLayout } from '../../components/layout/mechanicaLayout';
 import { MechanicaButton } from '../../components/ui/mechanicaButton';
 import { MechanicaGear } from '../../components/ui/mechanicaGear';
 import { modules } from '../../content/education/modules';
-import { useAuth } from '../../hooks/useAuth';
-import { MechanicaCard } from '../../components/ui/mechanicaCard'; // Corrected import
+import { MechanicaCard } from '../../components/ui/mechanicaCard';
 
 export default function ModuleViewer() {
     const router = useRouter();
     const { moduleId } = router.query;
-    const { user } = useAuth();
 
     // Find the module
-    const module = modules.find(m => m.id === moduleId);
+    const currentModule = modules.find(m => m.id === moduleId);
 
     // Loading state (only show if router is not ready)
     if (!router.isReady) return <div className="min-h-screen bg-slate-900 flex items-center justify-center text-blue-400">Loading module data...</div>;
 
     // Not found state
-    if (!module) {
+    if (!currentModule) {
         return (
             <MechanicaLayout title="Module Not Found" description="The requested knowledge module could not be located.">
                 <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-center p-4">
                     <MechanicaGear size="xl" color="copper" speed="slow" className="mb-6 opacity-50" />
                     <h1 className="text-3xl font-bold text-white mb-4">Module Retrieval Failed</h1>
-                    <p className="text-gray-400 mb-8">The requested archive ID "{moduleId}" does not exist in our system.</p>
+                    <p className="text-gray-400 mb-8">The requested archive ID &quot;{moduleId}&quot; does not exist in our system.</p>
                     <div className="mt-4">
                         <MechanicaButton href="/learning-hub" variant="mechanical" size="lg">Return to Library</MechanicaButton>
                     </div>
@@ -37,11 +36,11 @@ export default function ModuleViewer() {
 
     return (
         <MechanicaLayout
-            title={`${module.title} | Learning Hub`}
-            description={module.description}
+            title={`${currentModule.title} | Learning Hub`}
+            description={currentModule.description}
         >
             <Head>
-                <title>{module.title} | BeginnerInvestorHub</title>
+                <title>{currentModule.title} | BeginnerInvestorHub</title>
             </Head>
 
             <div className="min-h-screen bg-slate-900 text-blue-50 relative overflow-hidden">
@@ -56,11 +55,11 @@ export default function ModuleViewer() {
                     <div className="container mx-auto px-4 py-4 flex items-center justify-between">
                         <div className="flex items-center space-x-4">
                             {/* Using Next Link or custom button effectively */}
-                            <MechanicaButton href="/learning-hub" variant="ghost" size="sm" className="text-gray-400 hover:text-white transition-colors">
+                            <Link href="/learning-hub" className="text-gray-400 hover:text-white transition-colors flex items-center text-sm font-medium">
                                 ← Library
-                            </MechanicaButton>
+                            </Link>
                             <div className="h-4 w-px bg-gray-600 hidden sm:block"></div>
-                            <span className="text-blue-300 font-bold uppercase tracking-widest text-xs hidden sm:block">Module: {module.title}</span>
+                            <span className="text-blue-300 font-bold uppercase tracking-widest text-xs hidden sm:block">Module: {currentModule.title}</span>
                         </div>
                         {/* Progress Bar Mock */}
                         <div className="flex items-center space-x-3">
@@ -80,7 +79,7 @@ export default function ModuleViewer() {
                             <div className="bg-slate-800/50 backdrop-blur border border-blue-500/20 rounded-xl p-4 sticky top-24">
                                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-4 px-2">Data Segments</h3>
                                 <div className="space-y-2">
-                                    {module.lessons.map((lesson, idx) => (
+                                    {currentModule.lessons.map((lesson, idx) => (
                                         <div
                                             key={lesson.slug}
                                             className={`w-full text-left px-4 py-3 rounded-lg text-sm font-bold transition-all flex items-center justify-between cursor-pointer ${idx === 0 ? 'bg-blue-600/90 text-white shadow-lg shadow-blue-900/50 border border-blue-400/30' : 'text-gray-400 hover:bg-slate-700 hover:text-blue-300 border border-transparent'}`}
@@ -110,7 +109,7 @@ export default function ModuleViewer() {
                                             <span className="inline-block px-2 py-1 rounded bg-blue-900/50 border border-blue-500/30 text-[10px] font-black uppercase tracking-widest text-blue-300 mb-2">
                                                 Current Segment 01
                                             </span>
-                                            <h1 className="text-2xl sm:text-3xl font-bold text-white font-serif tracking-tight">{module.lessons[0].title}</h1>
+                                            <h1 className="text-2xl sm:text-3xl font-bold text-white font-serif tracking-tight">{currentModule.lessons[0].title}</h1>
                                         </div>
                                         <div className="hidden sm:block">
                                             <MechanicaGear size="md" color="steel" speed="slow" />
@@ -122,7 +121,7 @@ export default function ModuleViewer() {
                                 <div className="p-8 flex-grow bg-slate-900/50 relative">
                                     <div className="prose prose-invert max-w-none">
                                         <p className="text-lg text-blue-100 leading-relaxed font-light mb-8">
-                                            {module.lessons[0].summary}
+                                            {currentModule.lessons[0].summary}
                                         </p>
 
                                         <div className="my-8 p-6 bg-slate-800/80 rounded-xl border-l-4 border-amber-500 shadow-lg">

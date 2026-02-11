@@ -159,7 +159,7 @@ export default function ToolsOverview() {
               </h2>
 
               <p className="text-lg text-blue-200 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                We've simplified complex investing strategies into easy-to-use modules. Think of this as your personal financial workshop—calibrated for clarity and growth.
+                We&apos;ve simplified complex investing strategies into easy-to-use modules. Think of this as your personal financial workshop—calibrated for clarity and growth.
               </p>
 
               <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-400/90" style={{ color: 'var(--Ordinatus-brass-gold)' }}>

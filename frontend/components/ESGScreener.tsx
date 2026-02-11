@@ -74,9 +74,9 @@ const generateDynamicESGData = (): ESGData[] => {
 const mockESGData = generateDynamicESGData();
 
 export default function ESGScreener() {
-  const [data, setData] = useState<ESGData[]>(mockESGData);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+  const [data] = useState<ESGData[]>(mockESGData);
+  const [loading] = useState<boolean>(false);
+  const [error] = useState<string | null>(null);
 
   // Persistent Filters using localStorage
   const [sector, setSector] = useState<string>(() => {

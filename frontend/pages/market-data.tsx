@@ -47,7 +47,7 @@ export default function MarketDataPage() {
     if (!isLive) return;
 
     const interval = setInterval(() => {
-      setTickers(prevTickers => 
+      setTickers(prevTickers =>
         prevTickers.map(ticker => {
           const changeAmount = (Math.random() - 0.5) * 2; // Random change between -1 and 1
           const newPrice = Math.max(0.01, ticker.price + changeAmount);
@@ -97,7 +97,7 @@ export default function MarketDataPage() {
       <Head>
         <title>Market Data | BeginnerInvestorHub</title>
       </Head>
-      
+
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
         {/* Header */}
         <section className="py-12 px-4">
@@ -110,21 +110,18 @@ export default function MarketDataPage() {
                 </h1>
                 <MechanicaGear size="xl" color="steel" speed="reverse" />
               </div>
-              
+
               <div className="flex justify-center items-center space-x-4 mb-4">
-                <div className={`inline-flex items-center px-4 py-2 rounded-full ${
-                  isLive ? 'bg-green-100' : 'bg-gray-100'
-                }`}>
-                  <div className={`w-3 h-3 rounded-full mr-2 ${
-                    isLive ? 'bg-green-500 animate-pulse' : 'bg-gray-400'
-                  }`}></div>
-                  <span className={`font-medium ${
-                    isLive ? 'text-green-800' : 'text-gray-600'
+                <div className={`inline-flex items-center px-4 py-2 rounded-full ${isLive ? 'bg-green-100' : 'bg-gray-100'
                   }`}>
+                  <div className={`w-3 h-3 rounded-full mr-2 ${isLive ? 'bg-green-500 animate-pulse' : 'bg-gray-400'
+                    }`}></div>
+                  <span className={`font-medium ${isLive ? 'text-green-800' : 'text-gray-600'
+                    }`}>
                     {isLive ? 'LIVE' : 'PAUSED'}
                   </span>
                 </div>
-                
+
                 <MechanicaButton
                   variant={isLive ? 'wood' : 'mechanical'}
                   onClick={toggleLive}
@@ -133,7 +130,7 @@ export default function MarketDataPage() {
                   {isLive ? 'Pause Updates' : 'Start Live Feed'}
                 </MechanicaButton>
               </div>
-              
+
               <p className="text-sm text-gray-500">
                 Last updated: {lastUpdate.toLocaleTimeString()}
               </p>
@@ -142,10 +139,10 @@ export default function MarketDataPage() {
             {/* Market Indices */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {indices.map((index, idx) => (
-                <MechanicaCard 
-                  key={index.name} 
-                  variant={idx % 3 === 0 ? 'mechanical' : idx % 3 === 1 ? 'wood' : 'brass'} 
-                  animated 
+                <MechanicaCard
+                  key={index.name}
+                  variant={idx % 3 === 0 ? 'mechanical' : idx % 3 === 1 ? 'wood' : 'brass'}
+                  animated
                 >
                   <div className="p-6 text-center">
                     <h3 className="text-lg font-bold text-gray-900 mb-2">
@@ -154,9 +151,8 @@ export default function MarketDataPage() {
                     <div className="text-3xl font-bold mb-2">
                       {index.value.toLocaleString()}
                     </div>
-                    <div className={`text-lg font-medium ${
-                      index.change >= 0 ? 'text-green-600' : 'text-red-600'
-                    }`}>
+                    <div className={`text-lg font-medium ${index.change >= 0 ? 'text-green-600' : 'text-red-600'
+                      }`}>
                       {index.change >= 0 ? '+' : ''}{index.change.toFixed(2)} ({index.changePercent.toFixed(2)}%)
                     </div>
                   </div>
@@ -176,7 +172,7 @@ export default function MarketDataPage() {
                     <span className="text-sm text-gray-500">Real-time</span>
                   </div>
                 </div>
-                
+
                 <div className="overflow-x-auto">
                   <table className="w-full">
                     <thead>
@@ -190,7 +186,7 @@ export default function MarketDataPage() {
                       </tr>
                     </thead>
                     <tbody>
-                      {tickers.map((ticker, index) => (
+                      {tickers.map((ticker) => (
                         <tr key={ticker.symbol} className="border-b border-gray-100 hover:bg-gray-50">
                           <td className="py-3 px-4 font-mono font-bold text-gray-900">
                             {ticker.symbol}
@@ -201,14 +197,12 @@ export default function MarketDataPage() {
                           <td className="py-3 px-4 text-right font-mono">
                             ${ticker.price.toFixed(2)}
                           </td>
-                          <td className={`py-3 px-4 text-right font-mono ${
-                            ticker.change >= 0 ? 'text-green-600' : 'text-red-600'
-                          }`}>
+                          <td className={`py-3 px-4 text-right font-mono ${ticker.change >= 0 ? 'text-green-600' : 'text-red-600'
+                            }`}>
                             {ticker.change >= 0 ? '+' : ''}{ticker.change.toFixed(2)}
                           </td>
-                          <td className={`py-3 px-4 text-right font-mono ${
-                            ticker.changePercent >= 0 ? 'text-green-600' : 'text-red-600'
-                          }`}>
+                          <td className={`py-3 px-4 text-right font-mono ${ticker.changePercent >= 0 ? 'text-green-600' : 'text-red-600'
+                            }`}>
                             {ticker.changePercent >= 0 ? '+' : ''}{ticker.changePercent.toFixed(2)}%
                           </td>
                           <td className="py-3 px-4 text-right text-gray-600">
@@ -232,7 +226,7 @@ export default function MarketDataPage() {
                 Market Statistics
               </h2>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <MechanicaCard variant="wood" animated>
                 <div className="p-6 text-center">
@@ -245,7 +239,7 @@ export default function MarketDataPage() {
                   </div>
                 </div>
               </MechanicaCard>
-              
+
               <MechanicaCard variant="brass" animated>
                 <div className="p-6 text-center">
                   <MechanicaGear size="medium" color="copper" speed="medium" className="mx-auto mb-4" />
@@ -257,7 +251,7 @@ export default function MarketDataPage() {
                   </div>
                 </div>
               </MechanicaCard>
-              
+
               <MechanicaCard variant="mechanical" animated>
                 <div className="p-6 text-center">
                   <MechanicaGear size="medium" color="steel" speed="reverse" className="mx-auto mb-4" />
@@ -269,7 +263,7 @@ export default function MarketDataPage() {
                   </div>
                 </div>
               </MechanicaCard>
-              
+
               <MechanicaCard variant="wood" animated>
                 <div className="p-6 text-center">
                   <MechanicaGear size="medium" color="brass" speed="fast" className="mx-auto mb-4" />

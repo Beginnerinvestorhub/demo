@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
@@ -149,35 +149,7 @@ export default function HomePage() {
     },
   ];
 
-  const learningPaths = [
-    {
-      // Updated Title: Focus on Fundamentals
-      title: 'Financial Fundamentals',
-      // Updated Description: Focus on Core Skills
-      description: 'Master the core financial skills with our structured learning path, featuring foundational knowledge and step-by-step guidance.',
-      level: 'Foundation',
-      duration: '4 weeks',
-      gearColor: 'brass' as const,
-    },
-    {
-      // Updated Title: Focus on Portfolio Building
-      title: 'Intermediate Portfolio Construction',
-      // Updated Description: Focus on Advanced Skills
-      description: 'Advance your skills with complex strategies and technical analysis using our structured learning modules.',
-      level: 'Intermediate',
-      duration: '8 weeks',
-      gearColor: 'steel' as const,
-    },
-    {
-      // Updated Title: Focus on Expertise
-      title: 'Advanced Strategic Expertise',
-      // Updated Description: Focus on sophisticated management
-      description: 'Become an expert with sophisticated strategies and professional-grade portfolio management techniques.',
-      level: 'Advanced',
-      duration: '12 weeks',
-      gearColor: 'copper' as const,
-    },
-  ];
+
 
   return (
     <MechanicaLayout>
@@ -449,14 +421,14 @@ export default function HomePage() {
                   <div className="flex justify-center items-center space-x-4 mb-6">
                     <MechanicaGear size="xl" color="copper" speed="slow" />
                     <h2 className="text-4xl font-bold text-gray-900 font-serif">
-                      You're Not Just a User. <br />
-                      You're a <span className="text-amber-600">Co-creator</span>.
+                      You&apos;re Not Just a User. <br />
+                      You&apos;re a <span className="text-amber-600">Co-creator</span>.
                     </h2>
                     <MechanicaGear size="xl" color="copper" speed="reverse" />
                   </div>
 
                   <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-5xl mx-auto">
-                    Founderlings don't just provide data — you actively tune our risk-modeling engine and shape product direction.
+                    Founderlings don&apos;t just provide data — you actively tune our risk-modeling engine and shape product direction.
                     Every learning decision you make teaches our AI how to personalize investing education for thousands of future users.
                   </p>
                 </div>

@@ -5,7 +5,6 @@ import { MechanicaLayout } from '../components/layout/mechanicaLayout';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import { MechanicaButton } from '../components/ui/mechanicaButton';
-import { MechanicaInput } from '../components/ui/mechanicaInput';
 
 export default function Contact() {
   const [formData, setFormData] = useState({

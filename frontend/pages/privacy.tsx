@@ -83,7 +83,7 @@ export default function PrivacyPolicy() {
                   </h2>
                 </div>
                 <p className="text-amber-950 text-xl font-medium italic border-l-4 border-amber-600 pl-8 py-2">
-                  "At BeginnerInvestorHub, we are committed to protecting your privacy and ensuring the security of your tactical information."
+                  &quot;At BeginnerInvestorHub, we are committed to protecting your privacy and ensuring the security of your tactical information.&quot;
                 </p>
               </div>
             </MechanicaCard>
@@ -158,7 +158,7 @@ export default function PrivacyPolicy() {
                       </div>
                       <div>
                         <div className="text-[11px] font-black uppercase tracking-widest text-amber-900">{item.label}</div>
-                        <div className="text-md font-black text-amber-800/70 italic">"{item.text}"</div>
+                        <div className="text-md font-black text-amber-800/70 italic">&quot;{item.text}&quot;</div>
                       </div>
                     </div>
                   ))}

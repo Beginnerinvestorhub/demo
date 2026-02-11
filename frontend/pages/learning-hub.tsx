@@ -1,14 +1,11 @@
 import React from 'react';
 import Head from 'next/head';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
-import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaButton } from '../components/ui/mechanicaButton';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import { modules } from '../content/education/modules';
-import { useAuth } from '../hooks/useAuth';
 
 export default function LearningHub() {
-    const { user } = useAuth();
     // Mock user level - in a real app this would come from the user profile
     // For demo purposes, we'll set it to 1 so the first module is open.
     const userLevel = 1;

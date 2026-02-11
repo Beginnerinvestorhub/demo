@@ -43,7 +43,7 @@ export default function ProfileForm() {
   useEffect(() => {
     const fetchProfile = async () => {
       if (!user) return;
-      
+
       // Demo mode - simulate loading profile
       setTimeout(() => {
         const mockData = {
@@ -58,13 +58,13 @@ export default function ProfileForm() {
     fetchProfile();
   }, [user, reset]);
 
-  const onSubmit = async (data: ProfileFormData) => {
+  const onSubmit = async (_data: ProfileFormData) => {
     if (!user) return;
     setStatusMessage(null);
-    
+
     // Demo mode - simulate saving profile
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     setStatusMessage({
       type: 'success',
       message: 'Profile saved successfully! (Demo mode)',

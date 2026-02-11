@@ -100,7 +100,7 @@ export default function FractionalShareCalculatorPage() {
                 <div className="p-8 text-center">
                   <div className="w-12 h-12 bg-yellow-500 text-mechanica-moonlight-blue rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">2</div>
                   <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Calculate Shares</h4>
-                  <p className="text-gray-500 text-sm font-medium leading-relaxed">We automatically calculate exactly how many shares (or partial shares) you'll own.</p>
+                  <p className="text-gray-500 text-sm font-medium leading-relaxed">We automatically calculate exactly how many shares (or partial shares) you&apos;ll own.</p>
                 </div>
               </MechanicaCard>
 

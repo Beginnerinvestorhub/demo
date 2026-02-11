@@ -31,7 +31,7 @@ export const MechanicaFooter: React.FC = () => {
               <MechanicaGear size="lg" color="brass" speed="reverse" className="opacity-80" />
             </div>
             <p className="text-gray-400 text-base leading-relaxed max-w-md mx-auto font-light italic">
-              "Precision investment education with engineering-grade tools and structured learning paths."
+              &quot;Precision investment education with engineering-grade tools and structured learning paths.&quot;
             </p>
           </div>
           {/* Left Column: Quick Links */}
