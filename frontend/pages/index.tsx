@@ -398,8 +398,8 @@ export default function HomePage() {
                   </div>
                 </MechanicaCard>
               ))}
-           
-
+             </div>
+               
        
 
             {/* Founderlings CTA Section */}
