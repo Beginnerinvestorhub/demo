@@ -16,7 +16,7 @@ interface PlatformStats {
 
 export default function HomePage() {
   const statsRef = useRef<HTMLDivElement>(null);
-  const [statsAnimated, setStatsAnimated] = useState(false);
+  const [statsAnimated, setStatsAnimated] = useState(true);
   const [email, setEmail] = useState('');
   const [heroEmail, setHeroEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
@@ -60,11 +60,14 @@ export default function HomePage() {
     }
   };
 
-  const [stats, setStats] = useState<PlatformStats>({
-    portfoliosBuilt: 0,
-    simulationsRun: 0,
-    simulatedValue: 0,
-    userSatisfaction: 0,
+  const [stats, setStats] = useState<PlatformStats>(() => {
+    const randomVariation = () => Math.floor(Math.random() * 1000);
+    return {
+      portfoliosBuilt: 12000 + randomVariation(),
+      simulationsRun: 45000 + randomVariation() * 2,
+      simulatedValue: 85000000 + randomVariation() * 100,
+      userSatisfaction: 94 + Math.floor(Math.random() * 6),
+    };
   });
 
   // Helper function for in-view check (simplified or from useInView hook)
@@ -402,19 +405,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Learning Paths */}
+        {/* Founderlings CTA Section */}
         <section className="py-20 bg-gradient-to-br from-amber-50 to-orange-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
-                Structured Investment Curricula
+                Become a Founderling
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Structured learning with a focus on skill development and strategic application
+                Join our founding community and help shape the future of investing education
               </p>
             </div>
-
-            {/* Founderlings CTA Section */}
             <MechanicaCard variant="brass" animated className="max-w-6xl mx-auto mb-16">
               <div className="p-10">
                 <div className="text-center mb-8">
