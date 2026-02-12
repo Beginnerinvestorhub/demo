@@ -108,6 +108,7 @@ export const useLearningStore = create<LearningState>()(
           currentModule: null,
           completedModules: [],
           progress: 0,
+          onboardingStep: 0,
         }),
 
       startOnboarding: () => set({ onboardingStep: 1, isLoading: false, error: null }),

@@ -205,7 +205,7 @@ export default function HomePage() {
           </div>
 
           {/* Demo Banner - Mission Protocol Bar */}
-          <nav className="absolute top-0 left-0 right-0 z-30 flex justify-center p-4" role="banner">
+          <nav className="absolute top-4 left-0 right-0 z-30 flex justify-center p-4" role="banner">
             <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border-x border-b border-yellow-500/30 rounded-b-2xl shadow-2xl">
               <span className="flex h-2 w-2 relative">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>

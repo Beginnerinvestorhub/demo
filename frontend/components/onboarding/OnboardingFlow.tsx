@@ -80,11 +80,16 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
 
   // Navigation
   const handleNext = () => {
-    if (!isDemo && onboardingStep < 5) {
-      completeOnboardingStep(onboardingStep);
-    } else if (isDemo && onboardingStep < 7) {
-      // Demo: just increment local state
-      // We'll allow skipping DB writes
+    if (onboardingStep < 7) {
+      completeOnboardingStep(onboardingStep + 1);
+    } else {
+      onComplete?.();
+    }
+  };
+
+  const handleBack = () => {
+    if (onboardingStep > 1) {
+      completeOnboardingStep(onboardingStep - 1);
     }
   };
 
@@ -175,11 +180,90 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
           </div>
         );
 
-      // Cases 3-7 stay mostly the same; just wrap any DB writes with !isDemo
       case 3:
+        return (
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              What are your primary investment goals?
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Select all that apply. This helps us tailor your learning path.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[
+                { id: 'wealth', label: 'Wealth Accumulation' },
+                { id: 'retirement', label: 'Retirement Planning' },
+                { id: 'income', label: 'Passive Income' },
+                { id: 'education', label: 'Education Funding' },
+                { id: 'home', label: 'First Home' },
+                { id: 'other', label: 'Other' },
+              ].map(goal => (
+                <label
+                  key={goal.id}
+                  className={`flex items-center p-3 border-2 rounded-lg cursor-pointer transition-all ${formData.investmentGoals.includes(goal.id)
+                    ? 'border-indigo-500 bg-indigo-50'
+                    : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                >
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded mr-3"
+                    checked={formData.investmentGoals.includes(goal.id)}
+                    onChange={() => {
+                      const newGoals = formData.investmentGoals.includes(goal.id)
+                        ? formData.investmentGoals.filter(g => g !== goal.id)
+                        : [...formData.investmentGoals, goal.id];
+                      updateFormData('investmentGoals', newGoals);
+                    }}
+                  />
+                  <span className="text-gray-900 font-medium">{goal.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        );
+
       case 4:
-        // same as your current implementation
-        return null; // placeholder for brevity
+        return (
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              What is your anticipated investment time horizon?
+            </h2>
+            <p className="text-gray-600 mb-6">
+              How long do you plan to hold your investments?
+            </p>
+            <div className="space-y-4">
+              {[
+                { value: 'short_term', label: 'Short Term (Less than 3 years)' },
+                { value: 'medium_term', label: 'Medium Term (3-7 years)' },
+                { value: 'long_term', label: 'Long Term (More than 7 years)' },
+                { value: 'ultra_long_term', label: 'Ultra Long Term (15+ years)' },
+              ].map(horizon => (
+                <label
+                  key={horizon.value}
+                  className={`block p-4 border-2 rounded-lg cursor-pointer transition-all ${formData.timeHorizon === horizon.value
+                    ? 'border-indigo-500 bg-indigo-50'
+                    : 'border-gray-200 hover:border-gray-300'
+                    }`}
+                >
+                  <input
+                    type="radio"
+                    name="timeHorizon"
+                    className="sr-only"
+                    checked={formData.timeHorizon === horizon.value}
+                    onChange={() => updateFormData('timeHorizon', horizon.value)}
+                  />
+                  <div className="flex items-center">
+                    <div className={`w-4 h-4 rounded-full border-2 mr-3 ${formData.timeHorizon === horizon.value ? 'border-indigo-500 bg-indigo-500' : 'border-gray-300'}`}>
+                      {formData.timeHorizon === horizon.value && <div className="w-2 h-2 bg-white rounded-full mx-auto mt-0.5"></div>}
+                    </div>
+                    <span className="text-gray-900 font-medium">{horizon.label}</span>
+                  </div>
+                </label>
+              ))}
+            </div>
+          </div>
+        );
 
       case 5:
         return (
@@ -241,8 +325,43 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Progress Bar and Navigation remain unchanged */}
-        {renderStep()}
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm font-medium text-gray-700">Step {onboardingStep} of 7</span>
+            <span className="text-sm font-medium text-indigo-600">{Math.round((onboardingStep / 7) * 100)}% Complete</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div
+              className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
+              style={{ width: `${(onboardingStep / 7) * 100}%` }}
+            ></div>
+          </div>
+        </div>
+
+        <div className="bg-white shadow rounded-lg p-6 mb-8">
+          {renderStep()}
+        </div>
+
+        {/* Navigation */}
+        <div className="flex justify-between items-center">
+          <button
+            onClick={handleBack}
+            disabled={onboardingStep === 1}
+            className={`px-6 py-2 rounded-md font-medium transition-colors ${onboardingStep === 1
+              ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+              : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'
+              }`}
+          >
+            Back
+          </button>
+          <button
+            onClick={handleNext}
+            className="px-6 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors shadow-sm"
+          >
+            {onboardingStep === 7 ? 'Go to Dashboard' : 'Next'}
+          </button>
+        </div>
       </div>
     </div>
   );

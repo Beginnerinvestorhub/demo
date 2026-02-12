@@ -12,6 +12,7 @@ import AuralLearner from '../components/learning/AuralLearner';
 import ReadWriteLearner from '../components/learning/ReadWriteLearner';
 import KinestheticLearner from '../components/learning/KinestheticLearner';
 import Link from 'next/link';
+import { useLearningStore } from '../src/store/learningStore';
 
 export default function DashboardPage() {
   const { user, loading } = useAuth();
@@ -72,15 +73,23 @@ export default function DashboardPage() {
     };
   }, [userProgress]);
 
+  const { onboardingCompleted } = useLearningStore();
+
   useEffect(() => {
     // Enable demo mode in development
-    const isDemoMode = process.env.NODE_ENV === 'development';
+    const isDemoMode = process.env.NODE_ENV === 'development' || router.query.demo === 'true';
 
-    if (!loading && !user && !isDemoMode) {
-      setIsRedirecting(true);
-      router.replace('/login');
+    if (!loading) {
+      if (!user && !isDemoMode) {
+        setIsRedirecting(true);
+        router.replace('/login');
+      } else if (user && !onboardingCompleted) {
+        setIsRedirecting(true);
+        const onboardingUrl = isDemoMode ? '/onboarding?demo=true' : '/onboarding';
+        router.replace(onboardingUrl);
+      }
     }
-  }, [user, loading, router]);
+  }, [user, loading, onboardingCompleted, router]);
 
   if (loading || isRedirecting || gamificationLoading) {
     return (
