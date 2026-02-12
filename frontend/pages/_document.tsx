@@ -11,16 +11,6 @@ export default function Document() {
                     as="image"
                     type="image/svg+xml"
                 />
-                {/* Preload critical CSS for better performance */}
-                <link
-                    rel="preload"
-                    href="/_next/static/css/critical.css"
-                    as="style"
-                    onLoad="this.onload=null;this.rel='stylesheet'"
-                />
-                <noscript>
-                    {/* Fallback for critical CSS when JavaScript is disabled */}
-                </noscript>
                 {/* Preconnect to external domains */}
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
