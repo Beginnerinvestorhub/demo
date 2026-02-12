@@ -16,23 +16,11 @@ export const apiClient = axios.create({
   },
 });
 
-// Request interceptor to attach Firebase ID token
+// Request interceptor (disabled for demo - no backend auth needed)
 apiClient.interceptors.request.use(
   async (config: InternalAxiosRequestConfig) => {
-    try {
-      // Ensure Firebase is initialized
-      if (isFirebaseInitialized()) {
-        const auth = getFirebaseAuth();
-        const user = auth.currentUser;
-
-        if (user) {
-          const token = await user.getIdToken();
-          config.headers.Authorization = `Bearer ${token}`;
-        }
-      }
-    } catch (error) {
-      console.error('Error attaching auth token:', error);
-    }
+    // Demo mode: No authentication needed for frontend-only demo
+    // All API calls will fail gracefully or use mock data
     return config;
   },
   error => {
