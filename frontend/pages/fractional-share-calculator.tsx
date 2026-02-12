@@ -36,19 +36,19 @@ export default function FractionalShareCalculatorPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Fractional <span className="text-yellow-400">Share</span> Blueprint
+                  Fractional <span className="text-yellow-400">Share</span> Calculator
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Calibrate your acquisition parameters with engineering-grade precision to construct your fractional asset specifications.
+                See exactly how many pieces (fractions) of a stock you can afford with any budget. Even $5 can get you started.
               </p>
 
               <div className="flex justify-center">
                 <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    PROTOCOL: Atomic Asset Division
+                    PROTOCOL: Budget Flexibility v1.0
                   </span>
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function FractionalShareCalculatorPage() {
               <div className="flex items-center space-x-3">
                 <MechanicaGear size="sm" color="steel" speed="medium" />
                 <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                  Calculations derived from real-time market data liquidity frameworks
+                  Calculations based on real-time stock prices and broker fees.
                 </span>
               </div>
             </MechanicaCard>

@@ -63,13 +63,13 @@ export default function CompoundCalculator() {
                         </div>
 
                         <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                            Simulate structural interest dynamics with technical-grade growth projection modules.
+                            Visualize how your money builds on itself over time with our interactive growth simulator.
                         </p>
 
                         <div className="flex justify-center">
                             <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                                    PROTOCOL: Harmonic Yield Volatility
+                                    PROTOCOL: Growth Potential Analysis
                                 </span>
                             </div>
                         </div>

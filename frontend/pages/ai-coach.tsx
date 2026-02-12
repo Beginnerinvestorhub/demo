@@ -193,171 +193,200 @@ export default function AICoachPage() {
         <title>AI Behavioral Coach | BeginnerInvestorHub</title>
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-        <div className="container mx-auto px-4 py-8">
-          <div className="max-w-6xl mx-auto">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="flex justify-center items-center space-x-6 mb-6">
-                <MechanicaGear size="xl" color="brass" speed="slow" />
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">
-                  AI <span className="text-mechanica-moonlight-blue">Behavioral Coach</span>
-                </h1>
-                <MechanicaGear size="xl" color="brass" speed="reverse" />
-              </div>
+      {/* Hero Section */}
+      <section className="relative min-h-[45vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
+        {/* Steam Vents for Hero */}
+        <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
+        <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
 
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Your personal investment psychology coach, helping you understand behavioral biases and make rational decisions.
-              </p>
+        {/* Mechanical background grid */}
+        <div className="absolute inset-0 opacity-10">
+          <div
+            className="w-full h-full"
+            style={{
+              backgroundImage: `
+                repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
+                repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
+              `
+            }}
+          />
+        </div>
+
+        <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="flex justify-center items-center space-x-6 mb-8">
+            <MechanicaGear size="xl" color="brass" speed="slow" />
+            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
+              The <span className="text-yellow-400">Behavioral</span> Coach
+            </h1>
+            <MechanicaGear size="xl" color="brass" speed="reverse" />
+          </div>
+
+          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+            Your guide to the human side of wealth. Learn to spot emotional traps and build a disciplined investment machine.
+          </p>
+
+          <div className="flex justify-center">
+            <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
+              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
+                PROTOCOL: BHV-COACH v1.0 [PSYCHOLOGY ALIGNMENT]
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
+      </section>
+
+      <div className="min-h-screen bg-gray-50/50">
+        <div className="container mx-auto px-4 py-12">
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Chat Area */}
+            <div className="lg:col-span-2">
+              <MechanicaCard variant="mechanical" animated className="h-[600px] flex flex-col">
+                <div className="flex-1 p-6 overflow-y-auto">
+                  <div className="space-y-4">
+                    {messages.map((message) => (
+                      <div
+                        key={message.id}
+                        className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div
+                          className={`max-w-[80%] p-4 rounded-2xl ${message.type === 'user'
+                            ? 'bg-mechanica-moonlight-blue text-white'
+                            : 'bg-gray-100 text-gray-900 shadow-sm'
+                            }`}
+                        >
+                          <div className="text-sm mb-2 opacity-75">
+                            {message.timestamp.toLocaleTimeString()}
+                          </div>
+                          <div className="leading-relaxed">
+                            {message.content}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+
+                    {isTyping && (
+                      <div className="flex justify-start">
+                        <div className="bg-gray-100 text-gray-900 p-4 rounded-2xl">
+                          <div className="flex items-center space-x-2">
+                            <MechanicaGear size="small" color="steel" speed="fast" />
+                            <span className="text-sm">Coach is thinking...</span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div ref={messagesEndRef} />
+                </div>
+
+                {/* Input Area */}
+                <div className="p-4 border-t border-gray-200">
+                  <div className="flex space-x-3">
+                    <input
+                      type="text"
+                      value={inputMessage}
+                      onChange={(e) => setInputMessage(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Ask me about investing psychology, behavioral biases, or decision-making..."
+                      className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-mechanica-moonlight-blue focus:border-transparent"
+                    />
+                    <MechanicaButton
+                      variant="brass"
+                      onClick={sendMessage}
+                      disabled={!inputMessage.trim() || isTyping}
+                      className="px-6"
+                    >
+                      Send
+                    </MechanicaButton>
+                  </div>
+                </div>
+              </MechanicaCard>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* Chat Area */}
-              <div className="lg:col-span-2">
-                <MechanicaCard variant="mechanical" animated className="h-[600px] flex flex-col">
-                  <div className="flex-1 p-6 overflow-y-auto">
-                    <div className="space-y-4">
-                      {messages.map((message) => (
-                        <div
-                          key={message.id}
-                          className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
-                        >
-                          <div
-                            className={`max-w-[80%] p-4 rounded-2xl ${message.type === 'user'
-                                ? 'bg-mechanica-moonlight-blue text-white'
-                                : 'bg-gray-100 text-gray-900 shadow-sm'
-                              }`}
-                          >
-                            <div className="text-sm mb-2 opacity-75">
-                              {message.timestamp.toLocaleTimeString()}
-                            </div>
-                            <div className="leading-relaxed">
-                              {message.content}
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-
-                      {isTyping && (
-                        <div className="flex justify-start">
-                          <div className="bg-gray-100 text-gray-900 p-4 rounded-2xl">
-                            <div className="flex items-center space-x-2">
-                              <MechanicaGear size="small" color="steel" speed="fast" />
-                              <span className="text-sm">Coach is thinking...</span>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    <div ref={messagesEndRef} />
+            {/* Insights Panel */}
+            <div className="space-y-6">
+              {/* Quick Actions */}
+              <MechanicaCard variant="wood" animated>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">
+                    Quick Actions
+                  </h3>
+                  <div className="space-y-3">
+                    <MechanicaButton
+                      variant="mechanical"
+                      onClick={showRandomInsight}
+                      className="w-full"
+                    >
+                      💡 Get Random Insight
+                    </MechanicaButton>
+                    <MechanicaButton
+                      variant="brass"
+                      onClick={() => {
+                        const welcomeMessage: Message = {
+                          id: Date.now().toString(),
+                          type: 'coach',
+                          content: "I'm here to help! You can ask me about: • Behavioral biases • Risk management • Market psychology • Investment strategies • Emotional control. What would you like to explore?",
+                          timestamp: new Date()
+                        };
+                        setMessages(prev => [...prev, welcomeMessage]);
+                      }}
+                      className="w-full"
+                    >
+                      📋 See Help Topics
+                    </MechanicaButton>
                   </div>
+                </div>
+              </MechanicaCard>
 
-                  {/* Input Area */}
-                  <div className="p-4 border-t border-gray-200">
-                    <div className="flex space-x-3">
-                      <input
-                        type="text"
-                        value={inputMessage}
-                        onChange={(e) => setInputMessage(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        placeholder="Ask me about investing psychology, behavioral biases, or decision-making..."
-                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-mechanica-moonlight-blue focus:border-transparent"
-                      />
-                      <MechanicaButton
-                        variant="brass"
-                        onClick={sendMessage}
-                        disabled={!inputMessage.trim() || isTyping}
-                        className="px-6"
-                      >
-                        Send
-                      </MechanicaButton>
-                    </div>
-                  </div>
-                </MechanicaCard>
-              </div>
-
-              {/* Insights Panel */}
-              <div className="space-y-6">
-                {/* Quick Actions */}
-                <MechanicaCard variant="wood" animated>
+              {/* Current Insight */}
+              {currentInsight && (
+                <MechanicaCard variant="brass" animated>
                   <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4">
-                      Quick Actions
-                    </h3>
-                    <div className="space-y-3">
-                      <MechanicaButton
-                        variant="mechanical"
-                        onClick={showRandomInsight}
-                        className="w-full"
-                      >
-                        💡 Get Random Insight
-                      </MechanicaButton>
-                      <MechanicaButton
-                        variant="brass"
-                        onClick={() => {
-                          const welcomeMessage: Message = {
-                            id: Date.now().toString(),
-                            type: 'coach',
-                            content: "I'm here to help! You can ask me about: • Behavioral biases • Risk management • Market psychology • Investment strategies • Emotional control. What would you like to explore?",
-                            timestamp: new Date()
-                          };
-                          setMessages(prev => [...prev, welcomeMessage]);
-                        }}
-                        className="w-full"
-                      >
-                        📋 See Help Topics
-                      </MechanicaButton>
+                    <div className="flex items-center space-x-3 mb-4">
+                      <span className="text-2xl">{currentInsight.icon}</span>
+                      <h4 className="text-lg font-bold text-gray-900">
+                        {currentInsight.title}
+                      </h4>
                     </div>
+                    <div className="text-sm text-mechanica-moonlight-blue font-bold uppercase tracking-wider mb-3">
+                      {currentInsight.category}
+                    </div>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      {currentInsight.description}
+                    </p>
                   </div>
                 </MechanicaCard>
+              )}
 
-                {/* Current Insight */}
-                {currentInsight && (
-                  <MechanicaCard variant="brass" animated>
-                    <div className="p-6">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <span className="text-2xl">{currentInsight.icon}</span>
-                        <h4 className="text-lg font-bold text-gray-900">
-                          {currentInsight.title}
-                        </h4>
-                      </div>
-                      <div className="text-sm text-mechanica-moonlight-blue font-bold uppercase tracking-wider mb-3">
-                        {currentInsight.category}
-                      </div>
-                      <p className="text-gray-600 text-sm leading-relaxed">
-                        {currentInsight.description}
-                      </p>
+              {/* Coaching Stats */}
+              <MechanicaCard variant="mechanical" animated>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold text-gray-900 mb-4">
+                    Session Stats
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Messages</span>
+                      <span className="font-mono font-bold">{messages.length}</span>
                     </div>
-                  </MechanicaCard>
-                )}
-
-                {/* Coaching Stats */}
-                <MechanicaCard variant="mechanical" animated>
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-gray-900 mb-4">
-                      Session Stats
-                    </h3>
-                    <div className="space-y-3">
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Messages</span>
-                        <span className="font-mono font-bold">{messages.length}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Topics Covered</span>
-                        <span className="font-mono font-bold">{coachingInsights.length}</span>
-                      </div>
-                      <div className="flex justify-between">
-                        <span className="text-gray-600">Coach Status</span>
-                        <span className="text-green-600 font-medium">Online</span>
-                      </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Topics Covered</span>
+                      <span className="font-mono font-bold">{coachingInsights.length}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Coach Status</span>
+                      <span className="text-green-600 font-medium">Online</span>
                     </div>
                   </div>
-                </MechanicaCard>
-              </div>
+                </div>
+              </MechanicaCard>
             </div>
           </div>
         </div>
       </div>
-    </MechanicaLayout>
+    </div>
+    </MechanicaLayout >
   );
 }
