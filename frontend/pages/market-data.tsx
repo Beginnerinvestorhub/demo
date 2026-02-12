@@ -98,43 +98,70 @@ export default function MarketDataPage() {
         <title>Market Data | BeginnerInvestorHub</title>
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
-        {/* Header */}
-        <section className="py-12 px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-8">
+      <div className="min-h-screen">
+        {/* Hero Section */}
+        <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
+          {/* Steam Vents for Hero */}
+          <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
+          <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+          {/* Mechanical background */}
+          <div className="absolute inset-0 opacity-10">
+            <div
+              className="w-full h-full"
+              style={{
+                backgroundImage: `
+                  repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
+                  repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
+                `
+              }}
+            />
+          </div>
+
+          <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
               <div className="flex justify-center items-center space-x-6 mb-8">
-                <MechanicaGear size="xl" color="steel" speed="slow" />
-                <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">
-                  Market <span className="text-green-600">Data</span>
+                <MechanicaGear size="xl" color="brass" speed="slow" />
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
+                  Market <span className="text-yellow-400">Data</span> Hub
                 </h1>
-                <MechanicaGear size="xl" color="steel" speed="reverse" />
+                <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
+              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+                Configure your data streams with engineering-grade precision to monitor global market liquidity.
+              </p>
+
               <div className="flex justify-center items-center space-x-4 mb-4">
-                <div className={`inline-flex items-center px-4 py-2 rounded-full ${isLive ? 'bg-green-100' : 'bg-gray-100'
+                <div className={`inline-flex items-center px-4 py-2 rounded-full ${isLive ? 'bg-green-500/20 border border-green-500/50' : 'bg-gray-500/20 border border-gray-500/50'
                   }`}>
-                  <div className={`w-3 h-3 rounded-full mr-2 ${isLive ? 'bg-green-500 animate-pulse' : 'bg-gray-400'
+                  <div className={`w-3 h-3 rounded-full mr-2 ${isLive ? 'bg-green-400 animate-pulse' : 'bg-gray-400'
                     }`}></div>
-                  <span className={`font-medium ${isLive ? 'text-green-800' : 'text-gray-600'
+                  <span className={`text-xs font-black tracking-widest ${isLive ? 'text-green-400' : 'text-gray-400'
                     }`}>
-                    {isLive ? 'LIVE' : 'PAUSED'}
+                    {isLive ? 'SYSTEM: LIVE' : 'SYSTEM: PAUSED'}
                   </span>
                 </div>
 
                 <MechanicaButton
                   variant={isLive ? 'wood' : 'mechanical'}
                   onClick={toggleLive}
-                  className="px-6"
+                  className="px-8 py-3 text-[10px] font-black uppercase tracking-[0.2em]"
                 >
-                  {isLive ? 'Pause Updates' : 'Start Live Feed'}
+                  {isLive ? 'Pause Protocol' : 'Initialize Feed'}
                 </MechanicaButton>
               </div>
 
-              <p className="text-sm text-gray-500">
-                Last updated: {lastUpdate.toLocaleTimeString()}
-              </p>
+              <div className="text-[10px] font-mono text-blue-300 opacity-60">
+                LAST TELEMETRY: {lastUpdate.toLocaleTimeString()} | SYNC: ACTIVE
+              </div>
             </div>
+          </div>
+
+          <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
+        </section>
+
+        <section className="py-12 px-4 bg-gray-50/50">
+          <div className="max-w-7xl mx-auto">
 
             {/* Market Indices */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

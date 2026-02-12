@@ -101,49 +101,63 @@ export default function FractionalShareCalculator() {
     ],
   };
 
-  // Interactive Blueprint SVG Logic
-  const shareProgress = Math.min(1, (Number(amount) / Number(price)) || 0);
+  // Share Blueprint Gauge Logic
+  const sharePercentage = Math.min(100, (Number(amount) / Number(price)) * 100) || 0;
   const BlueprintVisualizer = () => {
     return (
-      <div className="relative w-full h-48 bg-slate-900 rounded-2xl border-2 border-slate-800 flex items-center justify-center overflow-hidden mb-8 mechanica-hum">
+      <div className="relative w-full h-56 bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl border-b-4 border-slate-950 flex flex-col items-center justify-center overflow-hidden mb-10 shadow-2xl">
+        {/* Grid Background */}
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)',
-          backgroundSize: '20px 20px'
+          backgroundSize: '25px 25px'
         }}></div>
-        <svg viewBox="0 0 200 100" className="w-64 h-32 relative z-10">
-          {/* Base Platform */}
-          <rect x="20" y="80" width="160" height="10" fill="#334155" rx="2" />
 
-          {/* Assembly Progress - Gears or Parts that fill up */}
-          <g className="transition-all duration-1000 ease-out" style={{ opacity: shareProgress > 0 ? 1 : 0.2 }}>
-            {/* Part 1: Main Housing */}
-            <rect x="50" y="40" width="100" height="40" fill="none" stroke={MECHANICA_COLORS.primary} strokeWidth="2" strokeDasharray="4 2" />
-            <rect x="50" y="40" width={100 * shareProgress} height="40" fill={MECHANICA_COLORS.primary} className="transition-all duration-1000" />
+        {/* Proportional Asset Gauge */}
+        <div className="relative z-10 flex flex-col items-center">
+          <svg viewBox="0 0 100 100" className="w-40 h-40 transform -rotate-90">
+            {/* Background Track */}
+            <circle cx="50" cy="50" r="45" fill="none" stroke="#1e293b" strokeWidth="8" />
+            {/* Progress Arc */}
+            <circle
+              cx="50"
+              cy="50"
+              r="45"
+              fill="none"
+              stroke={MECHANICA_COLORS.accent}
+              strokeWidth="8"
+              strokeDasharray="283"
+              strokeDashoffset={283 - (283 * (sharePercentage / 100))}
+              strokeLinecap="round"
+              className="transition-all duration-1000 ease-out"
+            />
+            {/* Technical Markings */}
+            {[0, 90, 180, 270].map((deg) => (
+              <rect key={deg} x="49" y="0" width="2" height="6" fill="#475569" transform={`rotate(${deg}, 50, 50)`} />
+            ))}
+          </svg>
 
-            {/* Part 2: Inner Core (appears after 50%) */}
-            <circle cx="100" cy="60" r="15" fill="none" stroke={MECHANICA_COLORS.accent} strokeWidth="2" strokeDasharray="2 1" />
-            {shareProgress > 0.5 && (
-              <circle cx="100" cy="60" r="15" fill={MECHANICA_COLORS.accent} className="animate-pulse" />
-            )}
-
-            {/* Connection Port (appears as it completes) */}
-            <path d="M150 50 L170 50 L170 70" fill="none" stroke={MECHANICA_COLORS.success} strokeWidth="3"
-              strokeDasharray="100" strokeDashoffset={100 - (shareProgress * 100)} className="transition-all duration-1000" />
-          </g>
-
-          {/* Technical Labels */}
-          <text x="100" y="20" textAnchor="middle" fill="#94a3b8" fontSize="8" fontFamily="monospace" fontWeight="bold">
-            COMPONENT ASSEMBLY: {(shareProgress * 100).toFixed(1)}%
-          </text>
-        </svg>
-
-        {/* Steam Animation for "Active" state */}
-        {shareProgress > 0 && (
-          <div className="absolute right-12 bottom-12 flex space-x-1">
-            <div className="w-1 h-8 bg-blue-400/20 mechanica-steam"></div>
-            <div className="w-1 h-12 bg-blue-400/20 mechanica-steam" style={{ animationDelay: '0.5s' }}></div>
+          {/* Inner Content */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center mt-4">
+            <span className="text-[10px] font-black font-mono text-slate-500 uppercase tracking-widest mb-1">Asset Cap</span>
+            <span className="text-3xl font-black font-mono text-white">
+              {sharePercentage.toFixed(1)}%
+            </span>
+            <div className="h-px w-8 bg-amber-500/50 mt-1 mb-1"></div>
+            <span className="text-[9px] font-bold font-mono text-amber-500 uppercase tracking-tighter">1.0 Unit BP</span>
           </div>
-        )}
+        </div>
+
+        {/* Status HUD */}
+        <div className="absolute bottom-4 left-6 flex items-center space-x-3">
+          <MechanicaGear size="small" color="brass" speed="slow" className="opacity-50" />
+          <div className="text-[9px] font-black font-mono text-slate-400 uppercase tracking-[0.2em]">
+            Status: <span className="text-blue-400">Blueprint Initialized</span>
+          </div>
+        </div>
+
+        <div className="absolute bottom-4 right-6 text-[9px] font-black font-mono text-slate-500 uppercase tracking-[0.2em]">
+          Mode: <span className="text-amber-500">Atomic Acquisition</span>
+        </div>
       </div>
     );
   };

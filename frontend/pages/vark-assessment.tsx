@@ -181,69 +181,132 @@ export default function VARKAssessmentPage() {
   if (step === 0) {
     return (
       <MechanicaLayout
-        title="VARK Assessment Profile"
-        description="Set up your profile to begin the assessment."
+        title="Investor DNA Initialization | BeginnerInvestorHub"
+        description="Configure your investor profile and discover your precision learning style."
       >
-        <div className="min-h-screen bg-gray-50 py-12">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl mx-auto">
-              <div className="text-center mb-12">
-                <MechanicaGear size="xl" color="brass" speed="slow" className="mx-auto mb-6" />
-                <h1 className="text-4xl font-bold font-serif text-gray-900 mb-4">
-                  Investor <span className="text-mechanica-moonlight-blue">Profile</span>
-                </h1>
-                <p className="text-gray-600">Tell us a bit about yourself before we discover your learning style.</p>
+        <div className="min-h-screen">
+          {/* Hero Section */}
+          <section className="relative min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
+            {/* Steam Vents for Hero */}
+            <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
+            <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+            {/* Mechanical background */}
+            <div className="absolute inset-0 opacity-10">
+              <div
+                className="w-full h-full"
+                style={{
+                  backgroundImage: `
+                    repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
+                    repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
+                  `
+                }}
+              />
+            </div>
+
+            <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <div className="flex justify-center items-center space-x-6 mb-8">
+                  <MechanicaGear size="xl" color="brass" speed="slow" />
+                  <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
+                    Investor <span className="text-yellow-400">Profile</span> Suite
+                  </h1>
+                  <MechanicaGear size="xl" color="brass" speed="reverse" />
+                </div>
+
+                <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                  Initializing your technical investor profile. This assessment calibrates our AI teaching engine to match your cognitive learning style for maximum acquisition speed.
+                </p>
+
+                <div className="flex justify-center">
+                  <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
+                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
+                      PROTOCOL: Learning DNA Mapping
+                    </span>
+                  </div>
+                </div>
               </div>
+            </div>
 
-              <MechanicaCard variant="mechanical" animated className="p-8">
-                <div className="space-y-6">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2">
-                      Experience Level
+            <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
+          </section>
+
+          <div className="container mx-auto px-4 relative z-20 -mt-20 pb-20">
+            <div className="max-w-2xl mx-auto">
+              <MechanicaCard variant="mechanical" animated className="p-10 shadow-2xl bg-white/95 backdrop-blur-md border-t-4 border-t-mechanica-moonlight-blue">
+                <div className="mb-8 border-b border-gray-100 pb-6 text-center">
+                  <h3 className="text-2xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter mb-2">Initialize Profile</h3>
+                  <p className="text-sm text-gray-500 font-medium italic">Configure your baseline investor parameters</p>
+                </div>
+
+                <div className="space-y-8">
+                  <div className="space-y-3">
+                    <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">
+                      Investor Experience Level
                     </label>
-                    <select
-                      value={experience}
-                      onChange={(e) => setExperience(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-mechanica-moonlight-blue focus:ring-0 transition-all font-medium text-gray-700"
-                    >
-                      <option value="">Select Level...</option>
-                      <option value="beginner">Beginner (0-2 years)</option>
-                      <option value="intermediate">Intermediate (2-5 years)</option>
-                      <option value="advanced">Advanced (5+ years)</option>
-                    </select>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                      {['Beginner', 'Intermediate', 'Advanced'].map((level) => (
+                        <button
+                          key={level}
+                          onClick={() => setExperience(level.toLowerCase())}
+                          className={`px-4 py-4 rounded-xl border-2 transition-all font-black text-[10px] uppercase tracking-widest ${experience === level.toLowerCase()
+                            ? 'bg-mechanica-moonlight-blue border-mechanica-moonlight-blue text-white shadow-lg scale-105'
+                            : 'bg-white border-gray-100 text-gray-400 hover:border-mechanica-moonlight-blue/30'
+                            }`}
+                        >
+                          {level}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 uppercase tracking-widest mb-2">
-                      Age Group
+                  <div className="space-y-3">
+                    <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">
+                      Strategic Age Group
                     </label>
-                    <select
-                      value={ageGroup}
-                      onChange={(e) => setAgeGroup(e.target.value)}
-                      className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-mechanica-moonlight-blue focus:ring-0 transition-all font-medium text-gray-700"
-                    >
-                      <option value="">Select Age...</option>
-                      <option value="18-24">18 - 24</option>
-                      <option value="25-34">25 - 34</option>
-                      <option value="35-44">35 - 44</option>
-                      <option value="45-54">45 - 54</option>
-                      <option value="55+">55+</option>
-                    </select>
+                    <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+                      {['18-24', '25-34', '35-44', '45-54', '55+'].map((age) => (
+                        <button
+                          key={age}
+                          onClick={() => setAgeGroup(age)}
+                          className={`py-3 rounded-lg border-2 transition-all font-black text-[10px] uppercase tracking-tight ${ageGroup === age
+                            ? 'bg-mechanica-moonlight-blue border-mechanica-moonlight-blue text-white shadow-md'
+                            : 'bg-white border-gray-100 text-gray-400 hover:border-mechanica-moonlight-blue/20'
+                            }`}
+                        >
+                          {age}
+                        </button>
+                      ))}
+                    </div>
                   </div>
 
-                  <div className="pt-6">
+                  <div className="pt-8">
                     <MechanicaButton
                       variant="mechanical"
                       size="lg"
-                      className="w-full justify-center"
+                      className="w-full py-5 text-sm font-black uppercase tracking-[0.3em] shadow-xl hover:translate-y-[-2px] active:translate-y-[1px]"
                       onClick={() => setStep(1)}
                       disabled={!experience || !ageGroup}
                     >
-                      Start Assessment
+                      Initialize Learning DNA Assessment <span className="ml-2">→</span>
                     </MechanicaButton>
                   </div>
                 </div>
               </MechanicaCard>
+            </div>
+
+            {/* Educational Section */}
+            <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              {[
+                { title: 'Why it matters', text: 'Investing isn\'t one-size-fits-all. Your cognitive style determines how you process financial risk and market data.', icon: '🧠' },
+                { title: 'AI Customization', text: 'VARK results allow our engine to serve content in the format you absorb best: visual charts or technical manuals.', icon: '⚙️' },
+                { title: 'Long-term Growth', text: 'Aligning your education with your "Investor DNA" reduces cognitive load and accelerates your path to mastery.', icon: '📈' }
+              ].map((info, idx) => (
+                <div key={idx} className="text-center p-6 rounded-2xl border border-gray-100 bg-white/50 backdrop-blur-sm">
+                  <div className="text-3xl mb-4">{info.icon}</div>
+                  <h4 className="text-sm font-black text-mechanica-moonlight-blue uppercase tracking-widest mb-3">{info.title}</h4>
+                  <p className="text-xs text-gray-500 leading-relaxed font-medium">{info.text}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
