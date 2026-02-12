@@ -14,6 +14,7 @@ export default function LearningHub() {
         <MechanicaLayout
             title="Learning Hub | BeginnerInvestorHub"
             description="Access your personalized financial knowledge archives."
+            fullBleed={true}
         >
             <Head>
                 <title>Learning Hub | BeginnerInvestorHub</title>
@@ -42,10 +43,10 @@ export default function LearningHub() {
                             </span>
                         </div>
 
-                        <h1 className="text-5xl md:text-6xl font-bold font-serif text-white mb-6 uppercase tracking-tight flex justify-center items-center gap-6">
-                            <MechanicaGear size="lg" color="brass" speed="slow" />
-                            <span>Attributes <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-amber-200">Library</span></span>
-                            <MechanicaGear size="lg" color="brass" speed="reverse" />
+                        <h1 className="text-5xl md:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float mb-6 flex justify-center items-center gap-8">
+                            <MechanicaGear size="xl" color="brass" speed="slow" />
+                            <span>Attributes <span className="text-yellow-400">Library</span></span>
+                            <MechanicaGear size="xl" color="brass" speed="reverse" />
                         </h1>
 
                         <p className="text-xl text-blue-200 max-w-2xl mx-auto font-light leading-relaxed">

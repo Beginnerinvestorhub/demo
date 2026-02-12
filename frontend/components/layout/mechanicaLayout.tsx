@@ -12,12 +12,14 @@ interface MechanicaLayoutProps {
   children: React.ReactNode;
   title?: string;
   description?: string;
+  fullBleed?: boolean;
 }
 
 export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
   children,
   title,
-  description
+  description,
+  fullBleed = false
 }) => {
   const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -158,7 +160,7 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
         </div>
       </nav>
 
-      <main id="main" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main id="main" className={fullBleed ? "w-full" : "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8"}>
         {children}
       </main>
 

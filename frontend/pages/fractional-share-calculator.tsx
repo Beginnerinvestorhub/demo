@@ -35,15 +35,23 @@ export default function FractionalShareCalculatorPage() {
             <div className="max-w-4xl mx-auto">
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white">
-                  Fractional <span className="text-yellow-400">Share</span> Calculator
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
+                  Fractional <span className="text-yellow-400">Share</span> Blueprint
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Configure your investment parameters with engineering-grade precision to construct your fractional share specifications.
+                Calibrate your acquisition parameters with engineering-grade precision to construct your fractional asset specifications.
               </p>
+
+              <div className="flex justify-center">
+                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
+                    PROTOCOL: Atomic Asset Division
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 

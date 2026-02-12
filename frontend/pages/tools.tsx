@@ -159,22 +159,30 @@ export default function ToolsOverview() {
             <div className="max-w-4xl mx-auto">
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white uppercase tracking-tighter">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
                   Professional <span className="text-yellow-400">Tools</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <h2 className="text-xl md:text-2xl text-blue-100 mb-4 max-w-3xl mx-auto font-light leading-relaxed">
-                Built for Your Success
+                Precision Architectural Modules
               </h2>
 
-              <p className="text-lg text-blue-200 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                We&apos;ve simplified complex investing strategies into easy-to-use modules. Think of this as your personal financial workshop—calibrated for clarity and growth.
+              <p className="text-lg text-blue-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                We&apos;ve calibrated complex investing strategies into professional-grade modules. Think of this as your personal financial workshop—built for clarity and growth.
               </p>
 
-              <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-400/90" style={{ color: 'var(--Ordinatus-brass-gold)' }}>
-                Status: [ All Systems Ready ]
+              <div className="flex justify-center">
+                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                  </span>
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
+                    Status: [ All Systems Calibrated ]
+                  </span>
+                </div>
               </div>
             </div>
           </div>

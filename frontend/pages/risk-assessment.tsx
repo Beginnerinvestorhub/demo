@@ -46,15 +46,23 @@ export default function RiskAssessmentPage() {
             <div className="max-w-4xl mx-auto">
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white">
-                  Risk <span className="text-yellow-400">Assessment</span> Tool
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
+                  Risk <span className="text-yellow-400">Stress</span> Analysis
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
-              <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-light">
-                Discover your risk profile and construct a personalized investment allocation blueprint with precision.
+              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+                Calibrate your tolerance parameters to construct a precision-engineered allocation blueprint.
               </p>
+
+              <div className="flex justify-center">
+                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
+                    PROTOCOL: Structural Load Assessment
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
