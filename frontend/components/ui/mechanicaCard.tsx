@@ -7,6 +7,7 @@ interface MechanicaCardProps {
   animated?: boolean;
   hover?: boolean;
   gearDecoration?: boolean;
+  onClick?: () => void;
 }
 
 export const MechanicaCard: React.FC<MechanicaCardProps> = ({
@@ -15,9 +16,10 @@ export const MechanicaCard: React.FC<MechanicaCardProps> = ({
   variant = 'default',
   animated = false,
   hover = false,
-  gearDecoration = false
+  gearDecoration = false,
+  onClick
 }) => {
-  const baseClasses = 'rounded-lg shadow-lg p-6 transition-all duration-200';
+  const baseClasses = 'rounded-lg shadow-lg p-4 sm:p-6 transition-all duration-200';
   const variantClasses = {
     default: 'bg-white border border-gray-200',
     dark: 'bg-gray-800 border border-gray-700 text-white',
@@ -30,7 +32,10 @@ export const MechanicaCard: React.FC<MechanicaCardProps> = ({
   const hoverClass = (animated || hover) ? 'hover:scale-[1.02] hover:shadow-xl' : '';
 
   return (
-    <div className={`${baseClasses} ${variantClasses[variant]} ${hoverClass} ${className} relative`}>
+    <div
+      className={`${baseClasses} ${variantClasses[variant]} ${hoverClass} ${className} relative`}
+      onClick={onClick}
+    >
       {gearDecoration && (
         <div className="absolute top-0 right-0 p-2 opacity-10 pointer-events-none">
           {/* Simple gear icon or similar */}

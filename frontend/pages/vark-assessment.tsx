@@ -184,13 +184,13 @@ export default function VARKAssessmentPage() {
         title="VARK Assessment Profile"
         description="Set up your profile to begin the assessment."
       >
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-12">
+        <div className="min-h-screen bg-gray-50 py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto">
               <div className="text-center mb-12">
                 <MechanicaGear size="xl" color="brass" speed="slow" className="mx-auto mb-6" />
                 <h1 className="text-4xl font-bold font-serif text-gray-900 mb-4">
-                  Investor <span className="text-blue-600">Profile</span>
+                  Investor <span className="text-mechanica-moonlight-blue">Profile</span>
                 </h1>
                 <p className="text-gray-600">Tell us a bit about yourself before we discover your learning style.</p>
               </div>
@@ -269,7 +269,7 @@ export default function VARKAssessmentPage() {
           <title>VARK Assessment Results | BeginnerInvestorHub</title>
         </Head>
 
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-12">
+        <div className="min-h-screen bg-gray-50 py-12">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               {/* Results Header */}
@@ -277,7 +277,7 @@ export default function VARKAssessmentPage() {
                 <div className="flex justify-center items-center space-x-6 mb-8">
                   <MechanicaGear size="xl" color="brass" speed="slow" />
                   <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">
-                    Your Learning <span className="text-blue-600">Style</span>
+                    Your Learning <span className="text-mechanica-moonlight-blue">Style</span>
                   </h1>
                   <MechanicaGear size="xl" color="brass" speed="reverse" />
                 </div>
@@ -302,7 +302,7 @@ export default function VARKAssessmentPage() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {Object.entries(scores).map(([style, score]) => (
                       <div key={style} className="text-center">
-                        <div className={`text-3xl font-bold mb-2 ${style === dominantStyle ? 'text-blue-600' : 'text-gray-400'
+                        <div className={`text-3xl font-bold mb-2 ${style === dominantStyle ? 'text-mechanica-moonlight-blue' : 'text-gray-400'
                           }`}>
                           {score}
                         </div>
@@ -352,14 +352,14 @@ export default function VARKAssessmentPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">
-                  VARK <span className="text-blue-600">Assessment</span>
+                  VARK <span className="text-mechanica-moonlight-blue">Assessment</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <div className="mb-8">
-                <div className="inline-flex items-center px-6 py-3 bg-blue-100 rounded-full">
-                  <span className="text-blue-800 font-medium">
+                <div className="inline-flex items-center px-6 py-3 bg-white border border-gray-200 rounded-lg shadow-sm">
+                  <span className="text-mechanica-moonlight-blue font-bold uppercase tracking-widest text-sm">
                     Question {currentQuestion + 1} of {varkQuestions.length}
                   </span>
                 </div>
@@ -373,37 +373,35 @@ export default function VARKAssessmentPage() {
                   {question.question}
                 </h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {Object.entries(question.options).map(([style, text]) => (
-                    <button
+                    <MechanicaCard
                       key={style}
+                      variant={answers[currentQuestion] === style ? 'brass' : 'mechanical'}
+                      className={`cursor-pointer transition-all ${answers[currentQuestion] === style ? 'ring-2 ring-amber-500 ring-offset-2' : 'hover:scale-[1.01]'}`}
                       onClick={() => handleAnswer(style)}
-                      className={`p-6 rounded-lg border-2 transition-all text-left ${answers[currentQuestion] === style
-                        ? 'border-blue-500 bg-blue-50'
-                        : 'border-gray-200 hover:border-gray-300 bg-white'
-                        }`}
                     >
-                      <div className="flex items-start space-x-3">
-                        <div className={`w-6 h-6 rounded-full border-2 flex-shrink-0 mt-1 ${answers[currentQuestion] === style
-                          ? 'border-blue-500 bg-blue-500'
-                          : 'border-gray-300'
-                          }`}>
-                          {answers[currentQuestion] === style && (
-                            <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
-                              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <div className="font-semibold text-gray-900 mb-1 capitalize">
-                            {style.replace(/([A-Z])/g, ' $1').trim()}
+                      <div className="p-6">
+                        <div className="flex items-start space-x-4">
+                          <div className={`w-6 h-6 rounded-full border-2 flex-shrink-0 mt-1 flex items-center justify-center ${answers[currentQuestion] === style
+                            ? 'border-amber-600 bg-amber-600'
+                            : 'border-gray-300'
+                            }`}>
+                            {answers[currentQuestion] === style && (
+                              <div className="w-2 h-2 bg-white rounded-full"></div>
+                            )}
                           </div>
-                          <div className="text-sm text-gray-600">
-                            {text}
+                          <div>
+                            <div className="font-bold text-mechanica-moonlight-blue uppercase tracking-widest text-xs mb-2">
+                              {style.replace(/([A-Z])/g, ' $1').trim()}
+                            </div>
+                            <div className="text-gray-900 font-medium">
+                              {text}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </button>
+                    </MechanicaCard>
                   ))}
                 </div>
               </div>

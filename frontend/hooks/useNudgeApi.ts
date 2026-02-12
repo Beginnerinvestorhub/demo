@@ -128,23 +128,31 @@ function getBrowser() {
   return 'unknown';
 }
 
+// Local cache for geolocation to avoid repeated browser prompts
+let cachedLocation: any = null;
+
 async function getLocationInfo() {
+  if (cachedLocation) return cachedLocation;
+
   try {
     // Using the browser's built-in geolocation API
-    if (navigator.geolocation) {
+    if (typeof window !== 'undefined' && navigator.geolocation) {
       const position = await new Promise<GeolocationPosition>(
         (resolve, reject) => {
-          navigator.geolocation.getCurrentPosition(resolve, reject);
+          navigator.geolocation.getCurrentPosition(resolve, reject, {
+            timeout: 5000,
+            maximumAge: 600000 // Cache for 10 minutes at browser level
+          });
         }
       );
 
-      // Note: In a production app, you'd want to use a reverse geocoding service
-      // to convert coordinates to location names
-      return {
+      cachedLocation = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         accuracy: position.coords.accuracy,
       };
+
+      return cachedLocation;
     }
   } catch (error) {
     console.warn('Could not get geolocation:', error);
@@ -153,7 +161,8 @@ async function getLocationInfo() {
   // Fallback to timezone detection
   try {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    return { timezone };
+    cachedLocation = { timezone };
+    return cachedLocation;
   } catch (error) {
     console.warn('Could not detect timezone:', error);
     return {};

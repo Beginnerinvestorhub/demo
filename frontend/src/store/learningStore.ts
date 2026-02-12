@@ -3,6 +3,9 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 interface OnboardingProfileData {
+  ageRange: string;
+  annualIncome: string;
+  experienceLevel: string;
   riskProfile: string;
   investmentGoals: string[];
   timeHorizon: string;

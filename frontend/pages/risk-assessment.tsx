@@ -19,11 +19,10 @@ export default function RiskAssessmentPage() {
   const [error, setError] = useState<string | null>(null);
 
   return (
-    <MechanicaLayout>
-      <Head>
-        <title>Risk Assessment Tool | BeginnerInvestorHub</title>
-        <meta name="description" content="Discover your risk profile and construct a personalized investment allocation blueprint with precision. Get your assembly instructions instantly." />
-      </Head>
+    <MechanicaLayout
+      title="Risk Assessment Tool | BeginnerInvestorHub"
+      description="Discover your risk profile and construct a personalized investment allocation blueprint with precision. Get your assembly instructions instantly."
+    >
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">

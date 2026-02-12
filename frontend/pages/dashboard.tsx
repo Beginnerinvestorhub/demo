@@ -145,12 +145,16 @@ export default function DashboardPage() {
             </div>
 
             <div className="relative z-10">
-              <div className="flex justify-center items-center space-x-6 mb-6">
-                <MechanicaGear size="xl" color="brass" speed="slow" />
-                <h1 className="text-4xl md:text-5xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
+              <div className="flex justify-center items-center space-x-4 md:space-x-6 mb-6">
+                <div className="hidden sm:block">
+                  <MechanicaGear size="xl" color="brass" speed="slow" />
+                </div>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
                   Welcome back, {user.displayName || 'Investor'}!
                 </h1>
-                <MechanicaGear size="xl" color="brass" speed="reverse" />
+                <div className="hidden sm:block">
+                  <MechanicaGear size="xl" color="brass" speed="reverse" />
+                </div>
               </div>
               <div className="w-24 h-1 bg-mechanica-polished-brass mx-auto mb-6"></div>
               <p className="text-xl text-gray-600 mechanica-text-technical mb-8">
@@ -205,11 +209,11 @@ export default function DashboardPage() {
           </div>
 
           {/* Navigation Tabs */}
-          <div className="mb-8">
-            <div className="flex justify-center">
+          <div className="mb-8 overflow-x-auto pb-4 scrollbar-hide">
+            <div className="flex justify-start min-w-max md:justify-center">
               <div className="inline-flex rounded-lg border border-mechanica-polished-brass/20 bg-white p-1">
                 <button
-                  className={`px-6 py-3 rounded-md font-medium transition-all ${activeTab === 'overview'
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'overview'
                     ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
                     : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
                     }`}
@@ -218,7 +222,7 @@ export default function DashboardPage() {
                   📊 Overview
                 </button>
                 <button
-                  className={`px-6 py-3 rounded-md font-medium transition-all ${activeTab === 'tools'
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'tools'
                     ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
                     : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
                     }`}
@@ -227,7 +231,7 @@ export default function DashboardPage() {
                   🛠️ Tools
                 </button>
                 <button
-                  className={`px-6 py-3 rounded-md font-medium transition-all ${activeTab === 'learning'
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'learning'
                     ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
                     : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
                     }`}

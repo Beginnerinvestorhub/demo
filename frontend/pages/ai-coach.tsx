@@ -62,15 +62,15 @@ const coachingInsights: CoachingInsight[] = [
 const generateDynamicInsight = (userMessageCount: number, sessionDuration: number): CoachingInsight => {
   const hour = new Date().getHours();
   const insights = [...coachingInsights];
-  
+
   // Rotate insights based on time, interaction, and session duration
   const timeBasedIndex = hour % insights.length;
   const interactionBasedIndex = userMessageCount % insights.length;
   const durationBasedIndex = Math.floor(sessionDuration / 60) % insights.length; // Change every minute
-  
+
   // Combine factors for more personalized selection
   const selectedIndex = (timeBasedIndex + interactionBasedIndex + durationBasedIndex) % insights.length;
-  
+
   return insights[selectedIndex];
 };
 
@@ -122,23 +122,23 @@ export default function AICoachPage() {
 
   const generateCoachResponse = (userMessage: string): string => {
     const lowerMessage = userMessage.toLowerCase();
-    
+
     if (lowerMessage.includes('loss') || lowerMessage.includes('losing money')) {
       return "Loss aversion is a powerful bias! Research shows investors feel losses about 2.5x more intensely than equivalent gains. This can lead to holding losers too long. Consider setting predefined exit points based on your original investment thesis, not emotional reactions.";
     }
-    
+
     if (lowerMessage.includes('fear') || lowerMessage.includes('scared')) {
       return "Fear is a natural emotion in investing, but it often leads to poor timing decisions. The best investors use fear as an opportunity indicator - when others are fearful, it may be time to consider buying quality assets at discount prices.";
     }
-    
+
     if (lowerMessage.includes('diversif') || lowerMessage.includes('spread')) {
       return "Diversification is your best defense against uncertainty! Consider spreading across: 1) Different asset classes (stocks, bonds, real estate), 2) Geographic regions, 3) Industry sectors. This smooths returns while maintaining growth potential.";
     }
-    
+
     if (lowerMessage.includes('beginner') || lowerMessage.includes('starting')) {
       return "Welcome to investing! As a beginner, focus on: 1) Low-cost index funds for instant diversification, 2) Consistent contributions over time, 3) Avoiding market timing, and 4) Understanding your risk tolerance. Start simple and build complexity gradually.";
     }
-    
+
     // Default response
     return coachResponses[Math.floor(Math.random() * coachResponses.length)];
   };
@@ -192,8 +192,8 @@ export default function AICoachPage() {
       <Head>
         <title>AI Behavioral Coach | BeginnerInvestorHub</title>
       </Head>
-      
-      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-white">
+
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-6xl mx-auto">
             {/* Header */}
@@ -201,11 +201,11 @@ export default function AICoachPage() {
               <div className="flex justify-center items-center space-x-6 mb-6">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">
-                  AI <span className="text-purple-600">Behavioral Coach</span>
+                  AI <span className="text-mechanica-moonlight-blue">Behavioral Coach</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
-              
+
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Your personal investment psychology coach, helping you understand behavioral biases and make rational decisions.
               </p>
@@ -223,11 +223,10 @@ export default function AICoachPage() {
                           className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                         >
                           <div
-                            className={`max-w-[80%] p-4 rounded-2xl ${
-                              message.type === 'user'
-                                ? 'bg-purple-600 text-white'
-                                : 'bg-gray-100 text-gray-900'
-                            }`}
+                            className={`max-w-[80%] p-4 rounded-2xl ${message.type === 'user'
+                                ? 'bg-mechanica-moonlight-blue text-white'
+                                : 'bg-gray-100 text-gray-900 shadow-sm'
+                              }`}
                           >
                             <div className="text-sm mb-2 opacity-75">
                               {message.timestamp.toLocaleTimeString()}
@@ -238,7 +237,7 @@ export default function AICoachPage() {
                           </div>
                         </div>
                       ))}
-                      
+
                       {isTyping && (
                         <div className="flex justify-start">
                           <div className="bg-gray-100 text-gray-900 p-4 rounded-2xl">
@@ -252,7 +251,7 @@ export default function AICoachPage() {
                     </div>
                     <div ref={messagesEndRef} />
                   </div>
-                  
+
                   {/* Input Area */}
                   <div className="p-4 border-t border-gray-200">
                     <div className="flex space-x-3">
@@ -262,7 +261,7 @@ export default function AICoachPage() {
                         onChange={(e) => setInputMessage(e.target.value)}
                         onKeyPress={handleKeyPress}
                         placeholder="Ask me about investing psychology, behavioral biases, or decision-making..."
-                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-mechanica-moonlight-blue focus:border-transparent"
                       />
                       <MechanicaButton
                         variant="brass"
@@ -322,7 +321,7 @@ export default function AICoachPage() {
                           {currentInsight.title}
                         </h4>
                       </div>
-                      <div className="text-sm text-purple-600 font-medium mb-3">
+                      <div className="text-sm text-mechanica-moonlight-blue font-bold uppercase tracking-wider mb-3">
                         {currentInsight.category}
                       </div>
                       <p className="text-gray-600 text-sm leading-relaxed">

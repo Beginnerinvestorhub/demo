@@ -34,14 +34,28 @@ apiClient.interceptors.request.use(
   }
 );
 
-// Response interceptor to handle 401s
+// Response interceptor to handle errors globally
 apiClient.interceptors.response.use(
   (response) => response,
   async (error: AxiosError) => {
+    // Extract a user-friendly error message
+    let errorMessage = 'An unexpected error occurred';
+
+    if (error.response?.data && typeof error.response.data === 'object') {
+      const data = error.response.data as { error?: string; message?: string };
+      errorMessage = data.error || data.message || errorMessage;
+    } else if (error.message) {
+      errorMessage = error.message;
+    }
+
+    // Handle specific status codes
     if (error.response?.status === 401) {
-      // Handle unauthorized access (e.g., redirect to login or refresh token if handled by SDK)
       console.warn('Unauthorized access - user might need to login again');
     }
+
+    // Attach the normalized message to the error object for downstream consumption
+    (error as any).normalizedMessage = errorMessage;
+
     return Promise.reject(error);
   }
 );

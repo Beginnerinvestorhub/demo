@@ -50,6 +50,9 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
   } = useLearningStore();
 
   const [formData, setFormData] = useState({
+    ageRange: '',
+    annualIncome: '',
+    experienceLevel: '',
     riskProfile: '',
     investmentGoals: [] as string[],
     timeHorizon: '',
@@ -60,6 +63,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
   const [varkResult, setVarkResult] = useState<VarkAssessmentResult | null>(
     null
   );
+
 
   // Initialize onboarding (skip DB for demo)
   useEffect(() => {
@@ -80,7 +84,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
 
   // Navigation
   const handleNext = () => {
-    if (onboardingStep < 7) {
+    if (onboardingStep < 8) {
       completeOnboardingStep(onboardingStep + 1);
     } else {
       onComplete?.();
@@ -107,7 +111,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
             </h2>
             <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
               Let&apos;s personalize your learning experience to match your goals,
-              risk tolerance, and learning style. This will take just 2-3 minutes.
+              risk tolerance, and learning style. This will take just 3-4 minutes.
             </p>
             <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-8">
               <div className="text-center p-4">
@@ -136,6 +140,62 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
         );
 
       case 2:
+        return (
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+              Tell us a little about yourself
+            </h2>
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Age Range</label>
+                <select
+                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
+                  value={formData.ageRange}
+                  onChange={(e) => updateFormData('ageRange', e.target.value)}
+                >
+                  <option value="">Select range...</option>
+                  <option value="18-24">18-24</option>
+                  <option value="25-34">25-34</option>
+                  <option value="35-44">35-44</option>
+                  <option value="45-54">45-54</option>
+                  <option value="55+">55+</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Annual Income (USD)</label>
+                <select
+                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
+                  value={formData.annualIncome}
+                  onChange={(e) => updateFormData('annualIncome', e.target.value)}
+                >
+                  <option value="">Select range...</option>
+                  <option value="under_50k">Under $50k</option>
+                  <option value="50k_100k">$50k - $100k</option>
+                  <option value="100k_200k">$100k - $200k</option>
+                  <option value="200k_plus">$200k+</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Investing Experience</label>
+                <select
+                  className="w-full p-3 border-2 border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-indigo-500"
+                  value={formData.experienceLevel}
+                  onChange={(e) => updateFormData('experienceLevel', e.target.value)}
+                >
+                  <option value="">Select level...</option>
+                  <option value="beginner">Beginner (0-1 years)</option>
+                  <option value="intermediate">Intermediate (1-5 years)</option>
+                  <option value="advanced">Advanced (5+ years)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        );
+
+      case 3:
         return (
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -180,7 +240,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
           </div>
         );
 
-      case 3:
+      case 4:
         return (
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -223,7 +283,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
           </div>
         );
 
-      case 4:
+      case 5:
         return (
           <div>
             <h2 className="text-2xl font-bold text-gray-900 mb-4">
@@ -265,27 +325,33 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
           </div>
         );
 
-      case 5:
+
+      case 6:
         return (
           <VarkAssessment
             userId={user?.uid ?? 'demo-user'}
             onComplete={(result) => {
               setVarkResult(result);
               updateFormData('learningStyle', result.primary_vark_preference);
-              if (!isDemo) completeOnboardingStep(5);
-              else onComplete?.();
+              if (!isDemo) completeOnboardingStep(6);
+              else handleNext(); // Move to result display
             }}
           />
         );
 
-      case 6:
+      case 7:
         return varkResult ? (
           <VarkResultDisplay result={varkResult} onContinue={handleNext} />
         ) : (
-          <div className="text-center text-red-500">VARK results not found. Please retake the assessment.</div>
+          <div className="text-center py-12">
+            <p className="text-red-500 mb-4">VARK results not found.</p>
+            <button onClick={() => completeOnboardingStep(6)} className="text-indigo-600 font-medium">
+              Go back to assessment
+            </button>
+          </div>
         );
 
-      case 7:
+      case 8:
         return (
           <div className="text-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -300,6 +366,9 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
             <div className="bg-indigo-50 rounded-lg p-6 mb-8 max-w-2xl mx-auto">
               <h3 className="font-semibold text-indigo-900 mb-2">Your Profile Summary:</h3>
               <div className="text-sm text-indigo-700 space-y-1">
+                <p><strong>Age:</strong> {formData.ageRange}</p>
+                <p><strong>Income:</strong> {formData.annualIncome.replace('_', ' ')}</p>
+                <p><strong>Experience:</strong> {formData.experienceLevel}</p>
                 <p><strong>Risk Profile:</strong> {formData.riskProfile}</p>
                 <p><strong>Goals:</strong> {formData.investmentGoals.join(', ')}</p>
                 <p><strong>Time Horizon:</strong> {formData.timeHorizon.replace('_', ' ')}</p>
@@ -328,13 +397,13 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
         {/* Progress Bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-medium text-gray-700">Step {onboardingStep} of 7</span>
-            <span className="text-sm font-medium text-indigo-600">{Math.round((onboardingStep / 7) * 100)}% Complete</span>
+            <span className="text-sm font-medium text-gray-700">Step {onboardingStep} of 8</span>
+            <span className="text-sm font-medium text-indigo-600">{Math.round((onboardingStep / 8) * 100)}% Complete</span>
           </div>
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
               className="bg-indigo-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(onboardingStep / 7) * 100}%` }}
+              style={{ width: `${(onboardingStep / 8) * 100}%` }}
             ></div>
           </div>
         </div>
@@ -359,7 +428,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
             onClick={handleNext}
             className="px-6 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors shadow-sm"
           >
-            {onboardingStep === 7 ? 'Go to Dashboard' : 'Next'}
+            {onboardingStep === 8 ? 'Go to Dashboard' : 'Next'}
           </button>
         </div>
       </div>

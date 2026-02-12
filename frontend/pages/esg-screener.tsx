@@ -8,12 +8,10 @@ import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 
 export default function ESGScreenerPage() {
   return (
-    <MechanicaLayout>
-
-      <Head>
-        <title>ESG Strategy Screener | BeginnerInvestorHub</title>
-        <meta name="description" content="Precision investment filter for screening components based on Environmental, Social, and Governance criteria. Detect red flags and verify component integrity." />
-      </Head>
+    <MechanicaLayout
+      title="ESG Strategy Screener | BeginnerInvestorHub"
+      description="Precision investment filter for screening components based on Environmental, Social, and Governance criteria. Detect red flags and verify component integrity."
+    >
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">

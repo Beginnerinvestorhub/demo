@@ -60,14 +60,11 @@ export default function HomePage() {
     }
   };
 
-  const [stats, setStats] = useState<PlatformStats>(() => {
-    const randomVariation = () => Math.floor(Math.random() * 1000);
-    return {
-      portfoliosBuilt: 12000 + randomVariation(),
-      simulationsRun: 45000 + randomVariation() * 2,
-      simulatedValue: 85000000 + randomVariation() * 100,
-      userSatisfaction: 94 + Math.floor(Math.random() * 6),
-    };
+  const [stats, setStats] = useState<PlatformStats>({
+    portfoliosBuilt: 12847,
+    simulationsRun: 45923,
+    simulatedValue: 85487293,
+    userSatisfaction: 98,
   });
 
   // Helper function for in-view check (simplified or from useInView hook)
@@ -86,27 +83,6 @@ export default function HomePage() {
     const handleScroll = () => {
       if (statsRef.current && isElementInView(statsRef.current) && !statsAnimated) {
         setStatsAnimated(true);
-
-        // Set dynamic stats with realistic growth patterns
-        setTimeout(() => {
-          const baseStats = {
-            portfoliosBuilt: 2847,
-            simulationsRun: 8923,
-            simulatedValue: 487293,
-            userSatisfaction: 94,
-          };
-
-          // Add some dynamic variation based on time of day
-          const hour = new Date().getHours();
-          const multiplier = hour >= 9 && hour <= 17 ? 1.2 : 0.8; // Business hours boost
-
-          setStats({
-            portfoliosBuilt: Math.floor(baseStats.portfoliosBuilt * multiplier),
-            simulationsRun: Math.floor(baseStats.simulationsRun * multiplier),
-            simulatedValue: Math.floor(baseStats.simulatedValue * multiplier),
-            userSatisfaction: Math.min(99, baseStats.userSatisfaction + Math.floor(Math.random() * 3)),
-          });
-        }, 100);
       }
     };
 
@@ -191,53 +167,45 @@ export default function HomePage() {
           </div>
 
           {/* Animated gears */}
-          <div className="absolute top-20 left-10 opacity-30">
-            <MechanicaGear size="xl" color="brass" speed="slow" aria-label="Animated decorative gear" />
+          <div className="absolute top-20 left-10 opacity-30 hidden sm:block">
+            <MechanicaGear size="xl" color="brass" speed="slow" aria-hidden="true" />
           </div>
-          <div className="absolute top-40 right-20 opacity-30">
-            <MechanicaGear size="large" color="steel" speed="reverse" aria-label="Animated decorative gear" />
+          <div className="absolute top-40 right-20 opacity-30 hidden sm:block">
+            <MechanicaGear size="large" color="steel" speed="reverse" aria-hidden="true" />
           </div>
-          <div className="absolute bottom-20 left-20 opacity-30">
-            <MechanicaGear size="medium" color="copper" speed="medium" aria-label="Animated decorative gear" />
+          <div className="absolute bottom-20 left-20 opacity-30 hidden sm:block">
+            <MechanicaGear size="medium" color="copper" speed="medium" aria-hidden="true" />
           </div>
-          <div className="absolute bottom-40 right-10 opacity-30">
-            <MechanicaGear size="small" color="brass" speed="fast" aria-label="Animated decorative gear" />
+          <div className="absolute bottom-40 right-10 opacity-30 hidden sm:block">
+            <MechanicaGear size="small" color="brass" speed="fast" aria-hidden="true" />
           </div>
 
-          {/* Demo Banner - Mission Protocol Bar */}
-          <nav className="absolute top-4 left-0 right-0 z-30 flex justify-center p-4" role="banner">
-            <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border-x border-b border-yellow-500/30 rounded-b-2xl shadow-2xl">
-              <span className="flex h-2 w-2 relative">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
-              </span>
-              <p className="text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] text-yellow-100/90" role="status">
-                Protocol: This is a production-quality demo showcasing frontend architecture, UX, and system design for a larger AI-driven financial education platform
-              </p>
-            </div>
-          </nav>
 
           <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               {/* Mechanical logo */}
-              <div className="flex justify-center items-center space-x-6 mb-8">
-                <MechanicaGear size="large" color="brass" speed="slow" aria-label="Animated decorative gear" />
-                <div className="text-6xl font-bold font-serif text-yellow-400">
+              <div className="flex justify-center items-center space-x-4 md:space-x-6 mb-12">
+                <div className="hidden sm:block">
+                  <MechanicaGear size="large" color="brass" speed="slow" aria-hidden="true" />
+                </div>
+                <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif text-yellow-400 uppercase tracking-tighter">
                   BeginnerInvestorHub
                 </div>
-                <MechanicaGear size="large" color="brass" speed="reverse" aria-label="Animated decorative gear" />
+                <div className="hidden sm:block">
+                  <MechanicaGear size="large" color="brass" speed="reverse" aria-hidden="true" />
+                </div>
               </div>
 
-              <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 font-serif">
-                Master investing with guided simulations — built for first-time investors.
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 font-serif leading-tight">
+                Master Investing with <br className="hidden md:block" />
+                Guided Simulations.
               </h1>
 
-              <h2 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal">
-                Practice with portfolio simulations, visualize risk metrics, and build confidence —
-                all with virtual money, no real investment required.
+              <h2 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
+                Build confidence with professional-grade portfolio tools and AI behavioral coaching — no real funds required.
               </h2>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
                 <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm flex flex-col sm:flex-row gap-2 w-full max-w-md">
                   <input
                     type="email"
@@ -250,9 +218,22 @@ export default function HomePage() {
                   />
                   <Link href="/signup">
                     <MechanicaButton variant="mechanical" size="md" className="w-full sm:w-auto whitespace-nowrap">
-                      Start a 5-minute Simulation
+                      Start Simulation
                     </MechanicaButton>
                   </Link>
+                </div>
+              </div>
+
+              {/* Demo Banner - Moved to bottom of Hero */}
+              <div className="flex justify-center" role="banner">
+                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full shadow-2xl">
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+                  </span>
+                  <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-yellow-100/90" role="status">
+                    Protocol: This is a professional-grade architecture demonstration
+                  </p>
                 </div>
               </div>
             </div>

@@ -8,6 +8,9 @@ const Line = React.lazy(() =>
 );
 
 import { registerMechanicaCharts, getMechanicaTheme, MECHANICA_COLORS } from '@/utils/mechanicaCharts';
+import { MechanicaCard } from './ui/mechanicaCard';
+import { MechanicaButton } from './ui/mechanicaButton';
+import { MechanicaGear } from './ui/mechanicaGear';
 
 // Register ChartJS once
 registerMechanicaCharts();
@@ -174,211 +177,224 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
   const timestamp = portfolioData?.timestamp;
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 md:p-10 w-full max-w-3xl">
-      {/* Service Status Bar */}
-      <div className="mb-6 p-4 bg-gray-50 rounded-lg">
-        <div className="flex items-center justify-between mb-2">
-          <h4 className="text-sm font-semibold text-gray-700">Service Status</h4>
-          {timestamp && (
-            <span className="text-xs text-gray-500">
-              Last updated: {new Date(timestamp).toLocaleTimeString()}
-            </span>
-          )}
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {Object.entries(servicesStatus).map(([service, healthy]) => (
-            <div
-              key={service}
-              className={`px-2 py-1 rounded text-xs font-medium ${healthy
-                ? 'bg-green-100 text-green-800'
-                : 'bg-red-100 text-red-800'
-                }`}
-            >
-              {service}: {healthy ? 'Online' : 'Offline'}
-            </div>
-          ))}
-        </div>
-        <div className="mt-2 text-xs text-gray-600">
-          Market Data: <span className={`font-medium ${marketStatus === 'healthy' ? 'text-green-600' :
-            marketStatus === 'degraded' ? 'text-yellow-600' : 'text-gray-600'
-            }`}>{marketStatus}</span>
-        </div>
-      </div>
-
-      <div className="mb-10">
-        <h3 className="text-xl font-semibold text-indigo-800 mb-4">
-          Portfolio Allocation
-        </h3>
-        <Suspense fallback={<div className="h-[300px] flex items-center justify-center">Loading chart...</div>}>
-          <div className="h-[300px] relative">
-            <Pie data={pieData} options={pieOptions} redraw={true} />
-          </div>
-        </Suspense>
-      </div>
-
-      <div className="mb-10">
-        <h3 className="text-xl font-semibold text-indigo-800 mb-4">
-          Performance Over Time
-        </h3>
-        <Suspense fallback={<div className="h-[300px] flex items-center justify-center">Loading chart...</div>}>
-          <div className="h-[300px] relative">
-            <Line data={lineData} options={lineOptions} redraw={true} />
-          </div>
-        </Suspense>
-      </div>
-
-      {/* Risk Metrics Section */}
-      {Object.keys(riskMetrics).length > 0 && (
-        <div className="mb-10 p-4 bg-blue-50 rounded-lg">
-          <h3 className="text-lg font-semibold text-blue-800 mb-3">Risk Metrics</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-            {riskMetrics.volatility && (
-              <div>
-                <div className="text-gray-600">Volatility</div>
-                <div className="font-semibold text-blue-900">
-                  {((riskMetrics.volatility as any) * 100).toFixed(2)}%
-                </div>
-              </div>
-            )}
-            {riskMetrics.var_95 && (
-              <div>
-                <div className="text-gray-600">VaR (95%)</div>
-                <div className="font-semibold text-blue-900">
-                  {((riskMetrics.var_95 as any) || 0).toFixed(2)}
-                </div>
-              </div>
-            )}
-            {riskMetrics.sharpe_ratio && (
-              <div>
-                <div className="text-gray-600">Sharpe Ratio</div>
-                <div className="font-semibold text-blue-900">
-                  {((riskMetrics.sharpe_ratio as any) || 0).toFixed(2)}
-                </div>
-              </div>
-            )}
-            {riskMetrics.max_drawdown && (
-              <div>
-                <div className="text-gray-600">Max Drawdown</div>
-                <div className="font-semibold text-blue-900">
-                  {((riskMetrics.max_drawdown as any) * 100).toFixed(2)}%
-                </div>
-              </div>
-            )}
+    <MechanicaCard variant="mechanical" animated gearDecoration className="w-full max-w-5xl overflow-hidden">
+      <div className="p-6 md:p-10">
+        {/* Header section with Gear */}
+        <div className="flex items-center space-x-4 mb-8 border-b border-gray-100 pb-6">
+          <MechanicaGear size="large" color="brass" speed="slow" />
+          <div>
+            <h2 className="text-3xl font-black mechanica-heading-professional text-mechanica-moonlight-blue uppercase tracking-tighter">
+              Portfolio Analyzer
+            </h2>
+            <p className="text-sm text-gray-500 mechanica-text-technical uppercase tracking-widest">
+              [ Engine Status: Optimal ]
+            </p>
           </div>
         </div>
-      )}
 
-      <div className="mb-10 flex flex-col md:flex-row gap-6">
-        <div className="flex-1">
-          <label className="block text-sm font-semibold mb-1">
-            Asset Toggle
-          </label>
-          <label
-            htmlFor="asset-select"
-            className="block text-sm font-semibold mb-1"
-          >
-            Asset Toggle
-          </label>
-          <select
-            id="asset-select"
-            className="w-full border border-gray-300 rounded-md p-2"
-            value={showAsset || ''}
-            onChange={e => setShowAsset(e.target.value || null)}
-            title="Select asset"
-          >
-            <option value="">All</option>
-            {portfolioData?.assets.map(a => (
-              <option key={a.name} value={a.name}>
-                {a.name}
-              </option>
+        {/* Service Status Bar */}
+        <div className="mb-8 p-6 bg-blue-50/50 rounded-xl border border-blue-100/50 backdrop-blur-sm shadow-inner-premium">
+          <div className="flex items-center justify-between mb-4">
+            <h4 className="text-xs font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em]">System Diagnostics</h4>
+            {timestamp && (
+              <span className="text-[10px] font-mono text-gray-400 uppercase">
+                Last Sync: {new Date(timestamp).toLocaleTimeString()}
+              </span>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {Object.entries(servicesStatus).map(([service, healthy]) => (
+              <div
+                key={service}
+                className={`flex items-center px-3 py-1.5 rounded-lg border-2 text-[10px] font-black uppercase tracking-widest transition-all ${healthy
+                  ? 'bg-green-50 border-green-200 text-green-700'
+                  : 'bg-red-50 border-red-200 text-red-700'
+                  }`}
+              >
+                <div className={`w-2 h-2 rounded-full mr-2 ${healthy ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
+                {service}: {healthy ? 'Active' : 'Offline'}
+              </div>
             ))}
-          </select>
-        </div>
-
-        <div className="flex-1">
-          <label className="block text-sm font-semibold mb-1">
-            Alert Sensitivity
-          </label>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            value={alertSensitivity}
-            onChange={e => setAlertSensitivity(Number(e.target.value))}
-            className="w-full"
-            title="Alert sensitivity"
-          />
-          <div className="text-sm text-gray-600 mt-1">
-            Level: {alertSensitivity}
+            <div className="flex items-center px-3 py-1.5 rounded-lg border-2 bg-indigo-50 border-indigo-200 text-indigo-700 text-[10px] font-black uppercase tracking-widest">
+              Feed: {marketStatus}
+            </div>
           </div>
         </div>
-      </div>
 
-      <div>
-        <h3 className="text-xl font-semibold text-indigo-800 mb-2">
-          Asset Details
-        </h3>
-        {showAsset ? (
-          <div className="text-indigo-700 font-bold">
-            {showAsset}: $
-            {portfolioData?.assets
-              .find(a => a.name === showAsset)
-              ?.value?.toLocaleString() || 'N/A'}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
+          <MechanicaCard variant="default" hover className="p-6 border-mechanica-moonlight-blue/10">
+            <h3 className="text-sm font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] mb-6 flex items-center">
+              <span className="mr-2">📊</span> Asset Allocation
+            </h3>
+            <Suspense fallback={<div className="h-[300px] flex items-center justify-center"><MechanicaGear size="medium" color="steel" speed="fast" /></div>}>
+              <div className="h-[300px] relative">
+                <Pie data={pieData} options={pieOptions} redraw={true} />
+              </div>
+            </Suspense>
+          </MechanicaCard>
+
+          <MechanicaCard variant="default" hover className="p-6 border-mechanica-moonlight-blue/10">
+            <h3 className="text-sm font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] mb-6 flex items-center">
+              <span className="mr-2">📈</span> Performance History
+            </h3>
+            <Suspense fallback={<div className="h-[300px] flex items-center justify-center"><MechanicaGear size="medium" color="steel" speed="fast" /></div>}>
+              <div className="h-[300px] relative">
+                <Line data={lineData} options={lineOptions} redraw={true} />
+              </div>
+            </Suspense>
+          </MechanicaCard>
+        </div>
+
+        {/* Risk Metrics Section */}
+        {Object.keys(riskMetrics).length > 0 && (
+          <div className="mb-10">
+            <h3 className="text-sm font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] mb-6 flex items-center">
+              <span className="mr-2">🎯</span> Risk Vector Analysis
+            </h3>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { label: 'Volatility', value: `${((riskMetrics.volatility as any) * 100).toFixed(2)}%`, icon: '🌪️' },
+                { label: 'VaR (95%)', value: Number(riskMetrics.var_95 || 0).toFixed(2), icon: '🛡️' },
+                { label: 'Sharpe', value: Number(riskMetrics.sharpe_ratio || 0).toFixed(2), icon: '⚖️' },
+                { label: 'Drawdown', value: `${((riskMetrics.max_drawdown as any) * 100).toFixed(2)}%`, icon: '📉' }
+              ].map((metric) => (
+                <div key={metric.label} className="p-4 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                  <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1 flex items-center justify-between">
+                    {metric.label}
+                    <span className="opacity-50">{metric.icon}</span>
+                  </div>
+                  <div className="text-lg font-black text-mechanica-moonlight-blue font-mono">{metric.value}</div>
+                </div>
+              ))}
+            </div>
           </div>
-        ) : (
-          <div className="text-gray-700">Select an asset to view details.</div>
         )}
-      </div>
 
-      {/* Portfolio Input Form */}
-      <div className="mt-8 p-6 bg-gray-50 rounded-lg">
-        <h3 className="text-lg font-semibold text-indigo-800 mb-4">
-          Add New Asset
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <input
-            type="text"
-            placeholder="Ticker (e.g., AAPL)"
-            value={newAsset.ticker}
-            onChange={(e) => setNewAsset({ ...newAsset, ticker: e.target.value })}
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            type="number"
-            placeholder="Amount"
-            value={newAsset.amount}
-            onChange={(e) => setNewAsset({ ...newAsset, amount: e.target.value })}
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            type="number"
-            placeholder="Price per share"
-            value={newAsset.price}
-            onChange={(e) => setNewAsset({ ...newAsset, price: e.target.value })}
-            className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <button
-            onClick={() => {
-              if (newAsset.ticker && newAsset.amount && newAsset.price) {
-                const value = parseFloat(newAsset.amount) * parseFloat(newAsset.price);
-                setPortfolioAssets([
-                  ...portfolioAssets,
-                  {
-                    name: newAsset.ticker.toUpperCase(),
-                    value,
-                    allocation: 0 // Will be calculated in useMemo
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] block">
+              Asset Monitor Isolation
+            </label>
+            <select
+              id="asset-select"
+              className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl p-3 text-sm font-bold mechanica-text-technical focus:border-mechanica-moonlight-blue focus:ring-0 transition-all outline-none"
+              value={showAsset || ''}
+              onChange={e => setShowAsset(e.target.value || null)}
+              title="Select asset"
+            >
+              <option value="">Full Portfolio View</option>
+              {portfolioData?.assets.map(a => (
+                <option key={a.name} value={a.name}>
+                  {a.name}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-4">
+            <label className="text-[10px] font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] block flex justify-between">
+              Alert Sensitivity <span>Level: {alertSensitivity}</span>
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="10"
+              value={alertSensitivity}
+              onChange={e => setAlertSensitivity(Number(e.target.value))}
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-mechanica-moonlight-blue"
+              title="Alert sensitivity"
+            />
+          </div>
+        </div>
+
+        <MechanicaCard variant="wood" className="mb-10 p-6">
+          <h3 className="text-xs font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] mb-4">
+            Isolated Component Status
+          </h3>
+          {showAsset ? (
+            <div className="flex items-center space-x-4">
+              <MechanicaGear size="medium" color="brass" speed="medium" />
+              <div className="text-2xl font-black text-mechanica-moonlight-blue font-mono">
+                {showAsset}: <span className="text-indigo-600">${portfolioData?.assets.find(a => a.name === showAsset)?.value?.toLocaleString() || 'N/A'}</span>
+              </div>
+            </div>
+          ) : (
+            <div className="flex items-center space-x-3 text-gray-400 italic font-medium">
+              <span className="text-xl">⚙️</span>
+              <span>All components currently synchronized. Select an asset for detailed isolation.</span>
+            </div>
+          )}
+        </MechanicaCard>
+
+        {/* Portfolio Input Form */}
+        <div className="p-8 bg-gray-900 rounded-2xl text-white shadow-2xl relative overflow-hidden">
+          {/* Decorative gear background */}
+          <div className="absolute -right-10 -bottom-10 opacity-10">
+            <MechanicaGear size="xl" color="steel" speed="slow" />
+          </div>
+
+          <h3 className="text-lg font-black uppercase tracking-widest text-yellow-400 mb-6 flex items-center">
+            <span className="mr-3">⚙️</span> Component Assembly Form
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
+            <div className="space-y-2">
+              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Ticker ID</label>
+              <input
+                type="text"
+                placeholder="e.g., AAPL"
+                value={newAsset.ticker}
+                onChange={(e) => setNewAsset({ ...newAsset, ticker: e.target.value })}
+                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono uppercase"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Unit Quantity</label>
+              <input
+                type="number"
+                placeholder="0.00"
+                value={newAsset.amount}
+                onChange={(e) => setNewAsset({ ...newAsset, amount: e.target.value })}
+                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Price Vector</label>
+              <input
+                type="number"
+                placeholder="0.00"
+                value={newAsset.price}
+                onChange={(e) => setNewAsset({ ...newAsset, price: e.target.value })}
+                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono"
+              />
+            </div>
+            <div className="flex items-end">
+              <MechanicaButton
+                variant="mechanical"
+                size="md"
+                onClick={() => {
+                  if (newAsset.ticker && newAsset.amount && newAsset.price) {
+                    const value = parseFloat(newAsset.amount) * parseFloat(newAsset.price);
+                    setPortfolioAssets([
+                      ...portfolioAssets,
+                      {
+                        name: newAsset.ticker.toUpperCase(),
+                        value,
+                        allocation: 0
+                      }
+                    ]);
+                    setNewAsset({ ticker: '', amount: '', price: '' });
                   }
-                ]);
-                setNewAsset({ ticker: '', amount: '', price: '' });
-              }
-            }}
-            className="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-          >
-            Add Asset
-          </button>
+                }}
+                className="w-full py-4 text-xs font-black uppercase tracking-[0.2em]"
+              >
+                Assemble
+              </MechanicaButton>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </MechanicaCard>
   );
 });
 

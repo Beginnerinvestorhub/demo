@@ -41,6 +41,24 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
         <Head>
           <title>{title} | BeginnerInvestorHub</title>
           {description && <meta name="description" content={description} />}
+
+          {/* Open Graph / Facebook */}
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={`https://beginnerinvestorhub.vercel.app${router.asPath}`} />
+          <meta property="og:title" content={`${title} | BeginnerInvestorHub`} />
+          <meta property="og:description" content={description || 'Precision-engineered educational platform for mastering investment strategies.'} />
+          <meta property="og:image" content="https://beginnerinvestorhub.vercel.app/og-image.png" />
+
+          {/* Twitter */}
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content={`https://beginnerinvestorhub.vercel.app${router.asPath}`} />
+          <meta property="twitter:title" content={`${title} | BeginnerInvestorHub`} />
+          <meta property="twitter:description" content={description || 'Precision-engineered educational platform for mastering investment strategies.'} />
+          <meta property="twitter:image" content="https://beginnerinvestorhub.vercel.app/og-image.png" />
+
+          {/* Additional Meta */}
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" href="/favicon.ico" />
         </Head>
       )}
 
@@ -72,7 +90,7 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
             {/* Logo */}
             <div className={`flex-shrink-0 ${needsBackButton ? 'mx-auto' : ''}`}>
               <Link href="/" className="flex items-center space-x-2">
-                <span className="text-2xl font-bold text-mechanica-moonlight-blue font-serif">
+                <span className="text-xl sm:text-2xl font-bold text-mechanica-moonlight-blue font-serif">
                   BeginnerInvestorHub
                 </span>
               </Link>

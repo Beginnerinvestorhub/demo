@@ -12,10 +12,6 @@ export default function FractionalShareCalculatorPage() {
       title="Fractional Share Calculator | BeginnerInvestorHub"
       description="Calculate how much of a stock you can buy with any amount."
     >
-      <Head>
-        <title>Fractional Share Calculator | BeginnerInvestorHub</title>
-        <meta name="description" content="Calculate how much of a stock you can buy with any amount using our precision components engine. Compare broker fees and visualize blueprints." />
-      </Head>
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">

@@ -8,11 +8,10 @@ import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 
 export default function PortfolioMonitorPage() {
   return (
-    <MechanicaLayout>
-      <Head>
-        <title>Portfolio Monitoring | BeginnerInvestorHub</title>
-        <meta name="description" content="Real-time assembly monitor for visualizing portfolio allocation, performance metrics, and investment architecture. Track your component details in real time." />
-      </Head>
+    <MechanicaLayout
+      title="Portfolio Monitoring | BeginnerInvestorHub"
+      description="Real-time assembly monitor for visualizing portfolio allocation, performance metrics, and investment architecture. Track your component details in real time."
+    >
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">

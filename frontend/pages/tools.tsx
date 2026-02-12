@@ -103,6 +103,17 @@ const tools = [
     features: ['Learning style analysis', 'Personalized recommendations', 'Study strategies'],
     gearColor: 'copper' as const,
   },
+  {
+    name: 'Compound Interest Visualizer',
+    icon: '⏳',
+    description:
+      'Visualize the power of long-term compounding and project future portfolio growth.',
+    href: '/compound-calculator',
+    category: 'Research',
+    status: 'active',
+    features: ['Growth projections', 'Inflation adjustment', 'Contribution modeling'],
+    gearColor: 'copper' as const,
+  },
 ];
 
 export default function ToolsOverview() {
@@ -193,7 +204,7 @@ export default function ToolsOverview() {
             </div>
 
             {/* Tools Grid */}
-           
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 w-full max-w-7xl lg:justify-items-center">
               {filteredTools.map(tool => (
                 <MechanicaCard
