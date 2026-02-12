@@ -139,12 +139,12 @@ export default function FractionalShareCalculator() {
 
           {/* Inner Content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center mt-4">
-            <span className="text-[10px] font-black font-mono text-slate-500 uppercase tracking-widest mb-1">Asset Cap</span>
+            <span className="text-[10px] font-black font-mono text-slate-500 uppercase tracking-widest mb-1">Your Share</span>
             <span className="text-3xl font-black font-mono text-white">
               {sharePercentage.toFixed(1)}%
             </span>
             <div className="h-px w-8 bg-amber-500/50 mt-1 mb-1"></div>
-            <span className="text-[9px] font-bold font-mono text-amber-500 uppercase tracking-tighter">1.0 Unit BP</span>
+            <span className="text-[9px] font-bold font-mono text-amber-500 uppercase tracking-tighter">of a Full Share</span>
           </div>
         </div>
 
@@ -152,12 +152,12 @@ export default function FractionalShareCalculator() {
         <div className="absolute bottom-4 left-6 flex items-center space-x-3">
           <MechanicaGear size="small" color="brass" speed="slow" className="opacity-50" />
           <div className="text-[9px] font-black font-mono text-slate-400 uppercase tracking-[0.2em]">
-            Status: <span className="text-blue-400">Blueprint Initialized</span>
+            Status: <span className="text-blue-400">Analysis Ready</span>
           </div>
         </div>
 
         <div className="absolute bottom-4 right-6 text-[9px] font-black font-mono text-slate-500 uppercase tracking-[0.2em]">
-          Mode: <span className="text-amber-500">Atomic Acquisition</span>
+          Mode: <span className="text-amber-500">Fractional Discovery</span>
         </div>
       </div>
     );

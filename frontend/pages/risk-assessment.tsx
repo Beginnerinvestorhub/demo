@@ -53,13 +53,13 @@ export default function RiskAssessmentPage() {
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Calibrate your tolerance parameters to construct a precision-engineered allocation blueprint.
+                Find your personal investment comfort zone. We&apos;ll help you find the right balance between safety and growth.
               </p>
 
               <div className="flex justify-center">
-                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
-                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    PROTOCOL: Structural Load Assessment
+                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-blue-400/30 rounded-full">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-100/90">
+                    PROTOCOL: Comfort Zone Analysis
                   </span>
                 </div>
               </div>

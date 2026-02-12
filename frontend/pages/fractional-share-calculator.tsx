@@ -62,6 +62,41 @@ export default function FractionalShareCalculatorPage() {
         </section>
 
         <div className="container mx-auto px-4 relative z-10 py-12 flex flex-col items-center">
+          {/* Beginner Educational Bridge */}
+          <div className="max-w-4xl w-full mb-12 grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <MechanicaCard variant="default" className="p-8 bg-blue-50/50 border-blue-100 flex flex-col justify-center">
+              <h3 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tighter mb-4">
+                What is a "Fractional" Share?
+              </h3>
+              <p className="text-sm text-slate-600 leading-relaxed font-medium">
+                Imagine a single stock like a high-end luxury watch. You might not have $5,000 for the whole watch, but with "Fractionals," you can buy just the <span className="text-mechanica-moonlight-blue font-bold">gears or the hands</span>.
+              </p>
+              <p className="text-sm text-slate-600 leading-relaxed font-medium mt-4">
+                This tool shows you exactly how much of that "watch" you own based on the money you have right now.
+              </p>
+            </MechanicaCard>
+
+            <MechanicaCard variant="mechanical" className="p-8 flex flex-col justify-center border-l-4 border-l-yellow-500">
+              <h3 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tighter mb-4">
+                The Power of $5
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-2 text-xs font-bold text-slate-700">
+                  <span className="text-yellow-500 font-black">✓</span>
+                  <span>Buy the best companies in the world with pocket change.</span>
+                </li>
+                <li className="flex items-start gap-2 text-xs font-bold text-slate-700">
+                  <span className="text-yellow-500 font-black">✓</span>
+                  <span>Build your "Ownership Machine" one dollar at a time.</span>
+                </li>
+                <li className="flex items-start gap-2 text-xs font-bold text-slate-700">
+                  <span className="text-yellow-500 font-black">✓</span>
+                  <span>Never wait to "afford" a full share again.</span>
+                </li>
+              </ul>
+            </MechanicaCard>
+          </div>
+
           {/* Main Calculator Card */}
           <MechanicaCard variant="wood" animated className="bg-gradient-to-br from-blue-50 to-white mechanica-hum w-full max-w-4xl">
             <div className="p-8">
