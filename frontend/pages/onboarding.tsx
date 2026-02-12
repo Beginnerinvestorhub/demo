@@ -2,38 +2,58 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { useAuth } from '../hooks/useAuth';
-import { useOnboardingCompleted } from '../src/store/learningStore';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import OnboardingFlow from '../components/onboarding/OnboardingFlow';
 
 export default function OnboardingPage() {
-  const { user, loading } = useAuth();
+  const { user: realUser, loading } = useAuth();
   const router = useRouter();
-  const onboardingCompleted = useOnboardingCompleted();
+  const { isReady, query, asPath } = router;
+
   const [isRedirecting, setIsRedirecting] = useState(false);
 
-  // Redirect logic - always show onboarding for demo users
+  // Detect demo mode
+  const isDemo = isReady && query.demo === 'true';
+
+  // Use demo user fallback when in demo mode
+  const user = isDemo
+    ? { displayName: 'Demo Investor' }
+    : realUser;
+
+  /**
+   * Redirect logic
+   * - Real users must be authenticated
+   * - Demo users bypass auth entirely
+   */
   useEffect(() => {
-    if (!loading) {
-      if (!user) {
-        // Not authenticated, redirect to signup
+    if (!loading && !isDemo) {
+      if (!realUser) {
         setIsRedirecting(true);
         router.replace('/signup');
       }
-      // Note: onboardingCompleted check removed to always show onboarding
-      // Demo users will have their progress reset on login
     }
-  }, [user, loading, router]);
+  }, [realUser, loading, isDemo, router]);
 
+  /**
+   * Handle onboarding completion
+   */
   const handleOnboardingComplete = () => {
     setIsRedirecting(true);
-    router.push('/dashboard');
+
+    if (isDemo) {
+      router.push('/dashboard?demo=true');
+    } else {
+      router.push('/dashboard');
+    }
   };
 
-  // Show loading while checking auth state
-  if (loading || isRedirecting) {
+  /**
+   * Loading state
+   * - Demo ignores auth loading
+   */
+  if ((!isDemo && loading) || isRedirecting) {
     return (
       <MechanicaLayout title="Loading Onboarding | Beginner Investor Hub">
         <div className="min-h-screen flex items-center justify-center">
@@ -50,8 +70,11 @@ export default function OnboardingPage() {
     );
   }
 
-  // Don't render if redirecting or invalid state
-  if (!user) {
+  /**
+   * Hard guard
+   * - Only block rendering for real unauthenticated users
+   */
+  if (!user && !isDemo) {
     return null;
   }
 
@@ -62,10 +85,15 @@ export default function OnboardingPage() {
     >
       <Head>
         <title>Set Up Learning Path | BeginnerInvestorHub</title>
-        <meta name="description" content="Personalize your investment education journey with our precision-engineered onboarding process. Define your goals and learning style." />
+        <meta
+          name="description"
+          content="Personalize your investment education journey with our precision-engineered onboarding process. Define your goals and learning style."
+        />
       </Head>
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50">
-        {/* Progress Header */}
+
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 flex flex-col">
+
+        {/* Header */}
         <header className="py-6 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex justify-between items-center">
@@ -76,24 +104,30 @@ export default function OnboardingPage() {
                     BeginnerInvestorHub
                   </div>
                   <div className="text-gray-600 mechanica-text-technical">
-                    Welcome, {user?.displayName || 'Investor'}
+                    Welcome, {isDemo ? 'Demo Investor' : user?.displayName || 'Investor'}
                   </div>
                 </div>
               </div>
 
               <div className="flex items-center space-x-2">
                 <MechanicaGear size="small" color="steel" />
-                <span className="text-sm text-gray-500 mechanica-text-technical">Onboarding</span>
+                <span className="text-sm text-gray-500 mechanica-text-technical">
+                  Onboarding
+                </span>
                 <MechanicaGear size="small" color="copper" speed="reverse" />
               </div>
             </div>
           </div>
         </header>
 
-        {/* Onboarding Flow */}
-        <main className="py-12 bg-gray-100">
+        {/* Main */}
+        <main className="flex-grow bg-gray-50 py-12">
           <div className="container mx-auto px-4">
-            <MechanicaCard variant="mechanical" animated className="max-w-4xl mx-auto">
+            <MechanicaCard
+              variant="mechanical"
+              animated
+              className="max-w-4xl mx-auto"
+            >
               <div className="p-8">
                 <div className="text-center mb-8">
                   <div className="flex justify-center items-center space-x-4 mb-6">
@@ -108,13 +142,22 @@ export default function OnboardingPage() {
                   </p>
                 </div>
 
-                <OnboardingFlow onComplete={handleOnboardingComplete} />
+                {/* 
+                  Key prop forces full reset on each demo visit.
+                  For demo: remounts every time route changes.
+                  For real users: tied to UID.
+                */}
+                <OnboardingFlow
+                  key={isDemo ? asPath : realUser?.uid}
+                  onComplete={handleOnboardingComplete}
+                  isDemo={isDemo}
+                />
               </div>
             </MechanicaCard>
           </div>
         </main>
 
-        {/* Footer Note */}
+        {/* Footer */}
         <footer className="py-6 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center">
@@ -128,6 +171,7 @@ export default function OnboardingPage() {
             </div>
           </div>
         </footer>
+
       </div>
     </MechanicaLayout>
   );

@@ -53,7 +53,7 @@ export default function RiskAssessmentPage() {
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light">
+              <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-light">
                 Discover your risk profile and construct a personalized investment allocation blueprint with precision.
               </p>
             </div>

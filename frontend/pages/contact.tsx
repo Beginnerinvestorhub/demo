@@ -90,7 +90,7 @@ export default function Contact() {
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-light leading-relaxed">
                 Have questions? We are here to help you master investing with precision engineering and expert guidance.
               </p>
             </div>
@@ -100,7 +100,7 @@ export default function Contact() {
         </section>
 
         {/* Content Area - The "Wall" */}
-        <div className="relative bg-slate-100 min-h-screen">
+        <div className="relative bg-gray-50 min-h-screen">
           {/* Subtle Mechanical Wall Pattern */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
             <div
@@ -124,7 +124,7 @@ export default function Contact() {
               ].map((badge, i) => (
                 <MechanicaCard key={i} variant="wood" className={`inline-flex items-center px-6 py-3 shadow-md transform ${i % 2 === 0 ? 'rotate-1' : '-rotate-1'}`}>
                   <div className="w-6 h-6 mr-3 text-xl">{badge.icon}</div>
-                  <span className="text-sm text-amber-950 font-black uppercase tracking-widest">{badge.label}</span>
+                  <span className="text-sm text-mechanica-moonlight-blue font-black uppercase tracking-widest">{badge.label}</span>
                 </MechanicaCard>
               ))}
             </div>
@@ -134,42 +134,42 @@ export default function Contact() {
               <div className="space-y-12">
                 <MechanicaCard variant="wood" animated gearDecoration className="shadow-2xl transform -rotate-1">
                   <div className="p-10">
-                    <div className="flex items-center space-x-3 mb-8 pb-8 border-b border-amber-600/20">
+                    <div className="flex items-center space-x-3 mb-8 pb-8 border-b border-mechanica-moonlight-blue/10">
                       <MechanicaGear size="md" color="brass" speed="slow" />
-                      <h2 className="text-3xl font-black text-amber-900 uppercase tracking-tighter">
+                      <h2 className="text-3xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter">
                         Connection Grid
                       </h2>
                     </div>
 
                     <div className="space-y-8">
-                      <div className="flex items-start space-x-6 p-6 hover:bg-amber-900/5 rounded-2xl transition-all border-2 border-transparent hover:border-amber-600/20 group">
-                        <div className="w-14 h-14 bg-white border border-amber-600/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📧</div>
+                      <div className="flex items-start space-x-6 p-6 hover:bg-mechanica-moonlight-blue/5 rounded-2xl transition-all border-2 border-transparent hover:border-mechanica-moonlight-blue/20 group">
+                        <div className="w-14 h-14 bg-white border border-mechanica-moonlight-blue/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📧</div>
                         <div>
-                          <h3 className="text-[10px] font-black text-amber-800/60 uppercase tracking-[0.2em] mb-1">System Support</h3>
-                          <div className="text-lg font-black text-amber-950 uppercase tracking-tight mb-1">Technical Inquiries</div>
-                          <a href="mailto:info@beginnerinvestorhub.com" className="text-amber-800 font-black hover:underline font-mono text-sm">
+                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">System Support</h3>
+                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-1">Technical Inquiries</div>
+                          <a href="mailto:info@beginnerinvestorhub.com" className="text-mechanica-moonlight-blue font-black hover:underline font-mono text-sm">
                             info@beginnerinvestorhub.com
                           </a>
                         </div>
                       </div>
 
-                      <div className="flex items-start space-x-6 p-6 hover:bg-amber-900/5 rounded-2xl transition-all border-2 border-transparent hover:border-amber-600/20 group">
-                        <div className="w-14 h-14 bg-white border border-amber-600/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">💼</div>
+                      <div className="flex items-start space-x-6 p-6 hover:bg-mechanica-moonlight-blue/5 rounded-2xl transition-all border-2 border-transparent hover:border-mechanica-moonlight-blue/20 group">
+                        <div className="w-14 h-14 bg-white border border-mechanica-moonlight-blue/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">💼</div>
                         <div>
-                          <h3 className="text-[10px] font-black text-amber-800/60 uppercase tracking-[0.2em] mb-1">Partnership Registry</h3>
-                          <div className="text-lg font-black text-amber-950 uppercase tracking-tight mb-1">Ecosystem Scaling</div>
-                          <a href="mailto:info@beginnerinvestorhub.com" className="text-amber-800 font-black hover:underline font-mono text-sm">
+                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Partnership Registry</h3>
+                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-1">Ecosystem Scaling</div>
+                          <a href="mailto:info@beginnerinvestorhub.com" className="text-mechanica-moonlight-blue font-black hover:underline font-mono text-sm">
                             info@beginnerinvestorhub.com
                           </a>
                         </div>
                       </div>
 
-                      <div className="flex items-start space-x-6 p-6 hover:bg-amber-900/5 rounded-2xl transition-all border-2 border-transparent hover:border-amber-600/20 group">
-                        <div className="w-14 h-14 bg-white border border-amber-600/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📍</div>
+                      <div className="flex items-start space-x-6 p-6 hover:bg-mechanica-moonlight-blue/5 rounded-2xl transition-all border-2 border-transparent hover:border-mechanica-moonlight-blue/20 group">
+                        <div className="w-14 h-14 bg-white border border-mechanica-moonlight-blue/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📍</div>
                         <div>
-                          <h3 className="text-[10px] font-black text-amber-800/60 uppercase tracking-[0.2em] mb-1">Main Assembly Hub</h3>
-                          <div className="text-lg font-black text-amber-950 uppercase tracking-tight mb-2">North Carolina Division</div>
-                          <p className="text-amber-900/70 font-black font-mono text-xs leading-relaxed uppercase">
+                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Main Assembly Hub</h3>
+                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">North Carolina Division</div>
+                          <p className="text-gray-600 font-black font-mono text-xs leading-relaxed uppercase">
                             Precision Sector 4<br />
                             Raleigh, United States
                           </p>
@@ -184,17 +184,17 @@ export default function Contact() {
                   <div className="p-10">
                     <div className="flex items-center space-x-3 mb-8">
                       <MechanicaGear size="sm" color="steel" speed="medium" />
-                      <h3 className="font-black text-amber-900 uppercase tracking-widest text-sm">Response Metrics</h3>
+                      <h3 className="font-black text-mechanica-moonlight-blue uppercase tracking-widest text-sm">Response Metrics</h3>
                     </div>
                     <div className="grid grid-cols-2 gap-6">
                       {[
-                        { label: "General", time: "< 24h", color: "text-amber-800" },
-                        { label: "Technical", time: "< 12h", color: "text-amber-800" },
+                        { label: "General", time: "< 24h", color: "text-mechanica-moonlight-blue" },
+                        { label: "Technical", time: "< 12h", color: "text-mechanica-moonlight-blue" },
                         { label: "Emergency", time: "Priority", color: "text-red-800" },
                         { label: "Global", time: "Online", color: "text-emerald-800" }
                       ].map((metric, i) => (
-                        <div key={i} className="p-6 bg-amber-900/5 rounded-2xl border border-amber-600/10 shadow-sm">
-                          <div className="text-[10px] font-black text-amber-800/60 uppercase mb-2">{metric.label}</div>
+                        <div key={i} className="p-6 bg-mechanica-moonlight-blue/5 rounded-2xl border border-mechanica-moonlight-blue/10 shadow-sm">
+                          <div className="text-[10px] font-black text-gray-500 uppercase mb-2">{metric.label}</div>
                           <div className={`text-2xl font-black font-mono ${metric.color}`}>{metric.time}</div>
                         </div>
                       ))}
@@ -204,18 +204,18 @@ export default function Contact() {
               </div>
 
               {/* Transmission Form - The Master Protocol Scroll */}
-              <MechanicaCard variant="wood" animated gearDecoration className="shadow-2xl border-t-8 border-t-amber-800 transform rotate-1">
+              <MechanicaCard variant="wood" animated gearDecoration className="shadow-2xl border-t-8 border-t-mechanica-moonlight-blue transform rotate-1">
                 <div className="p-10">
-                  <div className="flex items-center space-x-3 mb-10 pb-8 border-b border-amber-600/20">
+                  <div className="flex items-center space-x-3 mb-10 pb-8 border-b border-mechanica-moonlight-blue/10">
                     <MechanicaGear size="md" color="brass" speed="slow" />
-                    <h2 className="text-4xl font-black text-amber-900 uppercase tracking-tighter">
+                    <h2 className="text-4xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter">
                       Transmission
                     </h2>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-8">
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest ml-1">Origin Name</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Origin Name</label>
                       <input
                         type="text"
                         name="name"
@@ -223,12 +223,12 @@ export default function Contact() {
                         placeholder="Standard Identifier"
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full px-6 py-5 bg-white border-2 border-amber-600/10 rounded-2xl focus:ring-4 focus:ring-amber-600/10 focus:border-amber-600 outline-none transition-all font-black text-amber-950 placeholder-amber-900/20"
+                        className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-black text-gray-900 placeholder-gray-400"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest ml-1">Communication Path (Email)</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Communication Path (Email)</label>
                       <input
                         type="email"
                         name="email"
@@ -236,18 +236,18 @@ export default function Contact() {
                         placeholder="name@architecture.com"
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full px-6 py-5 bg-white border-2 border-amber-600/10 rounded-2xl focus:ring-4 focus:ring-amber-600/10 focus:border-amber-600 outline-none transition-all font-black text-amber-950 placeholder-amber-900/20"
+                        className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-black text-gray-900 placeholder-gray-400"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest ml-1">Transmission Subject</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Transmission Subject</label>
                       <div className="relative">
                         <select
                           name="subject"
                           value={formData.subject}
                           onChange={handleChange}
-                          className="w-full px-6 py-5 bg-white border-2 border-amber-600/10 rounded-2xl focus:ring-4 focus:ring-amber-600/10 focus:border-amber-600 outline-none transition-all font-black text-amber-950 appearance-none cursor-pointer"
+                          className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-black text-gray-900 appearance-none cursor-pointer"
                           required
                         >
                           <option value="general">General Inquiries</option>
@@ -258,17 +258,17 @@ export default function Contact() {
                           <option value="partnership">Ecosystem Scaling</option>
                           <option value="feedback">System Feedback</option>
                         </select>
-                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-amber-800">▼</div>
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-mechanica-moonlight-blue">▼</div>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest ml-1">Information Packet (Message)</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Information Packet (Message)</label>
                       <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        className="w-full px-6 py-5 bg-white border-2 border-amber-600/10 rounded-2xl focus:ring-4 focus:ring-amber-600/10 focus:border-amber-600 outline-none transition-all font-bold text-amber-950 min-h-[180px] placeholder-amber-900/20"
+                        className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-bold text-gray-900 min-h-[180px] placeholder-gray-400"
                         required
                         placeholder="Detail your request for processing..."
                       />
@@ -290,7 +290,7 @@ export default function Contact() {
 
                     <MechanicaButton
                       variant="wood"
-                      className="w-full py-8 text-xl font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform transition-all active:scale-95 border-2 border-amber-800/30"
+                      className="w-full py-8 text-xl font-black uppercase tracking-widest shadow-xl hover:shadow-2xl transform transition-all active:scale-95 border-2 border-mechanica-moonlight-blue/30"
                       disabled={status === 'sending'}
                     >
                       {status === 'sending' ? (

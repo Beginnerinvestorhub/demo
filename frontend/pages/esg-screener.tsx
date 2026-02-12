@@ -43,7 +43,7 @@ export default function ESGScreenerPage() {
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
-              <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
+              <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-light leading-relaxed">
                 Precision investment filter for screening components based on Environmental, Social, and Governance criteria.
               </p>
             </div>
