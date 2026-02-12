@@ -236,6 +236,7 @@ export default function CompoundCalculator() {
                         </div>
                     </div>
                 </div>
+            </div>
         </MechanicaLayout>
     );
 }
