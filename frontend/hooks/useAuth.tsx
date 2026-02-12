@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
+import { useLearningStore } from '../src/store/learningStore';
 
 interface User {
   uid: string;
@@ -82,6 +83,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(mockUser);
       setRole('user');
       persistAuth(mockUser, 'user');
+      // Reset learning store for demo user to start fresh onboarding
+      useLearningStore.getState().resetProgress();
       setLoading(false);
       return;
     }
@@ -97,6 +100,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setUser(mockUser);
       setRole('user');
       persistAuth(mockUser, 'user');
+      // Reset learning store for demo user to start fresh onboarding
+      useLearningStore.getState().resetProgress();
       setLoading(false);
       return;
     }
@@ -111,6 +116,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser(mockUser);
     setRole('user');
     persistAuth(mockUser, 'user');
+    // Reset learning store for demo user to start fresh onboarding
+    useLearningStore.getState().resetProgress();
     setLoading(false);
   }, [persistAuth]);
 

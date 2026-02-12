@@ -1,11 +1,26 @@
 import { NextResponse } from 'next/server';
 
 interface RiskFormData {
-  age: string;
-  income: string;
-  goals: string;
-  experience: string;
-  riskTolerance: string;
+  age: number;
+  income: number;
+  assets: number;
+  liabilities: number;
+  expenses: number;
+  credit_score: number;
+  investment_experience: number;
+  risk_tolerance: number;
+  market_volatility: number;
+  industry_risk: number;
+  economic_outlook: number;
+  dependents: number;
+  education_level: string;
+  primary_goal: string;
+  gender: string;
+  marital_status: string;
+  employment_status: string;
+  is_retired: boolean;
+  region: string;
+  is_immigrant: boolean;
 }
 
 interface RiskResult {
@@ -18,7 +33,7 @@ function calculateRiskScore(formData: RiskFormData): RiskResult {
   let score = 50; // Base score
   
   // Age factor with more nuanced calculation
-  const age = parseInt(formData.age);
+  const age = formData.age;
   if (age < 25) score += 25;
   else if (age < 35) score += 15;
   else if (age < 45) score += 5;
@@ -27,35 +42,29 @@ function calculateRiskScore(formData: RiskFormData): RiskResult {
   
   // Income factor with realistic multipliers
   const income = formData.income;
-  const incomeMultipliers = {
-    'high': 1.3,
-    'medium': 1.1,
-    'low': 0.8
-  };
-  score *= incomeMultipliers[income as keyof typeof incomeMultipliers] || 1;
+  let incomeMultiplier = 1;
+  if (income >= 150000) incomeMultiplier = 1.3;
+  else if (income >= 75000) incomeMultiplier = 1.1;
+  else if (income >= 30000) incomeMultiplier = 0.8;
+  score *= incomeMultiplier;
   
   // Experience factor
-  const experience = formData.experience;
-  const experienceScores = {
-    'expert': 12,
-    'intermediate': 6,
-    'beginner': -8
-  };
-  score += experienceScores[experience as keyof typeof experienceScores] || 0;
+  const experience = formData.investment_experience;
+  if (experience >= 8) score += 12;
+  else if (experience >= 5) score += 6;
+  else if (experience >= 3) score -= 2;
+  else score -= 8;
   
   // Risk tolerance factor (most important)
-  const riskTolerance = formData.riskTolerance;
-  const toleranceScores = {
-    'aggressive': 20,
-    'moderate': 5,
-    'conservative': -15
-  };
-  score += toleranceScores[riskTolerance as keyof typeof toleranceScores] || 0;
+  const riskTolerance = formData.risk_tolerance;
+  if (riskTolerance >= 8) score += 20;
+  else if (riskTolerance >= 6) score += 5;
+  else score -= 15;
   
   // Goals factor - add dynamic element based on goals
-  if (formData.goals === 'retirement') score += 3;
-  else if (formData.goals === 'growth') score += 8;
-  else if (formData.goals === 'income') score -= 5;
+  if (formData.primary_goal === 'retirement') score += 3;
+  else if (formData.primary_goal === 'growth') score += 8;
+  else if (formData.primary_goal === 'income') score -= 5;
   
   // Add time-based variation for realism
   const hour = new Date().getHours();
@@ -157,9 +166,9 @@ export async function POST(request: Request) {
     const formData = body as RiskFormData;
     
     // Validate required fields
-    if (!formData.age || !formData.income || !formData.goals || !formData.experience || !formData.riskTolerance) {
+    if (!formData.age || !formData.income || !formData.primary_goal || !formData.investment_experience || !formData.risk_tolerance) {
       return NextResponse.json(
-        { error: 'All fields are required' },
+        { error: 'All required fields must be filled' },
         { status: 400 }
       );
     }

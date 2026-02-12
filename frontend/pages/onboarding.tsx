@@ -14,7 +14,7 @@ export default function OnboardingPage() {
   const onboardingCompleted = useOnboardingCompleted();
   const [isRedirecting, setIsRedirecting] = useState(false);
 
-  // Redirect logic
+  // Redirect logic - always show onboarding for demo users
   useEffect(() => {
     if (!loading) {
       if (!user) {
@@ -22,13 +22,10 @@ export default function OnboardingPage() {
         setIsRedirecting(true);
         router.replace('/signup');
       }
-      else if (onboardingCompleted) {
-        // Already completed onboarding, redirect to dashboard
-        setIsRedirecting(true);
-        router.replace('/dashboard');
-      }
+      // Note: onboardingCompleted check removed to always show onboarding
+      // Demo users will have their progress reset on login
     }
-  }, [user, loading, onboardingCompleted, router]);
+  }, [user, loading, router]);
 
   const handleOnboardingComplete = () => {
     setIsRedirecting(true);
