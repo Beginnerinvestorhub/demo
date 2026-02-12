@@ -51,6 +51,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
     updateOnboardingProfile,
     varkResult,
     setVarkResult,
+    setOnboardingCompleted,
   } = useLearningStore();
 
   // Mapping formData to onboardingProfile for convenience in existing code
@@ -79,6 +80,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
     if (onboardingStep < 8) {
       completeOnboardingStep(onboardingStep + 1);
     } else {
+      setOnboardingCompleted(true);
       onComplete?.();
     }
   };

@@ -155,7 +155,11 @@ export const useLearningStore = create<LearningState>()(
 
       startOnboarding: () => set({ onboardingStep: 1, isLoading: false, error: null }),
 
-      completeOnboardingStep: (step: number) => set({ onboardingStep: step }),
+      completeOnboardingStep: (step: number) =>
+        set(state => ({
+          onboardingStep: step,
+          onboardingCompleted: step === 8 ? true : state.onboardingCompleted,
+        })),
 
       submitOnboardingProfile: (data: OnboardingProfileData) => {
         set({ isLoading: true, error: null });
