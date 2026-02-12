@@ -79,109 +79,163 @@ export default function CompoundCalculator() {
                 <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
             </section>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                {/* Inputs */}
-                <MechanicaCard variant="mechanical" className="lg:col-span-1 p-6">
-                    <h2 className="text-xs font-black uppercase tracking-widest text-mechanica-moonlight-blue mb-6 border-b border-gray-100 pb-2">
-                        Input Parameters
-                    </h2>
-                    <div className="space-y-6">
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Initial Capital</label>
-                            <input
-                                type="number"
-                                value={initialAmount}
-                                onChange={(e) => setInitialAmount(Number(e.target.value))}
-                                className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-4 py-2 font-mono text-mechanica-moonlight-blue outline-none focus:border-mechanica-moonlight-blue/30 transition-all"
-                            />
+            <div className="container mx-auto px-4 py-12 relative z-10 max-w-7xl">
+                {/* Educational Briefing Module */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                    <MechanicaCard variant="default" className="p-6 bg-blue-50/50 border-blue-200">
+                        <div className="flex items-center space-x-3 mb-4">
+                            <span className="text-2xl text-mechanica-moonlight-blue">⚙️</span>
+                            <h3 className="text-sm font-black uppercase tracking-widest text-mechanica-moonlight-blue">1. Calibrate Input</h3>
                         </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Monthly Fuel</label>
-                            <input
-                                type="number"
-                                value={monthlyContribution}
-                                onChange={(e) => setMonthlyContribution(Number(e.target.value))}
-                                className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-4 py-2 font-mono text-mechanica-moonlight-blue outline-none focus:border-mechanica-moonlight-blue/30 transition-all"
-                            />
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Time Horizon (Years)</label>
-                            <input
-                                type="range"
-                                min="1"
-                                max="50"
-                                value={years}
-                                onChange={(e) => setYears(Number(e.target.value))}
-                                className="w-full accent-mechanica-moonlight-blue"
-                            />
-                            <div className="text-right font-mono text-sm text-mechanica-moonlight-blue">{years} Cycles</div>
-                        </div>
-                        <div className="space-y-2">
-                            <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Efficiency Rate (%)</label>
-                            <input
-                                type="range"
-                                min="1"
-                                max="15"
-                                step="0.5"
-                                value={rate}
-                                onChange={(e) => setRate(Number(e.target.value))}
-                                className="w-full accent-mechanica-moonlight-blue"
-                            />
-                            <div className="text-right font-mono text-sm text-mechanica-moonlight-blue">{rate}% Efficiency</div>
-                        </div>
-                    </div>
-                </MechanicaCard>
-
-                {/* Results */}
-                <div className="lg:col-span-2 space-y-8">
-                    <MechanicaCard variant="wood" className="p-8">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                            <div className="space-y-6">
-                                <div>
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-1">Projected Output</h3>
-                                    <div className="text-5xl font-black text-mechanica-moonlight-blue font-mono tracking-tighter">
-                                        ${calculation.total.toLocaleString(undefined, { maximumFractionDigits: 0 })}
-                                    </div>
-                                </div>
-                                <div className="flex gap-4">
-                                    <div>
-                                        <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-400">Total Invested</h4>
-                                        <div className="text-xl font-bold font-mono text-gray-600">${calculation.invested.toLocaleString()}</div>
-                                    </div>
-                                    <div>
-                                        <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-400">Yield Gained</h4>
-                                        <div className="text-xl font-bold font-mono text-green-600">${calculation.interest.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex justify-center">
-                                <MechanicaGear size="xl" color="copper" speed="medium" />
-                            </div>
-                        </div>
-                    </MechanicaCard>
-
-                    <MechanicaCard variant="mechanical" className="p-6 overflow-hidden relative">
-                        <div className="absolute top-0 right-0 p-4 opacity-10">
-                            <MechanicaGear size="medium" color="brass" speed="fast" />
-                        </div>
-                        <h3 className="text-xs font-black uppercase tracking-[0.2em] text-mechanica-moonlight-blue mb-4">
-                            Growth Trajectory Analytics
-                        </h3>
-                        <p className="text-sm text-gray-600 leading-relaxed max-w-lg mb-6">
-                            Compound interest is the result of reinvesting interest, rather than paying it out, so that interest in the next period is then earned on the principal sum plus previously accumulated interest.
+                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                            Enter your starting capital and the "fuel" (monthly contribution) you plan to inject into the growth engine.
                         </p>
-                        <div className="bg-gray-50 rounded-xl p-4 border border-gray-100 italic text-xs text-gray-500 mechanica-text-technical uppercase tracking-widest">
-                  // Statistical Variance: Nominal returns are subject to market volatility.
+                    </MechanicaCard>
+
+                    <MechanicaCard variant="mechanical" className="p-6">
+                        <div className="flex items-center space-x-3 mb-4">
+                            <span className="text-2xl text-yellow-600">🕰️</span>
+                            <h3 className="text-sm font-black uppercase tracking-widest text-mechanica-moonlight-blue">2. Time Horizon</h3>
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                            Adjust the range to see how the "Time Multiplier" exponentially increases your yield. Time is the most powerful component.
+                        </p>
+                    </MechanicaCard>
+
+                    <MechanicaCard variant="wood" className="p-6">
+                        <div className="flex items-center space-x-3 mb-4">
+                            <span className="text-2xl text-mechanica-polished-brass">📈</span>
+                            <h3 className="text-sm font-black uppercase tracking-widest text-mechanica-moonlight-blue">3. Efficiency Rate</h3>
+                        </div>
+                        <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                            Set your expected annual return. Even a 1% increase in efficiency can result in massive architectural shifts over decades.
+                        </p>
+                    </MechanicaCard>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    {/* Inputs */}
+                    <MechanicaCard variant="mechanical" className="lg:col-span-1 p-6">
+                        <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-2">
+                            <h2 className="text-xs font-black uppercase tracking-widest text-mechanica-moonlight-blue">
+                                Input Parameters
+                            </h2>
+                            <span className="text-[8px] font-bold text-gray-400 uppercase tracking-tighter">Growth Module v1.0</span>
+                        </div>
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Initial Capital</label>
+                                <input
+                                    type="number"
+                                    value={initialAmount}
+                                    onChange={(e) => setInitialAmount(Number(e.target.value))}
+                                    className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-4 py-2 font-mono text-mechanica-moonlight-blue outline-none focus:border-mechanica-moonlight-blue/30 transition-all"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Monthly Fuel</label>
+                                <input
+                                    type="number"
+                                    value={monthlyContribution}
+                                    onChange={(e) => setMonthlyContribution(Number(e.target.value))}
+                                    className="w-full bg-gray-50 border-2 border-gray-100 rounded-xl px-4 py-2 font-mono text-mechanica-moonlight-blue outline-none focus:border-mechanica-moonlight-blue/30 transition-all"
+                                />
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Time Horizon (Years)</label>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="50"
+                                    value={years}
+                                    onChange={(e) => setYears(Number(e.target.value))}
+                                    className="w-full accent-mechanica-moonlight-blue"
+                                />
+                                <div className="text-right font-mono text-sm text-mechanica-moonlight-blue">{years} Cycles</div>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="text-[10px] font-black uppercase text-gray-400 tracking-widest">Efficiency Rate (%)</label>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="15"
+                                    step="0.5"
+                                    value={rate}
+                                    onChange={(e) => setRate(Number(e.target.value))}
+                                    className="w-full accent-mechanica-moonlight-blue"
+                                />
+                                <div className="text-right font-mono text-sm text-mechanica-moonlight-blue">{rate}% Efficiency</div>
+                            </div>
                         </div>
                     </MechanicaCard>
 
-                    <div className="flex justify-end">
-                        <MechanicaButton variant="mechanical" size="md">
-                            Export Projection Data
-                        </MechanicaButton>
+                    {/* Results */}
+                    <div className="lg:col-span-2 space-y-8">
+                        <MechanicaCard variant="wood" className="p-8">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                                <div className="space-y-6">
+                                    <div>
+                                        <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-500 mb-1">Projected Output</h3>
+                                        <div className="text-5xl font-black text-mechanica-moonlight-blue font-mono tracking-tighter">
+                                            ${calculation.total.toLocaleString(undefined, { maximumFractionDigits: 0 })}
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <div>
+                                            <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-400">Total Invested</h4>
+                                            <div className="text-xl font-bold font-mono text-gray-600">${calculation.invested.toLocaleString()}</div>
+                                        </div>
+                                        <div>
+                                            <h4 className="text-[9px] font-black uppercase tracking-widest text-gray-400">Yield Gained</h4>
+                                            <div className="text-xl font-bold font-mono text-green-600">${calculation.interest.toLocaleString(undefined, { maximumFractionDigits: 0 })}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="flex justify-center">
+                                    <MechanicaGear size="xl" color="copper" speed="medium" />
+                                </div>
+                            </div>
+                        </MechanicaCard>
+
+                        <MechanicaCard variant="mechanical" className="p-6 overflow-hidden relative">
+                            <div className="absolute top-0 right-0 p-4 opacity-10">
+                                <MechanicaGear size="medium" color="brass" speed="fast" />
+                            </div>
+                            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-mechanica-moonlight-blue mb-4">
+                                Structural Growth Analytics
+                            </h3>
+                            <div className="space-y-4">
+                                <p className="text-sm text-gray-600 leading-relaxed">
+                                    Compound growth is an <span className="font-bold text-mechanica-moonlight-blue">Architectural Multiplier</span>. Instead of just adding to your pile, you are building a machine where the interest earned today becomes the principal that generates even more interest tomorrow.
+                                </p>
+
+                                <div className="p-4 bg-blue-50 rounded-xl border border-blue-100">
+                                    <h4 className="text-[10px] font-black uppercase tracking-widest text-blue-600 mb-2">The Machine Logic:</h4>
+                                    <ul className="text-xs text-blue-800 space-y-2 font-medium">
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-blue-400 mt-1">●</span>
+                                            <span>Interest becomes principal, creating an accelerating feedback loop.</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-blue-400 mt-1">●</span>
+                                            <span>The longer the engine runs, the steeper the growth trajectory becomes.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="mt-6 bg-gray-50 rounded-xl p-4 border border-gray-100 italic text-xs text-gray-500 mechanica-text-technical uppercase tracking-widest">
+                            // PROTOCOL: Nominal returns are subject to market stress. Consult an advisor for structural verification.
+                            </div>
+                        </MechanicaCard>
+
+                        <div className="flex justify-end">
+                            <MechanicaButton variant="mechanical" size="md">
+                                Export Projection Data
+                            </MechanicaButton>
+                        </div>
                     </div>
                 </div>
-            </div>
         </MechanicaLayout>
     );
 }
