@@ -8,6 +8,7 @@ const Bar = React.lazy(() =>
 );
 
 import { registerMechanicaCharts, getMechanicaTheme, MECHANICA_COLORS } from '@/utils/mechanicaCharts';
+import { MechanicaGear } from './ui/mechanicaGear';
 
 // Register ChartJS once
 registerMechanicaCharts();
