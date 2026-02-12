@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { apiClient } from '@/services/apiClient';
 
@@ -38,7 +38,7 @@ export function useApi<T = unknown>(
 
   const {
     // baseURL is now handled by apiClient, but can be overridden
-    baseURL, 
+    baseURL,
     headers = {},
     onSuccess,
     onError,
@@ -90,11 +90,11 @@ export function useApi<T = unknown>(
     setState({ data: null, loading: false, error: null });
   }, []);
 
-  return {
+  return useMemo(() => ({
     ...state,
     execute,
     reset,
-  };
+  }), [state, execute, reset]);
 }
 
 /**

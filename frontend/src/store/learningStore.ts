@@ -13,6 +13,19 @@ interface OnboardingProfileData {
   preferredTopics: string[];
 }
 
+interface VarkAssessmentResult {
+  primary_vark_preference: 'visual' | 'aural' | 'read_write' | 'kinesthetic';
+  vark_profile_data: {
+    visual: number;
+    aural: number;
+    read_write: number;
+    kinesthetic: number;
+  };
+  assessment_version: string;
+  total_duration: number;
+  confidence_metrics: Record<string, number>;
+}
+
 interface LearningState {
   // State
   onboardingCompleted: boolean;
@@ -22,6 +35,8 @@ interface LearningState {
   onboardingStep: number;
   isLoading: boolean;
   error: string | null;
+  onboardingProfile: OnboardingProfileData;
+  varkResult: VarkAssessmentResult | null;
 
   // Setters
   setOnboardingCompleted: (completed: boolean) => void;
@@ -32,6 +47,8 @@ interface LearningState {
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
   clearError: () => void;
+  updateOnboardingProfile: (data: Partial<OnboardingProfileData>) => void;
+  setVarkResult: (result: VarkAssessmentResult | null) => void;
 
   // Module actions
   addCompletedModule: (module: string) => void;
@@ -78,6 +95,17 @@ export const useLearningStore = create<LearningState>()(
       onboardingStep: 0,
       isLoading: false,
       error: null,
+      onboardingProfile: {
+        ageRange: '',
+        annualIncome: '',
+        experienceLevel: '',
+        riskProfile: '',
+        investmentGoals: [],
+        timeHorizon: '',
+        learningStyle: '',
+        preferredTopics: [],
+      },
+      varkResult: null,
 
       setOnboardingCompleted: (completed: boolean) =>
         set({ onboardingCompleted: completed }),
@@ -112,6 +140,17 @@ export const useLearningStore = create<LearningState>()(
           completedModules: [],
           progress: 0,
           onboardingStep: 0,
+          varkResult: null,
+          onboardingProfile: {
+            ageRange: '',
+            annualIncome: '',
+            experienceLevel: '',
+            riskProfile: '',
+            investmentGoals: [],
+            timeHorizon: '',
+            learningStyle: '',
+            preferredTopics: [],
+          },
         }),
 
       startOnboarding: () => set({ onboardingStep: 1, isLoading: false, error: null }),
@@ -143,6 +182,14 @@ export const useLearningStore = create<LearningState>()(
           set({ error: 'Failed to fetch learning path', isLoading: false });
         }
       },
+
+      updateOnboardingProfile: (data: Partial<OnboardingProfileData>) =>
+        set(state => ({
+          onboardingProfile: { ...state.onboardingProfile, ...data }
+        })),
+
+      setVarkResult: (result: VarkAssessmentResult | null) =>
+        set({ varkResult: result }),
 
       fetchAIRecommendations: async () => {
         set({ isLoading: true, error: null });

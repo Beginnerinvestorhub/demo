@@ -47,22 +47,14 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
     startOnboarding,
     completeOnboardingStep,
     clearError,
+    onboardingProfile,
+    updateOnboardingProfile,
+    varkResult,
+    setVarkResult,
   } = useLearningStore();
 
-  const [formData, setFormData] = useState({
-    ageRange: '',
-    annualIncome: '',
-    experienceLevel: '',
-    riskProfile: '',
-    investmentGoals: [] as string[],
-    timeHorizon: '',
-    learningStyle: '',
-    preferredTopics: [] as string[],
-  });
-
-  const [varkResult, setVarkResult] = useState<VarkAssessmentResult | null>(
-    null
-  );
+  // Mapping formData to onboardingProfile for convenience in existing code
+  const formData = onboardingProfile;
 
 
   // Initialize onboarding (skip DB for demo)
@@ -79,7 +71,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
 
   // Form helpers
   const updateFormData = (field: string, value: string | string[]) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    updateOnboardingProfile({ [field]: value });
   };
 
   // Navigation
@@ -333,7 +325,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
             onComplete={(result) => {
               setVarkResult(result);
               updateFormData('learningStyle', result.primary_vark_preference);
-              if (!isDemo) completeOnboardingStep(6);
+              if (!isDemo) completeOnboardingStep(7); // Advance to results (Step 7)
               else handleNext(); // Move to result display
             }}
           />
@@ -424,12 +416,26 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
           >
             Back
           </button>
-          <button
-            onClick={handleNext}
-            className="px-6 py-2 bg-indigo-600 text-white rounded-md font-medium hover:bg-indigo-700 transition-colors shadow-sm"
-          >
-            {onboardingStep === 8 ? 'Go to Dashboard' : 'Next'}
-          </button>
+          {onboardingStep !== 6 ? (
+            <button
+              onClick={handleNext}
+              disabled={
+                (onboardingStep === 2 && !formData.ageRange) ||
+                (onboardingStep === 3 && !formData.riskProfile) ||
+                (onboardingStep === 5 && !formData.timeHorizon)
+              }
+              className={`px-6 py-2 rounded-md font-medium transition-colors shadow-sm ${((onboardingStep === 2 && !formData.ageRange) ||
+                  (onboardingStep === 3 && !formData.riskProfile) ||
+                  (onboardingStep === 5 && !formData.timeHorizon))
+                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
+                  : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                }`}
+            >
+              {onboardingStep === 8 ? 'Go to Dashboard' : 'Next'}
+            </button>
+          ) : (
+            <div className="w-24"></div>
+          )}
         </div>
       </div>
     </div>
