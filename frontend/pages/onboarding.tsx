@@ -51,7 +51,7 @@ export default function OnboardingPage() {
   }
 
   // Don't render if redirecting or invalid state
-  if (!user || onboardingCompleted) {
+  if (!user) {
     return null;
   }
 
