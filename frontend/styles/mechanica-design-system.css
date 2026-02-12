@@ -691,3 +691,35 @@ body {
 .mechanica-transition-bounce {
   transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
+/* Gold Chrome Typeface Effect */
+.mechanica-title-gold-chrome {
+  background: linear-gradient(
+    to bottom,
+    #bf953f 0%,
+    #fcf6ba 45%,
+    #b38728 50%,
+    #fbf5b7 55%,
+    #aa771c 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1px rgba(251, 245, 183, 0.5))
+    drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
+}
+
+.mechanica-title-gold-chrome::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  pointer-events: none;
+}

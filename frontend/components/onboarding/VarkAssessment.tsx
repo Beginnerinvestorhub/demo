@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useApiGet, useApiPost } from '../../hooks/useApi'; // Assuming useApi is in ../../hooks/useApi
 import { MechanicaButton } from '../ui/mechanicaButton';
 import { MechanicaCard } from '../ui/mechanicaCard';
 import { MechanicaGear } from '../ui/mechanicaGear';
@@ -35,57 +34,104 @@ interface VarkAssessmentResult {
   confidence_metrics: Record<string, number>;
 }
 
-const VarkAssessment: React.FC<{ userId: string; onComplete: (result: VarkAssessmentResult) => void }> = ({ userId, onComplete }) => {
-  const [answers, setAnswers] = useState<Record<string, string>>({}); // Changed key to string for question ID
+const MOCK_QUESTIONS: VarkQuestion[] = [
+  {
+    id: 'q1',
+    question_text: 'When you are learning a new physical skill, you prefer to:',
+    options: [
+      { text: 'Watch someone perform it first', style: 'visual' },
+      { text: 'Listen to an explanation of the steps', style: 'aural' },
+      { text: 'Read a manual or diagrams', style: 'read_write' },
+      { text: 'Just start practicing and figure it out', style: 'kinesthetic' },
+    ],
+  },
+  {
+    id: 'q2',
+    question_text: 'When you are trying to remember a difficult concept, you:',
+    options: [
+      { text: 'Create a mental map or flowchart', style: 'visual' },
+      { text: 'Discuss it with someone else', style: 'aural' },
+      { text: 'Write notes or summarize the key points', style: 'read_write' },
+      { text: 'Build a physical model or relate it to a real-world task', style: 'kinesthetic' },
+    ],
+  },
+  {
+    id: 'q3',
+    question_text: 'If you are looking for directions to a new place, you prefer:',
+    options: [
+      { text: 'Following a map on your phone', style: 'visual' },
+      { text: 'Asking someone for verbal directions', style: 'aural' },
+      { text: 'Reading a list of written steps', style: 'read_write' },
+      { text: 'Driving around until you find a landmark', style: 'kinesthetic' },
+    ],
+  },
+  {
+    id: 'q4',
+    question_text: 'When choosing a restaurant, you are most influenced by:',
+    options: [
+      { text: 'Photos of the food on social media', style: 'visual' },
+      { text: 'Recommendations from friends', style: 'aural' },
+      { text: 'Reading reviews and the menu', style: 'read_write' },
+      { text: 'The atmosphere and comfort of the space', style: 'kinesthetic' },
+    ],
+  },
+];
+
+const VarkAssessment: React.FC<{
+  userId: string;
+  isDemo?: boolean;
+  onComplete: (result: VarkAssessmentResult) => void;
+}> = ({ userId, isDemo = false, onComplete }) => {
+  const [answers, setAnswers] = useState<Record<string, 'visual' | 'aural' | 'read_write' | 'kinesthetic'>>({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
 
-  // Fetch questions using useApiGet
-  const { data: questions, loading: questionsLoading, error: questionsError } = useApiGet<VarkQuestion[]>('/api/v1/learning/vark/questions', { autoFetch: true });
+  // Use local questions directly
+  const questions = MOCK_QUESTIONS;
 
-  // Post assessment using useApiPost
-  const { post, loading: submitLoading, error: submitError } = useApiPost<VarkAssessmentResult, VarkAssessmentPayload>('/api/v1/learning/vark/assess');
-
-  const handleAnswerChange = (questionId: string, style: string) => {
+  const handleAnswerChange = (questionId: string, style: 'visual' | 'aural' | 'read_write' | 'kinesthetic') => {
     setAnswers((prev) => ({ ...prev, [questionId]: style }));
   };
 
+  const calculateResult = (): VarkAssessmentResult => {
+    const scores = {
+      visual: 0,
+      aural: 0,
+      read_write: 0,
+      kinesthetic: 0,
+    };
+
+    Object.values(answers).forEach((style) => {
+      scores[style]++;
+    });
+
+    const primaryStyle = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as
+      | 'visual'
+      | 'aural'
+      | 'read_write'
+      | 'kinesthetic';
+
+    return {
+      primary_vark_preference: primaryStyle,
+      vark_profile_data: scores,
+      assessment_version: '1.0-client',
+      total_duration: 0, // Could track if needed
+      confidence_metrics: { consistency: 0.95 },
+    };
+  };
+
   const handleSubmit = async () => {
-    if (!questions || Object.keys(answers).length !== questions.length) {
-      // setError('Please answer all questions.'); // Will handle this with UI feedback later
+    if (Object.keys(answers).length !== questions.length) {
       return;
     }
 
-    const assessment_responses = questions.map(q => ({
-      question_id: q.id,
-      selected_style: answers[q.id] as 'visual' | 'aural' | 'read_write' | 'kinesthetic',
-    }));
+    setIsAnalyzing(true);
 
-    try {
-      const result = await post({ user_id: userId, assessment_responses });
-      if (result) {
-        onComplete(result);
-      }
-    } catch (err) {
-      console.warn('VARK assessment API failed, using mock result for demo:', err);
+    // Simulate mechanical analysis delay
+    await new Promise((resolve) => setTimeout(resolve, 1500));
 
-      // Provide a high-fidelity mock result so the demo never breaks
-      const mockResult: VarkAssessmentResult = {
-        primary_vark_preference: 'visual',
-        vark_profile_data: {
-          visual: 8,
-          aural: 5,
-          read_write: 3,
-          kinesthetic: 6,
-        },
-        assessment_version: '1.0-mock',
-        total_duration: 145,
-        confidence_metrics: { consistency: 0.92 }
-      };
-
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      onComplete(mockResult);
-    }
+    const result = calculateResult();
+    onComplete(result);
   };
 
   const handleNextQuestion = () => {
@@ -99,27 +145,6 @@ const VarkAssessment: React.FC<{ userId: string; onComplete: (result: VarkAssess
       setCurrentQuestionIndex(prev => prev - 1);
     }
   };
-
-  if (questionsLoading) {
-    return (
-      <MechanicaCard variant="mechanical" className="p-6 text-center">
-        <MechanicaGear size="large" color="steel" speed="slow" className="mx-auto mb-4" />
-        <p className="mechanica-text-technical">Loading VARK questions...</p>
-      </MechanicaCard>
-    );
-  }
-
-  if (questionsError) {
-    return (
-      <MechanicaCard variant="mechanical" className="p-6 text-center">
-        <MechanicaGear size="large" color="copper" speed="fast" className="mx-auto mb-4" />
-        <p className="text-red-600 mechanica-text-technical">Error loading questions: {questionsError}</p>
-        <MechanicaButton variant="mechanical" onClick={() => window.location.reload()} className="mt-4">
-          Retry
-        </MechanicaButton>
-      </MechanicaCard>
-    );
-  }
 
   if (!questions || questions.length === 0) {
     return (
@@ -141,9 +166,12 @@ const VarkAssessment: React.FC<{ userId: string; onComplete: (result: VarkAssess
         Answer the following questions to help us understand how you learn best. ({currentQuestionIndex + 1}/{questions.length})
       </p>
 
-      {submitError && (
-        <MechanicaCard variant="wood" className="p-4 mb-4 border-red-300 bg-red-50">
-          <p className="text-red-700 mechanica-text-technical">Error submitting assessment: {submitError}</p>
+      {isAnalyzing && (
+        <MechanicaCard variant="wood" className="p-4 mb-4 border-indigo-300 bg-indigo-50">
+          <div className="flex items-center space-x-3">
+            <MechanicaGear size="small" color="brass" speed="fast" />
+            <p className="text-indigo-700 mechanica-text-technical">Analyzing behavioral patterns...</p>
+          </div>
         </MechanicaCard>
       )}
 
@@ -167,22 +195,22 @@ const VarkAssessment: React.FC<{ userId: string; onComplete: (result: VarkAssess
       </div>
 
       <div className="flex justify-between mt-6">
-        <MechanicaButton variant="wood" onClick={handlePreviousQuestion} disabled={isFirstQuestion || submitLoading}>
+        <MechanicaButton variant="wood" onClick={handlePreviousQuestion} disabled={isFirstQuestion || isAnalyzing}>
           Previous
         </MechanicaButton>
         {isLastQuestion ? (
           <MechanicaButton
             variant="mechanical"
             onClick={handleSubmit}
-            disabled={submitLoading || !hasAnsweredCurrentQuestion}
+            disabled={isAnalyzing || !hasAnsweredCurrentQuestion}
           >
-            {submitLoading ? 'Analyzing...' : 'Submit Assessment'}
+            {isAnalyzing ? 'Processing...' : 'Complete Assessment'}
           </MechanicaButton>
         ) : (
           <MechanicaButton
             variant="mechanical"
             onClick={handleNextQuestion}
-            disabled={!hasAnsweredCurrentQuestion || submitLoading}
+            disabled={!hasAnsweredCurrentQuestion || isAnalyzing}
           >
             Next Question
           </MechanicaButton>

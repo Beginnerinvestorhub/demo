@@ -322,6 +322,7 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
         return (
           <VarkAssessment
             userId={user?.uid ?? 'demo-user'}
+            isDemo={isDemo}
             onComplete={(result) => {
               setVarkResult(result);
               updateFormData('learningStyle', result.primary_vark_preference);
@@ -425,10 +426,10 @@ const OnboardingFlow: React.FC<OnboardingFlowProps> = ({
                 (onboardingStep === 5 && !formData.timeHorizon)
               }
               className={`px-6 py-2 rounded-md font-medium transition-colors shadow-sm ${((onboardingStep === 2 && !formData.ageRange) ||
-                  (onboardingStep === 3 && !formData.riskProfile) ||
-                  (onboardingStep === 5 && !formData.timeHorizon))
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
-                  : 'bg-indigo-600 text-white hover:bg-indigo-700'
+                (onboardingStep === 3 && !formData.riskProfile) ||
+                (onboardingStep === 5 && !formData.timeHorizon))
+                ? 'bg-gray-100 text-gray-400 cursor-not-allowed border border-gray-200'
+                : 'bg-indigo-600 text-white hover:bg-indigo-700'
                 }`}
             >
               {onboardingStep === 8 ? 'Go to Dashboard' : 'Next'}
