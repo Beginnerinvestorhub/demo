@@ -100,7 +100,11 @@ const tools = [
     href: '/vark-assessment',
     category: 'Learning',
     status: 'active',
-    features: ['Learning style analysis', 'Personalized recommendations', 'Study strategies'],
+    features: [
+      'Learning style analysis',
+      'Personalized recommendations',
+      'Study strategies',
+    ],
     gearColor: 'copper' as const,
   },
   {
@@ -111,7 +115,11 @@ const tools = [
     href: '/compound-calculator',
     category: 'Research',
     status: 'active',
-    features: ['Growth projections', 'Inflation adjustment', 'Contribution modeling'],
+    features: [
+      'Growth projections',
+      'Inflation adjustment',
+      'Contribution modeling',
+    ],
     gearColor: 'copper' as const,
   },
 ];
@@ -134,14 +142,20 @@ export default function ToolsOverview() {
     >
       <Head>
         <title>Investment Tools | BeginnerInvestorHub</title>
-        <meta name="description" content="Explore our comprehensive suite of precision architectural tools for investment mastery: portfolio simulation, AI coaching, risk analysis, and real-time market data." />
+        <meta
+          name="description"
+          content="Explore our comprehensive suite of precision architectural tools for investment mastery: portfolio simulation, AI coaching, risk analysis, and real-time market data."
+        />
       </Head>
       <div className="min-h-screen">
         {/* Hero Section */}
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
           {/* Steam Vents for Hero */}
           <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
-          <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+          <div
+            className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"
+            style={{ animationDelay: '1.5s' }}
+          ></div>
           {/* Mechanical background */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -150,7 +164,7 @@ export default function ToolsOverview() {
                 backgroundImage: `
                   repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
                   repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
-                `
+                `,
               }}
             />
           </div>
@@ -170,7 +184,9 @@ export default function ToolsOverview() {
               </h2>
 
               <p className="text-lg text-blue-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-                We&apos;ve calibrated complex investing strategies into professional-grade modules. Think of this as your personal financial workshop—built for clarity and growth.
+                We&apos;ve calibrated complex investing strategies into
+                professional-grade modules. Think of this as your personal
+                financial workshop—built for clarity and growth.
               </p>
 
               <div className="flex justify-center">
@@ -200,10 +216,11 @@ export default function ToolsOverview() {
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all ${activeCategory === category
-                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg scale-105'
-                      : 'text-gray-500 hover:text-mechanica-moonlight-blue'
-                      }`}
+                    className={`px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all ${
+                      activeCategory === category
+                        ? 'bg-mechanica-moonlight-blue text-white shadow-lg scale-105'
+                        : 'text-gray-500 hover:text-mechanica-moonlight-blue'
+                    }`}
                   >
                     {category}
                   </button>
@@ -217,7 +234,13 @@ export default function ToolsOverview() {
               {filteredTools.map(tool => (
                 <MechanicaCard
                   key={tool.name}
-                  variant={tool.category === 'Core Tools' ? 'mechanical' : tool.category === 'Research' ? 'wood' : 'brass'}
+                  variant={
+                    tool.category === 'Core Tools'
+                      ? 'mechanical'
+                      : tool.category === 'Research'
+                        ? 'wood'
+                        : 'brass'
+                  }
                   animated
                   className="relative group hover:scale-[1.02] transition-transform"
                 >
@@ -231,8 +254,14 @@ export default function ToolsOverview() {
 
                   <div className="p-8 h-full flex flex-col">
                     <div className="flex justify-between items-start mb-6">
-                      <MechanicaGear size="lg" color={tool.gearColor} speed="medium" />
-                      <div className="text-4xl opacity-80 group-hover:scale-110 transition-transform duration-500">{tool.icon}</div>
+                      <MechanicaGear
+                        size="lg"
+                        color={tool.gearColor}
+                        speed="medium"
+                      />
+                      <div className="text-4xl opacity-80 group-hover:scale-110 transition-transform duration-500">
+                        {tool.icon}
+                      </div>
                     </div>
 
                     <div className="mb-4">
@@ -248,8 +277,12 @@ export default function ToolsOverview() {
                     <div className="space-y-2 mb-8 flex-grow">
                       {tool.features.map((feature, idx) => (
                         <div key={idx} className="flex items-center space-x-2">
-                          <span className="text-mechanica-polished-brass font-black">✓</span>
-                          <span className="text-[11px] font-bold text-gray-500 uppercase tracking-tight">{feature}</span>
+                          <span className="text-mechanica-polished-brass font-black">
+                            ✓
+                          </span>
+                          <span className="text-[11px] font-bold text-gray-500 uppercase tracking-tight">
+                            {feature}
+                          </span>
                         </div>
                       ))}
                     </div>
@@ -265,7 +298,12 @@ export default function ToolsOverview() {
                           Launch Module
                         </MechanicaButton>
                       ) : (
-                        <MechanicaButton variant="wood" size="lg" className="w-full py-4 text-xs font-black uppercase tracking-[0.2em] opacity-50 cursor-not-allowed" disabled>
+                        <MechanicaButton
+                          variant="wood"
+                          size="lg"
+                          className="w-full py-4 text-xs font-black uppercase tracking-[0.2em] opacity-50 cursor-not-allowed"
+                          disabled
+                        >
                           Under Construction
                         </MechanicaButton>
                       )}
@@ -278,18 +316,28 @@ export default function ToolsOverview() {
             {/* CTA Section */}
             {!user && (
               <div className="w-full max-w-4xl pb-12">
-                <MechanicaCard variant="mechanical" animated className="text-center bg-gradient-to-br from-blue-50 to-white mechanica-hum">
+                <MechanicaCard
+                  variant="mechanical"
+                  animated
+                  className="text-center bg-gradient-to-br from-blue-50 to-white mechanica-hum"
+                >
                   <div className="p-12">
                     <div className="flex justify-center items-center space-x-6 mb-8">
                       <MechanicaGear size="large" color="brass" speed="slow" />
                       <h2 className="text-3xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter">
                         Ready to Start Building?
                       </h2>
-                      <MechanicaGear size="large" color="brass" speed="reverse" />
+                      <MechanicaGear
+                        size="large"
+                        color="brass"
+                        speed="reverse"
+                      />
                     </div>
 
                     <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto font-medium italic">
-                      &ldquo;Initialize your investor profile to unlock our full suite of premium architectural tools and start your learning journey.&rdquo;
+                      &ldquo;Initialize your investor profile to unlock our full
+                      suite of premium architectural tools and start your
+                      learning journey.&rdquo;
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">

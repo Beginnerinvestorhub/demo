@@ -7,7 +7,10 @@ import { MechanicaGear } from '../ui/mechanicaGear';
 interface VarkQuestion {
   id: string;
   question_text: string;
-  options: { text: string; style: 'visual' | 'aural' | 'read_write' | 'kinesthetic' }[];
+  options: {
+    text: string;
+    style: 'visual' | 'aural' | 'read_write' | 'kinesthetic';
+  }[];
 }
 
 // Define expected structure for the assessment payload
@@ -52,17 +55,24 @@ const MOCK_QUESTIONS: VarkQuestion[] = [
       { text: 'Create a mental map or flowchart', style: 'visual' },
       { text: 'Discuss it with someone else', style: 'aural' },
       { text: 'Write notes or summarize the key points', style: 'read_write' },
-      { text: 'Build a physical model or relate it to a real-world task', style: 'kinesthetic' },
+      {
+        text: 'Build a physical model or relate it to a real-world task',
+        style: 'kinesthetic',
+      },
     ],
   },
   {
     id: 'q3',
-    question_text: 'If you are looking for directions to a new place, you prefer:',
+    question_text:
+      'If you are looking for directions to a new place, you prefer:',
     options: [
       { text: 'Following a map on your phone', style: 'visual' },
       { text: 'Asking someone for verbal directions', style: 'aural' },
       { text: 'Reading a list of written steps', style: 'read_write' },
-      { text: 'Driving around until you find a landmark', style: 'kinesthetic' },
+      {
+        text: 'Driving around until you find a landmark',
+        style: 'kinesthetic',
+      },
     ],
   },
   {
@@ -82,15 +92,20 @@ const VarkAssessment: React.FC<{
   isDemo?: boolean;
   onComplete: (result: VarkAssessmentResult) => void;
 }> = ({ userId, isDemo = false, onComplete }) => {
-  const [answers, setAnswers] = useState<Record<string, 'visual' | 'aural' | 'read_write' | 'kinesthetic'>>({});
+  const [answers, setAnswers] = useState<
+    Record<string, 'visual' | 'aural' | 'read_write' | 'kinesthetic'>
+  >({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   // Use local questions directly
   const questions = MOCK_QUESTIONS;
 
-  const handleAnswerChange = (questionId: string, style: 'visual' | 'aural' | 'read_write' | 'kinesthetic') => {
-    setAnswers((prev) => ({ ...prev, [questionId]: style }));
+  const handleAnswerChange = (
+    questionId: string,
+    style: 'visual' | 'aural' | 'read_write' | 'kinesthetic'
+  ) => {
+    setAnswers(prev => ({ ...prev, [questionId]: style }));
   };
 
   const calculateResult = (): VarkAssessmentResult => {
@@ -101,15 +116,13 @@ const VarkAssessment: React.FC<{
       kinesthetic: 0,
     };
 
-    Object.values(answers).forEach((style) => {
+    Object.values(answers).forEach(style => {
       scores[style]++;
     });
 
-    const primaryStyle = Object.entries(scores).reduce((a, b) => (a[1] > b[1] ? a : b))[0] as
-      | 'visual'
-      | 'aural'
-      | 'read_write'
-      | 'kinesthetic';
+    const primaryStyle = Object.entries(scores).reduce((a, b) =>
+      a[1] > b[1] ? a : b
+    )[0] as 'visual' | 'aural' | 'read_write' | 'kinesthetic';
 
     return {
       primary_vark_preference: primaryStyle,
@@ -128,7 +141,7 @@ const VarkAssessment: React.FC<{
     setIsAnalyzing(true);
 
     // Simulate mechanical analysis delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    await new Promise(resolve => setTimeout(resolve, 1500));
 
     const result = calculateResult();
     onComplete(result);
@@ -161,31 +174,46 @@ const VarkAssessment: React.FC<{
 
   return (
     <MechanicaCard variant="mechanical" className="p-6">
-      <h2 className="text-2xl font-bold mb-4 mechanica-heading-professional">Discover Your Learning Style</h2>
+      <h2 className="text-2xl font-bold mb-4 mechanica-heading-professional">
+        Discover Your Learning Style
+      </h2>
       <p className="mb-6 text-gray-600 mechanica-text-technical">
-        Answer the following questions to help us understand how you learn best. ({currentQuestionIndex + 1}/{questions.length})
+        Answer the following questions to help us understand how you learn best.
+        ({currentQuestionIndex + 1}/{questions.length})
       </p>
 
       {isAnalyzing && (
-        <MechanicaCard variant="wood" className="p-4 mb-4 border-indigo-300 bg-indigo-50">
+        <MechanicaCard
+          variant="wood"
+          className="p-4 mb-4 border-indigo-300 bg-indigo-50"
+        >
           <div className="flex items-center space-x-3">
             <MechanicaGear size="small" color="brass" speed="fast" />
-            <p className="text-indigo-700 mechanica-text-technical">Analyzing behavioral patterns...</p>
+            <p className="text-indigo-700 mechanica-text-technical">
+              Analyzing behavioral patterns...
+            </p>
           </div>
         </MechanicaCard>
       )}
 
       <div className="mb-6">
-        <p className="font-semibold mb-2 mechanica-text-technical">{currentQuestion.question_text}</p>
+        <p className="font-semibold mb-2 mechanica-text-technical">
+          {currentQuestion.question_text}
+        </p>
         <div className="space-y-2">
-          {currentQuestion.options.map((opt) => (
-            <label key={opt.style} className="flex items-center p-2 rounded-md hover:bg-gray-100 cursor-pointer mechanica-text-technical">
+          {currentQuestion.options.map(opt => (
+            <label
+              key={opt.style}
+              className="flex items-center p-2 rounded-md hover:bg-gray-100 cursor-pointer mechanica-text-technical"
+            >
               <input
                 type="radio"
                 name={`question-${currentQuestion.id}`}
                 value={opt.style}
                 checked={answers[currentQuestion.id] === opt.style}
-                onChange={() => handleAnswerChange(currentQuestion.id, opt.style)}
+                onChange={() =>
+                  handleAnswerChange(currentQuestion.id, opt.style)
+                }
                 className="mr-2 h-4 w-4 text-mechanica-moonlight-blue border-gray-300 focus:ring-mechanica-moonlight-blue"
               />
               {opt.text}
@@ -195,7 +223,11 @@ const VarkAssessment: React.FC<{
       </div>
 
       <div className="flex justify-between mt-6">
-        <MechanicaButton variant="wood" onClick={handlePreviousQuestion} disabled={isFirstQuestion || isAnalyzing}>
+        <MechanicaButton
+          variant="wood"
+          onClick={handlePreviousQuestion}
+          disabled={isFirstQuestion || isAnalyzing}
+        >
           Previous
         </MechanicaButton>
         {isLastQuestion ? (

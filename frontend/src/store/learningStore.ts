@@ -113,17 +113,14 @@ export const useLearningStore = create<LearningState>()(
       setCurrentModule: (module: string | null) =>
         set({ currentModule: module }),
 
-      setOnboardingStep: (step: number) =>
-        set({ onboardingStep: step }),
+      setOnboardingStep: (step: number) => set({ onboardingStep: step }),
 
       setCompletedModules: (modules: string[]) =>
         set({ completedModules: modules }),
 
-      setLoading: (loading: boolean) =>
-        set({ isLoading: loading }),
+      setLoading: (loading: boolean) => set({ isLoading: loading }),
 
-      setError: (error: string | null) =>
-        set({ error }),
+      setError: (error: string | null) => set({ error }),
 
       addCompletedModule: (module: string) =>
         set(state => ({
@@ -153,7 +150,8 @@ export const useLearningStore = create<LearningState>()(
           },
         }),
 
-      startOnboarding: () => set({ onboardingStep: 1, isLoading: false, error: null }),
+      startOnboarding: () =>
+        set({ onboardingStep: 1, isLoading: false, error: null }),
 
       completeOnboardingStep: (step: number) =>
         set(state => ({
@@ -169,7 +167,7 @@ export const useLearningStore = create<LearningState>()(
           set({
             onboardingCompleted: true,
             onboardingStep: 0,
-            isLoading: false
+            isLoading: false,
           });
         }, 1000);
       },
@@ -189,7 +187,7 @@ export const useLearningStore = create<LearningState>()(
 
       updateOnboardingProfile: (data: Partial<OnboardingProfileData>) =>
         set(state => ({
-          onboardingProfile: { ...state.onboardingProfile, ...data }
+          onboardingProfile: { ...state.onboardingProfile, ...data },
         })),
 
       setVarkResult: (result: VarkAssessmentResult | null) =>
@@ -203,7 +201,10 @@ export const useLearningStore = create<LearningState>()(
           // In a real app, this would fetch AI recommendations
           set({ isLoading: false });
         } catch (error) {
-          set({ error: 'Failed to fetch AI recommendations', isLoading: false });
+          set({
+            error: 'Failed to fetch AI recommendations',
+            isLoading: false,
+          });
         }
       },
 
@@ -216,10 +217,13 @@ export const useLearningStore = create<LearningState>()(
           set(state => ({
             completedModules: [...state.completedModules, lessonId],
             progress: Math.min(100, state.progress + 10),
-            isLoading: false
+            isLoading: false,
           }));
         } catch (error) {
-          set({ error: 'Failed to mark lesson as completed', isLoading: false });
+          set({
+            error: 'Failed to mark lesson as completed',
+            isLoading: false,
+          });
         }
       },
 
@@ -270,18 +274,18 @@ export const useCurrentLearningPath = () => {
       name: 'Beginner Investment Fundamentals',
       description: 'Learn the basics of investing and portfolio management',
       estimatedDuration: '4 weeks',
-      estimatedDurationHours: 15
+      estimatedDurationHours: 15,
     },
     modules: [] as LearningModule[],
     overallProgress: 65,
-    isLoading: false
+    isLoading: false,
   };
 };
 
 export const useLearningContent = () => {
   return {
     content: [] as LearningModule[],
-    isLoading: false
+    isLoading: false,
   };
 };
 
@@ -297,9 +301,9 @@ export const useNextRecommended = () => {
       estimatedDurationMinutes: 25,
       pointsValue: 50,
       progressStatus: 'in_progress',
-      thumbnailUrl: '/images/stocks-intro.jpg'
+      thumbnailUrl: '/images/stocks-intro.jpg',
     } as LearningModule,
-    isLoading: false
+    isLoading: false,
   };
 };
 
@@ -310,7 +314,7 @@ export const useAIRecommendations = () => {
     confidenceScore: 0.85,
     priorityScore: 75,
     reasoning: 'Based on your profile',
-    isLoading: false
+    isLoading: false,
   };
 };
 
@@ -323,8 +327,8 @@ export const useLearningStats = () => {
       completedLessons: 12,
       totalLessons: 20,
       totalPoints: 450,
-      streakDays: 5
+      streakDays: 5,
     },
-    isLoading: false
+    isLoading: false,
   };
 };

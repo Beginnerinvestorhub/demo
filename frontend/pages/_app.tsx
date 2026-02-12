@@ -1,16 +1,16 @@
 // pages/_app.tsx
 
-import type { AppProps } from 'next/app'
-import { useRouter } from 'next/router'
-import { createContext, useContext, useEffect, useState } from 'react'
-import Head from 'next/head'
+import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
+import { createContext, useContext, useEffect, useState } from 'react';
+import Head from 'next/head';
 // Import Google Font Inter
 import { Inter } from 'next/font/google';
 // Import Vercel Analytics and SpeedInsights
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/react';
 // Import AuthProvider
-import { AuthProvider } from '../hooks/useAuth'
+import { AuthProvider } from '../hooks/useAuth';
 
 // Initialize Inter font
 const inter = Inter({
@@ -18,7 +18,14 @@ const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
   preload: true,
-  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+  fallback: [
+    'system-ui',
+    '-apple-system',
+    'BlinkMacSystemFont',
+    'Segoe UI',
+    'Roboto',
+    'sans-serif',
+  ],
 });
 
 // Font variables using Inter
@@ -44,7 +51,7 @@ const FeatureFlagContext = createContext<FeatureFlags>({
 export const useFeatureFlags = () => useContext(FeatureFlagContext);
 
 // Import critical CSS immediately
-import '../styles/critical.css'
+import '../styles/critical.css';
 
 // Default feature flags (no server fetch needed for demo)
 const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
@@ -53,12 +60,9 @@ const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
   enableTrading: true,
 };
 
-function MyApp({
-  Component,
-  pageProps
-}: AppProps) {
-  const router = useRouter()
-  const [pageLoading, setPageLoading] = useState(false)
+function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+  const [pageLoading, setPageLoading] = useState(false);
 
   // Load non-critical CSS after initial render
   useEffect(() => {
@@ -69,7 +73,7 @@ function MyApp({
       link.onload = () => {
         // CSS loaded successfully
       };
-      link.onerror = (error) => {
+      link.onerror = error => {
         console.warn('Failed to load non-critical CSS:', error);
       };
 
@@ -80,23 +84,23 @@ function MyApp({
     // Load after a short delay to ensure critical CSS is applied first
     const timer = setTimeout(loadNonCriticalCSS, 100);
     return () => clearTimeout(timer);
-  }, [])
+  }, []);
 
   // Handle route changes for loading states
   useEffect(() => {
-    const handleStart = () => setPageLoading(true)
-    const handleComplete = () => setPageLoading(false)
+    const handleStart = () => setPageLoading(true);
+    const handleComplete = () => setPageLoading(false);
 
-    router.events.on('routeChangeStart', handleStart)
-    router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
+    router.events.on('routeChangeStart', handleStart);
+    router.events.on('routeChangeComplete', handleComplete);
+    router.events.on('routeChangeError', handleComplete);
 
     return () => {
-      router.events.off('routeChangeStart', handleStart)
-      router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
-    }
-  }, [router])
+      router.events.off('routeChangeStart', handleStart);
+      router.events.off('routeChangeComplete', handleComplete);
+      router.events.off('routeChangeError', handleComplete);
+    };
+  }, [router]);
 
   return (
     <>
@@ -133,7 +137,7 @@ function MyApp({
         </>
       )}
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;

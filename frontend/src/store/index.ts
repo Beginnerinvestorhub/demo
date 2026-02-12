@@ -16,10 +16,10 @@ export { useModalStore, useModals } from './modalStore';
 
 // Re-export from notificationStore
 export {
-    useNotificationStore,
-    useNotifications,
-    showNotification,
-    showErrorNotification,
+  useNotificationStore,
+  useNotifications,
+  showNotification,
+  showErrorNotification,
 } from './notificationStore';
 
 // Re-export from learningStore
@@ -27,27 +27,27 @@ export { useLearningStore } from './learningStore';
 
 // Export composite useUI hook
 export const useUI = () => {
-    const { removeModal } = useModalStore();
-    const { dismissNotification, addNotification } = useNotificationStore();
+  const { removeModal } = useModalStore();
+  const { dismissNotification, addNotification } = useNotificationStore();
 
-    const closeModal = (id: string) => {
-        removeModal(id);
-    };
+  const closeModal = (id: string) => {
+    removeModal(id);
+  };
 
-    const showNotification = (
-        type: Notification['type'],
-        title: string,
-        message: string,
-        duration?: number
-    ) => {
-        addNotification({ type, title, message, duration });
-    };
+  const showNotification = (
+    type: Notification['type'],
+    title: string,
+    message: string,
+    duration?: number
+  ) => {
+    addNotification({ type, title, message, duration });
+  };
 
-    return {
-        closeModal,
-        dismissNotification,
-        showNotification,
-    };
+  return {
+    closeModal,
+    dismissNotification,
+    showNotification,
+  };
 };
 
 /**
@@ -55,10 +55,10 @@ export const useUI = () => {
  * Can be used to set up global listeners, cleanup, etc.
  */
 export const initializeStores = () => {
-    console.log('Initializing stores...');
-    return () => {
-        console.log('Cleaning up stores...');
-    };
+  console.log('Initializing stores...');
+  return () => {
+    console.log('Cleaning up stores...');
+  };
 };
 
 /**
@@ -66,17 +66,17 @@ export const initializeStores = () => {
  * Useful for logout or testing.
  */
 export const resetAllStores = () => {
-    const { clearModals } = useModalStore.getState();
-    const { clearNotifications } = useNotificationStore.getState();
-    // learningStore reset skipped if not easily accessible or use getState()
+  const { clearModals } = useModalStore.getState();
+  const { clearNotifications } = useNotificationStore.getState();
+  // learningStore reset skipped if not easily accessible or use getState()
 
-    clearModals();
-    clearNotifications();
+  clearModals();
+  clearNotifications();
 };
 
 /**
  * Helper to check the health of all stores
  */
 export const checkStoreHealth = () => {
-    console.log('Checking store health...');
+  console.log('Checking store health...');
 };

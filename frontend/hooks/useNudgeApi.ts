@@ -1,6 +1,5 @@
 import { useState, useCallback } from 'react';
 
-
 // Geolocation API types
 interface GeolocationPosition {
   coords: GeolocationCoordinates;
@@ -50,7 +49,7 @@ export function useNudgeApi(): UseNudgeApiReturn {
       context: Record<string, string | number | boolean | object> = {}
     ): Promise<NudgeResponse> => {
       // apiClient handles auth token injection via interceptor if user is logged in via Firebase
-      // However, this hook uses useSession (NextAuth). 
+      // However, this hook uses useSession (NextAuth).
       // If we are migrating to Firebase Auth fully, we should use useAuth hook here instead.
       // Assuming we are sticking to the plan of using apiClient which uses Firebase Auth.
 
@@ -70,9 +69,12 @@ export function useNudgeApi(): UseNudgeApiReturn {
 
         return response.data;
       } catch (err: unknown) {
-        const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+        const errorMessage =
+          err instanceof Error ? err.message : 'An unknown error occurred';
         if (err && typeof err === 'object' && 'response' in err) {
-          const axiosError = err as { response?: { data?: { error?: string } } };
+          const axiosError = err as {
+            response?: { data?: { error?: string } };
+          };
           setError(axiosError.response?.data?.error || errorMessage);
         } else {
           setError(errorMessage);
@@ -141,7 +143,7 @@ async function getLocationInfo() {
         (resolve, reject) => {
           navigator.geolocation.getCurrentPosition(resolve, reject, {
             timeout: 5000,
-            maximumAge: 600000 // Cache for 10 minutes at browser level
+            maximumAge: 600000, // Cache for 10 minutes at browser level
           });
         }
       );

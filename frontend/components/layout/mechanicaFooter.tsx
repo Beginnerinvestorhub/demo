@@ -13,27 +13,35 @@ export const MechanicaFooter: React.FC = () => {
             backgroundImage: `
               repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255, 255, 255, 0.1) 30px, rgba(255, 255, 255, 0.1) 60px),
               repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255, 255, 255, 0.05) 30px, rgba(255, 255, 255, 0.05) 60px)
-            `
+            `,
           }}
         />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center">
-
           {/* Left Column: Quick Links */}
           <div className="md:text-left">
             <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 font-serif">
               Quick Links
             </h4>
             <nav className="flex flex-col space-y-4">
-              <Link href="/tools" className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block">
+              <Link
+                href="/tools"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block"
+              >
                 Investment Tools
               </Link>
-              <Link href="/dashboard" className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block">
+              <Link
+                href="/dashboard"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block"
+              >
                 Dashboard
               </Link>
-              <Link href="/signup" className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block">
+              <Link
+                href="/signup"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block"
+              >
                 Get Started
               </Link>
             </nav>
@@ -42,14 +50,25 @@ export const MechanicaFooter: React.FC = () => {
           {/* Center Column: Branding */}
           <div className="order-first md:order-none py-4">
             <div className="flex justify-center items-center space-x-4 mb-6">
-              <MechanicaGear size="lg" color="brass" speed="slow" className="opacity-80" />
+              <MechanicaGear
+                size="lg"
+                color="brass"
+                speed="slow"
+                className="opacity-80"
+              />
               <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-white font-serif">
                 Beginner<span className="text-yellow-500">Investor</span>Hub
               </h3>
-              <MechanicaGear size="lg" color="brass" speed="reverse" className="opacity-80" />
+              <MechanicaGear
+                size="lg"
+                color="brass"
+                speed="reverse"
+                className="opacity-80"
+              />
             </div>
             <p className="text-gray-400 text-base leading-relaxed max-w-md mx-auto font-light italic">
-              &quot;Precision investment education with engineering-grade tools and structured learning paths.&quot;
+              &quot;Precision investment education with engineering-grade tools
+              and structured learning paths.&quot;
             </p>
           </div>
 
@@ -59,18 +78,26 @@ export const MechanicaFooter: React.FC = () => {
               Legal & Support
             </h4>
             <nav className="flex flex-col space-y-4">
-              <Link href="/terms" className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block">
+              <Link
+                href="/terms"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block"
+              >
                 Terms of Service
               </Link>
-              <Link href="/privacy" className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block">
+              <Link
+                href="/privacy"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/contact" className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block">
+              <Link
+                href="/contact"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block"
+              >
                 Contact Us
               </Link>
             </nav>
           </div>
-
         </div>
 
         <div className="mt-8 pt-8 border-t border-gray-700">

@@ -9,21 +9,20 @@ interface ModalState {
   clearModals: () => void;
 }
 
-export const useModalStore = create<ModalState>()((set) => ({
+export const useModalStore = create<ModalState>()(set => ({
   modals: [],
 
   addModal: (modal: Modal) =>
-    set((state) => ({
+    set(state => ({
       modals: [...state.modals, modal],
     })),
 
   removeModal: (id: string) =>
-    set((state) => ({
-      modals: state.modals.filter((modal) => modal.id !== id),
+    set(state => ({
+      modals: state.modals.filter(modal => modal.id !== id),
     })),
 
-  clearModals: () =>
-    set({ modals: [] }),
+  clearModals: () => set({ modals: [] }),
 }));
 
 // Export useModals hook

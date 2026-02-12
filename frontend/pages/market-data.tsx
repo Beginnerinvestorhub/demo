@@ -22,12 +22,54 @@ interface MarketIndex {
 }
 
 const initialTickers: MarketTicker[] = [
-  { symbol: 'AAPL', name: 'Apple Inc.', price: 175.43, change: 0, changePercent: 0, volume: '52.3M' },
-  { symbol: 'MSFT', name: 'Microsoft Corp.', price: 378.91, change: 0, changePercent: 0, volume: '28.7M' },
-  { symbol: 'GOOGL', name: 'Alphabet Inc.', price: 139.62, change: 0, changePercent: 0, volume: '31.2M' },
-  { symbol: 'AMZN', name: 'Amazon.com Inc.', price: 146.78, change: 0, changePercent: 0, volume: '41.8M' },
-  { symbol: 'TSLA', name: 'Tesla Inc.', price: 248.93, change: 0, changePercent: 0, volume: '118.5M' },
-  { symbol: 'NVDA', name: 'NVIDIA Corp.', price: 485.09, change: 0, changePercent: 0, volume: '45.2M' },
+  {
+    symbol: 'AAPL',
+    name: 'Apple Inc.',
+    price: 175.43,
+    change: 0,
+    changePercent: 0,
+    volume: '52.3M',
+  },
+  {
+    symbol: 'MSFT',
+    name: 'Microsoft Corp.',
+    price: 378.91,
+    change: 0,
+    changePercent: 0,
+    volume: '28.7M',
+  },
+  {
+    symbol: 'GOOGL',
+    name: 'Alphabet Inc.',
+    price: 139.62,
+    change: 0,
+    changePercent: 0,
+    volume: '31.2M',
+  },
+  {
+    symbol: 'AMZN',
+    name: 'Amazon.com Inc.',
+    price: 146.78,
+    change: 0,
+    changePercent: 0,
+    volume: '41.8M',
+  },
+  {
+    symbol: 'TSLA',
+    name: 'Tesla Inc.',
+    price: 248.93,
+    change: 0,
+    changePercent: 0,
+    volume: '118.5M',
+  },
+  {
+    symbol: 'NVDA',
+    name: 'NVIDIA Corp.',
+    price: 485.09,
+    change: 0,
+    changePercent: 0,
+    volume: '45.2M',
+  },
 ];
 
 const marketIndices: MarketIndex[] = [
@@ -58,7 +100,7 @@ export default function MarketDataPage() {
             ...ticker,
             price: parseFloat(newPrice.toFixed(2)),
             change: parseFloat(change.toFixed(2)),
-            changePercent: parseFloat(changePercent.toFixed(2))
+            changePercent: parseFloat(changePercent.toFixed(2)),
           };
         })
       );
@@ -74,7 +116,7 @@ export default function MarketDataPage() {
             ...index,
             value: parseFloat(newValue.toFixed(2)),
             change: parseFloat(change.toFixed(2)),
-            changePercent: parseFloat(changePercent.toFixed(2))
+            changePercent: parseFloat(changePercent.toFixed(2)),
           };
         })
       );
@@ -103,7 +145,10 @@ export default function MarketDataPage() {
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
           {/* Steam Vents for Hero */}
           <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
-          <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+          <div
+            className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"
+            style={{ animationDelay: '1.5s' }}
+          ></div>
           {/* Mechanical background */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -112,7 +157,7 @@ export default function MarketDataPage() {
                 backgroundImage: `
                   repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
                   repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
-                `
+                `,
               }}
             />
           </div>
@@ -128,16 +173,28 @@ export default function MarketDataPage() {
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Configure your data streams with engineering-grade precision to monitor global market liquidity.
+                Configure your data streams with engineering-grade precision to
+                monitor global market liquidity.
               </p>
 
               <div className="flex justify-center items-center space-x-4 mb-4">
-                <div className={`inline-flex items-center px-4 py-2 rounded-full ${isLive ? 'bg-green-500/20 border border-green-500/50' : 'bg-gray-500/20 border border-gray-500/50'
-                  }`}>
-                  <div className={`w-3 h-3 rounded-full mr-2 ${isLive ? 'bg-green-400 animate-pulse' : 'bg-gray-400'
-                    }`}></div>
-                  <span className={`text-xs font-black tracking-widest ${isLive ? 'text-green-400' : 'text-gray-400'
-                    }`}>
+                <div
+                  className={`inline-flex items-center px-4 py-2 rounded-full ${
+                    isLive
+                      ? 'bg-green-500/20 border border-green-500/50'
+                      : 'bg-gray-500/20 border border-gray-500/50'
+                  }`}
+                >
+                  <div
+                    className={`w-3 h-3 rounded-full mr-2 ${
+                      isLive ? 'bg-green-400 animate-pulse' : 'bg-gray-400'
+                    }`}
+                  ></div>
+                  <span
+                    className={`text-xs font-black tracking-widest ${
+                      isLive ? 'text-green-400' : 'text-gray-400'
+                    }`}
+                  >
                     {isLive ? 'SYSTEM: LIVE' : 'SYSTEM: PAUSED'}
                   </span>
                 </div>
@@ -162,13 +219,18 @@ export default function MarketDataPage() {
 
         <section className="py-12 px-4 bg-gray-50/50">
           <div className="max-w-7xl mx-auto">
-
             {/* Market Indices */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {indices.map((index, idx) => (
                 <MechanicaCard
                   key={index.name}
-                  variant={idx % 3 === 0 ? 'mechanical' : idx % 3 === 1 ? 'wood' : 'brass'}
+                  variant={
+                    idx % 3 === 0
+                      ? 'mechanical'
+                      : idx % 3 === 1
+                        ? 'wood'
+                        : 'brass'
+                  }
                   animated
                 >
                   <div className="p-6 text-center">
@@ -178,9 +240,14 @@ export default function MarketDataPage() {
                     <div className="text-3xl font-bold mb-2">
                       {index.value.toLocaleString()}
                     </div>
-                    <div className={`text-lg font-medium ${index.change >= 0 ? 'text-green-600' : 'text-red-600'
-                      }`}>
-                      {index.change >= 0 ? '+' : ''}{index.change.toFixed(2)} ({index.changePercent.toFixed(2)}%)
+                    <div
+                      className={`text-lg font-medium ${
+                        index.change >= 0 ? 'text-green-600' : 'text-red-600'
+                      }`}
+                    >
+                      {index.change >= 0 ? '+' : ''}
+                      {index.change.toFixed(2)} (
+                      {index.changePercent.toFixed(2)}%)
                     </div>
                   </div>
                 </MechanicaCard>
@@ -204,17 +271,32 @@ export default function MarketDataPage() {
                   <table className="w-full">
                     <thead>
                       <tr className="border-b border-gray-200">
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Symbol</th>
-                        <th className="text-left py-3 px-4 font-semibold text-gray-700">Company</th>
-                        <th className="text-right py-3 px-4 font-semibold text-gray-700">Price</th>
-                        <th className="text-right py-3 px-4 font-semibold text-gray-700">Change</th>
-                        <th className="text-right py-3 px-4 font-semibold text-gray-700">Change %</th>
-                        <th className="text-right py-3 px-4 font-semibold text-gray-700">Volume</th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                          Symbol
+                        </th>
+                        <th className="text-left py-3 px-4 font-semibold text-gray-700">
+                          Company
+                        </th>
+                        <th className="text-right py-3 px-4 font-semibold text-gray-700">
+                          Price
+                        </th>
+                        <th className="text-right py-3 px-4 font-semibold text-gray-700">
+                          Change
+                        </th>
+                        <th className="text-right py-3 px-4 font-semibold text-gray-700">
+                          Change %
+                        </th>
+                        <th className="text-right py-3 px-4 font-semibold text-gray-700">
+                          Volume
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
-                      {tickers.map((ticker) => (
-                        <tr key={ticker.symbol} className="border-b border-gray-100 hover:bg-gray-50">
+                      {tickers.map(ticker => (
+                        <tr
+                          key={ticker.symbol}
+                          className="border-b border-gray-100 hover:bg-gray-50"
+                        >
                           <td className="py-3 px-4 font-mono font-bold text-gray-900">
                             {ticker.symbol}
                           </td>
@@ -224,13 +306,25 @@ export default function MarketDataPage() {
                           <td className="py-3 px-4 text-right font-mono">
                             ${ticker.price.toFixed(2)}
                           </td>
-                          <td className={`py-3 px-4 text-right font-mono ${ticker.change >= 0 ? 'text-green-600' : 'text-red-600'
-                            }`}>
-                            {ticker.change >= 0 ? '+' : ''}{ticker.change.toFixed(2)}
+                          <td
+                            className={`py-3 px-4 text-right font-mono ${
+                              ticker.change >= 0
+                                ? 'text-green-600'
+                                : 'text-red-600'
+                            }`}
+                          >
+                            {ticker.change >= 0 ? '+' : ''}
+                            {ticker.change.toFixed(2)}
                           </td>
-                          <td className={`py-3 px-4 text-right font-mono ${ticker.changePercent >= 0 ? 'text-green-600' : 'text-red-600'
-                            }`}>
-                            {ticker.changePercent >= 0 ? '+' : ''}{ticker.changePercent.toFixed(2)}%
+                          <td
+                            className={`py-3 px-4 text-right font-mono ${
+                              ticker.changePercent >= 0
+                                ? 'text-green-600'
+                                : 'text-red-600'
+                            }`}
+                          >
+                            {ticker.changePercent >= 0 ? '+' : ''}
+                            {ticker.changePercent.toFixed(2)}%
                           </td>
                           <td className="py-3 px-4 text-right text-gray-600">
                             {ticker.volume}
@@ -257,7 +351,12 @@ export default function MarketDataPage() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <MechanicaCard variant="wood" animated>
                 <div className="p-6 text-center">
-                  <MechanicaGear size="medium" color="brass" speed="slow" className="mx-auto mb-4" />
+                  <MechanicaGear
+                    size="medium"
+                    color="brass"
+                    speed="slow"
+                    className="mx-auto mb-4"
+                  />
                   <div className="text-2xl font-bold text-gray-900 mb-2">
                     {tickers.length}
                   </div>
@@ -269,7 +368,12 @@ export default function MarketDataPage() {
 
               <MechanicaCard variant="brass" animated>
                 <div className="p-6 text-center">
-                  <MechanicaGear size="medium" color="copper" speed="medium" className="mx-auto mb-4" />
+                  <MechanicaGear
+                    size="medium"
+                    color="copper"
+                    speed="medium"
+                    className="mx-auto mb-4"
+                  />
                   <div className="text-2xl font-bold text-gray-900 mb-2">
                     {tickers.filter(t => t.change > 0).length}
                   </div>
@@ -281,7 +385,12 @@ export default function MarketDataPage() {
 
               <MechanicaCard variant="mechanical" animated>
                 <div className="p-6 text-center">
-                  <MechanicaGear size="medium" color="steel" speed="reverse" className="mx-auto mb-4" />
+                  <MechanicaGear
+                    size="medium"
+                    color="steel"
+                    speed="reverse"
+                    className="mx-auto mb-4"
+                  />
                   <div className="text-2xl font-bold text-gray-900 mb-2">
                     {tickers.filter(t => t.change < 0).length}
                   </div>
@@ -293,7 +402,12 @@ export default function MarketDataPage() {
 
               <MechanicaCard variant="wood" animated>
                 <div className="p-6 text-center">
-                  <MechanicaGear size="medium" color="brass" speed="fast" className="mx-auto mb-4" />
+                  <MechanicaGear
+                    size="medium"
+                    color="brass"
+                    speed="fast"
+                    className="mx-auto mb-4"
+                  />
                   <div className="text-2xl font-bold text-gray-900 mb-2">
                     2s
                   </div>
@@ -311,18 +425,25 @@ export default function MarketDataPage() {
                 💡 Why Market Data Matters
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Information is the "fuel" of the investment engine. The better your data, the more confident your decisions.
+                Information is the "fuel" of the investment engine. The better
+                your data, the more confident your decisions.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <MechanicaCard variant="mechanical" className="p-8">
                 <div className="flex items-start space-x-6">
-                  <div className="text-4xl text-mechanica-moonlight-blue">📡</div>
+                  <div className="text-4xl text-mechanica-moonlight-blue">
+                    📡
+                  </div>
                   <div>
-                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Spotting Trends Early</h4>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
+                      Spotting Trends Early
+                    </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Market data isn't just numbers—it's the story of global supply and demand. Watching real-time updates helps you see where the world is moving before it gets there.
+                      Market data isn't just numbers—it's the story of global
+                      supply and demand. Watching real-time updates helps you
+                      see where the world is moving before it gets there.
                     </p>
                   </div>
                 </div>
@@ -330,11 +451,17 @@ export default function MarketDataPage() {
 
               <MechanicaCard variant="wood" className="p-8">
                 <div className="flex items-start space-x-6">
-                  <div className="text-4xl text-mechanica-polished-brass">⚖️</div>
+                  <div className="text-4xl text-mechanica-polished-brass">
+                    ⚖️
+                  </div>
                   <div>
-                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Finding Fair Value</h4>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
+                      Finding Fair Value
+                    </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Price is what you pay; value is what you get. Accurate data helps you compare different "components" of the market to find where the best opportunities are hiding.
+                      Price is what you pay; value is what you get. Accurate
+                      data helps you compare different "components" of the
+                      market to find where the best opportunities are hiding.
                     </p>
                   </div>
                 </div>

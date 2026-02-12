@@ -37,13 +37,18 @@ export default function LoginPage() {
   return (
     <MechanicaLayout title="Sign In | Beginner Investor Hub">
       <Head>
-        <meta name="description" content="Sign in to your BeginnerInvestorHub account to access your portfolio assembly, mastery tools, and AI behavioral coach." />
+        <meta
+          name="description"
+          content="Sign in to your BeginnerInvestorHub account to access your portfolio assembly, mastery tools, and AI behavioral coach."
+        />
       </Head>
       <div className="min-h-screen flex items-center justify-center p-4 sm:p-8 bg-gradient-to-br from-gray-50 to-amber-50">
         <div className="grid grid-cols-1 lg:grid-cols-2 max-w-6xl w-full">
-
           {/* Left Panel - Professional Branding */}
-          <MechanicaCard variant="wood" className="p-12 flex items-center justify-center">
+          <MechanicaCard
+            variant="wood"
+            className="p-12 flex items-center justify-center"
+          >
             <div className="text-center space-y-6">
               <div className="flex justify-center items-center space-x-4">
                 <MechanicaGear size="large" color="brass" speed="slow" />
@@ -57,29 +62,38 @@ export default function LoginPage() {
                 Precision Investment Education
               </h2>
               <p className="text-gray-600 mechanica-text-technical">
-                Master investing with our mechanically-engineered platform featuring
-                real-time simulations and AI-powered coaching.
+                Master investing with our mechanically-engineered platform
+                featuring real-time simulations and AI-powered coaching.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="steel" />
-                  <span className="mechanica-text-technical">Real-time market simulations</span>
+                  <span className="mechanica-text-technical">
+                    Real-time market simulations
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="copper" />
-                  <span className="mechanica-text-technical">AI-powered behavioral coaching</span>
+                  <span className="mechanica-text-technical">
+                    AI-powered behavioral coaching
+                  </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="brass" />
-                  <span className="mechanica-text-technical">Professional risk analytics</span>
+                  <span className="mechanica-text-technical">
+                    Professional risk analytics
+                  </span>
                 </div>
               </div>
             </div>
           </MechanicaCard>
 
           {/* Right Panel - Login Form */}
-          <MechanicaCard variant="mechanical" className="p-12 flex items-center justify-center">
+          <MechanicaCard
+            variant="mechanical"
+            className="p-12 flex items-center justify-center"
+          >
             <div className="w-full max-w-md">
               <div className="mb-8">
                 <h2 className="text-3xl font-bold mechanica-heading-professional mb-2">
@@ -110,9 +124,7 @@ export default function LoginPage() {
                   <div className="w-full border-t border-gray-300"></div>
                 </div>
                 <div className="relative flex justify-center text-sm">
-                  <span className="px-3 bg-white text-gray-500">
-                    or
-                  </span>
+                  <span className="px-3 bg-white text-gray-500">or</span>
                 </div>
               </div>
 

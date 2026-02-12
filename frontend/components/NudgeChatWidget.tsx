@@ -6,13 +6,13 @@ import { useAuth } from '../hooks/useAuth';
 
 const FINANCIAL_FACTS = [
   "Compound interest is the 8th wonder of the world. He who understands it, earns it... he who doesn't... pays it.",
-  "The stock market is a device for transferring money from the impatient to the patient.",
-  "On average, the stock market has returned about 10% annually over the long term.",
-  "The first paper money was created in China over 1,000 years ago.",
+  'The stock market is a device for transferring money from the impatient to the patient.',
+  'On average, the stock market has returned about 10% annually over the long term.',
+  'The first paper money was created in China over 1,000 years ago.',
   "A 'bull market' is when prices are rising, while a 'bear market' is when they are falling.",
   "Diversification is the only 'free lunch' in investing.",
-  "The best time to start investing was 20 years ago. The second best time is today.",
-  "Inflation means your money buys less over time. Investing helps stay ahead of it.",
+  'The best time to start investing was 20 years ago. The second best time is today.',
+  'Inflation means your money buys less over time. Investing helps stay ahead of it.',
 ];
 
 const NudgeChatWidget: React.FC = () => {
@@ -64,9 +64,7 @@ const NudgeChatWidget: React.FC = () => {
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <h3 className="text-lg font-semibold">
-                  Nudge Coach
-                </h3>
+                <h3 className="text-lg font-semibold">Nudge Coach</h3>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
@@ -115,7 +113,9 @@ const NudgeChatWidget: React.FC = () => {
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 animate-in fade-in zoom-in duration-300">
                   <div className="flex items-center space-x-2 mb-2">
                     <span className="text-lg">💡</span>
-                    <span className="text-xs font-bold text-amber-800 uppercase tracking-wider">Financial Insight</span>
+                    <span className="text-xs font-bold text-amber-800 uppercase tracking-wider">
+                      Financial Insight
+                    </span>
                   </div>
                   <p className="text-sm text-amber-900 leading-relaxed font-medium italic">
                     &ldquo;{currentFact}&rdquo;

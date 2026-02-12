@@ -17,7 +17,10 @@ export default function PortfolioMonitorPage() {
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
           {/* Steam Vents for Hero */}
           <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
-          <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+          <div
+            className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"
+            style={{ animationDelay: '1.5s' }}
+          ></div>
           {/* Mechanical background */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -26,7 +29,7 @@ export default function PortfolioMonitorPage() {
                 backgroundImage: `
                   repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
                   repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
-                `
+                `,
               }}
             />
           </div>
@@ -36,13 +39,15 @@ export default function PortfolioMonitorPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Portfolio <span className="text-yellow-400">Asset</span> Tracker
+                  Portfolio <span className="text-yellow-400">Asset</span>{' '}
+                  Tracker
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                A clear visual overview of your investment distribution and performance.
+                A clear visual overview of your investment distribution and
+                performance.
               </p>
 
               <div className="flex justify-center">
@@ -64,20 +69,31 @@ export default function PortfolioMonitorPage() {
         <div className="container mx-auto px-4 relative z-10 py-12 flex flex-col items-center">
           {/* Dashboard Status Bar */}
           <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
-            <MechanicaCard variant="mechanical" className="inline-flex items-center px-4 py-2">
+            <MechanicaCard
+              variant="mechanical"
+              className="inline-flex items-center px-4 py-2"
+            >
               <div className="w-5 h-5 text-green-600 mr-2">✓</div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 System Operational
               </span>
             </MechanicaCard>
-            <MechanicaCard variant="default" className="inline-flex items-center px-4 py-2">
+            <MechanicaCard
+              variant="default"
+              className="inline-flex items-center px-4 py-2"
+            >
               <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 Live Data Stream
               </span>
             </MechanicaCard>
-            <MechanicaCard variant="wood" className="inline-flex items-center px-4 py-2">
-              <div className="w-5 h-5 text-mechanica-polished-brass mr-2">🔒</div>
+            <MechanicaCard
+              variant="wood"
+              className="inline-flex items-center px-4 py-2"
+            >
+              <div className="w-5 h-5 text-mechanica-polished-brass mr-2">
+                🔒
+              </div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 Secure Connection
               </span>
@@ -85,7 +101,11 @@ export default function PortfolioMonitorPage() {
           </div>
 
           {/* Main Dashboard Card */}
-          <MechanicaCard variant="wood" animated className="bg-gradient-to-br from-blue-50 to-white mechanica-hum w-full max-w-5xl">
+          <MechanicaCard
+            variant="wood"
+            animated
+            className="bg-gradient-to-br from-blue-50 to-white mechanica-hum w-full max-w-5xl"
+          >
             <div className="p-8">
               {/* Tool Header */}
               <div className="mb-8 pb-6 border-b border-gray-200">
@@ -96,7 +116,8 @@ export default function PortfolioMonitorPage() {
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Track all your investments and how they are performing in one simple view.
+                  Track all your investments and how they are performing in one
+                  simple view.
                 </p>
               </div>
 
@@ -112,7 +133,8 @@ export default function PortfolioMonitorPage() {
                 💡 Why Track Your Portfolio?
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Understanding your investment "blueprint" is the key to long-term success.
+                Understanding your investment "blueprint" is the key to
+                long-term success.
               </p>
             </div>
 
@@ -121,9 +143,13 @@ export default function PortfolioMonitorPage() {
                 <div className="flex items-start space-x-6">
                   <div className="text-4xl">🎯</div>
                   <div>
-                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Avoid Over-Concentration</h4>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
+                      Avoid Over-Concentration
+                    </h4>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      If all your money is in one "component" (like tech stocks), your whole machine could stop if that sector has a bad day. Tracking helps you spread your risk.
+                      If all your money is in one "component" (like tech
+                      stocks), your whole machine could stop if that sector has
+                      a bad day. Tracking helps you spread your risk.
                     </p>
                   </div>
                 </div>
@@ -133,9 +159,13 @@ export default function PortfolioMonitorPage() {
                 <div className="flex items-start space-x-6">
                   <div className="text-4xl">📉</div>
                   <div>
-                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Monitor Performance</h4>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
+                      Monitor Performance
+                    </h4>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      Seeing how your assets change over time helps you stay calm during market dips and realize your growth during peaks.
+                      Seeing how your assets change over time helps you stay
+                      calm during market dips and realize your growth during
+                      peaks.
                     </p>
                   </div>
                 </div>

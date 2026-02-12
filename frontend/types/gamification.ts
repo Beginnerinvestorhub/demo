@@ -24,10 +24,10 @@ export interface UserStats {
   portfoliosCreated: number;
   toolsUsed: string[];
   educationModulesCompleted: number;
-  
+
   // FIXES for TypeScript Errors (2339)
   pageViews: Record<string, number>; // Required for tracking page views
-  events: Record<string, number>;     // Required for tracking custom events
+  events: Record<string, number>; // Required for tracking custom events
 }
 
 export interface UserProgress {
@@ -36,7 +36,7 @@ export interface UserProgress {
   badges: Badge[];
   streaks: StreakData;
   stats: UserStats;
-  
+
   // FIXES for TypeScript Errors (2353)
   userId: string;
   experiencePoints: number;
@@ -60,12 +60,12 @@ export enum BadgeCategory {
   INVESTMENT = 'investment',
   ENGAGEMENT = 'engagement',
   MILESTONE = 'milestone',
-  SOCIAL = 'social'
+  SOCIAL = 'social',
 }
 
 export enum BadgeRarity {
   COMMON = 'common',
   RARE = 'rare',
   EPIC = 'epic',
-  LEGENDARY = 'legendary'
+  LEGENDARY = 'legendary',
 }

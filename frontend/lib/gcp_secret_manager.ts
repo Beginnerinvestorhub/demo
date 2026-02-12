@@ -12,7 +12,9 @@ export const initializeSecretManager = (gcpProjectId: string) => {
 
 export const getSecret = async (secretName: string): Promise<string | null> => {
   if (!client || !projectId) {
-    console.warn('Secret Manager not initialized. Call initializeSecretManager first.');
+    console.warn(
+      'Secret Manager not initialized. Call initializeSecretManager first.'
+    );
     return null;
   }
 

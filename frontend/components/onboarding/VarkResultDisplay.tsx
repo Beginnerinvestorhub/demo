@@ -27,21 +27,24 @@ const getStyleDetails = (style: string) => {
     case 'visual':
       return {
         label: 'Visual (V)',
-        description: 'You prefer to learn using images, maps, graphs, and other visual aids.',
+        description:
+          'You prefer to learn using images, maps, graphs, and other visual aids.',
         icon: '👀',
         color: 'text-blue-500',
       };
     case 'aural':
       return {
         label: 'Aural (A)',
-        description: 'You learn best through listening, discussions, lectures, and audio recordings.',
+        description:
+          'You learn best through listening, discussions, lectures, and audio recordings.',
         icon: '👂',
         color: 'text-green-500',
       };
     case 'read_write':
       return {
         label: 'Read/Write (R)',
-        description: 'You excel through reading and writing, such as notes, texts, and lists.',
+        description:
+          'You excel through reading and writing, such as notes, texts, and lists.',
         icon: '✍️',
         color: 'text-purple-500',
       };
@@ -62,7 +65,10 @@ const getStyleDetails = (style: string) => {
   }
 };
 
-const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({ result, onContinue }) => {
+const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({
+  result,
+  onContinue,
+}) => {
   const { primary_vark_preference, vark_profile_data, total_duration } = result;
   const primaryStyle = getStyleDetails(primary_vark_preference);
 
@@ -77,7 +83,12 @@ const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({ result, onContinu
 
   return (
     <MechanicaCard variant="mechanical" className="p-8 text-center">
-      <MechanicaGear size="xl" color="brass" speed="slow" className="mx-auto mb-6" />
+      <MechanicaGear
+        size="xl"
+        color="brass"
+        speed="slow"
+        className="mx-auto mb-6"
+      />
       <h2 className="text-3xl font-bold mb-4 mechanica-heading-professional text-mechanica-moonlight-blue">
         Your Learning Style Profile
       </h2>
@@ -88,12 +99,16 @@ const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({ result, onContinu
       <div className="mb-8">
         <MechanicaCard variant="wood" className="inline-block p-6">
           <div className="flex items-center justify-center space-x-4">
-            <span className={`text-5xl ${primaryStyle.color}`}>{primaryStyle.icon}</span>
+            <span className={`text-5xl ${primaryStyle.color}`}>
+              {primaryStyle.icon}
+            </span>
             <div>
               <h3 className="text-4xl font-bold mechanica-heading-mechanical text-mechanica-text-wood">
                 {primaryStyle.label}
               </h3>
-              <p className="text-gray-600 mechanica-text-technical">{primaryStyle.description}</p>
+              <p className="text-gray-600 mechanica-text-technical">
+                {primaryStyle.description}
+              </p>
             </div>
           </div>
         </MechanicaCard>
@@ -107,11 +122,21 @@ const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({ result, onContinu
           {Object.entries(vark_profile_data).map(([style, score]) => {
             const details = getStyleDetails(style);
             return (
-              <MechanicaCard key={style} variant="mechanical" className="p-4 flex items-center space-x-4">
-                <span className={`text-3xl ${details.color}`}>{details.icon}</span>
+              <MechanicaCard
+                key={style}
+                variant="mechanical"
+                className="p-4 flex items-center space-x-4"
+              >
+                <span className={`text-3xl ${details.color}`}>
+                  {details.icon}
+                </span>
                 <div>
-                  <p className="font-semibold mechanica-text-technical">{details.label}</p>
-                  <p className="text-2xl font-bold mechanica-heading-mechanical">{score}</p>
+                  <p className="font-semibold mechanica-text-technical">
+                    {details.label}
+                  </p>
+                  <p className="text-2xl font-bold mechanica-heading-mechanical">
+                    {score}
+                  </p>
                 </div>
               </MechanicaCard>
             );
@@ -132,7 +157,9 @@ const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({ result, onContinu
         <ul className="list-disc list-inside space-y-2">
           {primary_vark_preference === 'visual' && (
             <>
-              <li>Utilize charts, graphs, and infographics for data analysis.</li>
+              <li>
+                Utilize charts, graphs, and infographics for data analysis.
+              </li>
               <li>Watch educational videos and webinars.</li>
               <li>Create mind maps or draw diagrams to summarize concepts.</li>
             </>
@@ -147,21 +174,31 @@ const VarkResultDisplay: React.FC<VarkResultDisplayProps> = ({ result, onContinu
           {primary_vark_preference === 'read_write' && (
             <>
               <li>Read detailed reports, articles, and financial news.</li>
-              <li>Take extensive notes and re-write information in your own words.</li>
+              <li>
+                Take extensive notes and re-write information in your own words.
+              </li>
               <li>Create summaries and lists of key investment terms.</li>
             </>
           )}
           {primary_vark_preference === 'kinesthetic' && (
             <>
-              <li>Engage in simulated trading platforms and practice portfolios.</li>
+              <li>
+                Engage in simulated trading platforms and practice portfolios.
+              </li>
               <li>Use interactive tools and financial calculators.</li>
-              <li>Apply theories through case studies and real-world examples.</li>
+              <li>
+                Apply theories through case studies and real-world examples.
+              </li>
             </>
           )}
         </ul>
       </div>
 
-      <MechanicaButton variant="mechanical" onClick={onContinue} className="w-full md:w-auto">
+      <MechanicaButton
+        variant="mechanical"
+        onClick={onContinue}
+        className="w-full md:w-auto"
+      >
         Continue to Dashboard
       </MechanicaButton>
     </MechanicaCard>

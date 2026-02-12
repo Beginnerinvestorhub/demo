@@ -10,23 +10,23 @@ const checks = [
   {
     name: 'Type Check',
     command: 'npm run type-check',
-    critical: true
+    critical: true,
   },
   {
-    name: 'Lint Check', 
+    name: 'Lint Check',
     command: 'npm run lint',
-    critical: true
+    critical: true,
   },
   {
     name: 'Format Check',
     command: 'npx prettier --check "**/*.{ts,tsx,js,jsx,json,md}"',
-    critical: false
+    critical: false,
   },
   {
     name: 'Unit Tests',
     command: 'npm test',
-    critical: false
-  }
+    critical: false,
+  },
 ];
 
 let failedChecks = 0;
@@ -52,7 +52,7 @@ const requiredFiles = [
   'package.json',
   'next.config.js',
   'tsconfig.json',
-  'tailwind.config.js'
+  'tailwind.config.js',
 ];
 
 console.log('📁 Checking required files...');

@@ -21,17 +21,18 @@ const ChatWidget: React.FC = () => {
     try {
       // Mock AI response for demo mode
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       const mockResponses = [
         "That's a great question about investing! Remember to always diversify your portfolio.",
-        "I recommend researching companies thoroughly before making any investment decisions.",
-        "Consider your risk tolerance and financial goals when choosing investments.",
+        'I recommend researching companies thoroughly before making any investment decisions.',
+        'Consider your risk tolerance and financial goals when choosing investments.',
         "It's wise to start with index funds if you're new to investing.",
-        "Always consult with a qualified financial advisor for personalized advice."
+        'Always consult with a qualified financial advisor for personalized advice.',
       ];
-      
-      const randomResponse = mockResponses[Math.floor(Math.random() * mockResponses.length)];
-      
+
+      const randomResponse =
+        mockResponses[Math.floor(Math.random() * mockResponses.length)];
+
       const assistantMessage: Message = {
         role: 'assistant',
         content: randomResponse,
@@ -63,9 +64,9 @@ const ChatWidget: React.FC = () => {
         <input
           type="text"
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={e => setInput(e.target.value)}
           placeholder="Ask me anything about investing..."
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+          onKeyPress={e => e.key === 'Enter' && sendMessage()}
           disabled={isLoading}
         />
         <button onClick={sendMessage} disabled={isLoading || !input.trim()}>

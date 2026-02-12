@@ -8,7 +8,7 @@ interface LoadingSpinnerProps {
 
 const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
   title = 'Loading',
-  metaDescription = 'Please wait while we load your content.'
+  metaDescription = 'Please wait while we load your content.',
 }) => (
   <>
     <Head>

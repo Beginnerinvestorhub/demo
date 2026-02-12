@@ -68,23 +68,29 @@ export default function ProfileForm() {
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value, type } = e.target as HTMLInputElement;
 
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      const currentValues = [...formData[name as keyof ProfileFormData] as string[]];
+      const currentValues = [
+        ...(formData[name as keyof ProfileFormData] as string[]),
+      ];
 
       setFormData({
         ...formData,
         [name]: checked
           ? [...currentValues, value]
-          : currentValues.filter(item => item !== value)
+          : currentValues.filter(item => item !== value),
       });
     } else {
       setFormData({
         ...formData,
-        [name]: type === 'number' ? parseFloat(value) || 0 : value
+        [name]: type === 'number' ? parseFloat(value) || 0 : value,
       });
     }
   };
@@ -96,7 +102,10 @@ export default function ProfileForm() {
     >
       <Head>
         <title>Complete Your Profile | BeginnerInvestorHub</title>
-        <meta name="description" content="Complete your investment profile assembly to personalize your simulated portfolio and AI coaching. Build your precision learning path." />
+        <meta
+          name="description"
+          content="Complete your investment profile assembly to personalize your simulated portfolio and AI coaching. Build your precision learning path."
+        />
       </Head>
       <div className="py-12 bg-white">
         <div className="container mx-auto px-4">
@@ -122,9 +131,13 @@ export default function ProfileForm() {
                     <div className="flex justify-between items-center mb-4">
                       <div className="flex items-center space-x-3">
                         <MechanicaGear size="md" color="steel" speed="medium" />
-                        <span className="text-sm font-semibold text-gray-700 mechanica-text-technical">Profile Completion</span>
+                        <span className="text-sm font-semibold text-gray-700 mechanica-text-technical">
+                          Profile Completion
+                        </span>
                       </div>
-                      <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">30%</span>
+                      <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">
+                        30%
+                      </span>
                     </div>
                     <div className="w-full bg-gray-200 rounded-full h-3">
                       <div
@@ -147,7 +160,12 @@ export default function ProfileForm() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="form-group">
-                        <label htmlFor="firstName" className="form-label mechanica-text-technical">First Name</label>
+                        <label
+                          htmlFor="firstName"
+                          className="form-label mechanica-text-technical"
+                        >
+                          First Name
+                        </label>
                         <MechanicaInput
                           type="text"
                           id="firstName"
@@ -159,7 +177,12 @@ export default function ProfileForm() {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="lastName" className="form-label mechanica-text-technical">Last Name</label>
+                        <label
+                          htmlFor="lastName"
+                          className="form-label mechanica-text-technical"
+                        >
+                          Last Name
+                        </label>
                         <MechanicaInput
                           type="text"
                           id="lastName"
@@ -173,7 +196,12 @@ export default function ProfileForm() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                       <div className="form-group">
-                        <label htmlFor="email" className="form-label mechanica-text-technical">Email</label>
+                        <label
+                          htmlFor="email"
+                          className="form-label mechanica-text-technical"
+                        >
+                          Email
+                        </label>
                         <MechanicaInput
                           type="email"
                           id="email"
@@ -185,7 +213,12 @@ export default function ProfileForm() {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="phone" className="form-label mechanica-text-technical">Phone</label>
+                        <label
+                          htmlFor="phone"
+                          className="form-label mechanica-text-technical"
+                        >
+                          Phone
+                        </label>
                         <MechanicaInput
                           type="tel"
                           id="phone"
@@ -207,7 +240,10 @@ export default function ProfileForm() {
                     </div>
 
                     <div className="form-group mb-6">
-                      <label htmlFor="experienceLevel" className="form-label mechanica-text-technical">
+                      <label
+                        htmlFor="experienceLevel"
+                        className="form-label mechanica-text-technical"
+                      >
                         Investment Experience
                       </label>
                       <select
@@ -219,22 +255,37 @@ export default function ProfileForm() {
                         required
                       >
                         <option value="beginner">Beginner (0-2 years)</option>
-                        <option value="intermediate">Intermediate (2-5 years)</option>
+                        <option value="intermediate">
+                          Intermediate (2-5 years)
+                        </option>
                         <option value="advanced">Advanced (5+ years)</option>
                         <option value="professional">Professional</option>
                       </select>
                     </div>
 
                     <div className="form-group mb-6">
-                      <label className="form-label mechanica-text-technical">Investment Goals</label>
+                      <label className="form-label mechanica-text-technical">
+                        Investment Goals
+                      </label>
                       <div className="flex flex-wrap gap-4">
-                        {['Retirement', 'Wealth Building', 'Education', 'Major Purchase', 'Other'].map((goal) => (
-                          <label key={goal} className="inline-flex items-center space-x-2 text-sm text-gray-700 cursor-pointer mechanica-text-technical">
+                        {[
+                          'Retirement',
+                          'Wealth Building',
+                          'Education',
+                          'Major Purchase',
+                          'Other',
+                        ].map(goal => (
+                          <label
+                            key={goal}
+                            className="inline-flex items-center space-x-2 text-sm text-gray-700 cursor-pointer mechanica-text-technical"
+                          >
                             <input
                               type="checkbox"
                               name="investmentGoals"
                               value={goal.toLowerCase()}
-                              checked={formData.investmentGoals.includes(goal.toLowerCase())}
+                              checked={formData.investmentGoals.includes(
+                                goal.toLowerCase()
+                              )}
                               onChange={handleInputChange}
                               className="h-4 w-4 text-mechanica-moonlight-blue border-gray-300 rounded focus:ring-mechanica-moonlight-blue"
                             />
@@ -245,7 +296,9 @@ export default function ProfileForm() {
                     </div>
 
                     <div className="form-group mb-6">
-                      <label className="form-label mechanica-text-technical">Risk Tolerance</label>
+                      <label className="form-label mechanica-text-technical">
+                        Risk Tolerance
+                      </label>
                       <div className="flex flex-wrap gap-4">
                         {[
                           { value: 'conservative', label: 'Conservative' },
@@ -253,8 +306,11 @@ export default function ProfileForm() {
                           { value: 'balanced', label: 'Balanced' },
                           { value: 'growth', label: 'Growth' },
                           { value: 'aggressive', label: 'Aggressive' },
-                        ].map((option) => (
-                          <label key={option.value} className="inline-flex items-center space-x-2 text-sm text-gray-700 cursor-pointer mechanica-text-technical">
+                        ].map(option => (
+                          <label
+                            key={option.value}
+                            className="inline-flex items-center space-x-2 text-sm text-gray-700 cursor-pointer mechanica-text-technical"
+                          >
                             <input
                               type="radio"
                               name="riskTolerance"
@@ -263,8 +319,13 @@ export default function ProfileForm() {
                               onChange={handleInputChange}
                               className="h-4 w-4 text-mechanica-moonlight-blue border-gray-300 focus:ring-mechanica-moonlight-blue"
                             />
-                            <span className={`px-3 py-1 rounded-full text-xs font-medium ${formData.riskTolerance === option.value ? 'bg-mechanica-moonlight-blue text-white' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                              }`}>
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-medium ${
+                                formData.riskTolerance === option.value
+                                  ? 'bg-mechanica-moonlight-blue text-white'
+                                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                              }`}
+                            >
                               {option.label}
                             </span>
                           </label>
@@ -274,7 +335,10 @@ export default function ProfileForm() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="form-group">
-                        <label htmlFor="initialCapital" className="form-label mechanica-text-technical">
+                        <label
+                          htmlFor="initialCapital"
+                          className="form-label mechanica-text-technical"
+                        >
                           Initial Investment Capital
                         </label>
                         <div className="relative rounded-md shadow-sm">
@@ -296,7 +360,10 @@ export default function ProfileForm() {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="monthlyContribution" className="form-label mechanica-text-technical">
+                        <label
+                          htmlFor="monthlyContribution"
+                          className="form-label mechanica-text-technical"
+                        >
                           Monthly Contribution
                         </label>
                         <div className="relative rounded-md shadow-sm">
@@ -321,18 +388,28 @@ export default function ProfileForm() {
 
                   {/* Success/Error Messages */}
                   {success && (
-                    <MechanicaCard variant="default" className="border-green-200 bg-green-50">
+                    <MechanicaCard
+                      variant="default"
+                      className="border-green-200 bg-green-50"
+                    >
                       <div className="p-4 flex items-center justify-center">
                         <div className="w-5 h-5 mr-2 text-green-600">✓</div>
-                        <span className="text-green-700 mechanica-text-technical">Profile updated successfully!</span>
+                        <span className="text-green-700 mechanica-text-technical">
+                          Profile updated successfully!
+                        </span>
                       </div>
                     </MechanicaCard>
                   )}
                   {error && (
-                    <MechanicaCard variant="default" className="border-red-200 bg-red-50">
+                    <MechanicaCard
+                      variant="default"
+                      className="border-red-200 bg-red-50"
+                    >
                       <div className="p-4 flex items-center justify-center">
                         <div className="w-5 h-5 mr-2 text-red-600">✕</div>
-                        <span className="text-red-700 mechanica-text-technical">{error}</span>
+                        <span className="text-red-700 mechanica-text-technical">
+                          {error}
+                        </span>
                       </div>
                     </MechanicaCard>
                   )}
@@ -356,7 +433,12 @@ export default function ProfileForm() {
                     >
                       {loading ? (
                         <span className="flex items-center">
-                          <MechanicaGear size="sm" color="steel" speed="fast" className="mr-2" />
+                          <MechanicaGear
+                            size="sm"
+                            color="steel"
+                            speed="fast"
+                            className="mr-2"
+                          />
                           Saving...
                         </span>
                       ) : (

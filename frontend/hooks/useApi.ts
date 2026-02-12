@@ -69,9 +69,21 @@ export function useApi<T = unknown>(
         return data;
       } catch (err: unknown) {
         const errorMessage =
-          (err && typeof err === 'object' && 'response' in err && err.response && typeof err.response === 'object' && 'data' in err.response && err.response.data && typeof err.response.data === 'object' && 'error' in err.response.data && typeof err.response.data.error === 'string')
+          err &&
+          typeof err === 'object' &&
+          'response' in err &&
+          err.response &&
+          typeof err.response === 'object' &&
+          'data' in err.response &&
+          err.response.data &&
+          typeof err.response.data === 'object' &&
+          'error' in err.response.data &&
+          typeof err.response.data.error === 'string'
             ? err.response.data.error
-            : (err && typeof err === 'object' && 'message' in err && typeof err.message === 'string')
+            : err &&
+                typeof err === 'object' &&
+                'message' in err &&
+                typeof err.message === 'string'
               ? err.message
               : 'An unexpected error occurred';
         setState({ data: null, loading: false, error: errorMessage });
@@ -90,11 +102,14 @@ export function useApi<T = unknown>(
     setState({ data: null, loading: false, error: null });
   }, []);
 
-  return useMemo(() => ({
-    ...state,
-    execute,
-    reset,
-  }), [state, execute, reset]);
+  return useMemo(
+    () => ({
+      ...state,
+      execute,
+      reset,
+    }),
+    [state, execute, reset]
+  );
 }
 
 /**

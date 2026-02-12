@@ -96,7 +96,7 @@ export default function RiskAssessmentForm({
   ) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
-    setForm((prev) => ({
+    setForm(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
@@ -144,7 +144,9 @@ export default function RiskAssessmentForm({
       {step === 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div className="relative">
-            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">Age Source</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">
+              Age Source
+            </label>
             <input
               name="age"
               type="number"
@@ -158,7 +160,9 @@ export default function RiskAssessmentForm({
             />
           </div>
           <div className="relative">
-            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">Gender Identification</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">
+              Gender Identification
+            </label>
             <select
               name="gender"
               value={form.gender}
@@ -174,7 +178,9 @@ export default function RiskAssessmentForm({
             </select>
           </div>
           <div className="relative">
-            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">Marital Status</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">
+              Marital Status
+            </label>
             <select
               name="marital_status"
               value={form.marital_status}
@@ -190,7 +196,9 @@ export default function RiskAssessmentForm({
             </select>
           </div>
           <div className="relative">
-            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">Employment Type</label>
+            <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">
+              Employment Type
+            </label>
             <select
               name="employment_status"
               value={form.employment_status}
@@ -216,15 +224,30 @@ export default function RiskAssessmentForm({
                   className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-300 transition-all checked:bg-mechanica-moonlight-blue checked:border-mechanica-moonlight-blue"
                 />
                 <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" strokeWidth="1">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
                   </svg>
                 </span>
               </div>
-              <span className="ml-3 text-sm font-semibold text-gray-600 group-hover:text-mechanica-moonlight-blue transition-colors uppercase tracking-widest">Permanent Retirement Mode</span>
+              <span className="ml-3 text-sm font-semibold text-gray-600 group-hover:text-mechanica-moonlight-blue transition-colors uppercase tracking-widest">
+                Permanent Retirement Mode
+              </span>
             </label>
             <div className="relative">
-              <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">Global Region of Origin</label>
+              <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block ml-1">
+                Global Region of Origin
+              </label>
               <input
                 name="region"
                 type="text"
@@ -245,12 +268,25 @@ export default function RiskAssessmentForm({
                   className="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-300 transition-all checked:bg-mechanica-moonlight-blue checked:border-mechanica-moonlight-blue"
                 />
                 <span className="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" strokeWidth="1">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-3.5 w-3.5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    stroke="currentColor"
+                    strokeWidth="1"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
                   </svg>
                 </span>
               </div>
-              <span className="ml-3 text-sm font-semibold text-gray-600 group-hover:text-mechanica-moonlight-blue transition-colors uppercase tracking-widest">Inter-Region Compliance Status</span>
+              <span className="ml-3 text-sm font-semibold text-gray-600 group-hover:text-mechanica-moonlight-blue transition-colors uppercase tracking-widest">
+                Inter-Region Compliance Status
+              </span>
             </label>
           </div>
         </div>
@@ -424,7 +460,9 @@ export default function RiskAssessmentForm({
           >
             &lt; Previous Component
           </button>
-        ) : <div />}
+        ) : (
+          <div />
+        )}
 
         {step < steps.length - 1 ? (
           <button

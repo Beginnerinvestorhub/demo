@@ -6,10 +6,10 @@ interface MechanicaLayoutProps {
   description?: string;
 }
 
-export const mechanicaLayout: React.FC<MechanicaLayoutProps> = ({ 
-  children, 
-  title, 
-  description 
+export const mechanicaLayout: React.FC<MechanicaLayoutProps> = ({
+  children,
+  title,
+  description,
 }) => {
   return (
     <div className="min-h-screen bg-gray-50">

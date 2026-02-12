@@ -86,23 +86,26 @@ const AdvancedAnalyticsDashboard: React.FC = () => {
   const AI_API_URL =
     process.env.NEXT_PUBLIC_AI_API_URL || 'http://localhost:8000';
 
-  const fetchUserInsights = useCallback(async (userId: string) => {
-    try {
-      setIsLoading(true);
-      const response = await fetch(
-        `${AI_API_URL}/analytics/user-insights?user_id=${userId}`
-      );
-      if (!response.ok) throw new Error('Failed to fetch user insights');
-      const data = await response.json();
-      setUserInsights(data);
-    } catch (err) {
-      setError(
-        err instanceof Error ? err.message : 'Failed to fetch user insights'
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  }, [AI_API_URL]);
+  const fetchUserInsights = useCallback(
+    async (userId: string) => {
+      try {
+        setIsLoading(true);
+        const response = await fetch(
+          `${AI_API_URL}/analytics/user-insights?user_id=${userId}`
+        );
+        if (!response.ok) throw new Error('Failed to fetch user insights');
+        const data = await response.json();
+        setUserInsights(data);
+      } catch (err) {
+        setError(
+          err instanceof Error ? err.message : 'Failed to fetch user insights'
+        );
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [AI_API_URL]
+  );
 
   const fetchCohortAnalysis = useCallback(async () => {
     try {
@@ -165,7 +168,13 @@ const AdvancedAnalyticsDashboard: React.FC = () => {
     } else if (activeTab === 'performance') {
       fetchModelPerformance();
     }
-  }, [activeTab, selectedUserId, fetchUserInsights, fetchCohortAnalysis, fetchModelPerformance]);
+  }, [
+    activeTab,
+    selectedUserId,
+    fetchUserInsights,
+    fetchCohortAnalysis,
+    fetchModelPerformance,
+  ]);
 
   const renderUserInsights = () => (
     <div className="space-y-6">
@@ -649,13 +658,19 @@ const AdvancedAnalyticsDashboard: React.FC = () => {
       <div className="border-b border-gray-200 mb-8">
         <nav className="-mb-px flex space-x-8">
           {[
-            { id: 'insights', name: 'User Insights', icon: ArrowTrendingUpIcon },
+            {
+              id: 'insights',
+              name: 'User Insights',
+              icon: ArrowTrendingUpIcon,
+            },
             { id: 'cohorts', name: 'Cohort Analysis', icon: UserGroupIcon },
             { id: 'performance', name: 'Model Performance', icon: CogIcon },
           ].map(tab => (
             <button
               key={tab.id}
-              onClick={() => setActiveTab(tab.id as 'insights' | 'cohorts' | 'performance')}
+              onClick={() =>
+                setActiveTab(tab.id as 'insights' | 'cohorts' | 'performance')
+              }
               className={`flex items-center py-2 px-1 border-b-2 font-medium text-sm ${
                 activeTab === tab.id
                   ? 'border-indigo-500 text-indigo-600'

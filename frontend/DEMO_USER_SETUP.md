@@ -82,11 +82,13 @@ To test the demo user locally:
 ## Troubleshooting
 
 ### Demo user not working
+
 - Verify `DEMO_MODE_ENABLED=true`
 - Check environment variables are set correctly
 - Ensure credentials match exactly
 
 ### Credentials not persisting
+
 - Clear browser cache and cookies
 - Check sessionStorage is available
 - Verify no conflicting auth logic

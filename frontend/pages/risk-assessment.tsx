@@ -28,7 +28,10 @@ export default function RiskAssessmentPage() {
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
           {/* Steam Vents for Hero */}
           <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
-          <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+          <div
+            className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"
+            style={{ animationDelay: '1.5s' }}
+          ></div>
           {/* Mechanical background */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -37,7 +40,7 @@ export default function RiskAssessmentPage() {
                 backgroundImage: `
                   repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
                   repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
-                `
+                `,
               }}
             />
           </div>
@@ -53,7 +56,8 @@ export default function RiskAssessmentPage() {
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Find your personal investment comfort zone. We&apos;ll help you find the right balance between safety and growth.
+                Find your personal investment comfort zone. We&apos;ll help you
+                find the right balance between safety and growth.
               </p>
 
               <div className="flex justify-center">
@@ -70,17 +74,23 @@ export default function RiskAssessmentPage() {
         </section>
 
         <div className="container mx-auto px-4 relative z-10 py-12 flex flex-col items-center">
-
           {/* Error Display */}
           {error && (
-            <MechanicaCard variant="default" className="mb-8 border-l-4 border-red-600 bg-red-50">
+            <MechanicaCard
+              variant="default"
+              className="mb-8 border-l-4 border-red-600 bg-red-50"
+            >
               <div className="p-6 flex items-start">
-                <div className="w-6 h-6 text-red-600 mr-3 flex-shrink-0 mt-0.5">✕</div>
+                <div className="w-6 h-6 text-red-600 mr-3 flex-shrink-0 mt-0.5">
+                  ✕
+                </div>
                 <div>
                   <h3 className="font-semibold text-red-900 mb-1 mechanica-heading-professional">
                     Assessment Error
                   </h3>
-                  <p className="text-red-800 mechanica-text-technical">{error}</p>
+                  <p className="text-red-800 mechanica-text-technical">
+                    {error}
+                  </p>
                 </div>
               </div>
             </MechanicaCard>
@@ -88,7 +98,11 @@ export default function RiskAssessmentPage() {
 
           {/* Form or Result */}
           {!result ? (
-            <MechanicaCard variant="wood" animated className="bg-gradient-to-br from-blue-50 to-white mechanica-hum">
+            <MechanicaCard
+              variant="wood"
+              animated
+              className="bg-gradient-to-br from-blue-50 to-white mechanica-hum"
+            >
               <div className="p-8">
                 <div className="mb-6 pb-6 border-b border-gray-200">
                   <div className="flex items-center space-x-3 mb-4">
@@ -116,7 +130,10 @@ export default function RiskAssessmentPage() {
                       const data: RiskData = await res.json();
                       setResult(data);
                     } catch (e: unknown) {
-                      const errorMessage = e instanceof Error ? e.message : 'Failed to assess risk. Please verify all components and try again.';
+                      const errorMessage =
+                        e instanceof Error
+                          ? e.message
+                          : 'Failed to assess risk. Please verify all components and try again.';
                       setError(errorMessage);
                     } finally {
                       setLoading(false);
@@ -128,7 +145,11 @@ export default function RiskAssessmentPage() {
               </div>
             </MechanicaCard>
           ) : (
-            <MechanicaCard variant="default" animated className="bg-gray-900 border-gray-800 mechanica-hum">
+            <MechanicaCard
+              variant="default"
+              animated
+              className="bg-gray-900 border-gray-800 mechanica-hum"
+            >
               <div className="p-8">
                 <div className="mb-6 pb-6 border-b border-gray-700">
                   <div className="flex items-center space-x-3 mb-4">
@@ -155,11 +176,15 @@ export default function RiskAssessmentPage() {
 
           {/* Assembly Instructions Footer */}
           <div className="mt-12 text-center">
-            <MechanicaCard variant="mechanical" className="inline-flex items-center px-6 py-3">
+            <MechanicaCard
+              variant="mechanical"
+              className="inline-flex items-center px-6 py-3"
+            >
               <div className="flex items-center space-x-3">
                 <MechanicaGear size="sm" color="steel" speed="medium" />
                 <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                  All assessments are processed securely with enterprise-grade encryption
+                  All assessments are processed securely with enterprise-grade
+                  encryption
                 </span>
               </div>
             </MechanicaCard>

@@ -12,7 +12,7 @@ const AnimatedGrid: React.FC<AnimatedGridProps> = ({ className = '' }) => (
         repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(59, 130, 246, 0.1) 50px, rgba(59, 130, 246, 0.1) 51px),
         repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(59, 130, 246, 0.1) 50px, rgba(59, 130, 246, 0.1) 51px)
       `,
-      backgroundSize: '100px 100px'
+      backgroundSize: '100px 100px',
     }}
   />
 );

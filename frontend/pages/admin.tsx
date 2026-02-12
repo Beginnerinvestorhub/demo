@@ -21,10 +21,13 @@ export default function AdminPage() {
   const [isRedirecting, setIsRedirecting] = useState(false);
 
   // Use useApiGet hook for admin data
-  const { data: adminData, loading: adminDataLoading, error: adminDataError } = useApiGet<AdminDashboardData>(
-    '/api/admin/dashboard',
-    { autoFetch: true }
-  );
+  const {
+    data: adminData,
+    loading: adminDataLoading,
+    error: adminDataError,
+  } = useApiGet<AdminDashboardData>('/api/admin/dashboard', {
+    autoFetch: true,
+  });
 
   useEffect(() => {
     if (!authLoading && !user) {
@@ -57,7 +60,9 @@ export default function AdminPage() {
             <p className="text-lg font-semibold text-gray-900 mb-2 mechanica-heading-professional">
               Initializing System
             </p>
-            <p className="text-sm text-gray-600 mechanica-text-technical">Loading admin dashboard...</p>
+            <p className="text-sm text-gray-600 mechanica-text-technical">
+              Loading admin dashboard...
+            </p>
           </div>
         </div>
       </MechanicaLayout>
@@ -73,9 +78,17 @@ export default function AdminPage() {
       >
         <div className="min-h-screen flex items-center justify-center">
           <MechanicaCard variant="mechanical" className="p-8 text-center">
-            <h2 className="text-xl font-bold text-red-600 mb-4">Error Loading Admin Data</h2>
-            <p className="text-gray-700 mb-6">There was an issue fetching the dashboard information. Please try again later.</p>
-            <MechanicaButton variant="mechanical" onClick={() => window.location.reload()}>
+            <h2 className="text-xl font-bold text-red-600 mb-4">
+              Error Loading Admin Data
+            </h2>
+            <p className="text-gray-700 mb-6">
+              There was an issue fetching the dashboard information. Please try
+              again later.
+            </p>
+            <MechanicaButton
+              variant="mechanical"
+              onClick={() => window.location.reload()}
+            >
               Reload Page
             </MechanicaButton>
           </MechanicaCard>
@@ -96,7 +109,10 @@ export default function AdminPage() {
     >
       <Head>
         <title>System Control Panel | BeginnerInvestorHub</title>
-        <meta name="description" content="Master engineering console for monitoring system components, user assemblies, and operational metrics. Deploy administrative controls with precision authority." />
+        <meta
+          name="description"
+          content="Master engineering console for monitoring system components, user assemblies, and operational metrics. Deploy administrative controls with precision authority."
+        />
       </Head>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50">
         {/* Technical Grid Overlay - Blueprint Pattern */}
@@ -120,7 +136,10 @@ export default function AdminPage() {
               <MechanicaGear size="medium" color="brass" speed="reverse" />
             </div>
 
-            <MechanicaCard variant="mechanical" className="inline-flex items-center px-4 py-2 mb-4">
+            <MechanicaCard
+              variant="mechanical"
+              className="inline-flex items-center px-4 py-2 mb-4"
+            >
               <div className="w-5 h-5 text-gray-700 mr-2">🔒</div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 Restricted Access - Admin Only
@@ -148,26 +167,33 @@ export default function AdminPage() {
           {/* System Status Bar */}
           <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
             <MechanicaCard
-              variant={adminData.systemHealth === 'healthy' ? 'mechanical' : 'wood'}
+              variant={
+                adminData.systemHealth === 'healthy' ? 'mechanical' : 'wood'
+              }
               className="inline-flex items-center px-4 py-2"
             >
               <div
-                className={`w-2 h-2 rounded-full mr-2 animate-pulse ${adminData.systemHealth === 'healthy'
-                  ? 'bg-green-500'
-                  : 'bg-red-500'
-                  }`}
+                className={`w-2 h-2 rounded-full mr-2 animate-pulse ${
+                  adminData.systemHealth === 'healthy'
+                    ? 'bg-green-500'
+                    : 'bg-red-500'
+                }`}
               ></div>
               <span
-                className={`text-sm font-medium mechanica-text-technical ${adminData.systemHealth === 'healthy'
-                  ? 'text-gray-700'
-                  : 'text-gray-700'
-                  }`}
+                className={`text-sm font-medium mechanica-text-technical ${
+                  adminData.systemHealth === 'healthy'
+                    ? 'text-gray-700'
+                    : 'text-gray-700'
+                }`}
               >
                 System{' '}
                 {adminData.systemHealth === 'healthy' ? 'Operational' : 'Alert'}
               </span>
             </MechanicaCard>
-            <MechanicaCard variant="brass" className="inline-flex items-center px-4 py-2">
+            <MechanicaCard
+              variant="brass"
+              className="inline-flex items-center px-4 py-2"
+            >
               <div className="w-5 h-5 text-gray-700 mr-2">👤</div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 Admin: {user?.email || 'Administrator'}
@@ -187,7 +213,9 @@ export default function AdminPage() {
                     <div className="text-3xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
                       {adminData.totalUsers.toLocaleString()}
                     </div>
-                    <div className="text-sm text-gray-600 mechanica-text-technical">Total Users</div>
+                    <div className="text-sm text-gray-600 mechanica-text-technical">
+                      Total Users
+                    </div>
                   </div>
                 </div>
                 <div className="text-xs text-gray-500 flex items-center">
@@ -207,7 +235,9 @@ export default function AdminPage() {
                     <div className="text-3xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
                       {adminData.activePortfolios.toLocaleString()}
                     </div>
-                    <div className="text-sm text-gray-600 mechanica-text-technical">Active Portfolios</div>
+                    <div className="text-sm text-gray-600 mechanica-text-technical">
+                      Active Portfolios
+                    </div>
                   </div>
                 </div>
                 <div className="text-xs text-gray-500 flex items-center">
@@ -227,7 +257,9 @@ export default function AdminPage() {
                     <div className="text-3xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
                       {adminData.simulationsToday.toLocaleString()}
                     </div>
-                    <div className="text-sm text-gray-600 mechanica-text-technical">Simulations Today</div>
+                    <div className="text-sm text-gray-600 mechanica-text-technical">
+                      Simulations Today
+                    </div>
                   </div>
                 </div>
                 <div className="text-xs text-gray-500 flex items-center">
@@ -254,7 +286,10 @@ export default function AdminPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <MechanicaButton variant="wood" className="text-left p-6 flex items-start space-x-4 h-auto">
+                <MechanicaButton
+                  variant="wood"
+                  className="text-left p-6 flex items-start space-x-4 h-auto"
+                >
                   <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                     <div className="w-5 h-5 text-blue-700">👥</div>
                   </div>
@@ -268,7 +303,10 @@ export default function AdminPage() {
                   </div>
                 </MechanicaButton>
 
-                <MechanicaButton variant="wood" className="text-left p-6 flex items-start space-x-4 h-auto">
+                <MechanicaButton
+                  variant="wood"
+                  className="text-left p-6 flex items-start space-x-4 h-auto"
+                >
                   <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                     <MechanicaGear size="medium" color="steel" speed="medium" />
                   </div>
@@ -282,7 +320,10 @@ export default function AdminPage() {
                   </div>
                 </MechanicaButton>
 
-                <MechanicaButton variant="wood" className="text-left p-6 flex items-start space-x-4 h-auto">
+                <MechanicaButton
+                  variant="wood"
+                  className="text-left p-6 flex items-start space-x-4 h-auto"
+                >
                   <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
                     <MechanicaGear size="medium" color="brass" speed="slow" />
                   </div>
@@ -296,7 +337,10 @@ export default function AdminPage() {
                   </div>
                 </MechanicaButton>
 
-                <MechanicaButton variant="wood" className="text-left p-6 flex items-start space-x-4 h-auto">
+                <MechanicaButton
+                  variant="wood"
+                  className="text-left p-6 flex items-start space-x-4 h-auto"
+                >
                   <div className="flex-shrink-0 w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
                     <div className="w-5 h-5 text-amber-700">⚠️</div>
                   </div>
@@ -310,9 +354,16 @@ export default function AdminPage() {
                   </div>
                 </MechanicaButton>
 
-                <MechanicaButton variant="wood" className="text-left p-6 flex items-start space-x-4 h-auto">
+                <MechanicaButton
+                  variant="wood"
+                  className="text-left p-6 flex items-start space-x-4 h-auto"
+                >
                   <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                    <MechanicaGear size="medium" color="copper" speed="reverse" />
+                    <MechanicaGear
+                      size="medium"
+                      color="copper"
+                      speed="reverse"
+                    />
                   </div>
                   <div>
                     <div className="font-bold text-gray-900 mb-1 mechanica-heading-professional">
@@ -324,7 +375,10 @@ export default function AdminPage() {
                   </div>
                 </MechanicaButton>
 
-                <MechanicaButton variant="wood" className="text-left p-6 flex items-start space-x-4 h-auto">
+                <MechanicaButton
+                  variant="wood"
+                  className="text-left p-6 flex items-start space-x-4 h-auto"
+                >
                   <div className="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
                     <div className="w-5 h-5 text-indigo-700">📄</div>
                   </div>
@@ -343,11 +397,15 @@ export default function AdminPage() {
 
           {/* Security Notice */}
           <div className="mt-12 text-center">
-            <MechanicaCard variant="wood" className="inline-flex items-center px-6 py-3">
+            <MechanicaCard
+              variant="wood"
+              className="inline-flex items-center px-6 py-3"
+            >
               <div className="flex items-center space-x-3">
                 <MechanicaGear size="small" color="steel" speed="medium" />
                 <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                  All administrative actions are logged and monitored for security compliance
+                  All administrative actions are logged and monitored for
+                  security compliance
                 </span>
               </div>
             </MechanicaCard>

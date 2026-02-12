@@ -14,7 +14,7 @@ const majorVersion = parseInt(nodeVersion.slice(1).split('.')[0]);
 checks.push({
   name: 'Node.js Version',
   status: majorVersion >= 20 ? 'healthy' : 'unhealthy',
-  message: `Current: ${nodeVersion}, Required: >=20.0.0`
+  message: `Current: ${nodeVersion}, Required: >=20.0.0`,
 });
 
 // Check package.json dependencies
@@ -23,17 +23,17 @@ try {
   const packageJson = JSON.parse(readFileSync(packagePath, 'utf8'));
   const depsCount = Object.keys(packageJson.dependencies || {}).length;
   const devDepsCount = Object.keys(packageJson.devDependencies || {}).length;
-  
+
   checks.push({
     name: 'Dependencies',
     status: 'healthy',
-    message: `${depsCount} dependencies, ${devDepsCount} dev dependencies`
+    message: `${depsCount} dependencies, ${devDepsCount} dev dependencies`,
   });
 } catch (error) {
   checks.push({
     name: 'Dependencies',
     status: 'unhealthy',
-    message: 'Failed to read package.json'
+    message: 'Failed to read package.json',
   });
 }
 
@@ -44,7 +44,7 @@ for (const envFile of envFiles) {
   checks.push({
     name: `Environment File: ${envFile}`,
     status: exists ? 'healthy' : 'unhealthy',
-    message: exists ? 'File exists' : 'File missing'
+    message: exists ? 'File exists' : 'File missing',
   });
 }
 
@@ -55,16 +55,18 @@ for (const configFile of configFiles) {
   checks.push({
     name: `Config: ${configFile}`,
     status: exists ? 'healthy' : 'unhealthy',
-    message: exists ? 'File exists' : 'File missing'
+    message: exists ? 'File exists' : 'File missing',
   });
 }
 
 // Check if node_modules exists
-const nodeModulesExists = existsSync(path.join(__dirname, '..', 'node_modules'));
+const nodeModulesExists = existsSync(
+  path.join(__dirname, '..', 'node_modules')
+);
 checks.push({
   name: 'Node Modules',
   status: nodeModulesExists ? 'healthy' : 'unhealthy',
-  message: nodeModulesExists ? 'Installed' : 'Not installed - run npm install'
+  message: nodeModulesExists ? 'Installed' : 'Not installed - run npm install',
 });
 
 // Check build directory
@@ -72,7 +74,7 @@ const nextDirExists = existsSync(path.join(__dirname, '..', '.next'));
 checks.push({
   name: 'Next.js Build',
   status: nextDirExists ? 'healthy' : 'unhealthy',
-  message: nextDirExists ? 'Build exists' : 'No build - run npm run build'
+  message: nextDirExists ? 'Build exists' : 'No build - run npm run build',
 });
 
 // Display results
@@ -85,7 +87,7 @@ let unhealthyCount = 0;
 for (const check of checks) {
   const icon = check.status === 'healthy' ? '✅' : '❌';
   console.log(`${icon} ${check.name}: ${check.message}`);
-  
+
   if (check.status === 'healthy') {
     healthyCount++;
   } else {

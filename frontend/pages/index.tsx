@@ -73,7 +73,8 @@ export default function HomePage() {
     return (
       rect.top >= 0 &&
       rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   };
@@ -81,7 +82,11 @@ export default function HomePage() {
   // Animate stats when visible
   useEffect(() => {
     const handleScroll = () => {
-      if (statsRef.current && isElementInView(statsRef.current) && !statsAnimated) {
+      if (
+        statsRef.current &&
+        isElementInView(statsRef.current) &&
+        !statsAnimated
+      ) {
         setStatsAnimated(true);
       }
     };
@@ -96,14 +101,16 @@ export default function HomePage() {
       // Updated Title
       title: 'Strategic Portfolio Simulator',
       // Updated Description: Focus on learning and testing strategies
-      description: 'Learn and test investment strategies using our algorithmically validated simulation system, featuring real-time market data and advanced analytics.',
+      description:
+        'Learn and test investment strategies using our algorithmically validated simulation system, featuring real-time market data and advanced analytics.',
       icon: '⚙️',
       href: '/portfolio-monitor',
       gearColor: 'steel' as const,
     },
     {
       title: 'ESG Strategy Screener',
-      description: 'Precision investment filter for screening components based on Environmental, Social, and Governance criteria. Detect red flags and verify component integrity.',
+      description:
+        'Precision investment filter for screening components based on Environmental, Social, and Governance criteria. Detect red flags and verify component integrity.',
       icon: '🌍',
       href: '/esg-screener',
       gearColor: 'steel' as const,
@@ -112,7 +119,8 @@ export default function HomePage() {
       // Updated Title
       title: 'Risk & Volatility Analytics',
       // Updated Description: Focus on understanding risk with data science
-      description: 'Master risk assessment with our engineering-grade analytics powered by advanced algorithms and predictive modeling.',
+      description:
+        'Master risk assessment with our engineering-grade analytics powered by advanced algorithms and predictive modeling.',
       icon: '📊',
       href: '/risk-assessment',
       gearColor: 'copper' as const,
@@ -121,34 +129,60 @@ export default function HomePage() {
       // Updated Title
       title: 'Fractional Share Calculator',
       // Updated Description: Focus on precision calculation and broker comparison
-      description: 'Calculate fractional shares with any investment amount, compare broker fees, and visualize your purchase blueprint with precision engineering.',
+      description:
+        'Calculate fractional shares with any investment amount, compare broker fees, and visualize your purchase blueprint with precision engineering.',
       icon: '📈',
       href: '/fractional-share-calculator',
       gearColor: 'steel' as const,
     },
   ];
 
-
-
   return (
     <MechanicaLayout>
       <Head>
         <title>Precision Investment Mastery | BeginnerInvestorHub</title>
-        <meta name="description" content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies, visualize risk metrics, and build confidence with virtual money." />
+        <meta
+          name="description"
+          content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies, visualize risk metrics, and build confidence with virtual money."
+        />
 
         {/* Open Graph Tags */}
-        <meta property="og:title" content="Precision Investment Mastery | BeginnerInvestorHub" />
-        <meta property="og:description" content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies with virtual money." />
+        <meta
+          property="og:title"
+          content="Precision Investment Mastery | BeginnerInvestorHub"
+        />
+        <meta
+          property="og:description"
+          content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies with virtual money."
+        />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={process.env.NEXT_PUBLIC_SITE_URL || 'https://beginnerinvestorhub-demo.vercel.app/'} />
-        <meta property="og:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://beginnerinvestorhub-demo.vercel.app'}/favicon.svg`} />
+        <meta
+          property="og:url"
+          content={
+            process.env.NEXT_PUBLIC_SITE_URL ||
+            'https://beginnerinvestorhub-demo.vercel.app/'
+          }
+        />
+        <meta
+          property="og:image"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://beginnerinvestorhub-demo.vercel.app'}/favicon.svg`}
+        />
         <meta property="og:site_name" content="BeginnerInvestorHub" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Precision Investment Mastery | BeginnerInvestorHub" />
-        <meta name="twitter:description" content="Master investing with guided simulations built for first-time investors." />
-        <meta name="twitter:image" content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://beginnerinvestorhub-demo.vercel.app'}/favicon.svg`} />
+        <meta
+          name="twitter:title"
+          content="Precision Investment Mastery | BeginnerInvestorHub"
+        />
+        <meta
+          name="twitter:description"
+          content="Master investing with guided simulations built for first-time investors."
+        />
+        <meta
+          name="twitter:image"
+          content={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://beginnerinvestorhub-demo.vercel.app'}/favicon.svg`}
+        />
       </Head>
       {/* Hero Section */}
       <header>
@@ -161,38 +195,67 @@ export default function HomePage() {
                 backgroundImage: `
                 repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
                 repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
-              `
+              `,
               }}
             />
           </div>
 
           {/* Animated gears */}
           <div className="absolute top-20 left-10 opacity-30 hidden sm:block">
-            <MechanicaGear size="xl" color="brass" speed="slow" aria-hidden="true" />
+            <MechanicaGear
+              size="xl"
+              color="brass"
+              speed="slow"
+              aria-hidden="true"
+            />
           </div>
           <div className="absolute top-40 right-20 opacity-30 hidden sm:block">
-            <MechanicaGear size="large" color="steel" speed="reverse" aria-hidden="true" />
+            <MechanicaGear
+              size="large"
+              color="steel"
+              speed="reverse"
+              aria-hidden="true"
+            />
           </div>
           <div className="absolute bottom-20 left-20 opacity-30 hidden sm:block">
-            <MechanicaGear size="medium" color="copper" speed="medium" aria-hidden="true" />
+            <MechanicaGear
+              size="medium"
+              color="copper"
+              speed="medium"
+              aria-hidden="true"
+            />
           </div>
           <div className="absolute bottom-40 right-10 opacity-30 hidden sm:block">
-            <MechanicaGear size="small" color="brass" speed="fast" aria-hidden="true" />
+            <MechanicaGear
+              size="small"
+              color="brass"
+              speed="fast"
+              aria-hidden="true"
+            />
           </div>
-
 
           <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               {/* Mechanical logo */}
               <div className="flex justify-center items-center space-x-4 md:space-x-6 mb-12">
                 <div className="hidden sm:block">
-                  <MechanicaGear size="large" color="brass" speed="slow" aria-hidden="true" />
+                  <MechanicaGear
+                    size="large"
+                    color="brass"
+                    speed="slow"
+                    aria-hidden="true"
+                  />
                 </div>
                 <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
                   BeginnerInvestorHub
                 </div>
                 <div className="hidden sm:block">
-                  <MechanicaGear size="large" color="brass" speed="reverse" aria-hidden="true" />
+                  <MechanicaGear
+                    size="large"
+                    color="brass"
+                    speed="reverse"
+                    aria-hidden="true"
+                  />
                 </div>
               </div>
 
@@ -202,7 +265,8 @@ export default function HomePage() {
               </h1>
 
               <h2 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
-                Build confidence with professional-grade portfolio tools and AI behavioral coaching — no real funds required.
+                Build confidence with professional-grade portfolio tools and AI
+                behavioral coaching — no real funds required.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -210,14 +274,18 @@ export default function HomePage() {
                   <input
                     type="email"
                     value={heroEmail}
-                    onChange={(e) => setHeroEmail(e.target.value)}
+                    onChange={e => setHeroEmail(e.target.value)}
                     placeholder="Enter your email address"
                     className="px-4 py-3 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 flex-grow mechanica-text-technical"
                     aria-label="Email address for simulation signup"
                     tabIndex={0}
                   />
                   <Link href="/signup">
-                    <MechanicaButton variant="mechanical" size="md" className="w-full sm:w-auto whitespace-nowrap">
+                    <MechanicaButton
+                      variant="mechanical"
+                      size="md"
+                      className="w-full sm:w-auto whitespace-nowrap"
+                    >
                       Start Simulation
                     </MechanicaButton>
                   </Link>
@@ -231,8 +299,12 @@ export default function HomePage() {
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
                   </span>
-                  <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-yellow-100/90" role="status">
-                    Protocol: This is a professional-grade architecture demonstration
+                  <p
+                    className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-yellow-100/90"
+                    role="status"
+                  >
+                    Protocol: This is a professional-grade architecture
+                    demonstration
                   </p>
                 </div>
               </div>
@@ -263,14 +335,18 @@ export default function HomePage() {
         </section>
 
         {/* Platform Stats */}
-        <section ref={statsRef} className="py-20 bg-gradient-to-br from-gray-50 to-amber-50">
+        <section
+          ref={statsRef}
+          className="py-20 bg-gradient-to-br from-gray-50 to-amber-50"
+        >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
                 Strategic Impact in Numbers
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Track your learning progress and the scale of our platform&apos;s simulations
+                Track your learning progress and the scale of our
+                platform&apos;s simulations
               </p>
             </div>
 
@@ -281,7 +357,9 @@ export default function HomePage() {
                     <MechanicaGear size="medium" color="steel" speed="medium" />
                   </div>
                   <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    {statsAnimated ? stats.portfoliosBuilt.toLocaleString() : '0'}
+                    {statsAnimated
+                      ? stats.portfoliosBuilt.toLocaleString()
+                      : '0'}
                   </div>
                   <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
                     Portfolio Blueprints Created
@@ -295,7 +373,9 @@ export default function HomePage() {
                     <MechanicaGear size="medium" color="brass" speed="slow" />
                   </div>
                   <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    {statsAnimated ? stats.simulationsRun.toLocaleString() : '0'}
+                    {statsAnimated
+                      ? stats.simulationsRun.toLocaleString()
+                      : '0'}
                   </div>
                   <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
                     Learning Simulations Run
@@ -309,7 +389,11 @@ export default function HomePage() {
                     <MechanicaGear size="medium" color="copper" speed="fast" />
                   </div>
                   <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    ${statsAnimated ? (stats.simulatedValue / 1000000).toFixed(1) : '0'}M
+                    $
+                    {statsAnimated
+                      ? (stats.simulatedValue / 1000000).toFixed(1)
+                      : '0'}
+                    M
                   </div>
                   <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
                     Total Simulated AUM
@@ -320,7 +404,11 @@ export default function HomePage() {
               <MechanicaCard variant="mechanical" animated gearDecoration>
                 <div className="text-center">
                   <div className="flex justify-center mb-4">
-                    <MechanicaGear size="medium" color="steel" speed="reverse" />
+                    <MechanicaGear
+                      size="medium"
+                      color="steel"
+                      speed="reverse"
+                    />
                   </div>
                   <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
                     {statsAnimated ? stats.userSatisfaction : '0'}%
@@ -349,7 +437,8 @@ export default function HomePage() {
                 Core Investment Capabilities
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our structured tools provide accuracy and support for your investment education
+                Our structured tools provide accuracy and support for your
+                investment education
               </p>
             </div>
 
@@ -364,7 +453,12 @@ export default function HomePage() {
                 >
                   <div className="flex items-start space-x-4">
                     <div className="flex-shrink-0">
-                      <MechanicaGear size="large" color={feature.gearColor} speed="medium" aria-label="Animated decorative gear" />
+                      <MechanicaGear
+                        size="large"
+                        color={feature.gearColor}
+                        speed="medium"
+                        aria-label="Animated decorative gear"
+                      />
                     </div>
                     <div className="flex-1">
                       <h3 className="text-2xl font-bold mb-3 text-mechanica-moonlight-blue font-serif">
@@ -394,24 +488,33 @@ export default function HomePage() {
                 Become a Founderling
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Join our founding community and help shape the future of investing education
+                Join our founding community and help shape the future of
+                investing education
               </p>
             </div>
-            <MechanicaCard variant="brass" animated className="max-w-6xl mx-auto mb-16">
+            <MechanicaCard
+              variant="brass"
+              animated
+              className="max-w-6xl mx-auto mb-16"
+            >
               <div className="p-10">
                 <div className="text-center mb-8">
                   <div className="flex justify-center items-center space-x-4 mb-6">
                     <MechanicaGear size="xl" color="copper" speed="slow" />
                     <h2 className="text-4xl font-bold text-gray-900 font-serif">
                       You&apos;re Not Just a User. <br />
-                      You&apos;re a <span className="text-amber-600">Co-creator</span>.
+                      You&apos;re a{' '}
+                      <span className="text-amber-600">Co-creator</span>.
                     </h2>
                     <MechanicaGear size="xl" color="copper" speed="reverse" />
                   </div>
 
                   <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-5xl mx-auto">
-                    Founderlings don&apos;t just provide data — you actively tune our risk-modeling engine and shape product direction.
-                    Every learning decision you make teaches our AI how to personalize investing education for thousands of future users.
+                    Founderlings don&apos;t just provide data — you actively
+                    tune our risk-modeling engine and shape product direction.
+                    Every learning decision you make teaches our AI how to
+                    personalize investing education for thousands of future
+                    users.
                   </p>
                 </div>
 
@@ -429,9 +532,7 @@ export default function HomePage() {
                     <p className="text-lg font-bold text-amber-600">
                       Yours forever
                     </p>
-                    <p className="text-xs text-gray-500">
-                      (Pro tier excluded)
-                    </p>
+                    <p className="text-xs text-gray-500">(Pro tier excluded)</p>
                   </div>
 
                   <div className="text-center">
@@ -498,13 +599,17 @@ export default function HomePage() {
                 {/* Email Signup Form */}
                 <div className="text-center">
                   <p className="text-lg text-gray-700 mb-6 font-medium">
-                    Join first 1000 Founderlings and shape the future of investing education.
+                    Join first 1000 Founderlings and shape the future of
+                    investing education.
                   </p>
-                  <form onSubmit={handleEmailSignup} className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-4">
+                  <form
+                    onSubmit={handleEmailSignup}
+                    className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto mb-4"
+                  >
                     <input
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={e => setEmail(e.target.value)}
                       placeholder="Enter your email to become a Founderling"
                       required
                       className="flex-1 px-6 py-4 border-2 border-amber-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent text-lg"
@@ -518,7 +623,11 @@ export default function HomePage() {
                     >
                       {isSubscribing ? (
                         <div className="flex items-center space-x-3">
-                          <MechanicaGear size="small" color="steel" speed="fast" />
+                          <MechanicaGear
+                            size="small"
+                            color="steel"
+                            speed="fast"
+                          />
                           <span>Becoming Founderling...</span>
                         </div>
                       ) : (
@@ -535,7 +644,8 @@ export default function HomePage() {
                       <div className="flex items-center justify-center space-x-2">
                         <span className="text-green-600 text-2xl">✅</span>
                         <span className="text-green-800 font-medium">
-                          Welcome to Founderlings! Check your email for your co-creator credentials.
+                          Welcome to Founderlings! Check your email for your
+                          co-creator credentials.
                         </span>
                       </div>
                     </div>
@@ -561,7 +671,7 @@ export default function HomePage() {
               backgroundImage: `
                 repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(255, 255, 255, 0.1) 30px, rgba(255, 255, 255, 0.1) 60px),
                 repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(255, 255, 255, 0.05) 30px, rgba(255, 255, 255, 0.05) 60px)
-              `
+              `,
             }}
           />
         </div>
@@ -569,19 +679,29 @@ export default function HomePage() {
         <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="flex justify-center items-center space-x-6 mb-8">
-              <MechanicaGear size="large" color="brass" speed="slow" aria-label="Animated decorative gear" />
+              <MechanicaGear
+                size="large"
+                color="brass"
+                speed="slow"
+                aria-label="Animated decorative gear"
+              />
               <div className="text-5xl font-bold font-serif text-yellow-400">
                 Start Your Journey
               </div>
-              <MechanicaGear size="large" color="brass" speed="reverse" aria-label="Animated decorative gear" />
+              <MechanicaGear
+                size="large"
+                color="brass"
+                speed="reverse"
+                aria-label="Animated decorative gear"
+              />
             </div>
 
             <h2 className="text-4xl font-bold mb-6 font-serif">
               Ready to Master Your Investment Strategy?
             </h2>
             <p className="text-xl text-white mb-8 max-w-3xl mx-auto">
-              Join thousands of learners who are mastering the art of portfolio management
-              with our precision-engineered educational platform.
+              Join thousands of learners who are mastering the art of portfolio
+              management with our precision-engineered educational platform.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -615,7 +735,7 @@ export default function HomePage() {
             </p>
 
             <form
-              onSubmit={(e) => {
+              onSubmit={e => {
                 e.preventDefault();
                 if (!newsletterEmail) return;
                 setNewsletterSubmitted(true);
@@ -628,7 +748,9 @@ export default function HomePage() {
                 type="email"
                 placeholder="Enter your email"
                 value={newsletterEmail}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewsletterEmail(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setNewsletterEmail(e.target.value)
+                }
                 className="flex-1"
                 required
               />

@@ -39,4 +39,4 @@ declare module 'next-auth/jwt' {
   }
 }
 
-export { };
+export {};

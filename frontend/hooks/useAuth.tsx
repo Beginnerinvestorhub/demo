@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, useCallback, useEffect, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+  ReactNode,
+} from 'react';
 import { useLearningStore } from '../src/store/learningStore';
 
 interface User {
@@ -22,9 +29,9 @@ const AuthContext = createContext<AuthContextType>({
   loading: false,
   role: null,
   error: null,
-  login: async () => { },
-  signup: async () => { },
-  logout: async () => { },
+  login: async () => {},
+  signup: async () => {},
+  logout: async () => {},
 });
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -49,36 +56,76 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   // Persist auth state to sessionStorage
-  const persistAuth = useCallback((userData: User | null, userRole: string | null) => {
-    try {
-      if (userData) {
-        sessionStorage.setItem('demo_auth_user', JSON.stringify({ user: userData, role: userRole }));
-      } else {
-        sessionStorage.removeItem('demo_auth_user');
+  const persistAuth = useCallback(
+    (userData: User | null, userRole: string | null) => {
+      try {
+        if (userData) {
+          sessionStorage.setItem(
+            'demo_auth_user',
+            JSON.stringify({ user: userData, role: userRole })
+          );
+        } else {
+          sessionStorage.removeItem('demo_auth_user');
+        }
+      } catch {
+        // sessionStorage not available — ignore
       }
-    } catch {
-      // sessionStorage not available — ignore
-    }
-  }, []);
+    },
+    []
+  );
 
-  const login = useCallback(async (email: string, password: string) => {
-    setLoading(true);
-    setError(null);
+  const login = useCallback(
+    async (email: string, password: string) => {
+      setLoading(true);
+      setError(null);
 
-    // Check for demo user credentials from environment variables
-    const demoModeEnabled = process.env.DEMO_MODE_ENABLED === 'true';
-    const demoEmail = process.env.DEMO_USER_EMAIL;
-    const demoPassword = process.env.DEMO_USER_PASSWORD;
-    const demoDisplayName = process.env.DEMO_USER_DISPLAY_NAME || 'Demo User';
-    const demoUid = process.env.DEMO_USER_UID || 'demo-user-prod-001';
+      // Check for demo user credentials from environment variables
+      const demoModeEnabled = process.env.DEMO_MODE_ENABLED === 'true';
+      const demoEmail = process.env.DEMO_USER_EMAIL;
+      const demoPassword = process.env.DEMO_USER_PASSWORD;
+      const demoDisplayName = process.env.DEMO_USER_DISPLAY_NAME || 'Demo User';
+      const demoUid = process.env.DEMO_USER_UID || 'demo-user-prod-001';
 
-    // Check for demo user login
-    if (demoModeEnabled && email === demoEmail && password === demoPassword) {
+      // Check for demo user login
+      if (demoModeEnabled && email === demoEmail && password === demoPassword) {
+        await new Promise(resolve => setTimeout(resolve, 800));
+        const mockUser: User = {
+          uid: demoUid,
+          email: email,
+          displayName: demoDisplayName,
+        };
+        setUser(mockUser);
+        setRole('user');
+        persistAuth(mockUser, 'user');
+        // Reset learning store for demo user to start fresh onboarding
+        useLearningStore.getState().resetProgress();
+        setLoading(false);
+        return;
+      }
+
+      // Legacy Luke credentials (for backward compatibility)
+      if (email === 'Luke' && password === 'demo123abc') {
+        await new Promise(resolve => setTimeout(resolve, 800));
+        const mockUser: User = {
+          uid: 'luke-user-123',
+          email: email,
+          displayName: 'Luke',
+        };
+        setUser(mockUser);
+        setRole('user');
+        persistAuth(mockUser, 'user');
+        // Reset learning store for demo user to start fresh onboarding
+        useLearningStore.getState().resetProgress();
+        setLoading(false);
+        return;
+      }
+
+      // Demo mode for other credentials
       await new Promise(resolve => setTimeout(resolve, 800));
       const mockUser: User = {
-        uid: demoUid,
+        uid: 'demo-user-123',
         email: email,
-        displayName: demoDisplayName,
+        displayName: 'Demo User',
       };
       setUser(mockUser);
       setRole('user');
@@ -86,57 +133,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Reset learning store for demo user to start fresh onboarding
       useLearningStore.getState().resetProgress();
       setLoading(false);
-      return;
-    }
+    },
+    [persistAuth]
+  );
 
-    // Legacy Luke credentials (for backward compatibility)
-    if (email === 'Luke' && password === 'demo123abc') {
+  const signup = useCallback(
+    async (email: string) => {
+      setLoading(true);
+      setError(null);
+
+      // Demo mode - simulate signup
       await new Promise(resolve => setTimeout(resolve, 800));
       const mockUser: User = {
-        uid: 'luke-user-123',
+        uid: 'demo-user-123',
         email: email,
-        displayName: 'Luke',
+        displayName: 'Demo User',
       };
       setUser(mockUser);
       setRole('user');
       persistAuth(mockUser, 'user');
-      // Reset learning store for demo user to start fresh onboarding
-      useLearningStore.getState().resetProgress();
       setLoading(false);
-      return;
-    }
-
-    // Demo mode for other credentials
-    await new Promise(resolve => setTimeout(resolve, 800));
-    const mockUser: User = {
-      uid: 'demo-user-123',
-      email: email,
-      displayName: 'Demo User',
-    };
-    setUser(mockUser);
-    setRole('user');
-    persistAuth(mockUser, 'user');
-    // Reset learning store for demo user to start fresh onboarding
-    useLearningStore.getState().resetProgress();
-    setLoading(false);
-  }, [persistAuth]);
-
-  const signup = useCallback(async (email: string) => {
-    setLoading(true);
-    setError(null);
-
-    // Demo mode - simulate signup
-    await new Promise(resolve => setTimeout(resolve, 800));
-    const mockUser: User = {
-      uid: 'demo-user-123',
-      email: email,
-      displayName: 'Demo User',
-    };
-    setUser(mockUser);
-    setRole('user');
-    persistAuth(mockUser, 'user');
-    setLoading(false);
-  }, [persistAuth]);
+    },
+    [persistAuth]
+  );
 
   const logout = useCallback(async () => {
     setLoading(true);
@@ -150,8 +169,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [persistAuth]);
 
   return (
-    <AuthContext.Provider value={{ user, loading, role, error, login, signup, logout }
-    }>
+    <AuthContext.Provider
+      value={{ user, loading, role, error, login, signup, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

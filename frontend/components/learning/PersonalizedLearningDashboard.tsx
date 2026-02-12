@@ -152,7 +152,9 @@ const PersonalizedLearningDashboard: React.FC = () => {
               <h2 className="text-2xl font-bold text-gray-900">
                 {currentPath.currentPath.name}
               </h2>
-              <p className="text-gray-600 mt-1">{currentPath.currentPath.description}</p>
+              <p className="text-gray-600 mt-1">
+                {currentPath.currentPath.description}
+              </p>
             </div>
             <div className="text-right">
               <div className="text-3xl font-bold text-indigo-600">
@@ -225,7 +227,10 @@ const PersonalizedLearningDashboard: React.FC = () => {
                     <div className="flex items-center space-x-4 text-sm text-gray-600 mb-4">
                       <span className="flex items-center">
                         <ClockIcon className="h-4 w-4 mr-1" />
-                        {nextRecommended.nextModule.estimatedDurationMinutes} min
+                        {
+                          nextRecommended.nextModule.estimatedDurationMinutes
+                        }{' '}
+                        min
                       </span>
                       <span className="flex items-center">
                         <TrophyIcon className="h-4 w-4 mr-1" />
@@ -234,13 +239,16 @@ const PersonalizedLearningDashboard: React.FC = () => {
                     </div>
                     <div className="flex space-x-3">
                       <button
-                        onClick={() => handleStartLesson(nextRecommended.nextModule.id)}
+                        onClick={() =>
+                          handleStartLesson(nextRecommended.nextModule.id)
+                        }
                         className="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition-colors flex items-center"
                       >
                         <PlayIcon className="h-4 w-4 mr-2" />
                         Start Lesson
                       </button>
-                      {nextRecommended.nextModule.progressStatus === 'in_progress' && (
+                      {nextRecommended.nextModule.progressStatus ===
+                        'in_progress' && (
                         <button
                           onClick={() =>
                             handleCompleteLesson(nextRecommended.nextModule.id)
@@ -267,11 +275,12 @@ const PersonalizedLearningDashboard: React.FC = () => {
 
             <div className="space-y-3">
               {pathContent.content.slice(0, 6).map((content, index) => {
-                const statusClass = content.progressStatus === 'completed'
-                  ? 'border-green-200 bg-green-50'
-                  : content.progressStatus === 'in_progress'
-                    ? 'border-indigo-200 bg-indigo-50'
-                    : 'border-gray-200 bg-gray-50';
+                const statusClass =
+                  content.progressStatus === 'completed'
+                    ? 'border-green-200 bg-green-50'
+                    : content.progressStatus === 'in_progress'
+                      ? 'border-indigo-200 bg-indigo-50'
+                      : 'border-gray-200 bg-gray-50';
 
                 return (
                   <div
@@ -295,7 +304,9 @@ const PersonalizedLearningDashboard: React.FC = () => {
                         {content.title}
                       </h4>
                       <div className="flex items-center space-x-3 text-sm text-gray-600 mt-1">
-                        <span className="capitalize">{content.contentType}</span>
+                        <span className="capitalize">
+                          {content.contentType}
+                        </span>
                         <span>{content.estimatedDurationMinutes} min</span>
                         <span>{content.pointsValue} pts</span>
                       </div>
@@ -358,7 +369,11 @@ const PersonalizedLearningDashboard: React.FC = () => {
                   <span className="text-gray-700">Completion Rate</span>
                 </div>
                 <span className="font-bold text-gray-900">
-                  {Math.round((stats.stats.completedLessons / stats.stats.totalLessons) * 100)}%
+                  {Math.round(
+                    (stats.stats.completedLessons / stats.stats.totalLessons) *
+                      100
+                  )}
+                  %
                 </span>
               </div>
             </div>

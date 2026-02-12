@@ -7,7 +7,11 @@ const Line = React.lazy(() =>
   import('react-chartjs-2').then(mod => ({ default: mod.Line }))
 );
 
-import { registerMechanicaCharts, getMechanicaTheme, MECHANICA_COLORS } from '@/utils/mechanicaCharts';
+import {
+  registerMechanicaCharts,
+  getMechanicaTheme,
+  MECHANICA_COLORS,
+} from '@/utils/mechanicaCharts';
 import { MechanicaCard } from './ui/mechanicaCard';
 import { MechanicaButton } from './ui/mechanicaButton';
 import { MechanicaGear } from './ui/mechanicaGear';
@@ -49,16 +53,22 @@ const mockPortfolioData: PortfolioMonitoringData = {
   marketStatus: 'healthy',
   servicesStatus: {
     'Data Feed': true,
-    'Analytics': true,
-    'Alerts': true,
+    Analytics: true,
+    Alerts: true,
   },
   timestamp: new Date().toISOString(),
 };
 
 const PortfolioMonitor = React.memo(function PortfolioMonitor() {
   const [showAsset, setShowAsset] = useState<string | null>(null);
-  const [portfolioAssets, setPortfolioAssets] = useState<PortfolioAsset[]>(mockPortfolioData.assets);
-  const [newAsset, setNewAsset] = useState({ ticker: '', amount: '', price: '' });
+  const [portfolioAssets, setPortfolioAssets] = useState<PortfolioAsset[]>(
+    mockPortfolioData.assets
+  );
+  const [newAsset, setNewAsset] = useState({
+    ticker: '',
+    amount: '',
+    price: '',
+  });
 
   // Persistent Alert Sensitivity
   const [alertSensitivity, setAlertSensitivity] = useState<number>(() => {
@@ -69,15 +79,21 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
   });
 
   useEffect(() => {
-    localStorage.setItem('portfolio_alert_sensitivity', alertSensitivity.toString());
+    localStorage.setItem(
+      'portfolio_alert_sensitivity',
+      alertSensitivity.toString()
+    );
   }, [alertSensitivity]);
 
   // Calculate total portfolio value and allocations
   const portfolioData = useMemo(() => {
-    const totalValue = portfolioAssets.reduce((sum, asset) => sum + asset.value, 0);
+    const totalValue = portfolioAssets.reduce(
+      (sum, asset) => sum + asset.value,
+      0
+    );
     const assetsWithAllocation = portfolioAssets.map(asset => ({
       ...asset,
-      allocation: totalValue > 0 ? (asset.value / totalValue) * 100 : 0
+      allocation: totalValue > 0 ? (asset.value / totalValue) * 100 : 0,
     }));
 
     return {
@@ -90,75 +106,73 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
   const error = null;
 
   // Memoize chart data to prevent unnecessary recalculations - MUST be before early returns
-  const pieData = useMemo(
-    () => {
-      const portfolio = (portfolioData?.assets || []).map((a: PortfolioAsset) => ({ ...a }));
-      return {
-        labels: portfolio.map(a => a.name),
-        datasets: [
-          {
-            data: portfolio.map(a => a.allocation),
-            backgroundColor: [
-              MECHANICA_COLORS.neutral,
-              MECHANICA_COLORS.accent,
-              MECHANICA_COLORS.success,
-              MECHANICA_COLORS.danger,
-              '#a78bfa',
-            ],
-            borderColor: '#ffffff',
-            borderWidth: 2,
-          },
-        ],
-      };
-    },
-    [portfolioData]
-  );
+  const pieData = useMemo(() => {
+    const portfolio = (portfolioData?.assets || []).map(
+      (a: PortfolioAsset) => ({ ...a })
+    );
+    return {
+      labels: portfolio.map(a => a.name),
+      datasets: [
+        {
+          data: portfolio.map(a => a.allocation),
+          backgroundColor: [
+            MECHANICA_COLORS.neutral,
+            MECHANICA_COLORS.accent,
+            MECHANICA_COLORS.success,
+            MECHANICA_COLORS.danger,
+            '#a78bfa',
+          ],
+          borderColor: '#ffffff',
+          borderWidth: 2,
+        },
+      ],
+    };
+  }, [portfolioData]);
 
-  const lineData = useMemo(
-    () => {
-      const history = portfolioData?.history || [];
-      return {
-        labels: history.map(h => h.date),
-        datasets: [
-          {
-            label: 'Portfolio Value',
-            data: history.map(h => h.total),
-            fill: true,
-            borderColor: MECHANICA_COLORS.primary,
-            backgroundColor: 'rgba(79, 115, 142, 0.1)',
-            tension: 0.4,
-            pointBackgroundColor: MECHANICA_COLORS.primary,
-            pointBorderColor: '#ffffff',
-            pointBorderWidth: 2,
-            pointRadius: 4,
-          },
-        ],
-      };
-    },
-    [portfolioData]
-  );
+  const lineData = useMemo(() => {
+    const history = portfolioData?.history || [];
+    return {
+      labels: history.map(h => h.date),
+      datasets: [
+        {
+          label: 'Portfolio Value',
+          data: history.map(h => h.total),
+          fill: true,
+          borderColor: MECHANICA_COLORS.primary,
+          backgroundColor: 'rgba(79, 115, 142, 0.1)',
+          tension: 0.4,
+          pointBackgroundColor: MECHANICA_COLORS.primary,
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 4,
+        },
+      ],
+    };
+  }, [portfolioData]);
 
   // Memoize chart options to prevent unnecessary re-renders
   const pieOptions = useMemo(
-    () => getMechanicaTheme({
-      plugins: {
-        legend: {
-          display: true,
-          position: 'bottom' as const,
-        }
-      }
-    }),
+    () =>
+      getMechanicaTheme({
+        plugins: {
+          legend: {
+            display: true,
+            position: 'bottom' as const,
+          },
+        },
+      }),
     []
   );
 
   const lineOptions = useMemo(
-    () => getMechanicaTheme({
-      scales: {
-        y: {
-          beginAtZero: false, // Better for portfolio growth
-        }
-      }
-    }),
+    () =>
+      getMechanicaTheme({
+        scales: {
+          y: {
+            beginAtZero: false, // Better for portfolio growth
+          },
+        },
+      }),
     []
   );
 
@@ -177,7 +191,12 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
   const timestamp = portfolioData?.timestamp;
 
   return (
-    <MechanicaCard variant="mechanical" animated gearDecoration className="w-full max-w-5xl overflow-hidden">
+    <MechanicaCard
+      variant="mechanical"
+      animated
+      gearDecoration
+      className="w-full max-w-5xl overflow-hidden"
+    >
       <div className="p-6 md:p-10">
         {/* Header section with Gear */}
         <div className="flex items-center space-x-4 mb-8 border-b border-gray-100 pb-6">
@@ -195,7 +214,9 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
         {/* Service Status Bar */}
         <div className="mb-8 p-6 bg-blue-50/50 rounded-xl border border-blue-100/50 backdrop-blur-sm shadow-inner-premium">
           <div className="flex items-center justify-between mb-4">
-            <h4 className="text-xs font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em]">System Diagnostics</h4>
+            <h4 className="text-xs font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em]">
+              System Diagnostics
+            </h4>
             {timestamp && (
               <span className="text-[10px] font-mono text-gray-400 uppercase">
                 Last Sync: {new Date(timestamp).toLocaleTimeString()}
@@ -206,12 +227,15 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
             {Object.entries(servicesStatus).map(([service, healthy]) => (
               <div
                 key={service}
-                className={`flex items-center px-3 py-1.5 rounded-lg border-2 text-[10px] font-black uppercase tracking-widest transition-all ${healthy
-                  ? 'bg-green-50 border-green-200 text-green-700'
-                  : 'bg-red-50 border-red-200 text-red-700'
-                  }`}
+                className={`flex items-center px-3 py-1.5 rounded-lg border-2 text-[10px] font-black uppercase tracking-widest transition-all ${
+                  healthy
+                    ? 'bg-green-50 border-green-200 text-green-700'
+                    : 'bg-red-50 border-red-200 text-red-700'
+                }`}
               >
-                <div className={`w-2 h-2 rounded-full mr-2 ${healthy ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
+                <div
+                  className={`w-2 h-2 rounded-full mr-2 ${healthy ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}
+                ></div>
                 {service}: {healthy ? 'Active' : 'Offline'}
               </div>
             ))}
@@ -222,22 +246,42 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
-          <MechanicaCard variant="default" hover className="p-6 border-mechanica-moonlight-blue/10">
+          <MechanicaCard
+            variant="default"
+            hover
+            className="p-6 border-mechanica-moonlight-blue/10"
+          >
             <h3 className="text-sm font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] mb-6 flex items-center">
               <span className="mr-2">📊</span> Asset Allocation
             </h3>
-            <Suspense fallback={<div className="h-[300px] flex items-center justify-center"><MechanicaGear size="medium" color="steel" speed="fast" /></div>}>
+            <Suspense
+              fallback={
+                <div className="h-[300px] flex items-center justify-center">
+                  <MechanicaGear size="medium" color="steel" speed="fast" />
+                </div>
+              }
+            >
               <div className="h-[300px] relative">
                 <Pie data={pieData} options={pieOptions} redraw={true} />
               </div>
             </Suspense>
           </MechanicaCard>
 
-          <MechanicaCard variant="default" hover className="p-6 border-mechanica-moonlight-blue/10">
+          <MechanicaCard
+            variant="default"
+            hover
+            className="p-6 border-mechanica-moonlight-blue/10"
+          >
             <h3 className="text-sm font-black text-mechanica-moonlight-blue uppercase tracking-[0.2em] mb-6 flex items-center">
               <span className="mr-2">📈</span> Performance History
             </h3>
-            <Suspense fallback={<div className="h-[300px] flex items-center justify-center"><MechanicaGear size="medium" color="steel" speed="fast" /></div>}>
+            <Suspense
+              fallback={
+                <div className="h-[300px] flex items-center justify-center">
+                  <MechanicaGear size="medium" color="steel" speed="fast" />
+                </div>
+              }
+            >
               <div className="h-[300px] relative">
                 <Line data={lineData} options={lineOptions} redraw={true} />
               </div>
@@ -253,17 +297,38 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { label: 'Volatility', value: `${((riskMetrics.volatility as any) * 100).toFixed(2)}%`, icon: '🌪️' },
-                { label: 'VaR (95%)', value: Number(riskMetrics.var_95 || 0).toFixed(2), icon: '🛡️' },
-                { label: 'Sharpe', value: Number(riskMetrics.sharpe_ratio || 0).toFixed(2), icon: '⚖️' },
-                { label: 'Drawdown', value: `${((riskMetrics.max_drawdown as any) * 100).toFixed(2)}%`, icon: '📉' }
-              ].map((metric) => (
-                <div key={metric.label} className="p-4 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow">
+                {
+                  label: 'Volatility',
+                  value: `${((riskMetrics.volatility as any) * 100).toFixed(2)}%`,
+                  icon: '🌪️',
+                },
+                {
+                  label: 'VaR (95%)',
+                  value: Number(riskMetrics.var_95 || 0).toFixed(2),
+                  icon: '🛡️',
+                },
+                {
+                  label: 'Sharpe',
+                  value: Number(riskMetrics.sharpe_ratio || 0).toFixed(2),
+                  icon: '⚖️',
+                },
+                {
+                  label: 'Drawdown',
+                  value: `${((riskMetrics.max_drawdown as any) * 100).toFixed(2)}%`,
+                  icon: '📉',
+                },
+              ].map(metric => (
+                <div
+                  key={metric.label}
+                  className="p-4 bg-gray-50 rounded-xl border border-gray-100 hover:shadow-md transition-shadow"
+                >
                   <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1 flex items-center justify-between">
                     {metric.label}
                     <span className="opacity-50">{metric.icon}</span>
                   </div>
-                  <div className="text-lg font-black text-mechanica-moonlight-blue font-mono">{metric.value}</div>
+                  <div className="text-lg font-black text-mechanica-moonlight-blue font-mono">
+                    {metric.value}
+                  </div>
                 </div>
               ))}
             </div>
@@ -315,13 +380,22 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
             <div className="flex items-center space-x-4">
               <MechanicaGear size="medium" color="brass" speed="medium" />
               <div className="text-2xl font-black text-mechanica-moonlight-blue font-mono">
-                {showAsset}: <span className="text-indigo-600">${portfolioData?.assets.find(a => a.name === showAsset)?.value?.toLocaleString() || 'N/A'}</span>
+                {showAsset}:{' '}
+                <span className="text-indigo-600">
+                  $
+                  {portfolioData?.assets
+                    .find(a => a.name === showAsset)
+                    ?.value?.toLocaleString() || 'N/A'}
+                </span>
               </div>
             </div>
           ) : (
             <div className="flex items-center space-x-3 text-gray-400 italic font-medium">
               <span className="text-xl">⚙️</span>
-              <span>All components currently synchronized. Select an asset for detailed isolation.</span>
+              <span>
+                All components currently synchronized. Select an asset for
+                detailed isolation.
+              </span>
             </div>
           )}
         </MechanicaCard>
@@ -339,32 +413,44 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative z-10">
             <div className="space-y-2">
-              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Ticker ID</label>
+              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+                Ticker ID
+              </label>
               <input
                 type="text"
                 placeholder="e.g., AAPL"
                 value={newAsset.ticker}
-                onChange={(e) => setNewAsset({ ...newAsset, ticker: e.target.value })}
+                onChange={e =>
+                  setNewAsset({ ...newAsset, ticker: e.target.value })
+                }
                 className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono uppercase"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Unit Quantity</label>
+              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+                Unit Quantity
+              </label>
               <input
                 type="number"
                 placeholder="0.00"
                 value={newAsset.amount}
-                onChange={(e) => setNewAsset({ ...newAsset, amount: e.target.value })}
+                onChange={e =>
+                  setNewAsset({ ...newAsset, amount: e.target.value })
+                }
                 className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">Price Vector</label>
+              <label className="text-[9px] font-black uppercase tracking-widest text-gray-400">
+                Price Vector
+              </label>
               <input
                 type="number"
                 placeholder="0.00"
                 value={newAsset.price}
-                onChange={(e) => setNewAsset({ ...newAsset, price: e.target.value })}
+                onChange={e =>
+                  setNewAsset({ ...newAsset, price: e.target.value })
+                }
                 className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono"
               />
             </div>
@@ -374,14 +460,15 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
                 size="md"
                 onClick={() => {
                   if (newAsset.ticker && newAsset.amount && newAsset.price) {
-                    const value = parseFloat(newAsset.amount) * parseFloat(newAsset.price);
+                    const value =
+                      parseFloat(newAsset.amount) * parseFloat(newAsset.price);
                     setPortfolioAssets([
                       ...portfolioAssets,
                       {
                         name: newAsset.ticker.toUpperCase(),
                         value,
-                        allocation: 0
-                      }
+                        allocation: 0,
+                      },
                     ]);
                     setNewAsset({ ticker: '', amount: '', price: '' });
                   }

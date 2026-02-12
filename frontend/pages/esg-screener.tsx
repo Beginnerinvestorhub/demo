@@ -17,7 +17,10 @@ export default function ESGScreenerPage() {
         <section className="relative min-h-[60vh] flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
           {/* Steam Vents for Hero */}
           <div className="absolute top-0 right-1/4 w-px h-32 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"></div>
-          <div className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam" style={{ animationDelay: '1.5s' }}></div>
+          <div
+            className="absolute top-0 left-1/4 w-px h-48 bg-gradient-to-b from-white/20 to-transparent mechanica-steam"
+            style={{ animationDelay: '1.5s' }}
+          ></div>
           {/* Mechanical background */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -26,7 +29,7 @@ export default function ESGScreenerPage() {
                 backgroundImage: `
                   repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.1) 40px, rgba(255, 255, 255, 0.1) 80px),
                   repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(255, 255, 255, 0.05) 40px, rgba(255, 255, 255, 0.05) 80px)
-                `
+                `,
               }}
             />
           </div>
@@ -36,13 +39,15 @@ export default function ESGScreenerPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Sustainable <span className="text-yellow-400">Impact</span> Finder
+                  Sustainable <span className="text-yellow-400">Impact</span>{' '}
+                  Finder
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Find companies that match your personal values. We help you look past the marketing to find the truth.
+                Find companies that match your personal values. We help you look
+                past the marketing to find the truth.
               </p>
 
               <div className="flex justify-center">
@@ -64,18 +69,33 @@ export default function ESGScreenerPage() {
         <div className="container mx-auto px-4 relative z-10 py-12 flex flex-col items-center">
           {/* ESG Criteria Badges */}
           <div className="mb-8 flex flex-wrap items-center justify-center gap-4">
-            <MechanicaCard variant="default" className="inline-flex items-center px-4 py-2">
+            <MechanicaCard
+              variant="default"
+              className="inline-flex items-center px-4 py-2"
+            >
               <div className="w-5 h-5 text-green-600 mr-2">🌍</div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 Environmental
               </span>
             </MechanicaCard>
-            <MechanicaCard variant="mechanical" className="inline-flex items-center px-4 py-2">
-              <div className="w-5 h-5 text-mechanica-moonlight-blue mr-2">👥</div>
-              <span className="text-sm text-gray-700 font-medium mechanica-text-technical">Social</span>
+            <MechanicaCard
+              variant="mechanical"
+              className="inline-flex items-center px-4 py-2"
+            >
+              <div className="w-5 h-5 text-mechanica-moonlight-blue mr-2">
+                👥
+              </div>
+              <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
+                Social
+              </span>
             </MechanicaCard>
-            <MechanicaCard variant="wood" className="inline-flex items-center px-4 py-2">
-              <div className="w-5 h-5 text-mechanica-polished-brass mr-2">🏛️</div>
+            <MechanicaCard
+              variant="wood"
+              className="inline-flex items-center px-4 py-2"
+            >
+              <div className="w-5 h-5 text-mechanica-polished-brass mr-2">
+                🏛️
+              </div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
                 Governance
               </span>
@@ -83,7 +103,11 @@ export default function ESGScreenerPage() {
           </div>
 
           {/* Main Screener Card */}
-          <MechanicaCard variant="wood" animated className="bg-gradient-to-br from-blue-50 to-white mechanica-hum w-full max-w-6xl">
+          <MechanicaCard
+            variant="wood"
+            animated
+            className="bg-gradient-to-br from-blue-50 to-white mechanica-hum w-full max-w-6xl"
+          >
             <div className="p-8">
               {/* Tool Header */}
               <div className="mb-8 pb-6 border-b border-gray-200">
@@ -94,7 +118,8 @@ export default function ESGScreenerPage() {
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Use our simple filters to find companies that truly care about their impact on the world.
+                  Use our simple filters to find companies that truly care about
+                  their impact on the world.
                 </p>
               </div>
 
@@ -112,28 +137,68 @@ export default function ESGScreenerPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <MechanicaCard variant="default" animated className="bg-white border-t-4 border-t-mechanica-moonlight-blue p-8 text-center">
-                <div className="w-12 h-12 bg-mechanica-moonlight-blue text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">1</div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Set Values</h4>
-                <p className="text-gray-500 text-sm font-medium">Choose what matters to you most.</p>
+              <MechanicaCard
+                variant="default"
+                animated
+                className="bg-white border-t-4 border-t-mechanica-moonlight-blue p-8 text-center"
+              >
+                <div className="w-12 h-12 bg-mechanica-moonlight-blue text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">
+                  1
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">
+                  Set Values
+                </h4>
+                <p className="text-gray-500 text-sm font-medium">
+                  Choose what matters to you most.
+                </p>
               </MechanicaCard>
 
-              <MechanicaCard variant="mechanical" animated className="bg-white border-t-4 border-t-yellow-500 p-8 text-center">
-                <div className="w-12 h-12 bg-yellow-500 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">2</div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Real Scan</h4>
-                <p className="text-gray-500 text-sm font-medium">We look past the jargon to find real results.</p>
+              <MechanicaCard
+                variant="mechanical"
+                animated
+                className="bg-white border-t-4 border-t-yellow-500 p-8 text-center"
+              >
+                <div className="w-12 h-12 bg-yellow-500 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">
+                  2
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">
+                  Real Scan
+                </h4>
+                <p className="text-gray-500 text-sm font-medium">
+                  We look past the jargon to find real results.
+                </p>
               </MechanicaCard>
 
-              <MechanicaCard variant="wood" animated className="bg-white border-t-4 border-t-mechanica-polished-brass p-8 text-center">
-                <div className="w-12 h-12 bg-mechanica-polished-brass text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">3</div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Your Report</h4>
-                <p className="text-gray-500 text-sm font-medium">See exactly how companies perform.</p>
+              <MechanicaCard
+                variant="wood"
+                animated
+                className="bg-white border-t-4 border-t-mechanica-polished-brass p-8 text-center"
+              >
+                <div className="w-12 h-12 bg-mechanica-polished-brass text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">
+                  3
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">
+                  Your Report
+                </h4>
+                <p className="text-gray-500 text-sm font-medium">
+                  See exactly how companies perform.
+                </p>
               </MechanicaCard>
 
-              <MechanicaCard variant="default" animated className="bg-white border-t-4 border-t-slate-500 p-8 text-center">
-                <div className="w-12 h-12 bg-slate-500 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">4</div>
-                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">Take Action</h4>
-                <p className="text-gray-500 text-sm font-medium">Add sustainable stocks to your watchlist.</p>
+              <MechanicaCard
+                variant="default"
+                animated
+                className="bg-white border-t-4 border-t-slate-500 p-8 text-center"
+              >
+                <div className="w-12 h-12 bg-slate-500 text-white rounded-2xl flex items-center justify-center text-xl font-black mx-auto mb-6 shadow-lg">
+                  4
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-3 uppercase tracking-wider">
+                  Take Action
+                </h4>
+                <p className="text-gray-500 text-sm font-medium">
+                  Add sustainable stocks to your watchlist.
+                </p>
               </MechanicaCard>
             </div>
           </div>
@@ -145,7 +210,8 @@ export default function ESGScreenerPage() {
                 💡 Why ESG Matters to You
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Investing isn't just about numbers—it's about the kind of world you want to build.
+                Investing isn't just about numbers—it's about the kind of world
+                you want to build.
               </p>
             </div>
 
@@ -154,9 +220,13 @@ export default function ESGScreenerPage() {
                 <div className="flex items-start space-x-6">
                   <div className="text-4xl">🌱</div>
                   <div>
-                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Vote With Your Dollars</h4>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
+                      Vote With Your Dollars
+                    </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Every stock you buy is a "vote" of confidence in that company. ESG helps you ensure your money supports leaders who are building a sustainable future.
+                      Every stock you buy is a "vote" of confidence in that
+                      company. ESG helps you ensure your money supports leaders
+                      who are building a sustainable future.
                     </p>
                   </div>
                 </div>
@@ -166,9 +236,13 @@ export default function ESGScreenerPage() {
                 <div className="flex items-start space-x-6">
                   <div className="text-4xl">🛡️</div>
                   <div>
-                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Reduce Hidden Risks</h4>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
+                      Reduce Hidden Risks
+                    </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Companies with poor governance or high environmental risk are more likely to face lawsuits or regulatory trouble. Good ESG often means a more stable business.
+                      Companies with poor governance or high environmental risk
+                      are more likely to face lawsuits or regulatory trouble.
+                      Good ESG often means a more stable business.
                     </p>
                   </div>
                 </div>
@@ -178,11 +252,15 @@ export default function ESGScreenerPage() {
 
           {/* Technical Specs Footer */}
           <div className="mt-12 text-center">
-            <MechanicaCard variant="mechanical" className="inline-flex items-center px-6 py-3">
+            <MechanicaCard
+              variant="mechanical"
+              className="inline-flex items-center px-6 py-3"
+            >
               <div className="flex items-center space-x-3">
                 <MechanicaGear size="sm" color="steel" speed="medium" />
                 <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                  All ESG data verified against MSCI and regulatory disclosure standards
+                  All ESG data verified against MSCI and regulatory disclosure
+                  standards
                 </span>
               </div>
             </MechanicaCard>

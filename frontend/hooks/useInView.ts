@@ -4,7 +4,7 @@ import { useState, useEffect, RefObject } from 'react';
 /**
  * Custom hook to detect when an element is in the viewport
  * Uses IntersectionObserver API
- * 
+ *
  * @param ref - React ref object pointing to the element to observe
  * @param options - IntersectionObserver options (optional)
  * @returns boolean indicating if the element is in view
@@ -17,7 +17,7 @@ interface UseInViewOptions {
 }
 
 export const useInView = (
-  ref: RefObject<HTMLElement>, 
+  ref: RefObject<HTMLElement>,
   options?: UseInViewOptions
 ): boolean => {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -28,12 +28,9 @@ export const useInView = (
       return;
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIntersecting(entry.isIntersecting);
-      },
-      options
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      setIntersecting(entry.isIntersecting);
+    }, options);
 
     const currentRef = ref.current;
     observer.observe(currentRef);

@@ -18,9 +18,7 @@ export default function OnboardingPage() {
   const isDemo = isReady && query.demo === 'true';
 
   // Use demo user fallback when in demo mode
-  const user = isDemo
-    ? { displayName: 'Demo Investor' }
-    : realUser;
+  const user = isDemo ? { displayName: 'Demo Investor' } : realUser;
 
   /**
    * Redirect logic
@@ -92,7 +90,6 @@ export default function OnboardingPage() {
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50 flex flex-col">
-
         {/* Header */}
         <header className="py-6 bg-white">
           <div className="container mx-auto px-4">
@@ -104,7 +101,8 @@ export default function OnboardingPage() {
                     BeginnerInvestorHub
                   </div>
                   <div className="text-gray-600 mechanica-text-technical">
-                    Welcome, {isDemo ? 'Demo Investor' : user?.displayName || 'Investor'}
+                    Welcome,{' '}
+                    {isDemo ? 'Demo Investor' : user?.displayName || 'Investor'}
                   </div>
                 </div>
               </div>
@@ -138,7 +136,8 @@ export default function OnboardingPage() {
                     <MechanicaGear size="large" color="brass" speed="reverse" />
                   </div>
                   <p className="text-gray-600 mechanica-text-technical">
-                    Let&apos;s personalize your investment education journey with our mechanically-engineered approach
+                    Let&apos;s personalize your investment education journey
+                    with our mechanically-engineered approach
                   </p>
                 </div>
 
@@ -164,14 +163,14 @@ export default function OnboardingPage() {
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <MechanicaGear size="small" color="steel" speed="medium" />
                 <p className="text-gray-600 mechanica-text-technical">
-                  You can always update these preferences later in your account settings
+                  You can always update these preferences later in your account
+                  settings
                 </p>
                 <MechanicaGear size="small" color="steel" speed="reverse" />
               </div>
             </div>
           </div>
         </footer>
-
       </div>
     </MechanicaLayout>
   );

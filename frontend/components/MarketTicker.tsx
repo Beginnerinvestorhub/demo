@@ -14,15 +14,21 @@ interface MarketTickerProps {
   error: string | null;
 }
 
-const MarketTicker: React.FC<MarketTickerProps> = ({ data, loading, error }) => {
+const MarketTicker: React.FC<MarketTickerProps> = ({
+  data,
+  loading,
+  error,
+}) => {
   // The component now receives loading, error, and data states as props.
   // No internal state or useEffect is needed for data fetching.
-  
+
   if (loading) {
     return (
       <div className="market-ticker">
         <div className="ticker-content">
-          <span className="ticker-item">Loading market data... Please wait.</span>
+          <span className="ticker-item">
+            Loading market data... Please wait.
+          </span>
         </div>
       </div>
     );
@@ -51,9 +57,10 @@ const MarketTicker: React.FC<MarketTickerProps> = ({ data, loading, error }) => 
   const tickerItems = data.map((item, index) => (
     <React.Fragment key={`${item.symbol}-${index}`}>
       <span className="ticker-item">
-        {item.symbol}: {' '}
+        {item.symbol}:{' '}
         <span className={`ticker-value ${item.change >= 0 ? 'up' : 'down'}`}>
-          {item.change >= 0 ? '+' : ''}{item.changePercent.toFixed(2)}%
+          {item.change >= 0 ? '+' : ''}
+          {item.changePercent.toFixed(2)}%
         </span>
       </span>
       {index < data.length - 1 && <span className="ticker-separator">•</span>}

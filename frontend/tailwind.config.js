@@ -25,7 +25,8 @@ module.exports = {
       colors: {
         // Primary
         'mechanica-moonlight-blue': 'var(--mechanica-moonlight-blue)',
-        'mechanica-moonlight-blue-light': 'var(--mechanica-moonlight-blue-light)',
+        'mechanica-moonlight-blue-light':
+          'var(--mechanica-moonlight-blue-light)',
         'mechanica-moonlight-blue-dark': 'var(--mechanica-moonlight-blue-dark)',
 
         // Wood Tones
@@ -53,23 +54,23 @@ module.exports = {
         'Ordinatus-steel-gray': 'var(--mechanica-stainless-steel)',
       },
       fontFamily: {
-        'heading': ['Playfair Display', 'Georgia', 'serif'],
-        'body': ['Inter', 'Helvetica Neue', 'sans-serif'],
-        'mono': ['Roboto Mono', 'Courier New', 'monospace'],
-        'technical': ['Source Code Pro', 'Fira Code', 'monospace'],
+        heading: ['Playfair Display', 'Georgia', 'serif'],
+        body: ['Inter', 'Helvetica Neue', 'sans-serif'],
+        mono: ['Roboto Mono', 'Courier New', 'monospace'],
+        technical: ['Source Code Pro', 'Fira Code', 'monospace'],
       },
       spacing: {
-        '18': '4.5rem',
-        '88': '22rem',
-        '128': '32rem',
+        18: '4.5rem',
+        88: '22rem',
+        128: '32rem',
       },
       animation: {
         'rotate-slow': 'rotate 20s linear infinite',
         'rotate-medium': 'rotate 10s linear infinite',
         'rotate-fast': 'rotate 5s linear infinite',
         'rotate-reverse': 'rotate-reverse 15s linear infinite',
-        'shimmer': 'shimmer 2s infinite',
-        'glow': 'glow 2s ease-in-out infinite',
+        shimmer: 'shimmer 2s infinite',
+        glow: 'glow 2s ease-in-out infinite',
       },
       keyframes: {
         rotate: {

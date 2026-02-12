@@ -17,11 +17,11 @@ test.describe('Portfolio Flow', () => {
 
   test('should allow adding a new investment', async ({ page }) => {
     await page.click('text=Add Investment');
-    
+
     await page.fill('input[name="symbol"]', 'AAPL');
     await page.fill('input[name="quantity"]', '10');
     await page.fill('input[name="price"]', '150.00');
-    
+
     await page.click('button:has-text("Save")');
 
     // Verify the new investment appears in the list

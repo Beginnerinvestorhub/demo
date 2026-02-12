@@ -7,7 +7,9 @@ const VisualLearner: React.FC = () => {
       <div className="grid md:grid-cols-2 gap-4">
         <div className="p-4 border rounded-lg">
           <h4 className="font-semibold">Infographics</h4>
-          <p>Explore our collection of infographics on various investment topics.</p>
+          <p>
+            Explore our collection of infographics on various investment topics.
+          </p>
         </div>
         <div className="p-4 border rounded-lg">
           <h4 className="font-semibold">Video Tutorials</h4>

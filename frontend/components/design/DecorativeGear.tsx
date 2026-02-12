@@ -11,7 +11,7 @@ const DecorativeGear: React.FC<DecorativeGearProps> = ({
   size = 'w-16 h-16',
   position = '',
   animation = '',
-  className = ''
+  className = '',
 }) => {
   return (
     <div
@@ -19,7 +19,7 @@ const DecorativeGear: React.FC<DecorativeGearProps> = ({
       style={{
         background: `conic-gradient(from 0deg, transparent 0deg, rgba(59, 130, 246, 0.1) 45deg, transparent 90deg, rgba(59, 130, 246, 0.1) 135deg, transparent 180deg, rgba(59, 130, 246, 0.1) 225deg, transparent 270deg, rgba(59, 130, 246, 0.1) 315deg, transparent 360deg)`,
         borderRadius: '50%',
-        border: '2px solid rgba(59, 130, 246, 0.2)'
+        border: '2px solid rgba(59, 130, 246, 0.2)',
       }}
     />
   );

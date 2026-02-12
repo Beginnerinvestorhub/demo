@@ -19,7 +19,6 @@ export interface Modal {
   size?: 'sm' | 'md' | 'lg' | 'xl';
 }
 
-
 // --- Integrated Zustand Store Logic (from modalStore.ts) ---
 
 interface ModalState {
@@ -29,21 +28,20 @@ interface ModalState {
   clearModals: () => void;
 }
 
-export const useModalStore = create<ModalState>()((set) => ({
+export const useModalStore = create<ModalState>()(set => ({
   modals: [],
 
   addModal: (modal: Modal) =>
-    set((state) => ({
+    set(state => ({
       modals: [...state.modals, modal],
     })),
 
   removeModal: (id: string) =>
-    set((state) => ({
-      modals: state.modals.filter((modal) => modal.id !== id),
+    set(state => ({
+      modals: state.modals.filter(modal => modal.id !== id),
     })),
 
-  clearModals: () =>
-    set({ modals: [] }),
+  clearModals: () => set({ modals: [] }),
 }));
 
 // Export useModals hook
@@ -159,8 +157,11 @@ const ConfirmModal: FC<ConfirmModalProps> = ({
 // Generic props type for components in the registry. Allows for dynamic prop spreading.
 type ModalComponentProps = Record<string, unknown>;
 
-const ModalComponentsRegistry: Record<string, ComponentType<ModalComponentProps>> = {
-  // FIX: Cast ConfirmModal to 'unknown' first to satisfy TypeScript's strict type checker 
+const ModalComponentsRegistry: Record<
+  string,
+  ComponentType<ModalComponentProps>
+> = {
+  // FIX: Cast ConfirmModal to 'unknown' first to satisfy TypeScript's strict type checker
   // when assigning a component with required props (ConfirmModalProps) to a registry
   // with generic props (ModalComponentProps).
   ConfirmModal: ConfirmModal as unknown as ComponentType<ModalComponentProps>,
@@ -194,7 +195,9 @@ const ModalItem: FC<{
   const ModalComponent = ModalComponentsRegistry[modal.component];
 
   if (!ModalComponent) {
-    console.error(`Modal component "${modal.component}" not found in registry.`);
+    console.error(
+      `Modal component "${modal.component}" not found in registry.`
+    );
     return null;
   }
 
@@ -220,8 +223,9 @@ const ModalItem: FC<{
         >
           {/* Backdrop (visible only for the topmost modal) */}
           <div
-            className={`fixed inset-0 bg-gray-500/75 dark:bg-gray-900/80 transition-opacity backdrop-blur-sm ${isTopmost ? '' : 'hidden'
-              }`}
+            className={`fixed inset-0 bg-gray-500/75 dark:bg-gray-900/80 transition-opacity backdrop-blur-sm ${
+              isTopmost ? '' : 'hidden'
+            }`}
             aria-hidden="true"
           />
         </Transition.Child>
@@ -244,8 +248,9 @@ const ModalItem: FC<{
                 {isModalClosable && (
                   <button
                     type="button"
-                    className={`absolute right-0 top-0 z-20 m-4 rounded-full p-1 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 ${!isTopmost ? 'pointer-events-none opacity-50' : ''
-                      }`}
+                    className={`absolute right-0 top-0 z-20 m-4 rounded-full p-1 text-gray-400 hover:text-gray-500 dark:text-gray-500 dark:hover:text-gray-400 ${
+                      !isTopmost ? 'pointer-events-none opacity-50' : ''
+                    }`}
                     onClick={() => isTopmost && closeModal(modal.id)}
                     disabled={!isTopmost}
                   >
@@ -256,7 +261,6 @@ const ModalItem: FC<{
 
                 {/* Render the specific Modal Component, spreading its props and adding the instance ID */}
                 <ModalComponent {...modal.props} id={modal.id} />
-
               </Dialog.Panel>
             </Transition.Child>
           </div>

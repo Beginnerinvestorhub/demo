@@ -43,7 +43,9 @@ export default function DashboardPage() {
   };
 
   // Get gamification data - call hook unconditionally
-  const { userProgress, loading: gamificationLoading, } = useGamification(user?.uid || '');
+  const { userProgress, loading: gamificationLoading } = useGamification(
+    user?.uid || ''
+  );
 
   // Generate dynamic progress data if not available
   const dynamicProgress = React.useMemo(() => {
@@ -56,17 +58,21 @@ export default function DashboardPage() {
 
     return {
       level: (seed % 5) + 1,
-      totalPoints: Math.floor(((seed * 137) % 2000 + 500) * dayMultiplier),
+      totalPoints: Math.floor((((seed * 137) % 2000) + 500) * dayMultiplier),
       streaks: {
         loginStreak: (seed % 15) + 1,
         learningStreak: (seed % 7) + 1,
       },
       badges: Array.from({ length: (seed % 3) + 1 }, (_, i) => ({
         id: `badge_${i}`,
-        name: ['Precision Learner', 'Risk Analyst', 'Portfolio Builder'][i] || 'Achievement Unlocked',
+        name:
+          ['Precision Learner', 'Risk Analyst', 'Portfolio Builder'][i] ||
+          'Achievement Unlocked',
         description: 'Completed foundational investment training',
         icon: '🏆',
-        earnedAt: new Date(Date.now() - (i + 1) * 2 * 24 * 60 * 60 * 1000).toISOString(),
+        earnedAt: new Date(
+          Date.now() - (i + 1) * 2 * 24 * 60 * 60 * 1000
+        ).toISOString(),
       })),
       completedModules: (seed % 3) + 1,
       totalTime: (seed % 50) + 10, // hours
@@ -77,7 +83,8 @@ export default function DashboardPage() {
 
   useEffect(() => {
     // Enable demo mode in development
-    const isDemoMode = process.env.NODE_ENV === 'development' || router.query.demo === 'true';
+    const isDemoMode =
+      process.env.NODE_ENV === 'development' || router.query.demo === 'true';
 
     if (!loading) {
       if (!user && !isDemoMode) {
@@ -85,7 +92,9 @@ export default function DashboardPage() {
         router.replace('/login');
       } else if (user && !onboardingCompleted) {
         setIsRedirecting(true);
-        const onboardingUrl = isDemoMode ? '/onboarding?demo=true' : '/onboarding';
+        const onboardingUrl = isDemoMode
+          ? '/onboarding?demo=true'
+          : '/onboarding';
         router.replace(onboardingUrl);
       }
     }
@@ -116,7 +125,10 @@ export default function DashboardPage() {
     <MechanicaLayout>
       <Head>
         <title>Investor Dashboard | BeginnerInvestorHub</title>
-        <meta name="description" content="Track your engineering level, precision points, and learning progress on your investment mastery journey with our AI-powered dashboard." />
+        <meta
+          name="description"
+          content="Track your engineering level, precision points, and learning progress on your investment mastery journey with our AI-powered dashboard."
+        />
       </Head>
       <div className="py-12 bg-gray-50 min-h-screen">
         <div className="container mx-auto px-4">
@@ -124,7 +136,10 @@ export default function DashboardPage() {
           <div className="text-center mb-12 relative overflow-hidden rounded-lg p-8 bg-gradient-to-br from-white to-gray-50 shadow-xl border border-gray-200 mechanica-hum">
             {/* Steam Vents */}
             <div className="absolute top-0 right-1/4 w-px h-16 bg-gradient-to-b from-blue-400/20 to-transparent mechanica-steam"></div>
-            <div className="absolute top-0 left-1/4 w-px h-24 bg-gradient-to-b from-blue-400/20 to-transparent mechanica-steam" style={{ animationDelay: '1s' }}></div>
+            <div
+              className="absolute top-0 left-1/4 w-px h-24 bg-gradient-to-b from-blue-400/20 to-transparent mechanica-steam"
+              style={{ animationDelay: '1s' }}
+            ></div>
             {/* Subtle background pattern */}
             <div
               className="absolute inset-0 opacity-10"
@@ -132,7 +147,7 @@ export default function DashboardPage() {
                 backgroundImage: `
                   repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.02) 10px, rgba(0,0,0,0.02) 20px),
                   repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(0,0,0,0.01) 10px, rgba(0,0,0,0.01) 20px)
-                `
+                `,
               }}
             ></div>
 
@@ -213,28 +228,31 @@ export default function DashboardPage() {
             <div className="flex justify-start min-w-max md:justify-center">
               <div className="inline-flex rounded-lg border border-mechanica-polished-brass/20 bg-white p-1">
                 <button
-                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'overview'
-                    ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
-                    : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
-                    }`}
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${
+                    activeTab === 'overview'
+                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
+                      : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
+                  }`}
                   onClick={() => setActiveTab('overview')}
                 >
                   📊 Overview
                 </button>
                 <button
-                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'tools'
-                    ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
-                    : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
-                    }`}
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${
+                    activeTab === 'tools'
+                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
+                      : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
+                  }`}
                   onClick={() => setActiveTab('tools')}
                 >
                   🛠️ Tools
                 </button>
                 <button
-                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'learning'
-                    ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
-                    : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
-                    }`}
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${
+                    activeTab === 'learning'
+                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
+                      : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
+                  }`}
                   onClick={() => setActiveTab('learning')}
                 >
                   📚 Learning
@@ -248,10 +266,18 @@ export default function DashboardPage() {
             {activeTab === 'overview' && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Recent Activity */}
-                <MechanicaCard variant="mechanical" animated className="mechanica-hum">
+                <MechanicaCard
+                  variant="mechanical"
+                  animated
+                  className="mechanica-hum"
+                >
                   <div className="p-6">
                     <div className="flex items-center space-x-3 mb-6">
-                      <MechanicaGear size="medium" color="steel" speed="medium" />
+                      <MechanicaGear
+                        size="medium"
+                        color="steel"
+                        speed="medium"
+                      />
                       <h3 className="text-2xl font-bold mechanica-heading-professional">
                         Recent Activity
                       </h3>
@@ -265,7 +291,9 @@ export default function DashboardPage() {
                           <div className="font-medium text-gray-900 mechanica-text-technical">
                             Completed &ldquo;Risk Assessment&rdquo; module
                           </div>
-                          <div className="text-sm text-gray-500">2 hours ago</div>
+                          <div className="text-sm text-gray-500">
+                            2 hours ago
+                          </div>
                         </div>
                       </div>
                       <div className="flex items-start space-x-3">
@@ -287,7 +315,9 @@ export default function DashboardPage() {
                           <div className="font-medium text-gray-900 mechanica-text-technical">
                             Earned &ldquo;First Investment&rdquo; badge
                           </div>
-                          <div className="text-sm text-gray-500">3 days ago</div>
+                          <div className="text-sm text-gray-500">
+                            3 days ago
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -295,7 +325,11 @@ export default function DashboardPage() {
                 </MechanicaCard>
 
                 {/* Progress Overview */}
-                <MechanicaCard variant="wood" animated className="mechanica-hum">
+                <MechanicaCard
+                  variant="wood"
+                  animated
+                  className="mechanica-hum"
+                >
                   <div className="p-6">
                     <div className="flex items-center space-x-3 mb-6">
                       <MechanicaGear size="medium" color="brass" speed="slow" />
@@ -306,29 +340,50 @@ export default function DashboardPage() {
                     <div className="space-y-6">
                       <div>
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium text-gray-700 mechanica-text-technical">Modules Completed</span>
-                          <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">13/20</span>
+                          <span className="text-sm font-medium text-gray-700 mechanica-text-technical">
+                            Modules Completed
+                          </span>
+                          <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">
+                            13/20
+                          </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3">
-                          <div className="bg-mechanica-moonlight-blue h-3 rounded-full" style={{ width: '65%' }}></div>
+                          <div
+                            className="bg-mechanica-moonlight-blue h-3 rounded-full"
+                            style={{ width: '65%' }}
+                          ></div>
                         </div>
                       </div>
                       <div>
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium text-gray-700 mechanica-text-technical">Tools Mastered</span>
-                          <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">4/10</span>
+                          <span className="text-sm font-medium text-gray-700 mechanica-text-technical">
+                            Tools Mastered
+                          </span>
+                          <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">
+                            4/10
+                          </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3">
-                          <div className="bg-mechanica-polished-brass h-3 rounded-full" style={{ width: '40%' }}></div>
+                          <div
+                            className="bg-mechanica-polished-brass h-3 rounded-full"
+                            style={{ width: '40%' }}
+                          ></div>
                         </div>
                       </div>
                       <div>
                         <div className="flex justify-between items-center mb-2">
-                          <span className="text-sm font-medium text-gray-700 mechanica-text-technical">Portfolio Simulations</span>
-                          <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">8/10</span>
+                          <span className="text-sm font-medium text-gray-700 mechanica-text-technical">
+                            Portfolio Simulations
+                          </span>
+                          <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">
+                            8/10
+                          </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3">
-                          <div className="bg-mechanica-brushed-copper h-3 rounded-full" style={{ width: '80%' }}></div>
+                          <div
+                            className="bg-mechanica-brushed-copper h-3 rounded-full"
+                            style={{ width: '80%' }}
+                          ></div>
                         </div>
                       </div>
                     </div>
@@ -340,53 +395,109 @@ export default function DashboardPage() {
             {activeTab === 'tools' && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <Link href="/portfolio-monitor">
-                  <MechanicaCard variant="mechanical" animated className="cursor-pointer h-full">
+                  <MechanicaCard
+                    variant="mechanical"
+                    animated
+                    className="cursor-pointer h-full"
+                  >
                     <div className="p-6 text-center">
                       <div className="flex justify-center mb-4">
-                        <MechanicaGear size="large" color="steel" speed="medium" />
+                        <MechanicaGear
+                          size="large"
+                          color="steel"
+                          speed="medium"
+                        />
                       </div>
-                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">Portfolio Monitor</h3>
-                      <p className="text-gray-600 mb-4 mechanica-text-technical">Track your virtual investments</p>
-                      <MechanicaButton variant="mechanical" size="sm">Open Tool</MechanicaButton>
+                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">
+                        Portfolio Monitor
+                      </h3>
+                      <p className="text-gray-600 mb-4 mechanica-text-technical">
+                        Track your virtual investments
+                      </p>
+                      <MechanicaButton variant="mechanical" size="sm">
+                        Open Tool
+                      </MechanicaButton>
                     </div>
                   </MechanicaCard>
                 </Link>
 
                 <Link href="/risk-assessment">
-                  <MechanicaCard variant="wood" animated className="cursor-pointer h-full">
+                  <MechanicaCard
+                    variant="wood"
+                    animated
+                    className="cursor-pointer h-full"
+                  >
                     <div className="p-6 text-center">
                       <div className="flex justify-center mb-4">
-                        <MechanicaGear size="large" color="brass" speed="slow" />
+                        <MechanicaGear
+                          size="large"
+                          color="brass"
+                          speed="slow"
+                        />
                       </div>
-                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">Risk Assessment</h3>
-                      <p className="text-gray-600 mb-4 mechanica-text-technical">Evaluate your risk tolerance</p>
-                      <MechanicaButton variant="wood" size="sm">Open Tool</MechanicaButton>
+                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">
+                        Risk Assessment
+                      </h3>
+                      <p className="text-gray-600 mb-4 mechanica-text-technical">
+                        Evaluate your risk tolerance
+                      </p>
+                      <MechanicaButton variant="wood" size="sm">
+                        Open Tool
+                      </MechanicaButton>
                     </div>
                   </MechanicaCard>
                 </Link>
 
                 <Link href="/esg-screener">
-                  <MechanicaCard variant="brass" animated className="cursor-pointer h-full">
+                  <MechanicaCard
+                    variant="brass"
+                    animated
+                    className="cursor-pointer h-full"
+                  >
                     <div className="p-6 text-center">
                       <div className="flex justify-center mb-4">
-                        <MechanicaGear size="large" color="copper" speed="fast" />
+                        <MechanicaGear
+                          size="large"
+                          color="copper"
+                          speed="fast"
+                        />
                       </div>
-                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">ESG Screener</h3>
-                      <p className="text-gray-600 mb-4 mechanica-text-technical">Find sustainable investments</p>
-                      <MechanicaButton variant="brass" size="sm">Open Tool</MechanicaButton>
+                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">
+                        ESG Screener
+                      </h3>
+                      <p className="text-gray-600 mb-4 mechanica-text-technical">
+                        Find sustainable investments
+                      </p>
+                      <MechanicaButton variant="brass" size="sm">
+                        Open Tool
+                      </MechanicaButton>
                     </div>
                   </MechanicaCard>
                 </Link>
 
                 <Link href="/fractional-share-calculator">
-                  <MechanicaCard variant="mechanical" animated className="cursor-pointer h-full">
+                  <MechanicaCard
+                    variant="mechanical"
+                    animated
+                    className="cursor-pointer h-full"
+                  >
                     <div className="p-6 text-center">
                       <div className="flex justify-center mb-4">
-                        <MechanicaGear size="large" color="steel" speed="reverse" />
+                        <MechanicaGear
+                          size="large"
+                          color="steel"
+                          speed="reverse"
+                        />
                       </div>
-                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">Fractional Calculator</h3>
-                      <p className="text-gray-600 mb-4 mechanica-text-technical">Calculate fractional share values</p>
-                      <MechanicaButton variant="mechanical" size="sm">Open Tool</MechanicaButton>
+                      <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">
+                        Fractional Calculator
+                      </h3>
+                      <p className="text-gray-600 mb-4 mechanica-text-technical">
+                        Calculate fractional share values
+                      </p>
+                      <MechanicaButton variant="mechanical" size="sm">
+                        Open Tool
+                      </MechanicaButton>
                     </div>
                   </MechanicaCard>
                 </Link>
@@ -398,7 +509,9 @@ export default function DashboardPage() {
                 <div className="p-8">
                   <div className="flex items-center space-x-3 mb-8">
                     <MechanicaGear size="large" color="brass" speed="slow" />
-                    <h3 className="text-3xl font-bold mechanica-heading-professional">Your Learning Path</h3>
+                    <h3 className="text-3xl font-bold mechanica-heading-professional">
+                      Your Learning Path
+                    </h3>
                   </div>
                   {(() => {
                     // Default to visual learner since learningStyle is not available
@@ -415,42 +528,72 @@ export default function DashboardPage() {
                       default:
                         return (
                           <div className="space-y-6">
-                            <MechanicaCard variant="wood" className="border-green-200 bg-green-50">
+                            <MechanicaCard
+                              variant="wood"
+                              className="border-green-200 bg-green-50"
+                            >
                               <div className="p-6 flex items-start space-x-4">
                                 <div className="flex-shrink-0">
                                   <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center">
-                                    <span className="text-white text-xl">✅</span>
+                                    <span className="text-white text-xl">
+                                      ✅
+                                    </span>
                                   </div>
                                 </div>
                                 <div className="flex-1">
-                                  <h4 className="text-xl font-bold mb-2 mechanica-heading-professional">Investment Basics</h4>
-                                  <p className="text-gray-600 mechanica-text-technical">Learn fundamental investment concepts</p>
+                                  <h4 className="text-xl font-bold mb-2 mechanica-heading-professional">
+                                    Investment Basics
+                                  </h4>
+                                  <p className="text-gray-600 mechanica-text-technical">
+                                    Learn fundamental investment concepts
+                                  </p>
                                 </div>
                               </div>
                             </MechanicaCard>
 
-                            <MechanicaCard variant="mechanical" className="border-blue-200 bg-blue-50">
+                            <MechanicaCard
+                              variant="mechanical"
+                              className="border-blue-200 bg-blue-50"
+                            >
                               <div className="p-6 flex items-start space-x-4">
                                 <div className="flex-shrink-0">
-                                  <MechanicaGear size="medium" color="steel" speed="medium" />
+                                  <MechanicaGear
+                                    size="medium"
+                                    color="steel"
+                                    speed="medium"
+                                  />
                                 </div>
                                 <div className="flex-1">
-                                  <h4 className="text-xl font-bold mb-2 mechanica-heading-professional">Portfolio Management</h4>
-                                  <p className="text-gray-600 mechanica-text-technical">Master portfolio construction and rebalancing</p>
+                                  <h4 className="text-xl font-bold mb-2 mechanica-heading-professional">
+                                    Portfolio Management
+                                  </h4>
+                                  <p className="text-gray-600 mechanica-text-technical">
+                                    Master portfolio construction and
+                                    rebalancing
+                                  </p>
                                 </div>
                               </div>
                             </MechanicaCard>
 
-                            <MechanicaCard variant="mechanical" className="border-gray-200 bg-gray-50 opacity-75">
+                            <MechanicaCard
+                              variant="mechanical"
+                              className="border-gray-200 bg-gray-50 opacity-75"
+                            >
                               <div className="p-6 flex items-start space-x-4">
                                 <div className="flex-shrink-0">
                                   <div className="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center">
-                                    <span className="text-white text-xl">🔒</span>
+                                    <span className="text-white text-xl">
+                                      🔒
+                                    </span>
                                   </div>
                                 </div>
                                 <div className="flex-1">
-                                  <h4 className="text-xl font-bold mb-2 mechanica-heading-professional">Advanced Strategies</h4>
-                                  <p className="text-gray-600 mechanica-text-technical">Explore advanced investment techniques</p>
+                                  <h4 className="text-xl font-bold mb-2 mechanica-heading-professional">
+                                    Advanced Strategies
+                                  </h4>
+                                  <p className="text-gray-600 mechanica-text-technical">
+                                    Explore advanced investment techniques
+                                  </p>
                                 </div>
                               </div>
                             </MechanicaCard>
@@ -473,11 +616,13 @@ export default function DashboardPage() {
                   <div className="flex items-center space-x-3 mb-4">
                     <MechanicaGear size="large" color="copper" speed="slow" />
                     <h3 className="text-2xl font-bold text-gray-900">
-                      Join <span className="text-amber-600">Founderlings</span> Community
+                      Join <span className="text-amber-600">Founderlings</span>{' '}
+                      Community
                     </h3>
                   </div>
                   <p className="text-gray-600 leading-relaxed">
-                    Get weekly investment insights, early access to new tools, and connect with 10,000+ smart investors.
+                    Get weekly investment insights, early access to new tools,
+                    and connect with 10,000+ smart investors.
                   </p>
                 </div>
 
@@ -493,11 +638,14 @@ export default function DashboardPage() {
                     </div>
                   )}
 
-                  <form onSubmit={handleEmailSignup} className="flex flex-col sm:flex-row gap-3">
+                  <form
+                    onSubmit={handleEmailSignup}
+                    className="flex flex-col sm:flex-row gap-3"
+                  >
                     <input
                       type="email"
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={e => setEmail(e.target.value)}
                       placeholder="Enter your email"
                       required
                       className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-transparent"
@@ -510,7 +658,11 @@ export default function DashboardPage() {
                     >
                       {isSubscribing ? (
                         <div className="flex items-center space-x-2">
-                          <MechanicaGear size="small" color="steel" speed="fast" />
+                          <MechanicaGear
+                            size="small"
+                            color="steel"
+                            speed="fast"
+                          />
                           <span>Joining...</span>
                         </div>
                       ) : (

@@ -1,7 +1,12 @@
 // Gamification hook for managing user progress, badges, and achievements
 
 import { useState, useEffect, useCallback } from 'react';
-import { UserProgress, Badge, Achievement, UserStats } from '../types/gamification'; // Added UserStats import for explicit typing
+import {
+  UserProgress,
+  Badge,
+  Achievement,
+  UserStats,
+} from '../types/gamification'; // Added UserStats import for explicit typing
 import {
   BADGE_DEFINITIONS,
   LEVEL_THRESHOLDS,
@@ -24,7 +29,10 @@ interface UseGamificationReturn {
   error: string | null;
 
   // Actions
-  trackEvent: (eventType: string, data?: Record<string, unknown>) => Promise<void>;
+  trackEvent: (
+    eventType: string,
+    data?: Record<string, unknown>
+  ) => Promise<void>;
   awardPoints: (points: number, reason: string) => Promise<void>;
   unlockBadge: (badgeId: string) => Promise<void>;
   updateStreak: (streakType: 'login' | 'learning') => Promise<void>;
@@ -54,7 +62,6 @@ export function useGamification(userId: string): UseGamificationReturn {
   const [error, setError] = useState<string | null>(null);
   const { user } = useAuth();
 
-
   // --- Utility & API Functions ---
 
   const calculateLevel = useCallback((totalPoints: number): number => {
@@ -69,23 +76,26 @@ export function useGamification(userId: string): UseGamificationReturn {
     return Math.min(level, LEVEL_THRESHOLDS.length);
   }, []);
 
-  const saveUserData = useCallback(async (progress: UserProgress) => {
-    try {
-      if (user) {
-        await apiClient.post('/gamification/save-user-data', progress);
-      }
+  const saveUserData = useCallback(
+    async (progress: UserProgress) => {
       try {
-        localStorage.setItem(
-          `gamification_${userId}`,
-          JSON.stringify(progress)
-        );
-      } catch (error) {
-        console.error('Error saving user data to localStorage:', error);
+        if (user) {
+          await apiClient.post('/gamification/save-user-data', progress);
+        }
+        try {
+          localStorage.setItem(
+            `gamification_${userId}`,
+            JSON.stringify(progress)
+          );
+        } catch (error) {
+          console.error('Error saving user data to localStorage:', error);
+        }
+      } catch (err) {
+        console.error('Failed to save user progress:', err);
       }
-    } catch (err) {
-      console.error('Failed to save user progress:', err);
-    }
-  }, [userId, user]);
+    },
+    [userId, user]
+  );
 
   const getProgressToNextLevel = useCallback(
     (totalPoints: number) => {
@@ -98,8 +108,8 @@ export function useGamification(userId: string): UseGamificationReturn {
       const progress =
         nextThreshold > currentThreshold
           ? ((totalPoints - currentThreshold) /
-            (nextThreshold - currentThreshold)) *
-          100
+              (nextThreshold - currentThreshold)) *
+            100
           : 100;
 
       return {
@@ -112,7 +122,10 @@ export function useGamification(userId: string): UseGamificationReturn {
   );
 
   const showNotification = useCallback(
-    (type: 'badge' | 'achievement' | 'points', data: Record<string, unknown>) => {
+    (
+      type: 'badge' | 'achievement' | 'points',
+      data: Record<string, unknown>
+    ) => {
       // Implementation placeholder
       console.log(
         `🎉 Gamification Notification [${type.toUpperCase()}]:`,
@@ -132,7 +145,8 @@ export function useGamification(userId: string): UseGamificationReturn {
         const badgeDefinition = BADGE_DEFINITIONS[badgeId];
         if (!badgeDefinition) return currentProgress;
 
-        if (currentProgress.badges.some(b => b.id === badgeId)) return currentProgress;
+        if (currentProgress.badges.some(b => b.id === badgeId))
+          return currentProgress;
 
         const newBadge: Badge = {
           ...badgeDefinition,
@@ -147,7 +161,10 @@ export function useGamification(userId: string): UseGamificationReturn {
         };
 
         saveUserData(updatedProgress);
-        showNotification('badge', newBadge as unknown as Record<string, unknown>);
+        showNotification(
+          'badge',
+          newBadge as unknown as Record<string, unknown>
+        );
 
         return updatedProgress;
       });
@@ -155,26 +172,29 @@ export function useGamification(userId: string): UseGamificationReturn {
     [saveUserData, showNotification]
   );
 
-  const checkLevelAchievements = useCallback(async (newLevel: number) => {
-    if (newLevel >= 10) {
-      await unlockBadge('PLATINUM_INVESTOR');
-    }
-  }, [unlockBadge]);
+  const checkLevelAchievements = useCallback(
+    async (newLevel: number) => {
+      if (newLevel >= 10) {
+        await unlockBadge('PLATINUM_INVESTOR');
+      }
+    },
+    [unlockBadge]
+  );
 
-  const checkStreakAchievements = useCallback(async (
-    streakType: string,
-    streak: number
-  ) => {
-    if (streakType === 'login' && streak >= 7) {
-      await unlockBadge('DAILY_VISITOR');
-    }
-    if (streakType === 'login' && streak >= 30) {
-      await unlockBadge('WEEKLY_WARRIOR');
-    }
-    if (streakType === 'learning' && streak >= 14) {
-      await unlockBadge('LEARNING_STREAK');
-    }
-  }, [unlockBadge]);
+  const checkStreakAchievements = useCallback(
+    async (streakType: string, streak: number) => {
+      if (streakType === 'login' && streak >= 7) {
+        await unlockBadge('DAILY_VISITOR');
+      }
+      if (streakType === 'login' && streak >= 30) {
+        await unlockBadge('WEEKLY_WARRIOR');
+      }
+      if (streakType === 'learning' && streak >= 14) {
+        await unlockBadge('LEARNING_STREAK');
+      }
+    },
+    [unlockBadge]
+  );
 
   const awardPoints = useCallback(
     async (points: number, reason: string) => {
@@ -240,7 +260,8 @@ export function useGamification(userId: string): UseGamificationReturn {
             ...currentProgress.streaks,
             [streakType === 'login' ? 'loginStreak' : 'learningStreak']:
               newStreak,
-            [streakType === 'login' ? 'lastLoginDate' : 'lastLearningDate']: today,
+            [streakType === 'login' ? 'lastLoginDate' : 'lastLearningDate']:
+              today,
           },
         };
 
@@ -255,13 +276,18 @@ export function useGamification(userId: string): UseGamificationReturn {
 
   // FIX: Change currentStats type to UserStats for type safety
   const checkAchievements = useCallback(
-    async (eventType: string, currentStats: UserStats): Promise<Achievement[]> => {
+    async (
+      eventType: string,
+      currentStats: UserStats
+    ): Promise<Achievement[]> => {
       if (!userProgress) return [];
 
       const newAchievements: Achievement[] = [];
 
       for (const achievementDef of Object.values(ACHIEVEMENT_DEFINITIONS)) {
-        if (userProgress.badges.some((b: Badge) => b.id === achievementDef.id)) {
+        if (
+          userProgress.badges.some((b: Badge) => b.id === achievementDef.id)
+        ) {
           continue;
         }
 
@@ -289,11 +315,16 @@ export function useGamification(userId: string): UseGamificationReturn {
         }
 
         if (progress >= achievementDef.target) {
-          const reward = achievementDef.reward as { points?: number; badge?: string };
+          const reward = achievementDef.reward as {
+            points?: number;
+            badge?: string;
+          };
 
           // Helper to find the badge definition
           const badgeId = reward.badge || achievementDef.id;
-          const badgeDef = BADGE_DEFINITIONS[badgeId.toUpperCase()] || BADGE_DEFINITIONS[badgeId];
+          const badgeDef =
+            BADGE_DEFINITIONS[badgeId.toUpperCase()] ||
+            BADGE_DEFINITIONS[badgeId];
 
           if (!badgeDef) {
             console.error(`Badge definition not found for: ${badgeId}`);
@@ -337,16 +368,18 @@ export function useGamification(userId: string): UseGamificationReturn {
           ...userProgress.stats,
           // Direct access is safe after UserStats is fixed
           pageViews: { ...userProgress.stats.pageViews },
-          events: { ...userProgress.stats.events }
+          events: { ...userProgress.stats.events },
         };
 
         // Handle different event types
         if (eventType === 'page_view') {
           const page = (data.page as string) || 'unknown';
-          updatedStats.pageViews[page] = (updatedStats.pageViews[page] || 0) + 1;
+          updatedStats.pageViews[page] =
+            (updatedStats.pageViews[page] || 0) + 1;
         } else {
           // Track custom events
-          updatedStats.events[eventType] = (updatedStats.events[eventType] || 0) + 1;
+          updatedStats.events[eventType] =
+            (updatedStats.events[eventType] || 0) + 1;
         }
 
         let updatedProgress: UserProgress = {
@@ -356,16 +389,22 @@ export function useGamification(userId: string): UseGamificationReturn {
         };
 
         // --- 2. Asynchronously Check Achievements ---
-        const newAchievements = await checkAchievements(eventType, updatedStats);
+        const newAchievements = await checkAchievements(
+          eventType,
+          updatedStats
+        );
 
         // --- 3. Synchronously Update State and Asynchronously Save/Unlock ---
 
         if (newAchievements.length > 0) {
-          const totalAchievementPoints = newAchievements.reduce((sum, a) => sum + (a.points || 0), 0);
+          const totalAchievementPoints = newAchievements.reduce(
+            (sum, a) => sum + (a.points || 0),
+            0
+          );
 
           updatedProgress = {
             ...updatedProgress,
-            totalPoints: updatedProgress.totalPoints + totalAchievementPoints
+            totalPoints: updatedProgress.totalPoints + totalAchievementPoints,
           };
 
           setUserProgress(updatedProgress);
@@ -377,18 +416,26 @@ export function useGamification(userId: string): UseGamificationReturn {
             }
 
             // FIX: Cast to match showNotification's type (Error 2345 fix)
-            showNotification('achievement', achievement as unknown as Record<string, unknown>);
+            showNotification(
+              'achievement',
+              achievement as unknown as Record<string, unknown>
+            );
           }
         } else {
           setUserProgress(updatedProgress);
           await saveUserData(updatedProgress);
         }
-
       } catch (error) {
         console.error('Error tracking event:', error);
       }
     },
-    [userProgress, saveUserData, checkAchievements, showNotification, unlockBadge]
+    [
+      userProgress,
+      saveUserData,
+      checkAchievements,
+      showNotification,
+      unlockBadge,
+    ]
   );
 
   // --- Data Loading Effect ---
@@ -417,7 +464,7 @@ export function useGamification(userId: string): UseGamificationReturn {
                 loginStreak: 0,
                 learningStreak: 0,
                 lastLoginDate: '',
-                lastLearningDate: ''
+                lastLearningDate: '',
               },
               stats: {
                 toolsUsed: [],
@@ -425,9 +472,9 @@ export function useGamification(userId: string): UseGamificationReturn {
                 portfoliosCreated: 0,
                 educationModulesCompleted: 0,
                 pageViews: {},
-                events: {}
+                events: {},
               },
-              lastActivity: new Date().toISOString()
+              lastActivity: new Date().toISOString(),
             };
 
             setUserProgress(initialProgress);

@@ -25,15 +25,17 @@ function updatePrices() {
     const changePercent = (Math.random() - 0.5) * 2; // -1% to +1%
     const currentPrice = parseFloat(ticker.price.replace(',', ''));
     const newPrice = currentPrice * (1 + changePercent / 100);
-    
-    const change = ((newPrice - currentPrice) / currentPrice * 100).toFixed(1);
+
+    const change = (((newPrice - currentPrice) / currentPrice) * 100).toFixed(
+      1
+    );
     const up = parseFloat(change) >= 0;
-    
+
     return {
       ...ticker,
       price: newPrice.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ','),
       change: `${up ? '+' : ''}${change}%`,
-      up
+      up,
     };
   });
 }
@@ -43,7 +45,10 @@ if (typeof setInterval !== 'undefined') {
   setInterval(updatePrices, 5000 + Math.random() * 5000); // 5-10 seconds
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   if (req.method !== 'GET') {
     return res.status(405).json({ message: 'Method not allowed' });
   }

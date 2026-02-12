@@ -50,7 +50,16 @@ const nextConfig = withBundleAnalyzer(
     // assetPrefix: '', // Commented out - not needed without static export
 
     // Webpack optimizations
-    webpack: (config, { buildId: _buildId, dev, isServer, defaultLoaders: _defaultLoaders, webpack: _webpack }) => {
+    webpack: (
+      config,
+      {
+        buildId: _buildId,
+        dev,
+        isServer,
+        defaultLoaders: _defaultLoaders,
+        webpack: _webpack,
+      }
+    ) => {
       if (dev && !isServer) {
         config.optimization.splitChunks = {
           ...config.optimization.splitChunks,
@@ -88,9 +97,6 @@ const nextConfig = withBundleAnalyzer(
 
       return config;
     },
-
-
-
 
     // Headers are not supported in static export
     // async headers() { ... }

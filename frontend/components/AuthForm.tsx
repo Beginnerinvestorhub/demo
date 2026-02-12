@@ -17,7 +17,7 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
 
     // Basic client-side validation check
     if (!email || !password) {
-      setFormError("Please enter both email and password.");
+      setFormError('Please enter both email and password.');
       return;
     }
 
@@ -29,7 +29,10 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
       }
       // Successful auth will trigger redirect in login page
     } catch (err: unknown) {
-      const errorMessage = err instanceof Error ? err.message : 'Authentication failed. Please try again.';
+      const errorMessage =
+        err instanceof Error
+          ? err.message
+          : 'Authentication failed. Please try again.';
       setFormError(errorMessage);
     }
   }
@@ -63,7 +66,13 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
         disabled={loading}
         className="mt-4 w-full px-4 py-2 bg-mechanica-moonlight-blue text-white rounded-md hover:bg-mechanica-moonlight-blue-dark disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {loading ? (mode === 'login' ? 'Signing in...' : 'Signing up...') : (mode === 'login' ? 'Login' : 'Sign Up')}
+        {loading
+          ? mode === 'login'
+            ? 'Signing in...'
+            : 'Signing up...'
+          : mode === 'login'
+            ? 'Login'
+            : 'Sign Up'}
       </button>
 
       {/* Display form errors and auth errors */}

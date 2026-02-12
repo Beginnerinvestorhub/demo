@@ -5,7 +5,10 @@ interface AnimatedCounterProps {
   duration?: number; // Duration in milliseconds
 }
 
-const AnimatedCounter: React.FC<AnimatedCounterProps> = ({ target, duration = 2000 }) => {
+const AnimatedCounter: React.FC<AnimatedCounterProps> = ({
+  target,
+  duration = 2000,
+}) => {
   const [currentValue, setCurrentValue] = useState(0);
 
   useEffect(() => {

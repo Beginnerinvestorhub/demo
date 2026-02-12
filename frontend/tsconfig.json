@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,77 +16,30 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/services/*": [
-        "./src/services/*"
-      ],
-      "@/services": [
-        "./src/services/index"
-      ],
-      "@/store/*": [
-        "./src/store/*"
-      ],
-      "@/store": [
-        "./src/store/index"
-      ],
-      "@/types/*": [
-        "./src/types/*"
-      ],
-      "@/types": [
-        "./src/types/index"
-      ],
-      "@/lib/*": [
-        "./lib/*"
-      ],
-      "@/lib": [
-        "./lib/index"
-      ],
-      "@/hooks/*": [
-        "./hooks/*"
-      ],
-      "@/hooks": [
-        "./hooks/index"
-      ],
-      "@/components/*": [
-        "./components/*"
-      ],
-      "@/components": [
-        "./components/index"
-      ],
-      "@/pages/*": [
-        "./pages/*"
-      ],
-      "@/pages": [
-        "./pages/index"
-      ],
-      "@/styles/*": [
-        "./styles/*"
-      ],
-      "@/styles": [
-        "./styles/index"
-      ],
-      "@/config/*": [
-        "./config/*"
-      ],
-      "@/config": [
-        "./config/index"
-      ],
-      "@/*": [
-        "./*"
-      ]
+      "@/services/*": ["./src/services/*"],
+      "@/services": ["./src/services/index"],
+      "@/store/*": ["./src/store/*"],
+      "@/store": ["./src/store/index"],
+      "@/types/*": ["./src/types/*"],
+      "@/types": ["./src/types/index"],
+      "@/lib/*": ["./lib/*"],
+      "@/lib": ["./lib/index"],
+      "@/hooks/*": ["./hooks/*"],
+      "@/hooks": ["./hooks/index"],
+      "@/components/*": ["./components/*"],
+      "@/components": ["./components/index"],
+      "@/pages/*": ["./pages/*"],
+      "@/pages": ["./pages/index"],
+      "@/styles/*": ["./styles/*"],
+      "@/styles": ["./styles/index"],
+      "@/config/*": ["./config/*"],
+      "@/config": ["./config/index"],
+      "@/*": ["./*"]
     },
-    "typeRoots": [
-      "./node_modules/@types"
-    ],
-    "types": [
-      "node",
-      "jest",
-      "@testing-library/jest-dom"
-    ]
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": [
     "node_modules",
     ".next",

@@ -20,7 +20,7 @@ const StatsProvider: React.FC<StatsProviderProps> = ({ children }) => {
     portfoliosBuilt: 12847,
     simulationsRun: 45392,
     simulatedValue: 2100000,
-    userSatisfaction: 95
+    userSatisfaction: 95,
   });
 
   useEffect(() => {

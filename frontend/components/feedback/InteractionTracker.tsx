@@ -16,9 +16,15 @@ interface CustomEvent extends Event {
   detail: CustomEventDetail;
 }
 
-const InteractionTracker: React.FC<InteractionTrackerProps> = ({ userId, sessionId }) => {
+const InteractionTracker: React.FC<InteractionTrackerProps> = ({
+  userId,
+  sessionId,
+}) => {
   useEffect(() => {
-    const logInteraction = async (eventType: string, eventDetails: Record<string, unknown>) => {
+    const logInteraction = async (
+      eventType: string,
+      eventDetails: Record<string, unknown>
+    ) => {
       try {
         await axios.post('/api/v1/learning/feedback/log', {
           user_id: userId,
@@ -34,7 +40,10 @@ const InteractionTracker: React.FC<InteractionTrackerProps> = ({ userId, session
 
     const handleContentView = (event: Event) => {
       const customEvent = event as CustomEvent;
-      logInteraction('content_view', { contentId: customEvent.detail.contentId, timeSpent: customEvent.detail.timeSpent });
+      logInteraction('content_view', {
+        contentId: customEvent.detail.contentId,
+        timeSpent: customEvent.detail.timeSpent,
+      });
     };
 
     const handleNudgeClick = (event: Event) => {

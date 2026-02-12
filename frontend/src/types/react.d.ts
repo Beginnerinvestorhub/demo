@@ -14,8 +14,7 @@ declare global {
 declare module 'react' {
   // Fix for JSX type errors
   interface HTMLAttributes<T>
-    extends React.AriaAttributes,
-      React.DOMAttributes<T> {
+    extends React.AriaAttributes, React.DOMAttributes<T> {
     // Add any custom HTML attributes here
     class?: string;
     className?: string;
@@ -75,8 +74,10 @@ declare module 'react' {
 
 // Add global JSX namespace
 declare namespace JSX {
-  interface Element
-    extends React.ReactElement<unknown, React.ComponentType<unknown>> {}
+  interface Element extends React.ReactElement<
+    unknown,
+    React.ComponentType<unknown>
+  > {}
   interface ElementClass {
     props: React.ReactNode | string | number | boolean | null | undefined;
   }

@@ -36,7 +36,8 @@ const COLOR_STANDARDS = {
 
   // Hero section requirements
   hero: {
-    'bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark': 'Hero background',
+    'bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark':
+      'Hero background',
     'text-white': 'Hero text',
     'text-yellow-400': 'Hero highlights',
   },
@@ -120,7 +121,9 @@ function checkHeroColors(content, filePath) {
   const issues = [];
 
   // Check for hero section
-  const heroSection = content.match(/<section[^>]*className="[^"]*bg-gradient-to-br[^"]*"/);
+  const heroSection = content.match(
+    /<section[^>]*className="[^"]*bg-gradient-to-br[^"]*"/
+  );
   if (heroSection) {
     // Check hero text color
     if (content.includes('text-blue-100')) {
@@ -147,7 +150,7 @@ function checkHeroColors(content, filePath) {
  */
 function runColorConsistencyTests() {
   console.log('🎨 Color Consistency Test Suite\n');
-  console.log('=' .repeat(80));
+  console.log('='.repeat(80));
 
   let totalViolations = 0;
   let totalMissing = 0;
@@ -176,7 +179,9 @@ function runColorConsistencyTests() {
       pageHasViolations = true;
       console.log('\n❌ Prohibited colors found:');
       violations.forEach(v => {
-        console.log(`   - ${v.color} (${v.count} occurrence${v.count > 1 ? 's' : ''})`);
+        console.log(
+          `   - ${v.color} (${v.count} occurrence${v.count > 1 ? 's' : ''})`
+        );
         console.log(`     → ${v.reason}`);
       });
       totalViolations += violations.length;
@@ -234,7 +239,8 @@ function runColorConsistencyTests() {
   }
 
   // Exit code
-  const hasFailures = totalViolations > 0 || totalMissing > 0 || totalIssues > 0;
+  const hasFailures =
+    totalViolations > 0 || totalMissing > 0 || totalIssues > 0;
   console.log(`\n${hasFailures ? '❌ Tests FAILED' : '✅ Tests PASSED'}`);
 
   process.exit(hasFailures ? 1 : 0);

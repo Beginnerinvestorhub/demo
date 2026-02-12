@@ -21,7 +21,7 @@ test.describe('Authentication Flow', () => {
     // Assumes a pre-seeded user or one created in a global setup
     // For this test, we'll use a mock approach or assume the user exists
     // In a real CI env, we'd seed this user first.
-    
+
     await page.goto('/login');
     await page.fill('input[name="email"]', 'demo@example.com');
     await page.fill('input[name="password"]', 'password123');

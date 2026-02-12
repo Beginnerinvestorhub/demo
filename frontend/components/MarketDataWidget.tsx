@@ -82,7 +82,9 @@ export default function MarketDataWidget({
               <div>
                 <b>Alpha Vantage:</b>{' '}
                 {alphaData && alphaData['Time Series (Daily)']
-                  ? Object.entries(alphaData['Time Series (Daily)'])[0]?.[1]?.['4. close'] || 'N/A'
+                  ? Object.entries(alphaData['Time Series (Daily)'])[0]?.[1]?.[
+                      '4. close'
+                    ] || 'N/A'
                   : 'N/A'}
               </div>
               <div>

@@ -10,7 +10,11 @@ interface ErrorInfo {
   componentStack: string;
 }
 
-export const logError = (error: Error, errorInfo?: ErrorInfo, context?: string) => {
+export const logError = (
+  error: Error,
+  errorInfo?: ErrorInfo,
+  context?: string
+) => {
   console.group(`🚨 Error Logged${context ? ` - ${context}` : ''}`);
   console.error('Error:', error);
   if (errorInfo) {
