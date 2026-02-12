@@ -53,6 +53,9 @@ export const useFeatureFlags = () => useContext(FeatureFlagContext);
 // Import critical CSS immediately
 import '../styles/critical.css';
 
+// Import mechanica design system CSS immediately
+import '../styles/mechanica-design-system.css';
+
 // Default feature flags (no server fetch needed for demo)
 const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
   newFeature: true,
@@ -63,28 +66,6 @@ const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [pageLoading, setPageLoading] = useState(false);
-
-  // Load non-critical CSS after initial render
-  useEffect(() => {
-    const loadNonCriticalCSS = () => {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = '/styles/mechanica-design-system.css';
-      link.onload = () => {
-        // CSS loaded successfully
-      };
-      link.onerror = error => {
-        console.warn('Failed to load non-critical CSS:', error);
-      };
-
-      // Add to head after critical CSS is loaded
-      document.head.appendChild(link);
-    };
-
-    // Load after a short delay to ensure critical CSS is applied first
-    const timer = setTimeout(loadNonCriticalCSS, 100);
-    return () => clearTimeout(timer);
-  }, []);
 
   // Handle route changes for loading states
   useEffect(() => {
