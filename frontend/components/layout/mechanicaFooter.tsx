@@ -25,7 +25,7 @@ export const MechanicaFooter: React.FC = () => {
           <div className="text-center py-4">
             <div className="flex justify-center items-center space-x-4 mb-6">
               <MechanicaGear size="lg" color="brass" speed="slow" className="opacity-80" />
-              <h3 className="text-3xl font-extrabold tracking-tighter text-white font-serif">
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-white font-serif">
                 Beginner<span className="text-yellow-500">Investor</span>Hub
               </h3>
               <MechanicaGear size="lg" color="brass" speed="reverse" className="opacity-80" />

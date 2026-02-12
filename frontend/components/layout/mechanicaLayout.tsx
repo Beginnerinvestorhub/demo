@@ -6,6 +6,7 @@ import NudgeChatWidget from '../NudgeChatWidget';
 import { MechanicaFooter } from './mechanicaFooter';
 import { NAV_LINKS } from '../NavBar';
 import { useAuth } from '../../hooks/useAuth';
+import { MechanicaGear } from '../ui/mechanicaGear';
 
 interface MechanicaLayoutProps {
   children: React.ReactNode;
@@ -131,18 +132,23 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden bg-white border-b border-gray-200">
-              <ul className="px-2 py-2 space-y-1">
+            <div className="md:hidden bg-white border-b border-gray-200 animate-in slide-in-from-top-2 duration-300">
+              <ul className="px-4 py-4 space-y-3">
                 {NAV_LINKS.slice(0, 6).filter(item => user || item.label !== 'My Dashboard').map((item) => (
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className={`block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-mechanica-moonlight-blue ${currentPath === item.href ? 'bg-mechanica-moonlight-blue text-white' : ''
+                      className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-lg font-bold transition-all ${currentPath === item.href
+                        ? 'bg-mechanica-moonlight-blue text-white shadow-md'
+                        : 'text-gray-600 hover:bg-blue-50 hover:text-mechanica-moonlight-blue'
                         }`}
                       aria-current={currentPath === item.href ? 'page' : undefined}
                       onClick={() => setMobileMenuOpen(false)}
                     >
-                      {item.label}
+                      <span className="opacity-70 group-hover:opacity-100 transition-opacity">
+                        <MechanicaGear size="small" color={currentPath === item.href ? 'brass' : 'steel'} speed="slow" />
+                      </span>
+                      <span>{item.label}</span>
                     </Link>
                   </li>
                 ))}
