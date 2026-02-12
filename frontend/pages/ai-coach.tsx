@@ -429,7 +429,6 @@ export default function AICoachPage() {
           </div>
         </div>
       </div>
-    </div>
-    </MechanicaLayout >
+    </MechanicaLayout>
   );
 }
