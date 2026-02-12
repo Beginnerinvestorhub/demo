@@ -17,6 +17,8 @@ const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
 });
 
 // Font variables using Inter
@@ -44,8 +46,6 @@ export const useFeatureFlags = () => useContext(FeatureFlagContext);
 // Import critical CSS immediately
 import '../styles/critical.css'
 
-import '../styles/mechanica-design-system.css'
-
 // Default feature flags (no server fetch needed for demo)
 const DEFAULT_FEATURE_FLAGS: FeatureFlags = {
   newFeature: true,
@@ -59,6 +59,21 @@ function MyApp({
 }: AppProps) {
   const router = useRouter()
   const [pageLoading, setPageLoading] = useState(false)
+
+  // Load non-critical CSS after initial render
+  useEffect(() => {
+    const loadNonCriticalCSS = async () => {
+      try {
+        await import('../styles/mechanica-design-system.css')
+      } catch (error) {
+        console.warn('Failed to load non-critical CSS:', error)
+      }
+    }
+
+    // Load after a short delay to ensure critical CSS is applied first
+    const timer = setTimeout(loadNonCriticalCSS, 100)
+    return () => clearTimeout(timer)
+  }, [])
 
   // Handle route changes for loading states
   useEffect(() => {

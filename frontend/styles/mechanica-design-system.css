@@ -2,9 +2,6 @@
  * mechanica-Inspired Design System for BeginnerInvestorHub
  * Combining Ordinatus Professionalism with Mechanical Beauty
  */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 :root {
   /* ===== mechanica + Ordinatus COLOR PALETTE ===== */

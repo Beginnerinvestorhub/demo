@@ -4,7 +4,22 @@ module.exports = {
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/**/*.{js,ts,jsx,tsx,mdx}',
+    './styles/**/*.{css}',
   ],
+  corePlugins: {
+    // Disable unused core plugins to reduce bundle size
+    fontVariantNumeric: false,
+    touchAction: false,
+    ringOffsetWidth: false,
+    ringOffsetColor: false,
+    scrollSnapType: false,
+    scrollSnapAlign: false,
+    borderOpacity: false,
+    divideOpacity: false,
+    textOpacity: false,
+    backgroundOpacity: false,
+    gradientColorStops: false,
+  },
   theme: {
     extend: {
       colors: {
@@ -77,4 +92,23 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/forms')],
+  // Optimize purging
+  purge: {
+    enabled: process.env.NODE_ENV === 'production',
+    content: [
+      './pages/**/*.{js,ts,jsx,tsx,mdx}',
+      './components/**/*.{js,ts,jsx,tsx,mdx}',
+      './src/**/*.{js,ts,jsx,tsx,mdx}',
+      './styles/**/*.{css}',
+    ],
+    options: {
+      safelist: [
+        // Keep critical classes that might be dynamically generated
+        /^mechanica-/,
+        /^bg-mechanica/,
+        /^text-mechanica/,
+        /^border-mechanica/,
+      ],
+    },
+  },
 };

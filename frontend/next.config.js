@@ -102,6 +102,8 @@ const nextConfig = withBundleAnalyzer(
         '@headlessui/react',
         'chart.js',
         'react-chartjs-2',
+        '@heroicons/react',
+        'lucide-react',
       ],
     },
 

@@ -3,7 +3,7 @@
  * Real-time analytics and AI insights for administrators and power users
  */
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, Suspense } from 'react';
 import {
   ChartBarIcon,
   UserGroupIcon,
@@ -14,6 +14,14 @@ import {
   CheckCircleIcon,
   XCircleIcon,
 } from '@heroicons/react/24/outline';
+
+// Dynamic import for chart components
+const Line = React.lazy(() =>
+  import('react-chartjs-2').then(mod => ({ default: mod.Line }))
+);
+const Bar = React.lazy(() =>
+  import('react-chartjs-2').then(mod => ({ default: mod.Bar }))
+);
 
 interface UserInsights {
   user_id: string;
