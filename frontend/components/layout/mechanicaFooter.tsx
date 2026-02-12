@@ -19,24 +19,11 @@ export const MechanicaFooter: React.FC = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start text-center md:text-left">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center">
 
-          {/* Center Column: Branding */}
-          <div className="text-center py-4">
-            <div className="flex justify-center items-center space-x-4 mb-6">
-              <MechanicaGear size="lg" color="brass" speed="slow" className="opacity-80" />
-              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-white font-serif">
-                Beginner<span className="text-yellow-500">Investor</span>Hub
-              </h3>
-              <MechanicaGear size="lg" color="brass" speed="reverse" className="opacity-80" />
-            </div>
-            <p className="text-gray-400 text-base leading-relaxed max-w-md mx-auto font-light italic">
-              &quot;Precision investment education with engineering-grade tools and structured learning paths.&quot;
-            </p>
-          </div>
           {/* Left Column: Quick Links */}
           <div className="md:text-left">
-            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6">
+            <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-yellow-500 mb-6 font-serif">
               Quick Links
             </h4>
             <nav className="flex flex-col space-y-4">
@@ -52,7 +39,19 @@ export const MechanicaFooter: React.FC = () => {
             </nav>
           </div>
 
-
+          {/* Center Column: Branding */}
+          <div className="order-first md:order-none py-4">
+            <div className="flex justify-center items-center space-x-4 mb-6">
+              <MechanicaGear size="lg" color="brass" speed="slow" className="opacity-80" />
+              <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tighter text-white font-serif">
+                Beginner<span className="text-yellow-500">Investor</span>Hub
+              </h3>
+              <MechanicaGear size="lg" color="brass" speed="reverse" className="opacity-80" />
+            </div>
+            <p className="text-gray-400 text-base leading-relaxed max-w-md mx-auto font-light italic">
+              &quot;Precision investment education with engineering-grade tools and structured learning paths.&quot;
+            </p>
+          </div>
 
           {/* Right Column: Legal & Support */}
           <div className="md:text-right text-center">
