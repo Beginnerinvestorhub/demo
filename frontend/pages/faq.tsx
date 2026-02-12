@@ -43,12 +43,12 @@ export default function FAQ() {
 
   return (
     <MechanicaLayout
-      title="Frequently Asked Questions | Beginner Investor Hub"
-      description="Find answers to common questions about our investment education platform, portfolio simulation, and AI coaching features."
+      title="Frequent Questions | Beginner Investor Hub"
+      description="Find answers to common questions about our platform, simulations, and how to get started."
     >
       <Head>
-        <title>Frequently Asked Questions | BeginnerInvestorHub</title>
-        <meta name="description" content="Find answers to common questions about our investment education platform, portfolio simulation, and AI coaching features with precision-engineered guidance." />
+        <title>Frequent Questions | BeginnerInvestorHub</title>
+        <meta name="description" content="Find answers to common questions about our platform, simulations, and how to get started." />
       </Head>
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -74,17 +74,17 @@ export default function FAQ() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-serif text-white uppercase tracking-tighter">
-                  System <span className="text-yellow-400">Knowledge Base</span>
+                  Frequent <span className="text-yellow-400">Questions</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Frequently asked questions and technical documentation for mastering the investment architecture.
+                Everything you need to know about starting your investment journey.
               </p>
 
               <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500/80">
-                Protocol: Knowledge Retrieval
+                Protocol: Seeking Answers
               </div>
             </div>
           </div>
@@ -138,7 +138,7 @@ export default function FAQ() {
                   &ldquo;Our maintenance crew and technical advisors are available 24/7 to calibrate your investment journey.&rdquo;
                 </p>
                 <Link href="/contact" className="inline-flex items-center px-10 py-5 bg-mechanica-moonlight-blue text-white rounded-2xl font-black uppercase tracking-widest text-sm shadow-premium hover:scale-105 active:scale-95 transition-all">
-                  Initialize Transmission <span className="ml-3 text-lg">→</span>
+                  Message Us <span className="ml-3 text-lg">→</span>
                 </Link>
               </div>
             </MechanicaCard>
@@ -148,7 +148,7 @@ export default function FAQ() {
           <div className="mt-16 text-center pb-8">
             <Link href="/" className="inline-flex items-center space-x-3 px-6 py-3 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors shadow-sm">
               <MechanicaGear size="sm" color="steel" speed="slow" />
-              <span className="text-xs font-black uppercase tracking-widest text-gray-500">Return to Command Center</span>
+              <span className="text-xs font-black uppercase tracking-widest text-gray-500">Back to Home</span>
             </Link>
           </div>
         </div>

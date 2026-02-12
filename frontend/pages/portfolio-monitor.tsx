@@ -9,8 +9,8 @@ import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 export default function PortfolioMonitorPage() {
   return (
     <MechanicaLayout
-      title="Portfolio Monitoring | BeginnerInvestorHub"
-      description="Real-time assembly monitor for visualizing portfolio allocation, performance metrics, and investment architecture. Track your component details in real time."
+      title="Portfolio Tracking | BeginnerInvestorHub"
+      description="A clear visual overview of your investment distribution and performance. Track your stocks and assets in real time."
     >
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -36,19 +36,19 @@ export default function PortfolioMonitorPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Portfolio <span className="text-yellow-400">Inventory</span> Monitor
+                  Portfolio <span className="text-yellow-400">Asset</span> Tracker
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Real-time architectural visualization of your asset distribution and performance telemetrics.
+                A clear visual overview of your investment distribution and performance.
               </p>
 
               <div className="flex justify-center">
                 <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    STATUS: Telemetry Stream Active
+                    STATUS: Live Data Connected
                   </span>
                 </div>
               </div>
@@ -92,11 +92,11 @@ export default function PortfolioMonitorPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   <MechanicaGear size="md" color="brass" speed="slow" />
                   <h2 className="text-2xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                    🔧 Component Assembly Status
+                    📊 Your Investment Overview
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Monitor all portfolio components and performance metrics in your investment mechanism with engineering-grade precision.
+                  Track all your investments and how they are performing in one simple view.
                 </p>
               </div>
 
@@ -104,6 +104,44 @@ export default function PortfolioMonitorPage() {
               <PortfolioMonitor />
             </div>
           </MechanicaCard>
+
+          {/* Educational "Why This Matters" Module */}
+          <div className="mt-20 w-full max-w-5xl">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-extrabold text-mechanica-moonlight-blue font-serif mb-4 uppercase tracking-tighter">
+                💡 Why Track Your Portfolio?
+              </h3>
+              <p className="text-gray-600 max-w-2xl mx-auto font-medium">
+                Understanding your investment "blueprint" is the key to long-term success.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <MechanicaCard variant="mechanical" className="p-8">
+                <div className="flex items-start space-x-6">
+                  <div className="text-4xl">🎯</div>
+                  <div>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Avoid Over-Concentration</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      If all your money is in one "component" (like tech stocks), your whole machine could stop if that sector has a bad day. Tracking helps you spread your risk.
+                    </p>
+                  </div>
+                </div>
+              </MechanicaCard>
+
+              <MechanicaCard variant="wood" className="p-8">
+                <div className="flex items-start space-x-6">
+                  <div className="text-4xl">📉</div>
+                  <div>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Monitor Performance</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      Seeing how your assets change over time helps you stay calm during market dips and realize your growth during peaks.
+                    </p>
+                  </div>
+                </div>
+              </MechanicaCard>
+            </div>
+          </div>
 
           {/* Technical Specifications Footer */}
           <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
@@ -113,10 +151,10 @@ export default function PortfolioMonitorPage() {
                   <MechanicaGear size="lg" color="steel" speed="medium" />
                 </div>
                 <div className="text-lg font-bold mechanica-heading-professional text-mechanica-moonlight-blue mb-2">
-                  📊 Real-Time Analytics
+                  📈 Live Tracking
                 </div>
                 <div className="text-sm text-gray-600 mechanica-text-technical">
-                  Performance tracking engine
+                  See your growth as it happens.
                 </div>
               </div>
             </MechanicaCard>
@@ -126,10 +164,10 @@ export default function PortfolioMonitorPage() {
                   <MechanicaGear size="lg" color="brass" speed="slow" />
                 </div>
                 <div className="text-lg font-bold mechanica-heading-professional text-mechanica-moonlight-blue mb-2">
-                  🔔 Alert Mechanisms
+                  🔔 Smart Alerts
                 </div>
                 <div className="text-sm text-gray-600 mechanica-text-technical">
-                  Automated notification system
+                  Get notified of important changes.
                 </div>
               </div>
             </MechanicaCard>
@@ -139,10 +177,10 @@ export default function PortfolioMonitorPage() {
                   <MechanicaGear size="lg" color="copper" speed="reverse" />
                 </div>
                 <div className="text-lg font-bold mechanica-heading-professional text-mechanica-moonlight-blue mb-2">
-                  🔧 Precision Engineering
+                  🛡️ Reliable Data
                 </div>
                 <div className="text-sm text-gray-600 mechanica-text-technical">
-                  Enterprise-grade accuracy
+                  Data you can trust for your decisions.
                 </div>
               </div>
             </MechanicaCard>

@@ -204,8 +204,8 @@ export default function ProfileForm() {
         <div className="min-h-screen flex items-center justify-center">
           <MechanicaCard variant="mechanical" className="p-8 text-center">
             <MechanicaGear size="xl" color="steel" speed="slow" className="mx-auto mb-4" />
-            <h2 className="text-xl font-bold mechanica-heading-professional">Loading Profile...</h2>
-            <p className="mechanica-text-technical">Please wait while we fetch your data.</p>
+            <h2 className="text-xl font-bold mechanica-heading-professional">Loading Your Profile...</h2>
+            <p className="mechanica-text-technical">We're getting things ready for you.</p>
           </MechanicaCard>
         </div>
       </MechanicaLayout>
@@ -239,8 +239,8 @@ export default function ProfileForm() {
       description="Set up your investment profile and preferences"
     >
       <Head>
-        <title>Investor Profile Setup | BeginnerInvestorHub</title>
-        <meta name="description" content="Configure your precision investment profile and preferences for a tailored learning experience. Optimize your AI-powered coaching path." />
+        <title>Your Investor Profile | BeginnerInvestorHub</title>
+        <meta name="description" content="Tell us about your goals so we can help you better. This helps your coach give you the right advice." />
       </Head>
       <div className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -249,12 +249,12 @@ export default function ProfileForm() {
               <div className="flex justify-center items-center space-x-6 mb-6">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                  Investor Profile Setup
+                  Your Investor Profile
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
               <p className="text-gray-600 mechanica-text-technical">
-                Configure your precision investment profile for personalized recommendations
+                Tell us about your goals so we can help you better.
               </p>
             </div>
 

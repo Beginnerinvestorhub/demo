@@ -91,7 +91,7 @@ export default function Contact() {
               </div>
 
               <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Have questions? We are here to help you master investing with precision engineering and expert guidance.
+                Have questions? We're here to help you start your investment journey with confidence.
               </p>
             </div>
           </div>
@@ -137,7 +137,7 @@ export default function Contact() {
                     <div className="flex items-center space-x-3 mb-8 pb-8 border-b border-mechanica-moonlight-blue/10">
                       <MechanicaGear size="md" color="brass" speed="slow" />
                       <h2 className="text-3xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter">
-                        Connection Grid
+                        Ways to Reach Us
                       </h2>
                     </div>
 
@@ -145,8 +145,8 @@ export default function Contact() {
                       <div className="flex items-start space-x-6 p-6 hover:bg-mechanica-moonlight-blue/5 rounded-2xl transition-all border-2 border-transparent hover:border-mechanica-moonlight-blue/20 group">
                         <div className="w-14 h-14 bg-white border border-mechanica-moonlight-blue/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📧</div>
                         <div>
-                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">System Support</h3>
-                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-1">Technical Inquiries</div>
+                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">General Help</h3>
+                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-1">Support Team</div>
                           <a href="mailto:info@beginnerinvestorhub.com" className="text-mechanica-moonlight-blue font-black hover:underline font-mono text-sm">
                             info@beginnerinvestorhub.com
                           </a>
@@ -156,8 +156,8 @@ export default function Contact() {
                       <div className="flex items-start space-x-6 p-6 hover:bg-mechanica-moonlight-blue/5 rounded-2xl transition-all border-2 border-transparent hover:border-mechanica-moonlight-blue/20 group">
                         <div className="w-14 h-14 bg-white border border-mechanica-moonlight-blue/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">💼</div>
                         <div>
-                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Partnership Registry</h3>
-                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-1">Ecosystem Scaling</div>
+                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Business & Partnerships</h3>
+                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-1">Growing Together</div>
                           <a href="mailto:info@beginnerinvestorhub.com" className="text-mechanica-moonlight-blue font-black hover:underline font-mono text-sm">
                             info@beginnerinvestorhub.com
                           </a>
@@ -167,8 +167,8 @@ export default function Contact() {
                       <div className="flex items-start space-x-6 p-6 hover:bg-mechanica-moonlight-blue/5 rounded-2xl transition-all border-2 border-transparent hover:border-mechanica-moonlight-blue/20 group">
                         <div className="w-14 h-14 bg-white border border-mechanica-moonlight-blue/10 rounded-xl shadow-inner flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">📍</div>
                         <div>
-                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Main Assembly Hub</h3>
-                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">North Carolina Division</div>
+                          <h3 className="text-[10px] font-black text-gray-500 uppercase tracking-[0.2em] mb-1">Visit Us</h3>
+                          <div className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Our Office</div>
                           <p className="text-gray-600 font-black font-mono text-xs leading-relaxed uppercase">
                             Precision Sector 4<br />
                             Raleigh, United States
@@ -184,7 +184,7 @@ export default function Contact() {
                   <div className="p-10">
                     <div className="flex items-center space-x-3 mb-8">
                       <MechanicaGear size="sm" color="steel" speed="medium" />
-                      <h3 className="font-black text-mechanica-moonlight-blue uppercase tracking-widest text-sm">Response Metrics</h3>
+                      <h3 className="font-black text-mechanica-moonlight-blue uppercase tracking-widest text-sm">When You'll Hear Back</h3>
                     </div>
                     <div className="grid grid-cols-2 gap-6">
                       {[
@@ -209,13 +209,13 @@ export default function Contact() {
                   <div className="flex items-center space-x-3 mb-10 pb-8 border-b border-mechanica-moonlight-blue/10">
                     <MechanicaGear size="md" color="brass" speed="slow" />
                     <h2 className="text-4xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter">
-                      Transmission
+                      Send a Message
                     </h2>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-8">
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Origin Name</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Your Name</label>
                       <input
                         type="text"
                         name="name"
@@ -228,7 +228,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Communication Path (Email)</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Your Email</label>
                       <input
                         type="email"
                         name="email"
@@ -263,7 +263,7 @@ export default function Contact() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Information Packet (Message)</label>
+                      <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">Your Message</label>
                       <textarea
                         name="message"
                         value={formData.message}
@@ -309,7 +309,7 @@ export default function Contact() {
             <div className="pt-24 text-center pb-12 w-full max-w-4xl mx-auto">
               <Link href="/" className="inline-flex items-center space-x-4 px-10 py-5 bg-white border-2 border-gray-200 rounded-2xl hover:bg-gray-50 transition-all shadow-premium group">
                 <MechanicaGear size="sm" color="steel" speed="slow" className="group-hover:rotate-180 transition-transform duration-700" />
-                <span className="text-sm font-black uppercase tracking-widest text-gray-600">Return to Command Center</span>
+                <span className="text-sm font-black uppercase tracking-widest text-gray-600">Back to Home</span>
               </Link>
             </div>
           </div>

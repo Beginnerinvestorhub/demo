@@ -47,7 +47,7 @@ export default function RiskAssessmentPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Risk <span className="text-yellow-400">Stress</span> Analysis
+                  Risk <span className="text-yellow-400">Profile</span> Builder
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>

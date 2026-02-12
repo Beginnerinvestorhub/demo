@@ -304,6 +304,43 @@ export default function MarketDataPage() {
               </MechanicaCard>
             </div>
           </div>
+          {/* Educational "Why This Matters" Module */}
+          <div className="mt-20 w-full max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-extrabold text-mechanica-moonlight-blue font-serif mb-4 uppercase tracking-tighter">
+                💡 Why Market Data Matters
+              </h3>
+              <p className="text-gray-600 max-w-2xl mx-auto font-medium">
+                Information is the "fuel" of the investment engine. The better your data, the more confident your decisions.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <MechanicaCard variant="mechanical" className="p-8">
+                <div className="flex items-start space-x-6">
+                  <div className="text-4xl text-mechanica-moonlight-blue">📡</div>
+                  <div>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Spotting Trends Early</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed font-black">
+                      Market data isn't just numbers—it's the story of global supply and demand. Watching real-time updates helps you see where the world is moving before it gets there.
+                    </p>
+                  </div>
+                </div>
+              </MechanicaCard>
+
+              <MechanicaCard variant="wood" className="p-8">
+                <div className="flex items-start space-x-6">
+                  <div className="text-4xl text-mechanica-polished-brass">⚖️</div>
+                  <div>
+                    <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">Finding Fair Value</h4>
+                    <p className="text-sm text-gray-600 leading-relaxed font-black">
+                      Price is what you pay; value is what you get. Accurate data helps you compare different "components" of the market to find where the best opportunities are hiding.
+                    </p>
+                  </div>
+                </div>
+              </MechanicaCard>
+            </div>
+          </div>
         </section>
       </div>
     </MechanicaLayout>
