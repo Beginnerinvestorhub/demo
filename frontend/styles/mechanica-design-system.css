@@ -248,6 +248,19 @@
   }
 }
 
+@keyframes mechanica-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateY(8px) rotate(-0.5deg);
+  }
+}
+
 /* ===== mechanica BASE STYLES ===== */
 body {
   font-family: var(--mechanica-font-professional);
@@ -627,6 +640,10 @@ body {
   animation: mechanica-pulse-technical 2s infinite;
 }
 
+.mechanica-float {
+  animation: mechanica-float 6s ease-in-out infinite;
+}
+
 .animate-mechanica-ticker-scroll {
   animation: mechanica-ticker-scroll 30s linear infinite;
 }
@@ -710,6 +727,7 @@ body {
   letter-spacing: -0.02em;
   position: relative;
   display: inline-block;
+  animation: mechanica-float 8s ease-in-out infinite;
 }
 
 .mechanica-title-gold-chrome::after {
