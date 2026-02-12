@@ -4,8 +4,7 @@
  * Demo mode safe
  */
 
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useEffect } from 'react';
 import { useLearningStore } from '../../src/store/learningStore';
 import { useAuth } from '../../hooks/useAuth';
 import VarkAssessment from './VarkAssessment';
@@ -21,20 +20,6 @@ import {
 interface OnboardingFlowProps {
   onComplete?: () => void;
   isDemo?: boolean; // optional, defaults to false
-}
-
-// VARK assessment result structure
-interface VarkAssessmentResult {
-  primary_vark_preference: 'visual' | 'aural' | 'read_write' | 'kinesthetic';
-  vark_profile_data: {
-    visual: number;
-    aural: number;
-    read_write: number;
-    kinesthetic: number;
-  };
-  assessment_version: string;
-  total_duration: number; // seconds
-  confidence_metrics: Record<string, number>;
 }
 
 const OnboardingFlow: React.FC<OnboardingFlowProps> = ({

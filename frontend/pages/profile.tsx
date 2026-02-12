@@ -257,7 +257,7 @@ export default function ProfileForm() {
               Loading Your Profile...
             </h2>
             <p className="mechanica-text-technical">
-              We're getting things ready for you.
+              We&apos;re getting things ready for you.
             </p>
           </MechanicaCard>
         </div>

@@ -6,7 +6,7 @@ export const ensureFirebaseInitialized = async (): Promise<void> => {
   console.log('Firebase initialization skipped in DEMO mode.');
 };
 
-export const getFirebaseAuth = (): any => {
+export const getFirebaseAuth = (): never => {
   throw new Error(
     'Firebase Auth is not available in DEMO mode. Use mock auth from useAuth hook.'
   );

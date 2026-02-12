@@ -293,8 +293,8 @@ export default function CompoundCalculator() {
               </div>
 
               <div className="mt-6 bg-gray-50 rounded-xl p-4 border border-gray-100 italic text-xs text-gray-500 mechanica-text-technical uppercase tracking-widest">
-                // Note: Results are estimates. Consult a professional for
-                financial advice.
+                {/* Note: Results are estimates. Consult a professional for
+                financial advice. */}
               </div>
             </MechanicaCard>
 

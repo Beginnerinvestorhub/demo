@@ -1,7 +1,6 @@
 import React from 'react';
 import FractionalShareCalculator from '../components/FractionalShareCalculator';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
-import Head from 'next/head';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import { MechanicaTicker } from '../components/ui/MechanicaTicker';
@@ -74,20 +73,20 @@ export default function FractionalShareCalculatorPage() {
               className="p-8 bg-blue-50/50 border-blue-100 flex flex-col justify-center"
             >
               <h3 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tighter mb-4">
-                What is a "Fractional" Share?
+                What is a &quot;Fractional&quot; Share?
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
                 Imagine a single stock like a high-end luxury watch. You might
-                not have $5,000 for the whole watch, but with "Fractionals," you
-                can buy just the{' '}
+                not have $5,000 for the whole watch, but with
+                &quot;Fractionals,&quot; you can buy just the{' '}
                 <span className="text-mechanica-moonlight-blue font-bold">
                   gears or the hands
                 </span>
                 .
               </p>
               <p className="text-sm text-slate-600 leading-relaxed font-medium mt-4">
-                This tool shows you exactly how much of that "watch" you own
-                based on the money you have right now.
+                This tool shows you exactly how much of that &quot;watch&quot;
+                you own based on the money you have right now.
               </p>
             </MechanicaCard>
 
@@ -108,12 +107,15 @@ export default function FractionalShareCalculatorPage() {
                 <li className="flex items-start gap-2 text-xs font-bold text-slate-700">
                   <span className="text-yellow-500 font-black">✓</span>
                   <span>
-                    Build your "Ownership Machine" one dollar at a time.
+                    Build your &quot;Ownership Machine&quot; one dollar at a
+                    time.
                   </span>
                 </li>
                 <li className="flex items-start gap-2 text-xs font-bold text-slate-700">
                   <span className="text-yellow-500 font-black">✓</span>
-                  <span>Never wait to "afford" a full share again.</span>
+                  <span>
+                    Never wait to &quot;afford&quot; a full share again.
+                  </span>
                 </li>
               </ul>
             </MechanicaCard>

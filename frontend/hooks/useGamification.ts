@@ -341,7 +341,9 @@ export function useGamification(userId: string): UseGamificationReturn {
           const achievement: Achievement = {
             id: achievementDef.id,
             name: achievementDef.name,
-            title: (achievementDef as any).title || achievementDef.name,
+            title:
+              (achievementDef as { title?: string }).title ||
+              achievementDef.name,
             description: achievementDef.description,
             points: reward.points || badgeDef.points || 0,
             reward: reward.points || badgeDef.points || 0,

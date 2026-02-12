@@ -1,6 +1,5 @@
 import React from 'react';
 import ESGScreener from '../components/ESGScreener';
-import Head from 'next/head';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
@@ -210,8 +209,8 @@ export default function ESGScreenerPage() {
                 💡 Why ESG Matters to You
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Investing isn't just about numbers—it's about the kind of world
-                you want to build.
+                Investing isn&apos;t just about numbers—it&apos;s about the kind
+                of world you want to build.
               </p>
             </div>
 
@@ -224,9 +223,9 @@ export default function ESGScreenerPage() {
                       Vote With Your Dollars
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Every stock you buy is a "vote" of confidence in that
-                      company. ESG helps you ensure your money supports leaders
-                      who are building a sustainable future.
+                      Every stock you buy is a &quot;vote&quot; of confidence in
+                      that company. ESG helps you ensure your money supports
+                      leaders who are building a sustainable future.
                     </p>
                   </div>
                 </div>

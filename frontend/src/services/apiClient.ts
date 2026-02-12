@@ -4,6 +4,11 @@ import { getFirebaseAuth, isFirebaseInitialized } from '@/lib/firebase';
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000';
 
+// Extended error interface for normalized error messages
+interface ExtendedError extends Error {
+  normalizedMessage?: string;
+}
+
 export const apiClient = axios.create({
   baseURL: API_BASE_URL,
   headers: {
@@ -55,7 +60,7 @@ apiClient.interceptors.response.use(
     }
 
     // Attach the normalized message to the error object for downstream consumption
-    (error as any).normalizedMessage = errorMessage;
+    (error as ExtendedError).normalizedMessage = errorMessage;
 
     return Promise.reject(error);
   }

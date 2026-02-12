@@ -13,16 +13,6 @@ interface VarkQuestion {
   }[];
 }
 
-// Define expected structure for the assessment payload
-interface VarkAssessmentPayload {
-  user_id: string;
-  assessment_responses: Array<{
-    question_id: string;
-    selected_style: 'visual' | 'aural' | 'read_write' | 'kinesthetic';
-  }>;
-  // Add other fields from VarkAssessmentPayload as needed (e.g., assessment_version)
-}
-
 // Define expected structure for the assessment result
 interface VarkAssessmentResult {
   primary_vark_preference: 'visual' | 'aural' | 'read_write' | 'kinesthetic';
@@ -91,7 +81,10 @@ const VarkAssessment: React.FC<{
   userId: string;
   isDemo?: boolean;
   onComplete: (result: VarkAssessmentResult) => void;
-}> = ({ userId, isDemo = false, onComplete }) => {
+}> = ({ userId, isDemo, onComplete }) => {
+  // Intentionally unused - reserved for future API integration
+  void userId;
+  void isDemo;
   const [answers, setAnswers] = useState<
     Record<string, 'visual' | 'aural' | 'read_write' | 'kinesthetic'>
   >({});

@@ -60,12 +60,12 @@ export default function HomePage() {
     }
   };
 
-  const [stats, setStats] = useState<PlatformStats>({
+  const stats: PlatformStats = {
     portfoliosBuilt: 12847,
     simulationsRun: 45923,
     simulatedValue: 85487293,
     userSatisfaction: 98,
-  });
+  };
 
   // Helper function for in-view check (simplified or from useInView hook)
   const isElementInView = (element: HTMLElement) => {

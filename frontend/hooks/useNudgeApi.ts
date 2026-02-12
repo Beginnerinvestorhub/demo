@@ -130,8 +130,14 @@ function getBrowser() {
   return 'unknown';
 }
 
+// Location data types
+type LocationData =
+  | { latitude: number; longitude: number; accuracy: number }
+  | { timezone: string }
+  | Record<string, never>; // Empty object
+
 // Local cache for geolocation to avoid repeated browser prompts
-let cachedLocation: any = null;
+let cachedLocation: LocationData | null = null;
 
 async function getLocationInfo() {
   if (cachedLocation) return cachedLocation;

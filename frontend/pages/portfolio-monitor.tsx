@@ -1,7 +1,6 @@
 import React from 'react';
 import PortfolioMonitor from '../components/PortfolioMonitor';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
-import Head from 'next/head';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import { MechanicaTicker } from '../components/ui/MechanicaTicker';
@@ -133,8 +132,8 @@ export default function PortfolioMonitorPage() {
                 💡 Why Track Your Portfolio?
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Understanding your investment "blueprint" is the key to
-                long-term success.
+                Understanding your investment &quot;blueprint&quot; is the key
+                to long-term success.
               </p>
             </div>
 
@@ -147,9 +146,9 @@ export default function PortfolioMonitorPage() {
                       Avoid Over-Concentration
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed">
-                      If all your money is in one "component" (like tech
-                      stocks), your whole machine could stop if that sector has
-                      a bad day. Tracking helps you spread your risk.
+                      If all your money is in one &quot;component&quot; (like
+                      tech stocks), your whole machine could stop if that sector
+                      has a bad day. Tracking helps you spread your risk.
                     </p>
                   </div>
                 </div>

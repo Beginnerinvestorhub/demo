@@ -103,7 +103,7 @@ export default function Contact() {
               </div>
 
               <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Have questions? We're here to help you start your investment
+                Have questions? We&apos;re here to help you start your investment
                 journey with confidence.
               </p>
             </div>
@@ -234,14 +234,11 @@ export default function Contact() {
                   gearDecoration
                   className="shadow-xl transform rotate-1"
                 >
-                  <div className="p-10">
-                    <div className="flex items-center space-x-3 mb-8">
-                      <MechanicaGear size="sm" color="steel" speed="medium" />
-                      <h3 className="font-black text-mechanica-moonlight-blue uppercase tracking-widest text-sm">
-                        When You'll Hear Back
-                      </h3>
-                    </div>
-                    <div className="grid grid-cols-2 gap-6">
+                  <div className="p-6">
+                    <h3 className="font-black text-mechanica-moonlight-blue uppercase tracking-widest text-sm mb-6">
+                      When You&apos;ll Hear Back
+                    </h3>
+                    <div className="grid grid-cols-2 gap-4">
                       {[
                         {
                           label: 'General',

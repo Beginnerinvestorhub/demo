@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import RiskAssessmentForm from '../components/RiskAssessmentForm';
 import RiskAssessmentResult from '../components/RiskAssessmentResult';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
-import Head from 'next/head';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 

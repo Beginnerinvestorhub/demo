@@ -425,8 +425,8 @@ export default function MarketDataPage() {
                 💡 Why Market Data Matters
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Information is the "fuel" of the investment engine. The better
-                your data, the more confident your decisions.
+                Information is the &quot;fuel&quot; of the investment engine.
+                The better your data, the more confident your decisions.
               </p>
             </div>
 
@@ -441,9 +441,9 @@ export default function MarketDataPage() {
                       Spotting Trends Early
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Market data isn't just numbers—it's the story of global
-                      supply and demand. Watching real-time updates helps you
-                      see where the world is moving before it gets there.
+                      Market data isn&apos;t just numbers—it&apos;s the story of
+                      global supply and demand. Watching real-time updates helps
+                      you see where the world is moving before it gets there.
                     </p>
                   </div>
                 </div>
@@ -460,8 +460,9 @@ export default function MarketDataPage() {
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
                       Price is what you pay; value is what you get. Accurate
-                      data helps you compare different "components" of the
-                      market to find where the best opportunities are hiding.
+                      data helps you compare different &quot;components&quot; of
+                      the market to find where the best opportunities are
+                      hiding.
                     </p>
                   </div>
                 </div>

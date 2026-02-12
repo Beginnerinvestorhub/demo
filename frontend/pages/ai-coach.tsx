@@ -435,7 +435,7 @@ export default function AICoachPage() {
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
                 Investing is 20% head knowledge and 80% behavior. Your biggest
-                risk isn't the market—it's your own reactions.
+                risk isn&apos;t the market—it&apos;s your own reactions.
               </p>
             </div>
 
@@ -475,9 +475,9 @@ export default function AICoachPage() {
                     Long-Term Vision
                   </h4>
                   <p className="text-sm text-gray-600 leading-relaxed font-black">
-                    It's easy to get lost in the day-to-day "noise" of the
-                    market. Coaching keeps your focus on the big picture and
-                    your ultimate goals.
+                    It&apos;s easy to get lost in the day-to-day
+                    &quot;noise&quot; of the market. Coaching keeps your focus
+                    on the big picture and your ultimate goals.
                   </p>
                 </div>
               </MechanicaCard>
