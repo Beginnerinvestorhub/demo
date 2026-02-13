@@ -17,7 +17,7 @@ export const MechanicaHeader: React.FC<MechanicaHeaderProps> = ({
 }) => {
   return (
     <header
-      className={``bg-mechanica-moonlight-blue-metallic mechanica-header overflow-hidden py-8 md:py-12 ${className}`}
+      className={`bg-mechanica-moonlight-blue-metallic mechanica-header overflow-hidden py-8 md:py-12 ${className}`}
     >
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         <div className="text-center">
