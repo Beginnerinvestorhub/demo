@@ -16,9 +16,6 @@ module.exports = {
     scrollSnapAlign: false,
     borderOpacity: false,
     divideOpacity: false,
-    textOpacity: false,
-    backgroundOpacity: false,
-    gradientColorStops: false,
   },
   theme: {
     extend: {
