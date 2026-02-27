@@ -104,7 +104,7 @@ export default function AICoachPage() {
       id: '1',
       type: 'coach',
       content:
-        "Hello! I'm your AI Behavioral Coach. I'm here to help you understand the psychological aspects of investing and make better decisions. What investing topic would you like to explore today?",
+        "Hello! I'm your Guide. I'm here to help you understand how your emotions affect your investing and build your confidence. What's on your mind today?",
       timestamp: new Date(),
     },
   ]);
@@ -210,11 +210,11 @@ export default function AICoachPage() {
 
   return (
     <MechanicaLayout
-      title="AI Behavioral Coach"
-      description="Get personalized investing insights and behavioral coaching from our AI-powered investment coach."
+      title="Your Learning Guide"
+      description="A safe space to ask questions, understand your fears, and build investing confidence."
     >
       <Head>
-        <title>AI Behavioral Coach | BeginnerInvestorHub</title>
+        <title>Your Learning Guide | BeginnerInvestorHub</title>
       </Head>
 
       {/* Hero Section */}
@@ -243,20 +243,19 @@ export default function AICoachPage() {
           <div className="flex justify-center items-center space-x-6 mb-8">
             <MechanicaGear size="xl" color="brass" speed="slow" />
             <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-              The <span className="text-yellow-400">Behavioral</span> Coach
+              Your Learning <span className="text-yellow-400">Guide</span>
             </h1>
             <MechanicaGear size="xl" color="brass" speed="reverse" />
           </div>
 
           <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-            Your guide to the human side of wealth. Learn to spot emotional
-            traps and build a disciplined investment machine.
+            A safe space to ask any question. No judgment, no jargon. Just clear answers to help you build confidence.
           </p>
 
           <div className="flex justify-center">
             <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
               <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                PROTOCOL: BHV-COACH v1.0 [PSYCHOLOGY ALIGNMENT]
+                Always here to help you learn.
               </span>
             </div>
           </div>
@@ -283,11 +282,10 @@ export default function AICoachPage() {
                         className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
                       >
                         <div
-                          className={`max-w-[80%] p-4 rounded-2xl ${
-                            message.type === 'user'
+                          className={`max-w-[80%] p-4 rounded-2xl ${message.type === 'user'
                               ? 'bg-mechanica-moonlight-blue text-white'
                               : 'bg-gray-100 text-gray-900 shadow-sm'
-                          }`}
+                            }`}
                         >
                           <div className="text-sm mb-2 opacity-75">
                             {message.timestamp.toLocaleTimeString()}
@@ -309,7 +307,7 @@ export default function AICoachPage() {
                               speed="fast"
                             />
                             <span className="text-sm">
-                              Coach is thinking...
+                              Guide is typing...
                             </span>
                           </div>
                         </div>
@@ -327,7 +325,7 @@ export default function AICoachPage() {
                       value={inputMessage}
                       onChange={e => setInputMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      placeholder="Ask me about investing psychology, behavioral biases, or decision-making..."
+                      placeholder="Ask me anything you're unsure about..."
                       className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-mechanica-moonlight-blue focus:border-transparent"
                     />
                     <MechanicaButton
@@ -366,7 +364,7 @@ export default function AICoachPage() {
                           id: Date.now().toString(),
                           type: 'coach',
                           content:
-                            "I'm here to help! You can ask me about: • Behavioral biases • Risk management • Market psychology • Investment strategies • Emotional control. What would you like to explore?",
+                            "I'm here to help! You can ask me about: • Why investing feels scary • How to take the first step • Understanding basic concepts • Staying calm during market changes. What's on your mind?",
                           timestamp: new Date(),
                         };
                         setMessages(prev => [...prev, welcomeMessage]);
@@ -431,7 +429,7 @@ export default function AICoachPage() {
           <div className="mt-20 w-full">
             <div className="text-center mb-12">
               <h3 className="text-3xl font-extrabold text-mechanica-moonlight-blue font-serif mb-4 uppercase tracking-tighter">
-                💡 Why Behavioral Coaching Matters
+                💡 Why a Guide Helps
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
                 Investing is 20% head knowledge and 80% behavior. Your biggest
@@ -444,12 +442,10 @@ export default function AICoachPage() {
                 <div className="flex flex-col items-center text-center">
                   <div className="text-4xl mb-4">🧘</div>
                   <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
-                    Beat Emotional Traps
+                    Overcome the Fear
                   </h4>
                   <p className="text-sm text-gray-600 leading-relaxed font-black">
-                    Our brains are wired for survival, not for the stock market.
-                    Coaching helps you spot when fear or greed is making your
-                    decisions for you.
+                    It's completely normal to feel scared when money is involved. We'll help you recognize those feelings and take safe, logical steps.
                   </p>
                 </div>
               </MechanicaCard>
@@ -458,12 +454,10 @@ export default function AICoachPage() {
                 <div className="flex flex-col items-center text-center">
                   <div className="text-4xl mb-4">🏗️</div>
                   <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
-                    Build Better Habits
+                    Build Confidence Slowly
                   </h4>
                   <p className="text-sm text-gray-600 leading-relaxed font-black">
-                    Consistency is the secret weapon of the wealthy. We help you
-                    build the discipline to stick to your plan even when things
-                    get noisy.
+                    Investing isn't about getting rich quick. It's about small, safe, consistent habits. We're here to support you at every step.
                   </p>
                 </div>
               </MechanicaCard>
@@ -472,7 +466,7 @@ export default function AICoachPage() {
                 <div className="flex flex-col items-center text-center">
                   <div className="text-4xl mb-4">🔭</div>
                   <h4 className="text-lg font-black text-mechanica-moonlight-blue uppercase tracking-tight mb-2">
-                    Long-Term Vision
+                    Focus on the Big Picture
                   </h4>
                   <p className="text-sm text-gray-600 leading-relaxed font-black">
                     It&apos;s easy to get lost in the day-to-day

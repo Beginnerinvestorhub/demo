@@ -13,7 +13,7 @@ export default function LearningHub() {
   return (
     <MechanicaLayout
       title="Learning Hub | BeginnerInvestorHub"
-      description="Access your personalized financial knowledge archives."
+      description="Your personalized step-by-step journey to financial confidence."
       fullBleed={true}
     >
       <Head>
@@ -40,21 +40,20 @@ export default function LearningHub() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center justify-center p-3 bg-blue-900/30 rounded-full border border-blue-500/30 backdrop-blur-md mb-6 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
               <span className="text-blue-300 font-mono text-xs font-bold uppercase tracking-[0.2em] px-4">
-                Archive Access: Level {userLevel}
+                Current Learning Level: {userLevel}
               </span>
             </div>
 
             <h1 className="text-5xl md:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float mb-6 flex justify-center items-center gap-8">
               <MechanicaGear size="xl" color="brass" speed="slow" />
               <span>
-                Attributes <span className="text-yellow-400">Library</span>
+                Learning <span className="text-yellow-400">Journey</span>
               </span>
               <MechanicaGear size="xl" color="brass" speed="reverse" />
             </h1>
 
             <p className="text-xl text-blue-200 max-w-2xl mx-auto font-light leading-relaxed">
-              Unlock the secrets of wealth generation through our progressive
-              knowledge modules.
+              Build your investing confidence step-by-step. No jargon, just clear learning.
             </p>
           </div>
 
@@ -150,7 +149,7 @@ export default function LearningHub() {
                               disabled
                               className="w-full py-3 bg-gray-800 text-gray-500 font-bold uppercase tracking-widest text-xs rounded-xl border border-gray-700 cursor-not-allowed"
                             >
-                              Access Denied
+                              Locked Until Ready
                             </button>
                           ) : (
                             <MechanicaButton
@@ -159,7 +158,7 @@ export default function LearningHub() {
                               className="w-full justify-center shadow-lg shadow-blue-900/20"
                               href={`/education/${module.id}`}
                             >
-                              Initialize Module
+                              Start Learning
                             </MechanicaButton>
                           )}
                         </div>
@@ -175,7 +174,7 @@ export default function LearningHub() {
           <div className="mt-24 flex flex-col items-center opacity-30 gap-2">
             <div className="w-1 h-12 bg-gradient-to-b from-blue-500 to-transparent"></div>
             <div className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">
-              System Archives v2.4
+              Your Learning Journey
             </div>
           </div>
         </div>

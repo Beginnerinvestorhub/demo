@@ -20,7 +20,7 @@ export const modules: Module[] = [
     id: 'stocks-101',
     title: 'What Is a Stock?',
     description:
-      'Learn the fundamentals of equity ownership and how stocks trade.',
+      'A simple introduction to what it means to own a piece of a company.',
     badgeId: 'bootcamp_starter',
     lessons: [
       {
@@ -28,37 +28,37 @@ export const modules: Module[] = [
         title: 'Stocks Overview',
         videoUrl: '',
         summary:
-          'Definition, shareholder rights, and why companies issue stock.',
+          'Learn what a stock is and why people buy them.',
         points: 50,
       },
     ],
   },
   {
     id: 'compound-interest',
-    title: 'How Compound Interest Works',
-    description: 'See how time and rate grow your money exponentially.',
+    title: 'The Magic of Time',
+    description: 'See how small, consistent habits can grow your money safely over time.',
     badgeId: 'compound_pro',
     lessons: [
       {
         slug: 'compound-basics',
         title: 'Compound Interest Basics',
         videoUrl: '',
-        summary: 'Principal, rate, time, and compounding frequency.',
+        summary: 'Understanding how your money can make its own money.',
         points: 50,
       },
     ],
   },
   {
     id: 'risk-vs-reward',
-    title: 'Understanding Risk vs. Reward',
-    description: 'Balance potential gains with acceptable risk levels.',
+    title: 'Balancing Risk & Comfort',
+    description: 'Learn how to invest in a way that lets you sleep well at night.',
     badgeId: 'risk_master',
     lessons: [
       {
         slug: 'risk-basics',
         title: 'Risk Basics',
         videoUrl: '',
-        summary: 'Volatility, diversification, and personal tolerance.',
+        summary: 'Simple ways to stay safe while your money grows.',
         points: 50,
       },
     ],

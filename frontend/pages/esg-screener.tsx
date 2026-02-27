@@ -8,7 +8,7 @@ import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 export default function ESGScreenerPage() {
   return (
     <MechanicaLayout
-      title="Sustainable Investment Finder | BeginnerInvestorHub"
+      title="Values-Aligned Investing | BeginnerInvestorHub"
       description="Find companies that align with your values and ethical standards. Screen for environmental, social, and governance impact with ease."
     >
       <div className="min-h-screen">
@@ -38,7 +38,7 @@ export default function ESGScreenerPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Sustainable <span className="text-yellow-400">Impact</span>{' '}
+                  Values <span className="text-yellow-400">Aligned</span>{' '}
                   Finder
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
@@ -52,7 +52,7 @@ export default function ESGScreenerPage() {
               <div className="flex justify-center">
                 <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    PROTOCOL: Ethical Standard Matching v1.0
+                    PROTOCOL: Finding What Matters to You
                   </span>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export default function ESGScreenerPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   <MechanicaGear size="md" color="brass" speed="slow" />
                   <h2 className="text-2xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                    🌱 Sustainability Scout
+                    🌱 Values Scout
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">
@@ -258,8 +258,7 @@ export default function ESGScreenerPage() {
               <div className="flex items-center space-x-3">
                 <MechanicaGear size="sm" color="steel" speed="medium" />
                 <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                  All ESG data verified against MSCI and regulatory disclosure
-                  standards
+                  We use trusted data to help you support the causes you care about.
                 </span>
               </div>
             </MechanicaCard>

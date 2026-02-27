@@ -26,11 +26,11 @@ interface ProfileFormData {
 
 interface UserProfile extends ProfileFormData {
   primary_vark_preference:
-    | 'visual'
-    | 'aural'
-    | 'read_write'
-    | 'kinesthetic'
-    | null;
+  | 'visual'
+  | 'aural'
+  | 'read_write'
+  | 'kinesthetic'
+  | null;
   vark_profile_data: {
     visual: number;
     aural: number;
@@ -301,14 +301,14 @@ export default function ProfileForm() {
 
   return (
     <MechanicaLayout
-      title="Investor Profile Setup | Beginner Investor Hub"
-      description="Set up your investment profile and preferences"
+      title="Your Learning Profile | Beginner Investor Hub"
+      description="Tell us about yourself so we can personalize your learning journey."
     >
       <Head>
-        <title>Your Investor Profile | BeginnerInvestorHub</title>
+        <title>Your Learning Profile | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Tell us about your goals so we can help you better. This helps your coach give you the right advice."
+          content="Tell us about your goals so we can help you learn better."
         />
       </Head>
       <div className="py-12 bg-gray-50">
@@ -318,12 +318,12 @@ export default function ProfileForm() {
               <div className="flex justify-center items-center space-x-6 mb-6">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                  Your Investor Profile
+                  Your Learning Profile
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
               <p className="text-gray-600 mechanica-text-technical">
-                Tell us about your goals so we can help you better.
+                Tell us about your goals so we can personalize your learning journey.
               </p>
             </div>
 
@@ -403,12 +403,12 @@ export default function ProfileForm() {
                     <div className="flex items-center space-x-3 mb-6">
                       <MechanicaGear size="medium" color="brass" speed="slow" />
                       <h2 className="text-xl font-semibold mechanica-heading-professional text-mechanica-moonlight-blue">
-                        2. Investment Profile 📊
+                        2. Your Goals 📊
                       </h2>
                     </div>
 
                     <FormGroup
-                      label="Investment Experience"
+                      label="Your Experience Level"
                       htmlFor="experienceLevel"
                       className="mb-6"
                     >
@@ -430,7 +430,7 @@ export default function ProfileForm() {
                     </FormGroup>
 
                     <FormGroup
-                      label="Investment Goals"
+                      label="Your Main Goals"
                       description="Select all that apply."
                       className="mb-6"
                     >
@@ -463,8 +463,8 @@ export default function ProfileForm() {
                     </FormGroup>
 
                     <FormGroup
-                      label="Risk Tolerance"
-                      description="How willing are you to accept market fluctuations for higher potential returns?"
+                      label="Comfort with Risk"
+                      description="How do you feel about your investments going up and down in value?"
                       className="mb-6"
                     >
                       <div className="flex flex-wrap gap-4 items-center">
@@ -488,11 +488,10 @@ export default function ProfileForm() {
                               className="h-4 w-4 text-mechanica-moonlight-blue border-gray-300 focus:ring-mechanica-moonlight-blue"
                             />
                             <span
-                              className={`px-3 py-1 rounded-full text-xs font-medium ${
-                                formData.riskTolerance === option.value
+                              className={`px-3 py-1 rounded-full text-xs font-medium ${formData.riskTolerance === option.value
                                   ? 'bg-mechanica-moonlight-blue text-white'
                                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                              }`}
+                                }`}
                             >
                               {option.label}
                             </span>
@@ -503,7 +502,7 @@ export default function ProfileForm() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <FormGroup
-                        label="Initial Investment Capital"
+                        label="Starting Amount (Practice Money)"
                         htmlFor="initialCapital"
                       >
                         <div className="relative rounded-md shadow-sm">
@@ -525,7 +524,7 @@ export default function ProfileForm() {
                       </FormGroup>
 
                       <FormGroup
-                        label="Monthly Contribution"
+                        label="Monthly Savings Goal"
                         htmlFor="monthlyContribution"
                       >
                         <div className="relative rounded-md shadow-sm">
@@ -559,7 +558,7 @@ export default function ProfileForm() {
                             speed="medium"
                           />
                           <h2 className="text-xl font-semibold mechanica-heading-professional text-mechanica-moonlight-blue">
-                            3. VARK Learning Style 📚
+                            3. How You Learn Best 📚
                           </h2>
                         </div>
                         <div className="space-y-4">
@@ -598,7 +597,7 @@ export default function ProfileForm() {
                             })}
                           </div>
                           <p className="text-sm text-gray-600 mt-4 mechanica-text-technical">
-                            You can retake the VARK assessment during onboarding
+                            You can retake the learning style assessment anytime
                             to update this profile.
                           </p>
                         </div>

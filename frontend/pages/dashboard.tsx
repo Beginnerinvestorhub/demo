@@ -165,7 +165,7 @@ export default function DashboardPage() {
                   <MechanicaGear size="xl" color="brass" speed="slow" />
                 </div>
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                  Welcome back, {user.displayName || 'Investor'}!
+                  Your Investing Confidence Is Growing{user.displayName ? `, ${user.displayName}` : ''}.
                 </h1>
                 <div className="hidden sm:block">
                   <MechanicaGear size="xl" color="brass" speed="reverse" />
@@ -173,7 +173,7 @@ export default function DashboardPage() {
               </div>
               <div className="w-24 h-1 bg-mechanica-polished-brass mx-auto mb-6"></div>
               <p className="text-xl text-gray-600 mechanica-text-technical mb-8">
-                Ready to continue your precision investment learning journey?
+                Ready to continue your guided learning journey?
               </p>
             </div>
 
@@ -188,7 +188,7 @@ export default function DashboardPage() {
                     {dynamicProgress.level}
                   </div>
                   <div className="text-sm mechanica-text-technical text-gray-600 uppercase tracking-wide">
-                    Engineering Level
+                    Current Level
                   </div>
                 </div>
               </MechanicaCard>
@@ -202,7 +202,7 @@ export default function DashboardPage() {
                     {dynamicProgress.totalPoints.toLocaleString()}
                   </div>
                   <div className="text-sm mechanica-text-technical text-gray-600 uppercase tracking-wide">
-                    Precision Points
+                    Confidence Score
                   </div>
                 </div>
               </MechanicaCard>
@@ -213,10 +213,10 @@ export default function DashboardPage() {
                     <MechanicaGear size="medium" color="copper" speed="fast" />
                   </div>
                   <div className="text-3xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    {dynamicProgress.streaks.loginStreak}
+                    {(dynamicProgress as any).stats?.educationModulesCompleted || (dynamicProgress as any).completedModules || 0}
                   </div>
                   <div className="text-sm mechanica-text-technical text-gray-600 uppercase tracking-wide">
-                    Day Streak
+                    Lessons Completed
                   </div>
                 </div>
               </MechanicaCard>
@@ -228,31 +228,28 @@ export default function DashboardPage() {
             <div className="flex justify-start min-w-max md:justify-center">
               <div className="inline-flex rounded-lg border border-mechanica-polished-brass/20 bg-white p-1">
                 <button
-                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${
-                    activeTab === 'overview'
-                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
-                      : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
-                  }`}
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'overview'
+                    ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
+                    : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
+                    }`}
                   onClick={() => setActiveTab('overview')}
                 >
                   📊 Overview
                 </button>
                 <button
-                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${
-                    activeTab === 'tools'
-                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
-                      : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
-                  }`}
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'tools'
+                    ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
+                    : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
+                    }`}
                   onClick={() => setActiveTab('tools')}
                 >
                   🛠️ Tools
                 </button>
                 <button
-                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${
-                    activeTab === 'learning'
-                      ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
-                      : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
-                  }`}
+                  className={`px-4 md:px-6 py-3 rounded-md font-medium transition-all whitespace-nowrap ${activeTab === 'learning'
+                    ? 'bg-mechanica-moonlight-blue text-white shadow-lg'
+                    : 'text-gray-600 hover:text-mechanica-moonlight-blue mechanica-text-technical'
+                    }`}
                   onClick={() => setActiveTab('learning')}
                 >
                   📚 Learning
@@ -265,62 +262,39 @@ export default function DashboardPage() {
           <div className="mb-12">
             {activeTab === 'overview' && (
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Recent Activity */}
+                {/* Next Recommended Lesson */}
                 <MechanicaCard
                   variant="mechanical"
                   animated
                   className="mechanica-hum"
                 >
-                  <div className="p-6">
-                    <div className="flex items-center space-x-3 mb-6">
-                      <MechanicaGear
-                        size="medium"
-                        color="steel"
-                        speed="medium"
-                      />
-                      <h3 className="text-2xl font-bold mechanica-heading-professional">
-                        Recent Activity
-                      </h3>
-                    </div>
-                    <div className="space-y-4">
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                          <span className="text-green-600">✅</span>
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-medium text-gray-900 mechanica-text-technical">
-                            Completed &ldquo;Risk Assessment&rdquo; module
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            2 hours ago
-                          </div>
-                        </div>
+                  <div className="p-6 flex flex-col h-full justify-between">
+                    <div>
+                      <div className="flex items-center space-x-3 mb-6">
+                        <MechanicaGear
+                          size="medium"
+                          color="steel"
+                          speed="medium"
+                        />
+                        <h3 className="text-2xl font-bold mechanica-heading-professional">
+                          Next Recommended Lesson
+                        </h3>
                       </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                          <span className="text-blue-600">📈</span>
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-medium text-gray-900 mechanica-text-technical">
-                            Updated portfolio simulation
-                          </div>
-                          <div className="text-sm text-gray-500">1 day ago</div>
-                        </div>
-                      </div>
-                      <div className="flex items-start space-x-3">
-                        <div className="flex-shrink-0 w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center">
-                          <span className="text-yellow-600">🏆</span>
-                        </div>
-                        <div className="flex-1">
-                          <div className="font-medium text-gray-900 mechanica-text-technical">
-                            Earned &ldquo;First Investment&rdquo; badge
-                          </div>
-                          <div className="text-sm text-gray-500">
-                            3 days ago
+                      <div className="bg-blue-50 border border-blue-100 rounded-lg p-5 mb-6">
+                        <div className="flex items-start space-x-4">
+                          <div className="mt-1 text-2xl">🌱</div>
+                          <div>
+                            <h4 className="font-bold text-blue-900 text-lg mb-2">Understanding Risk and Reward</h4>
+                            <p className="text-blue-800 text-sm leading-relaxed">Learn why investing isn&apos;t about gambling, but about safely managing risk to grow your wealth over time.</p>
                           </div>
                         </div>
                       </div>
                     </div>
+                    <Link href="/learning-hub">
+                      <MechanicaButton variant="mechanical" className="w-full">
+                        Start Lesson
+                      </MechanicaButton>
+                    </Link>
                   </div>
                 </MechanicaCard>
 
@@ -344,13 +318,13 @@ export default function DashboardPage() {
                             Modules Completed
                           </span>
                           <span className="text-sm font-bold text-mechanica-moonlight-blue mechanica-text-technical">
-                            13/20
+                            {((dynamicProgress as any).stats?.educationModulesCompleted || (dynamicProgress as any).completedModules || 0)}/20
                           </span>
                         </div>
                         <div className="w-full bg-gray-200 rounded-full h-3">
                           <div
                             className="bg-mechanica-moonlight-blue h-3 rounded-full"
-                            style={{ width: '65%' }}
+                            style={{ width: `${Math.min(100, (((dynamicProgress as any).stats?.educationModulesCompleted || (dynamicProgress as any).completedModules || 0) / 20) * 100)}%` }}
                           ></div>
                         </div>
                       </div>
@@ -409,10 +383,10 @@ export default function DashboardPage() {
                         />
                       </div>
                       <h3 className="text-xl font-bold mb-3 mechanica-heading-professional">
-                        Portfolio Monitor
+                        Practice Portfolio
                       </h3>
                       <p className="text-gray-600 mb-4 mechanica-text-technical">
-                        Track your virtual investments
+                        Paper Trading Only — Zero Risk
                       </p>
                       <MechanicaButton variant="mechanical" size="sm">
                         Open Tool

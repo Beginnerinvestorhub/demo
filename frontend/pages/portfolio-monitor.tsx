@@ -8,8 +8,8 @@ import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 export default function PortfolioMonitorPage() {
   return (
     <MechanicaLayout
-      title="Portfolio Tracking | BeginnerInvestorHub"
-      description="A clear visual overview of your investment distribution and performance. Track your stocks and assets in real time."
+      title="Practice Portfolio | BeginnerInvestorHub"
+      description="A safe, zero-risk space to practice building an investment portfolio."
     >
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -38,8 +38,7 @@ export default function PortfolioMonitorPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Portfolio <span className="text-yellow-400">Asset</span>{' '}
-                  Tracker
+                  Practice <span className="text-yellow-400">Portfolio</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
@@ -52,7 +51,7 @@ export default function PortfolioMonitorPage() {
               <div className="flex justify-center">
                 <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    STATUS: Live Data Connected
+                    STATUS: Paper Trading - Zero Risk
                   </span>
                 </div>
               </div>
@@ -111,12 +110,11 @@ export default function PortfolioMonitorPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   <MechanicaGear size="md" color="brass" speed="slow" />
                   <h2 className="text-2xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                    📊 Your Investment Overview
+                    📊 Your Practice Portfolio
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Track all your investments and how they are performing in one
-                  simple view.
+                  Track your virtual investments and see how they perform in a safe environment.
                 </p>
               </div>
 
@@ -180,10 +178,10 @@ export default function PortfolioMonitorPage() {
                   <MechanicaGear size="lg" color="steel" speed="medium" />
                 </div>
                 <div className="text-lg font-bold mechanica-heading-professional text-mechanica-moonlight-blue mb-2">
-                  📈 Live Tracking
+                  📈 Real-Time Practice
                 </div>
                 <div className="text-sm text-gray-600 mechanica-text-technical">
-                  See your growth as it happens.
+                  See your progress as it happens without the stress.
                 </div>
               </div>
             </MechanicaCard>
@@ -193,10 +191,10 @@ export default function PortfolioMonitorPage() {
                   <MechanicaGear size="lg" color="brass" speed="slow" />
                 </div>
                 <div className="text-lg font-bold mechanica-heading-professional text-mechanica-moonlight-blue mb-2">
-                  🔔 Smart Alerts
+                  🔔 Gentle Reminders
                 </div>
                 <div className="text-sm text-gray-600 mechanica-text-technical">
-                  Get notified of important changes.
+                  Get notified when your portfolio needs attention.
                 </div>
               </div>
             </MechanicaCard>
@@ -206,10 +204,10 @@ export default function PortfolioMonitorPage() {
                   <MechanicaGear size="lg" color="copper" speed="reverse" />
                 </div>
                 <div className="text-lg font-bold mechanica-heading-professional text-mechanica-moonlight-blue mb-2">
-                  🛡️ Reliable Data
+                  🛡️ Zero Risk Guarantee
                 </div>
                 <div className="text-sm text-gray-600 mechanica-text-technical">
-                  Data you can trust for your decisions.
+                  Practice safely with virtual money while you learn.
                 </div>
               </div>
             </MechanicaCard>

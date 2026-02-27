@@ -134,7 +134,7 @@ export default function MarketDataPage() {
   return (
     <MechanicaLayout
       title="Market Data Dashboard"
-      description="Real-time market data and live ticker updates for comprehensive investment analysis."
+      description="Watch real market data to understand how prices move in a safe environment."
     >
       <Head>
         <title>Market Data | BeginnerInvestorHub</title>
@@ -173,29 +173,25 @@ export default function MarketDataPage() {
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Configure your data streams with engineering-grade precision to
-                monitor global market liquidity.
+                Watch real-time market movements to see how the investing world works.
               </p>
 
               <div className="flex justify-center items-center space-x-4 mb-4">
                 <div
-                  className={`inline-flex items-center px-4 py-2 rounded-full ${
-                    isLive
+                  className={`inline-flex items-center px-4 py-2 rounded-full ${isLive
                       ? 'bg-green-500/20 border border-green-500/50'
                       : 'bg-gray-500/20 border border-gray-500/50'
-                  }`}
+                    }`}
                 >
                   <div
-                    className={`w-3 h-3 rounded-full mr-2 ${
-                      isLive ? 'bg-green-400 animate-pulse' : 'bg-gray-400'
-                    }`}
+                    className={`w-3 h-3 rounded-full mr-2 ${isLive ? 'bg-green-400 animate-pulse' : 'bg-gray-400'
+                      }`}
                   ></div>
                   <span
-                    className={`text-xs font-black tracking-widest ${
-                      isLive ? 'text-green-400' : 'text-gray-400'
-                    }`}
+                    className={`text-xs font-black tracking-widest ${isLive ? 'text-green-400' : 'text-gray-400'
+                      }`}
                   >
-                    {isLive ? 'SYSTEM: LIVE' : 'SYSTEM: PAUSED'}
+                    {isLive ? 'DATA: LIVE' : 'DATA: PAUSED'}
                   </span>
                 </div>
 
@@ -204,12 +200,12 @@ export default function MarketDataPage() {
                   onClick={toggleLive}
                   className="px-8 py-3 text-[10px] font-black uppercase tracking-[0.2em]"
                 >
-                  {isLive ? 'Pause Protocol' : 'Initialize Feed'}
+                  {isLive ? 'Pause Updates' : 'Start Live Updates'}
                 </MechanicaButton>
               </div>
 
               <div className="text-[10px] font-mono text-blue-300 opacity-60">
-                LAST TELEMETRY: {lastUpdate.toLocaleTimeString()} | SYNC: ACTIVE
+                LAST UPDATE: {lastUpdate.toLocaleTimeString()}
               </div>
             </div>
           </div>
@@ -241,9 +237,8 @@ export default function MarketDataPage() {
                       {index.value.toLocaleString()}
                     </div>
                     <div
-                      className={`text-lg font-medium ${
-                        index.change >= 0 ? 'text-green-600' : 'text-red-600'
-                      }`}
+                      className={`text-lg font-medium ${index.change >= 0 ? 'text-green-600' : 'text-red-600'
+                        }`}
                     >
                       {index.change >= 0 ? '+' : ''}
                       {index.change.toFixed(2)} (
@@ -307,21 +302,19 @@ export default function MarketDataPage() {
                             ${ticker.price.toFixed(2)}
                           </td>
                           <td
-                            className={`py-3 px-4 text-right font-mono ${
-                              ticker.change >= 0
+                            className={`py-3 px-4 text-right font-mono ${ticker.change >= 0
                                 ? 'text-green-600'
                                 : 'text-red-600'
-                            }`}
+                              }`}
                           >
                             {ticker.change >= 0 ? '+' : ''}
                             {ticker.change.toFixed(2)}
                           </td>
                           <td
-                            className={`py-3 px-4 text-right font-mono ${
-                              ticker.changePercent >= 0
+                            className={`py-3 px-4 text-right font-mono ${ticker.changePercent >= 0
                                 ? 'text-green-600'
                                 : 'text-red-600'
-                            }`}
+                              }`}
                           >
                             {ticker.changePercent >= 0 ? '+' : ''}
                             {ticker.changePercent.toFixed(2)}%
@@ -425,8 +418,7 @@ export default function MarketDataPage() {
                 💡 Why Market Data Matters
               </h3>
               <p className="text-gray-600 max-w-2xl mx-auto font-medium">
-                Information is the &quot;fuel&quot; of the investment engine.
-                The better your data, the more confident your decisions.
+                Understanding how prices move is a key step in building your investing confidence.
               </p>
             </div>
 
@@ -441,9 +433,7 @@ export default function MarketDataPage() {
                       Spotting Trends Early
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Market data isn&apos;t just numbers—it&apos;s the story of
-                      global supply and demand. Watching real-time updates helps
-                      you see where the world is moving before it gets there.
+                      Watching real-time updates helps you get comfortable with how prices go up and down normally, making it less scary.
                     </p>
                   </div>
                 </div>
@@ -459,10 +449,7 @@ export default function MarketDataPage() {
                       Finding Fair Value
                     </h4>
                     <p className="text-sm text-gray-600 leading-relaxed font-black">
-                      Price is what you pay; value is what you get. Accurate
-                      data helps you compare different &quot;components&quot; of
-                      the market to find where the best opportunities are
-                      hiding.
+                      Practicing with real data means when you're ready to invest for real, you'll already know exactly what to expect.
                     </p>
                   </div>
                 </div>

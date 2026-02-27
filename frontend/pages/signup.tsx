@@ -29,7 +29,7 @@ export default function SignupPage() {
       <Head>
         <meta
           name="description"
-          content="Create your BeginnerInvestorHub account and begin your precision-engineered investment education journey. Master portfolio assembly today."
+          content="Create your BeginnerInvestorHub account and take your first step building investing confidence."
         />
       </Head>
       <div className="min-h-screen flex items-center justify-center p-4 sm:p-8 bg-gradient-to-br from-gray-50 to-amber-50">
@@ -49,36 +49,35 @@ export default function SignupPage() {
               </div>
 
               <h2 className="text-2xl font-bold mechanica-heading-professional">
-                Start Your Investment Journey
+                A Safe Space to Learn
               </h2>
               <p className="text-gray-600 mechanica-text-technical">
-                Join thousands of investors mastering the art of portfolio
-                management with our precision-engineered learning platform.
+                Join thousands of beginners building their confidence with our zero-risk practice platform.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="steel" />
                   <span className="mechanica-text-technical">
-                    Real-time market simulations
+                    Zero-risk practice portfolio
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="copper" />
                   <span className="mechanica-text-technical">
-                    AI-powered behavioral coaching
+                    A supportive learning guide
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="brass" />
                   <span className="mechanica-text-technical">
-                    Professional risk analytics
+                    Learn at your own pace
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="steel" />
                   <span className="mechanica-text-technical">
-                    Personalized learning paths
+                    A customized journey for you
                   </span>
                 </div>
               </div>
@@ -96,7 +95,7 @@ export default function SignupPage() {
                   Create Account
                 </h2>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Start your precision investment education journey today
+                  Start building your confidence today
                 </p>
               </div>
 

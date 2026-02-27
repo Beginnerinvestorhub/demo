@@ -111,7 +111,7 @@ export default function AdminPage() {
         <title>System Control Panel | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Master engineering console for monitoring system components, user assemblies, and operational metrics. Deploy administrative controls with precision authority."
+          content="Admin console for monitoring user learning progress, platform health, and operational metrics."
         />
       </Head>
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-amber-50">
@@ -142,14 +142,14 @@ export default function AdminPage() {
             >
               <div className="w-5 h-5 text-gray-700 mr-2">🔒</div>
               <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                Restricted Access - Admin Only
+                Admin Dashboard
               </span>
             </MechanicaCard>
 
             <div className="flex justify-center items-center space-x-6 mb-8">
               <MechanicaGear size="xl" color="steel" speed="slow" />
               <h1 className="text-4xl md:text-5xl font-bold mechanica-heading-mechanical text-mechanica-moonlight-blue">
-                System Control Panel
+                Platform Administration
               </h1>
               <MechanicaGear size="xl" color="steel" speed="reverse" />
             </div>
@@ -157,10 +157,9 @@ export default function AdminPage() {
             <div className="w-24 h-1 bg-red-600 mx-auto mb-6"></div>
             <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed mechanica-text-technical">
               <span className="font-semibold text-mechanica-moonlight-blue">
-                Master Engineering Console:
+                Admin Overview:
               </span>{' '}
-              Monitor all system components, user assemblies, and operational
-              metrics. Deploy administrative controls with precision authority.
+              Monitor platform health, user learning metrics, and operational performance.
             </p>
           </div>
 
@@ -173,18 +172,16 @@ export default function AdminPage() {
               className="inline-flex items-center px-4 py-2"
             >
               <div
-                className={`w-2 h-2 rounded-full mr-2 animate-pulse ${
-                  adminData.systemHealth === 'healthy'
+                className={`w-2 h-2 rounded-full mr-2 animate-pulse ${adminData.systemHealth === 'healthy'
                     ? 'bg-green-500'
                     : 'bg-red-500'
-                }`}
+                  }`}
               ></div>
               <span
-                className={`text-sm font-medium mechanica-text-technical ${
-                  adminData.systemHealth === 'healthy'
+                className={`text-sm font-medium mechanica-text-technical ${adminData.systemHealth === 'healthy'
                     ? 'text-gray-700'
                     : 'text-gray-700'
-                }`}
+                  }`}
               >
                 System{' '}
                 {adminData.systemHealth === 'healthy' ? 'Operational' : 'Alert'}

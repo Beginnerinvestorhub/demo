@@ -8,10 +8,10 @@ import { MechanicaGear } from '../components/ui/mechanicaGear';
 
 const tools = [
   {
-    name: 'Portfolio Simulation Engine',
+    name: 'Practice Portfolio',
     icon: '⚙️',
     description:
-      'Build and test investment strategies in a risk-free environment with virtual capital.',
+      'Practice investing with fake money to build confidence before you risk a dime.',
     href: '/portfolio-monitor',
     category: 'Core Tools',
     status: 'active',
@@ -45,10 +45,10 @@ const tools = [
     gearColor: 'steel' as const,
   },
   {
-    name: 'Risk Assessment Quiz',
+    name: 'Risk Comfort Builder',
     icon: '🎯',
     description:
-      'Discover your risk tolerance and get a personalized investment profile.',
+      'Discover your comfort zone and find what balance feels right for you.',
     href: '/risk-assessment',
     category: 'Learning',
     status: 'active',
@@ -60,10 +60,10 @@ const tools = [
     gearColor: 'brass' as const,
   },
   {
-    name: 'Fractional Share Calculator',
+    name: 'Affordability Calculator',
     icon: '🧮',
     description:
-      'Calculate how much of any stock you can buy with your available capital.',
+      'Calculate exactly how much of a stock you can afford with your available budget.',
     href: '/fractional-share-calculator',
     category: 'Research',
     status: 'active',
@@ -108,10 +108,10 @@ const tools = [
     gearColor: 'copper' as const,
   },
   {
-    name: 'Compound Interest Visualizer',
+    name: 'Growth Visualizer',
     icon: '⏳',
     description:
-      'Visualize the power of long-term compounding and project future portfolio growth.',
+      'Visualize how small, consistent habits lead to long term success.',
     href: '/compound-calculator',
     category: 'Research',
     status: 'active',
@@ -137,14 +137,14 @@ export default function ToolsOverview() {
 
   return (
     <MechanicaLayout
-      title="Investment Tools | Beginner Investor Hub"
-      description="Explore our comprehensive suite of investment tools: portfolio simulation, AI coaching, risk analysis, market data, and more."
+      title="Practice Sandbox | Beginner Investor Hub"
+      description="A safe, zero-risk space to practice and build your investing confidence."
     >
       <Head>
-        <title>Investment Tools | BeginnerInvestorHub</title>
+        <title>Practice Sandbox | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Explore our comprehensive suite of precision architectural tools for investment mastery: portfolio simulation, AI coaching, risk analysis, and real-time market data."
+          content="Explore our comprehensive suite of practice tools to build your investing confidence."
         />
       </Head>
       <div className="min-h-screen">
@@ -174,19 +174,17 @@ export default function ToolsOverview() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-7xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Professional <span className="text-yellow-400">Tools</span>
+                  Practice <span className="text-yellow-400">Sandbox</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
 
               <h2 className="text-xl md:text-2xl text-blue-100 mb-4 max-w-3xl mx-auto font-light leading-relaxed">
-                Precision Architectural Modules
+                Zero-Risk Learning Environment
               </h2>
 
               <p className="text-lg text-blue-200 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-                We&apos;ve calibrated complex investing strategies into
-                professional-grade modules. Think of this as your personal
-                financial workshop—built for clarity and growth.
+                We've built these tools specifically so you can learn without fear. Make mistakes here, so you don't make them with your real money.
               </p>
 
               <div className="flex justify-center">
@@ -196,7 +194,7 @@ export default function ToolsOverview() {
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
                   </span>
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    Status: [ All Systems Calibrated ]
+                    Status: [ Safe Mode Engaged ]
                   </span>
                 </div>
               </div>
@@ -216,11 +214,10 @@ export default function ToolsOverview() {
                   <button
                     key={category}
                     onClick={() => setActiveCategory(category)}
-                    className={`px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all ${
-                      activeCategory === category
+                    className={`px-6 py-3 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all ${activeCategory === category
                         ? 'bg-mechanica-moonlight-blue text-white shadow-lg scale-105'
                         : 'text-gray-500 hover:text-mechanica-moonlight-blue'
-                    }`}
+                      }`}
                   >
                     {category}
                   </button>
@@ -325,7 +322,7 @@ export default function ToolsOverview() {
                     <div className="flex justify-center items-center space-x-6 mb-8">
                       <MechanicaGear size="large" color="brass" speed="slow" />
                       <h2 className="text-3xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter">
-                        Ready to Start Building?
+                        Ready to Start Practicing?
                       </h2>
                       <MechanicaGear
                         size="large"
@@ -335,9 +332,7 @@ export default function ToolsOverview() {
                     </div>
 
                     <p className="text-lg text-gray-600 mb-10 max-w-2xl mx-auto font-medium italic">
-                      &ldquo;Initialize your investor profile to unlock our full
-                      suite of premium architectural tools and start your
-                      learning journey.&rdquo;
+                      &ldquo;Create your free profile to unlock all practice tools and start building your confidence today.&rdquo;
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-6 justify-center">

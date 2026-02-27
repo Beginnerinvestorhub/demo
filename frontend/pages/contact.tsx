@@ -61,13 +61,13 @@ export default function Contact() {
   return (
     <MechanicaLayout
       title="Contact Us | Beginner Investor Hub"
-      description="Get in touch with our support team. We're here to help with questions about portfolio simulation, AI coaching, and platform features."
+      description="Get in touch with our support team. We're here to help you feel confident on your learning journey."
     >
       <Head>
         <title>Get in Touch | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Contact our support team for questions about investment simulations, AI coaching, and precision-engineered platform features."
+          content="Contact our support team for questions about your learning journey and practice portfolio."
         />
       </Head>
       <div className="min-h-screen">
@@ -280,7 +280,7 @@ export default function Contact() {
                 </MechanicaCard>
               </div>
 
-              {/* Transmission Form - The Master Protocol Scroll */}
+              {/* Contact Form */}
               <MechanicaCard
                 variant="wood"
                 animated
@@ -304,7 +304,7 @@ export default function Contact() {
                         type="text"
                         name="name"
                         required
-                        placeholder="Standard Identifier"
+                        placeholder="Your Name"
                         value={formData.name}
                         onChange={handleChange}
                         className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-black text-gray-900 placeholder-gray-400"
@@ -319,7 +319,7 @@ export default function Contact() {
                         type="email"
                         name="email"
                         required
-                        placeholder="name@architecture.com"
+                        placeholder="name@email.com"
                         value={formData.email}
                         onChange={handleChange}
                         className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-black text-gray-900 placeholder-gray-400"
@@ -328,7 +328,7 @@ export default function Contact() {
 
                     <div className="space-y-2">
                       <label className="text-[11px] font-black text-gray-500 uppercase tracking-widest ml-1">
-                        Transmission Subject
+                        What do you need help with?
                       </label>
                       <div className="relative">
                         <select
@@ -340,12 +340,12 @@ export default function Contact() {
                         >
                           <option value="general">General Inquiries</option>
                           <option value="technical">
-                            Technical Calibration
+                            Technical Support
                           </option>
                           <option value="account">Account Access</option>
-                          <option value="feature">Component Request</option>
-                          <option value="bug">Anomaly Report</option>
-                          <option value="partnership">Ecosystem Scaling</option>
+                          <option value="feature">Feature Request</option>
+                          <option value="bug">Report a Bug</option>
+                          <option value="partnership">Partnership Inquiry</option>
                           <option value="feedback">System Feedback</option>
                         </select>
                         <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-mechanica-moonlight-blue">
@@ -364,7 +364,7 @@ export default function Contact() {
                         onChange={handleChange}
                         className="w-full px-6 py-5 bg-white border-2 border-mechanica-moonlight-blue/10 rounded-2xl focus:ring-4 focus:ring-mechanica-moonlight-blue/20 focus:border-mechanica-moonlight-blue outline-none transition-all font-bold text-gray-900 min-h-[180px] placeholder-gray-400"
                         required
-                        placeholder="Detail your request for processing..."
+                        placeholder="How can we help you today?"
                       />
                     </div>
 
@@ -372,7 +372,7 @@ export default function Contact() {
                       <div className="p-6 bg-emerald-950/5 text-emerald-900 rounded-2xl border-2 border-emerald-600/20 flex items-center shadow-inner">
                         <span className="text-2xl mr-4">✓</span>
                         <span className="text-sm font-black uppercase tracking-tight">
-                          Transmission complete. Response pending calibration.
+                          Message sent! We'll get back to you soon.
                         </span>
                       </div>
                     )}
@@ -399,10 +399,10 @@ export default function Contact() {
                             speed="fast"
                             className="mr-4"
                           />
-                          Transmitting...
+                          Sending...
                         </div>
                       ) : (
-                        'Initialize Transmission'
+                        'Send Message'
                       )}
                     </MechanicaButton>
                   </form>

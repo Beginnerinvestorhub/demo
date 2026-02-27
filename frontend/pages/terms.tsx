@@ -15,7 +15,7 @@ export default function TermsOfService() {
         <title>Terms of Service | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Read our Terms of Service to understand the rules and guidelines for using BeginnerInvestorHub’s educational investment tools and portfolio simulation platform."
+          content="Read our Terms of Service to understand the rules and guidelines for using BeginnerInvestorHub's safe practice platform."
         />
       </Head>
       <div className="min-h-screen bg-white">
@@ -51,8 +51,7 @@ export default function TermsOfService() {
               </div>
 
               <p className="text-xl md: text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Platform governance frameworks and operational protocols for
-                precision-guided educational tools.
+                The rules and guidelines for learning safely on our platform.
               </p>
 
               <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500/80">
@@ -91,13 +90,12 @@ export default function TermsOfService() {
                 <div className="flex items-center space-x-3 mb-6">
                   <MechanicaGear size="md" color="brass" speed="slow" />
                   <h2 className="text-3xl font-black text-amber-900 uppercase tracking-tighter">
-                    Governance Blueprint
+                    Our Agreement
                   </h2>
                 </div>
                 <p className="text-amber-950 text-xl font-medium italic border-l-4 border-amber-600 pl-8 py-2">
-                  &quot;By initializing transmission with our platform, you
-                  acknowledge and adhere to the following architecture of
-                  engagement.&quot;
+                  &quot;By using our platform, you agree to these simple rules
+                  to keep our community safe and focused on learning.&quot;
                 </p>
               </div>
             </MechanicaCard>
@@ -127,8 +125,8 @@ export default function TermsOfService() {
                       </span>
                     </div>
                     <p className="text-amber-900 text-sm font-black italic leading-relaxed">
-                      All simulations are for learning purposes only.This system
-                      does not facilitate real market transactions.Always
+                      All practice features are for learning purposes only. We
+                      do not facilitate real market transactions. Always
                       consult with qualified financial professionals before
                       making investment decisions.
                     </p>
@@ -156,7 +154,7 @@ export default function TermsOfService() {
                     'Consult professionals for real decisions',
                     'Maintain account security',
                     'Comply with applicable laws',
-                    'No reverse engineering of the platform',
+                    'Respect the learning environment',
                   ].map((item, i) => (
                     <div
                       key={i}
@@ -197,7 +195,7 @@ export default function TermsOfService() {
                     },
                     {
                       label: 'AI Limitations',
-                      text: 'Behavioral insights are algorithmic and intended for educational self-reflection.',
+                      text: "Your AI guide's insights are for educational self-reflection, not personalized financial advice.",
                     },
                   ].map((item, i) => (
                     <div key={i} className="flex items-start space-x-6">
@@ -232,14 +230,14 @@ export default function TermsOfService() {
                 </h3>
                 <div className="p-10 bg-amber-900/5 border-2 border-dashed border-amber-600/30 rounded-3xl text-center">
                   <p className="text-amber-950 leading-relaxed font-bold text-xl mb-10 max-w-2xl mx-auto">
-                    We take your privacy seriously and handle your data
-                    transmissions with pharmaceutical-grade precision.
+                    We take your privacy seriously and handle your personal
+                    information with care.
                   </p>
                   <Link
                     href="/privacy"
                     className="inline-flex items-center px-10 py-5 bg-amber-800 text-white rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl hover:bg-amber-700 hover:scale-105 active:scale-95 transition-all"
                   >
-                    Access Privacy Protocol{' '}
+                    Read Privacy Policy{' '}
                     <span className="ml-3 text-xl">→</span>
                   </Link>
                 </div>
@@ -263,10 +261,9 @@ export default function TermsOfService() {
                     <MechanicaGear size="xl" color="brass" speed="slow" />
                   </div>
                   <p className="text-amber-100 font-mono text-xs leading-relaxed relative z-10 font-bold uppercase tracking-wider">
-                    SYSTEM_NOTICE: THE PLATFORM AND ITS OPERATORS ARE NOT LIABLE
-                    FOR INVESTMENT LOSSES, DATA ANOMALIES, OR EXTERNAL MARKET
-                    VOLATILITY.ALL TOOLS ARE DEPLOYED &quot;AS-IS&quot; FOR
-                    EDUCATIONAL ARCHITECTURE ONLY.BY USING THE SYSTEM, YOU WAIVE
+                    IMPORTANT: WE ARE AN EDUCATIONAL PLATFORM. WE ARE NOT LIABLE
+                    FOR ANY REAL-WORLD INVESTMENT LOSSES. ALL TOOLS ARE PROVIDED
+                    FOR PRACTICE AND LEARNING ONLY. BY USING THE SITE, YOU WAIVE
                     ALL CLAIMS RELATED TO FINANCIAL OUTCOMES.
                   </p>
                 </div>
@@ -288,7 +285,7 @@ export default function TermsOfService() {
                     </div>
                     <div>
                       <div className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest mb-1">
-                        Support Transmission
+                        Support Email
                       </div>
                       <div className="text-lg font-black font-mono text-amber-900">
                         info@beginnerinvestorhub.com
@@ -301,7 +298,7 @@ export default function TermsOfService() {
                     </div>
                     <div>
                       <div className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest mb-1">
-                        Central Station
+                        Our Location
                       </div>
                       <div className="text-lg font-black font-mono text-amber-900">
                         Raleigh, North Carolina, US
@@ -325,7 +322,7 @@ export default function TermsOfService() {
                   className="group-hover:rotate-180 transition-transform duration-700"
                 />
                 <span className="text-sm font-black uppercase tracking-widest text-gray-600">
-                  Return to Command Center
+                  Back to Home
                 </span>
               </Link>
             </div>

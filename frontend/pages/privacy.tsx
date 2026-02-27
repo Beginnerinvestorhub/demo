@@ -15,7 +15,7 @@ export default function PrivacyPolicy() {
         <title>Privacy Policy | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Read our Privacy Policy to understand how we safeguard your personal information and investment data with precision engineering and secure infrastructure."
+          content="Read our Privacy Policy to understand how we keep your personal information and practice portfolio data safe."
         />
       </Head>
       <div className="min-h-screen">
@@ -51,8 +51,8 @@ export default function PrivacyPolicy() {
               </div>
 
               <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto font-light leading-relaxed">
-                Data encryption protocols and information safeguarding
-                architectures for the modern investor.
+                We take your privacy seriously so you can focus on learning
+                safely.
               </p>
 
               <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500/80">
@@ -91,12 +91,12 @@ export default function PrivacyPolicy() {
                 <div className="flex items-center space-x-3 mb-6">
                   <MechanicaGear size="md" color="brass" speed="slow" />
                   <h2 className="text-3xl font-black text-amber-900 uppercase tracking-tighter">
-                    Security Architecture
+                    A Safe Place to Learn
                   </h2>
                 </div>
                 <p className="text-amber-950 text-xl font-medium italic border-l-4 border-amber-600 pl-8 py-2">
                   &quot;At BeginnerInvestorHub, we are committed to protecting
-                  your privacy and ensuring the security of your tactical
+                  your privacy and ensuring the security of your personal
                   information.&quot;
                 </p>
               </div>
@@ -123,7 +123,7 @@ export default function PrivacyPolicy() {
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {[
                         'Name and email address',
-                        'Profile transmission data',
+                        'Learning profile preferences',
                         'Notification path settings',
                         'Risk tolerance metrics',
                         'Portfolio simulation logs',
@@ -187,15 +187,15 @@ export default function PrivacyPolicy() {
                     },
                     {
                       label: 'Account Management',
-                      text: 'Processing authentication via secure sub-systems',
+                      text: 'Keeping your account safe and secure',
                     },
                     {
                       label: 'System Analytics',
-                      text: 'Optimizing platform architecture based on telemetry',
+                      text: 'Improving your learning experience',
                     },
                     {
                       label: 'Transmission Security',
-                      text: 'Detecting anomalies and preventing unauthorized access',
+                      text: 'Detecting and preventing unauthorized access',
                     },
                   ].map((item, i) => (
                     <div
@@ -235,14 +235,14 @@ export default function PrivacyPolicy() {
                 </h3>
                 <div className="bg-amber-900/5 border-l-4 border-amber-600 p-8 rounded-r-2xl shadow-inner mb-10">
                   <p className="text-amber-950 font-black uppercase tracking-tight text-lg">
-                    CORE PROTOCOL: WE DO NOT TRADE, SELL, OR RENT YOUR DATA
-                    TRANSMISSIONS TO EXTERNAL ENTITIES.
+                    OUR PROMISE: WE DO NOT TRADE, SELL, OR RENT YOUR PERSONAL
+                    INFORMATION TO ANYONE.
                   </p>
                 </div>
 
                 <div className="p-10 bg-amber-900/5 rounded-3xl border-2 border-dashed border-amber-600/30">
                   <h4 className="text-[11px] font-black uppercase tracking-[0.2em] text-amber-800 mb-6">
-                    Trusted Sub-Systems
+                    Partners Who Help Us
                   </h4>
                   <div className="flex flex-wrap gap-3">
                     {[
@@ -276,7 +276,7 @@ export default function PrivacyPolicy() {
               <div className="p-10">
                 <h3 className="text-[10px] font-black uppercase tracking-[0.3em] text-amber-800/60 mb-8 flex items-center">
                   <span className="w-2 h-2 bg-amber-600 rounded-full mr-3"></span>
-                  Data Security Architecture
+                  How We Keep You Safe
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {[
@@ -333,7 +333,7 @@ export default function PrivacyPolicy() {
                     </div>
                     <div>
                       <div className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest mb-1">
-                        Privacy Transmission
+                        Privacy Questions
                       </div>
                       <div className="text-lg font-black font-mono text-amber-900">
                         privacy@beginnerinvestorhub.com
@@ -346,7 +346,7 @@ export default function PrivacyPolicy() {
                     </div>
                     <div>
                       <div className="text-[11px] font-black text-amber-800/60 uppercase tracking-widest mb-1">
-                        Central Station
+                        Our Location
                       </div>
                       <div className="text-lg font-black font-mono text-amber-900">
                         Charlotte, NC, US
@@ -370,7 +370,7 @@ export default function PrivacyPolicy() {
                   className="group-hover:rotate-180 transition-transform duration-700"
                 />
                 <span className="text-sm font-black uppercase tracking-widest text-gray-600">
-                  Return to Command Center
+                  Back to Home
                 </span>
               </Link>
             </div>

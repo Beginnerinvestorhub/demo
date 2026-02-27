@@ -39,7 +39,7 @@ export default function LoginPage() {
       <Head>
         <meta
           name="description"
-          content="Sign in to your BeginnerInvestorHub account to access your portfolio assembly, mastery tools, and AI behavioral coach."
+          content="Sign in to your BeginnerInvestorHub account to continue your safe learning journey."
         />
       </Head>
       <div className="min-h-screen flex items-center justify-center p-4 sm:p-8 bg-gradient-to-br from-gray-50 to-amber-50">
@@ -59,30 +59,29 @@ export default function LoginPage() {
               </div>
 
               <h2 className="text-2xl font-bold mechanica-heading-professional">
-                Precision Investment Education
+                A Safe Space to Learn
               </h2>
               <p className="text-gray-600 mechanica-text-technical">
-                Master investing with our mechanically-engineered platform
-                featuring real-time simulations and AI-powered coaching.
+                Build your investing confidence step-by-step with zero-risk practice and guided learning.
               </p>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="steel" />
                   <span className="mechanica-text-technical">
-                    Real-time market simulations
+                    Zero-risk practice portfolio
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="copper" />
                   <span className="mechanica-text-technical">
-                    AI-powered behavioral coaching
+                    A supportive learning guide
                   </span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MechanicaGear size="small" color="brass" />
                   <span className="mechanica-text-technical">
-                    Professional risk analytics
+                    Learn at your own pace
                   </span>
                 </div>
               </div>
@@ -100,7 +99,7 @@ export default function LoginPage() {
                   Sign In
                 </h2>
                 <p className="text-gray-600 mechanica-text-technical">
-                  Enter your credentials to access your investment dashboard
+                  Sign in to continue your journey
                 </p>
               </div>
 

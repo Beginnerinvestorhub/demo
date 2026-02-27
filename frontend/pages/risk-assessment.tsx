@@ -19,8 +19,8 @@ export default function RiskAssessmentPage() {
 
   return (
     <MechanicaLayout
-      title="Risk Assessment Tool | BeginnerInvestorHub"
-      description="Discover your risk profile and construct a personalized investment allocation blueprint with precision. Get your assembly instructions instantly."
+      title="Risk Comfort Builder | BeginnerInvestorHub"
+      description="Discover your comfort zone and learn how to balance safety and growth at your own pace."
     >
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -49,7 +49,7 @@ export default function RiskAssessmentPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Risk <span className="text-yellow-400">Profile</span> Builder
+                  Risk <span className="text-yellow-400">Comfort</span> Builder
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
@@ -107,12 +107,11 @@ export default function RiskAssessmentPage() {
                   <div className="flex items-center space-x-3 mb-4">
                     <MechanicaGear size="md" color="steel" speed="medium" />
                     <h2 className="text-2xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                      🔧 Build Your Risk Profile
+                      🔧 Determine Your Comfort Zone
                     </h2>
                   </div>
                   <p className="text-gray-600 mechanica-text-technical">
-                    Complete the component assembly below to construct your
-                    personalized investment blueprint.
+                    Complete this brief exercise to see what balance of investments feels right for you.
                   </p>
                 </div>
                 <RiskAssessmentForm
@@ -154,12 +153,11 @@ export default function RiskAssessmentPage() {
                   <div className="flex items-center space-x-3 mb-4">
                     <MechanicaGear size="md" color="brass" speed="slow" />
                     <h2 className="text-2xl font-bold mechanica-heading-professional text-white">
-                      ⚙️ Your Constructed Risk Profile
+                      ⚙️ Your Personal Comfort Zone
                     </h2>
                   </div>
                   <p className="text-blue-100 mechanica-text-technical">
-                    Assembly complete. Review your personalized specifications
-                    below.
+                    Great job! Review your personalized suggestions below.
                   </p>
                 </div>
                 <RiskAssessmentResult
@@ -182,8 +180,7 @@ export default function RiskAssessmentPage() {
               <div className="flex items-center space-x-3">
                 <MechanicaGear size="sm" color="steel" speed="medium" />
                 <span className="text-sm text-gray-700 font-medium mechanica-text-technical">
-                  All assessments are processed securely with enterprise-grade
-                  encryption
+                  All your answers are private and secure.
                 </span>
               </div>
             </MechanicaCard>

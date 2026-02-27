@@ -10,7 +10,7 @@ export default function FAQ() {
     {
       question: 'What is Beginner Investor Hub?',
       answer:
-        'Beginner Investor Hub is an educational platform that helps you learn investing through hands-on portfolio simulation, AI-powered coaching, and real-time market insights. We provide institutional-grade tools in an accessible format for beginners.',
+        'Beginner Investor Hub is a safe, guided learning environment designed entirely for beginners. We help you learn how investing works without risking real money, so you can build your confidence step-by-step.',
     },
     {
       question: 'Is this real investing or just simulation?',
@@ -20,22 +20,22 @@ export default function FAQ() {
     {
       question: 'How much does it cost?',
       answer:
-        'Basic access to our platform is free. We offer premium features for advanced users who want additional analytics and personalized coaching. You can start learning immediately without any cost.',
+        'You can start learning and practicing for free right away. We also offer premium features for when you\'re ready for more personalized guidance, but there\'s no pressure.',
     },
     {
       question: 'What markets can I simulate?',
       answer:
-        'You can simulate investments in stocks, ETFs, and cryptocurrencies. We provide real-time data from major exchanges including Ordinatus, NASDAQ, and popular crypto exchanges.',
+        'You can practice building a portfolio with stocks, ETFs, and cryptocurrencies. We use real market data so your practice feels exactly like the real world.',
     },
     {
       question: 'How does the AI coaching work?',
       answer:
-        'Our AI analyzes your investment decisions and provides personalized feedback on your strategy, risk management, and behavioral patterns. It helps you recognize emotional decision-making and develop disciplined investing habits.',
+        'Your AI guide is there to answer your questions and help you understand how emotions like fear and excitement play a role in investing.',
     },
     {
       question: 'Can I track my progress?',
       answer:
-        'Yes! You can monitor your simulated portfolio performance, track your learning progress, and see detailed analytics about your investment decisions and risk management.',
+        'Yes! You can see your practice portfolio grow and track how far you\'ve come on your educational journey.',
     },
     {
       question: 'Is my data secure?',
@@ -99,7 +99,7 @@ export default function FAQ() {
               </p>
 
               <div className="text-xs font-black uppercase tracking-[0.3em] text-yellow-500/80">
-                Protocol: Seeking Answers
+                Here to help
               </div>
             </div>
           </div>
@@ -172,8 +172,7 @@ export default function FAQ() {
                   <MechanicaGear size="large" color="brass" speed="reverse" />
                 </div>
                 <p className="text-gray-600 text-lg mb-8 max-w-2xl mx-auto font-medium italic">
-                  &ldquo;Our maintenance crew and technical advisors are
-                  available 24/7 to calibrate your investment journey.&rdquo;
+                  &ldquo;Our support team is always available to help you on your learning journey.&rdquo;
                 </p>
                 <Link
                   href="/contact"

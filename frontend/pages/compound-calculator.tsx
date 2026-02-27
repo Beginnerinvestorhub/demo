@@ -31,10 +31,10 @@ export default function CompoundCalculator() {
   return (
     <MechanicaLayout>
       <Head>
-        <title>Compound Interest Visualizer | Beginner Investor Hub</title>
+        <title>Growth Visualizer | Beginner Investor Hub</title>
         <meta
           name="description"
-          content="Visualize the long-term power of compounding with our technical investment engine."
+          content="Visualize how small habits lead to long term success."
         />
       </Head>
 
@@ -64,8 +64,7 @@ export default function CompoundCalculator() {
             <div className="flex justify-center items-center space-x-6 mb-8">
               <MechanicaGear size="xl" color="copper" speed="slow" />
               <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                Compound <span className="text-yellow-400">Interest</span>{' '}
-                Engine
+                Growth <span className="text-yellow-400">Visualizer</span>
               </h1>
               <MechanicaGear size="xl" color="copper" speed="reverse" />
             </div>
@@ -78,7 +77,7 @@ export default function CompoundCalculator() {
             <div className="flex justify-center">
               <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                  PROTOCOL: Growth Simulator v1.0
+                  PROTOCOL: See Your Future
                 </span>
               </div>
             </div>
@@ -300,7 +299,7 @@ export default function CompoundCalculator() {
 
             <div className="flex justify-end">
               <MechanicaButton variant="mechanical" size="md">
-                Export Projection Data
+                Save This Example
               </MechanicaButton>
             </div>
           </div>

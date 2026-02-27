@@ -183,8 +183,8 @@ export default function VARKAssessmentPage() {
   if (step === 0) {
     return (
       <MechanicaLayout
-        title="Investor DNA Initialization | BeginnerInvestorHub"
-        description="Configure your investor profile and discover your precision learning style."
+        title="Discover Your Learning Style | BeginnerInvestorHub"
+        description="Find out how you learn best so we can teach you investing safely."
       >
         <div className="min-h-screen">
           {/* Hero Section */}
@@ -213,22 +213,19 @@ export default function VARKAssessmentPage() {
                 <div className="flex justify-center items-center space-x-6 mb-8">
                   <MechanicaGear size="xl" color="brass" speed="slow" />
                   <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                    Investor <span className="text-yellow-400">Profile</span>{' '}
-                    Suite
+                    Discover Your <span className="text-yellow-400">Learning Style</span>
                   </h1>
                   <MechanicaGear size="xl" color="brass" speed="reverse" />
                 </div>
 
                 <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
-                  Initializing your technical investor profile. This assessment
-                  calibrates our AI teaching engine to match your cognitive
-                  learning style for maximum acquisition speed.
+                  Everyone learns differently. This quick assessment helps us tailor your education so you can learn safely and confidently.
                 </p>
 
                 <div className="flex justify-center">
                   <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                     <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                      PROTOCOL: Learning DNA Mapping
+                      PROTOCOL: Personalized Learning
                     </span>
                   </div>
                 </div>
@@ -247,28 +244,27 @@ export default function VARKAssessmentPage() {
               >
                 <div className="mb-8 border-b border-gray-100 pb-6 text-center">
                   <h3 className="text-2xl font-black text-mechanica-moonlight-blue uppercase tracking-tighter mb-2">
-                    Initialize Profile
+                    Tell Us About You
                   </h3>
                   <p className="text-sm text-gray-500 font-medium italic">
-                    Configure your baseline investor parameters
+                    Help us understand your starting point
                   </p>
                 </div>
 
                 <div className="space-y-8">
                   <div className="space-y-3">
                     <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">
-                      Investor Experience Level
+                      Your Investing Experience
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {['Beginner', 'Intermediate', 'Advanced'].map(level => (
                         <button
                           key={level}
                           onClick={() => setExperience(level.toLowerCase())}
-                          className={`px-4 py-4 rounded-xl border-2 transition-all font-black text-[10px] uppercase tracking-widest ${
-                            experience === level.toLowerCase()
+                          className={`px-4 py-4 rounded-xl border-2 transition-all font-black text-[10px] uppercase tracking-widest ${experience === level.toLowerCase()
                               ? 'bg-mechanica-moonlight-blue border-mechanica-moonlight-blue text-white shadow-lg scale-105'
                               : 'bg-white border-gray-100 text-gray-400 hover:border-mechanica-moonlight-blue/30'
-                          }`}
+                            }`}
                         >
                           {level}
                         </button>
@@ -278,18 +274,17 @@ export default function VARKAssessmentPage() {
 
                   <div className="space-y-3">
                     <label className="text-xs font-black text-gray-400 uppercase tracking-widest ml-1">
-                      Strategic Age Group
+                      Your Age Group
                     </label>
                     <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                       {['18-24', '25-34', '35-44', '45-54', '55+'].map(age => (
                         <button
                           key={age}
                           onClick={() => setAgeGroup(age)}
-                          className={`py-3 rounded-lg border-2 transition-all font-black text-[10px] uppercase tracking-tight ${
-                            ageGroup === age
+                          className={`py-3 rounded-lg border-2 transition-all font-black text-[10px] uppercase tracking-tight ${ageGroup === age
                               ? 'bg-mechanica-moonlight-blue border-mechanica-moonlight-blue text-white shadow-md'
                               : 'bg-white border-gray-100 text-gray-400 hover:border-mechanica-moonlight-blue/20'
-                          }`}
+                            }`}
                         >
                           {age}
                         </button>
@@ -305,7 +300,7 @@ export default function VARKAssessmentPage() {
                       onClick={() => setStep(1)}
                       disabled={!experience || !ageGroup}
                     >
-                      Initialize Learning DNA Assessment{' '}
+                      Start Assessment{' '}
                       <span className="ml-2">→</span>
                     </MechanicaButton>
                   </div>
@@ -318,17 +313,17 @@ export default function VARKAssessmentPage() {
               {[
                 {
                   title: 'Why it matters',
-                  text: "Investing isn't one-size-fits-all. Your cognitive style determines how you process financial risk and market data.",
+                  text: "Investing isn't one-size-fits-all. When you learn the way your brain naturally works, you gain confidence faster.",
                   icon: '🧠',
                 },
                 {
                   title: 'AI Customization',
-                  text: 'VARK results allow our engine to serve content in the format you absorb best: visual charts or technical manuals.',
+                  text: 'We use this quick assessment to customize your journey—whether you prefer watching, listening, reading, or doing.',
                   icon: '⚙️',
                 },
                 {
                   title: 'Long-term Growth',
-                  text: 'Aligning your education with your "Investor DNA" reduces cognitive load and accelerates your path to mastery.',
+                  text: 'Learning at your own pace in your own style reduces fear and helps you take safe, confident steps forward.',
                   icon: '📈',
                 },
               ].map((info, idx) => (
@@ -398,7 +393,7 @@ export default function VARKAssessmentPage() {
                   <p className="text-gray-600 leading-relaxed">
                     {
                       styleDescriptions[
-                        dominantStyle as keyof typeof styleDescriptions
+                      dominantStyle as keyof typeof styleDescriptions
                       ]
                     }
                   </p>
@@ -415,11 +410,10 @@ export default function VARKAssessmentPage() {
                     {Object.entries(scores).map(([style, score]) => (
                       <div key={style} className="text-center">
                         <div
-                          className={`text-3xl font-bold mb-2 ${
-                            style === dominantStyle
+                          className={`text-3xl font-bold mb-2 ${style === dominantStyle
                               ? 'text-mechanica-moonlight-blue'
                               : 'text-gray-400'
-                          }`}
+                            }`}
                         >
                           {score}
                         </div>
@@ -454,7 +448,7 @@ export default function VARKAssessmentPage() {
 
   return (
     <MechanicaLayout
-      title="VARK Assessment"
+      title="Learning Style Assessment"
       description="Discover your learning style with our Visual, Auditory, Read/Write, and Kinesthetic assessment."
     >
       <Head>
@@ -469,9 +463,9 @@ export default function VARKAssessmentPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900">
-                  VARK{' '}
+                  Learning{' '}
                   <span className="text-mechanica-moonlight-blue">
-                    Assessment
+                    Style
                   </span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
@@ -508,11 +502,10 @@ export default function VARKAssessmentPage() {
                       <div className="p-6">
                         <div className="flex items-start space-x-4">
                           <div
-                            className={`w-6 h-6 rounded-full border-2 flex-shrink-0 mt-1 flex items-center justify-center ${
-                              answers[currentQuestion] === style
+                            className={`w-6 h-6 rounded-full border-2 flex-shrink-0 mt-1 flex items-center justify-center ${answers[currentQuestion] === style
                                 ? 'border-amber-600 bg-amber-600'
                                 : 'border-gray-300'
-                            }`}
+                              }`}
                           >
                             {answers[currentQuestion] === style && (
                               <div className="w-2 h-2 bg-white rounded-full"></div>

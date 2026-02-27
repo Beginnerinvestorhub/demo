@@ -8,8 +8,8 @@ import { MechanicaTicker } from '../components/ui/MechanicaTicker';
 export default function FractionalShareCalculatorPage() {
   return (
     <MechanicaLayout
-      title="Fractional Share Calculator | BeginnerInvestorHub"
-      description="Calculate how much of a stock you can buy with any amount."
+      title="Affordability Calculator | BeginnerInvestorHub"
+      description="Calculate how much of a stock you can afford with any budget."
     >
       <div className="min-h-screen">
         {/* Hero Section */}
@@ -38,8 +38,7 @@ export default function FractionalShareCalculatorPage() {
               <div className="flex justify-center items-center space-x-6 mb-8">
                 <MechanicaGear size="xl" color="brass" speed="slow" />
                 <h1 className="text-4xl md:text-5xl lg:text-5xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome mechanica-float">
-                  Fractional <span className="text-yellow-400">Share</span>{' '}
-                  Calculator
+                  Affordability <span className="text-yellow-400">Calculator</span>
                 </h1>
                 <MechanicaGear size="xl" color="brass" speed="reverse" />
               </div>
@@ -52,7 +51,7 @@ export default function FractionalShareCalculatorPage() {
               <div className="flex justify-center">
                 <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full">
                   <span className="text-[10px] font-black uppercase tracking-[0.2em] text-yellow-100/90">
-                    PROTOCOL: Budget Flexibility v1.0
+                    PROTOCOL: You Can Afford To Invest
                   </span>
                 </div>
               </div>
@@ -133,7 +132,7 @@ export default function FractionalShareCalculatorPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   <MechanicaGear size="md" color="steel" speed="medium" />
                   <h2 className="text-2xl font-bold mechanica-heading-professional text-mechanica-moonlight-blue">
-                    Investment Value Calculator
+                    Investment Affordability Calculator
                   </h2>
                 </div>
                 <p className="text-gray-600 mechanica-text-technical">

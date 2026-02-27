@@ -74,7 +74,7 @@ export default function HomePage() {
       rect.top >= 0 &&
       rect.left >= 0 &&
       rect.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
+      (window.innerHeight || document.documentElement.clientHeight) &&
       rect.right <= (window.innerWidth || document.documentElement.clientWidth)
     );
   };
@@ -98,41 +98,31 @@ export default function HomePage() {
 
   const features = [
     {
-      // Updated Title
-      title: 'Strategic Portfolio Simulator',
-      // Updated Description: Focus on learning and testing strategies
-      description:
-        'Learn and test investment strategies using our algorithmically validated simulation system, featuring real-time market data and advanced analytics.',
-      icon: '⚙️',
-      href: '/portfolio-monitor',
+      title: 'Level 1 — Money Basics',
+      description: 'Start at the very beginning. Learn the fundamental concepts of money, saving, and how financial markets work in plain English.',
+      icon: '🌱',
+      href: '/learning-hub',
       gearColor: 'steel' as const,
     },
     {
-      title: 'ESG Strategy Screener',
-      description:
-        'Precision investment filter for screening components based on Environmental, Social, and Governance criteria. Detect red flags and verify component integrity.',
-      icon: '🌍',
-      href: '/esg-screener',
-      gearColor: 'steel' as const,
-    },
-    {
-      // Updated Title
-      title: 'Risk & Volatility Analytics',
-      // Updated Description: Focus on understanding risk with data science
-      description:
-        'Master risk assessment with our engineering-grade analytics powered by advanced algorithms and predictive modeling.',
-      icon: '📊',
-      href: '/risk-assessment',
+      title: 'Level 2 — Investment Foundations',
+      description: 'Understand the building blocks of investing. Learn about stocks, bonds, and funds without the confusing Wall Street jargon.',
+      icon: '📚',
+      href: '/learning-hub',
       gearColor: 'copper' as const,
     },
     {
-      // Updated Title
-      title: 'Fractional Share Calculator',
-      // Updated Description: Focus on precision calculation and broker comparison
-      description:
-        'Calculate fractional shares with any investment amount, compare broker fees, and visualize your purchase blueprint with precision engineering.',
-      icon: '📈',
-      href: '/fractional-share-calculator',
+      title: 'Level 3 — Building Your Portfolio',
+      description: 'Practice building a diversified portfolio using our zero-risk paper trading simulator. Build confidence safely.',
+      icon: '🏗️',
+      href: '/learning-hub',
+      gearColor: 'brass' as const,
+    },
+    {
+      title: 'Level 4 — Advanced Strategy',
+      description: 'For confident learners ready to explore advanced topics and strategies. Practice with complex scenarios when you feel ready.',
+      icon: '🚀',
+      href: '/learning-hub',
       gearColor: 'steel' as const,
     },
   ];
@@ -140,20 +130,20 @@ export default function HomePage() {
   return (
     <MechanicaLayout>
       <Head>
-        <title>Precision Investment Mastery | BeginnerInvestorHub</title>
+        <title>Start Investing Safely | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies, visualize risk metrics, and build confidence with virtual money."
+          content="A confidence-building financial education platform for scared, overwhelmed beginners. Learn investing the way your brain works—with zero risk."
         />
 
         {/* Open Graph Tags */}
         <meta
           property="og:title"
-          content="Precision Investment Mastery | BeginnerInvestorHub"
+          content="Start Investing Safely | BeginnerInvestorHub"
         />
         <meta
           property="og:description"
-          content="Master investing with guided simulations built for first-time investors. Practice portfolio strategies with virtual money."
+          content="A confidence-building financial education platform for scared, overwhelmed beginners. Learn investing the way your brain works—with zero risk."
         />
         <meta property="og:type" content="website" />
         <meta
@@ -173,11 +163,11 @@ export default function HomePage() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:title"
-          content="Precision Investment Mastery | BeginnerInvestorHub"
+          content="Start Investing Safely | BeginnerInvestorHub"
         />
         <meta
           name="twitter:description"
-          content="Master investing with guided simulations built for first-time investors."
+          content="A confidence-building financial education platform for scared, overwhelmed beginners."
         />
         <meta
           name="twitter:image"
@@ -260,13 +250,12 @@ export default function HomePage() {
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 font-serif leading-tight">
-                Master Investing with <br className="hidden md:block" />
-                Guided Simulations.
+                Scared to Invest? <br className="hidden md:block" />
+                Start Here.
               </h1>
 
               <h2 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
-                Build confidence with professional-grade portfolio tools and AI
-                behavioral coaching — no real funds required.
+                Learn investing the way YOUR brain works — with zero risk.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -280,13 +269,13 @@ export default function HomePage() {
                     aria-label="Email address for simulation signup"
                     tabIndex={0}
                   />
-                  <Link href="/signup">
+                  <Link href="/vark-assessment">
                     <MechanicaButton
                       variant="mechanical"
                       size="md"
                       className="w-full sm:w-auto whitespace-nowrap"
                     >
-                      Start Simulation
+                      Discover Your Learning Style — Free
                     </MechanicaButton>
                   </Link>
                 </div>
@@ -342,11 +331,10 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
-                Strategic Impact in Numbers
+                Our Growing Community
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Track your learning progress and the scale of our
-                platform&apos;s simulations
+                Join thousands building their confidence before risking real money
               </p>
             </div>
 
@@ -434,11 +422,10 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
-                Core Investment Capabilities
+                Your Learning Journey (4 Levels)
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Our structured tools provide accuracy and support for your
-                investment education
+                Build your confidence step-by-step in a safe, guided environment. Advanced Tools — For Level 4 Learners Only.
               </p>
             </div>
 
@@ -469,7 +456,7 @@ export default function HomePage() {
                       </p>
                       <Link href={feature.href}>
                         <MechanicaButton variant="mechanical" size="sm">
-                          Launch Tool
+                          Explore Level
                         </MechanicaButton>
                       </Link>
                     </div>

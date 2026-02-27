@@ -27,8 +27,8 @@ export default function ModuleViewer() {
   if (!currentModule) {
     return (
       <MechanicaLayout
-        title="Module Not Found"
-        description="The requested knowledge module could not be located."
+        title="Lesson Not Found"
+        description="We couldn't find that lesson."
       >
         <div className="min-h-screen bg-slate-900 flex flex-col items-center justify-center text-center p-4">
           <MechanicaGear
@@ -38,11 +38,10 @@ export default function ModuleViewer() {
             className="mb-6 opacity-50"
           />
           <h1 className="text-3xl font-bold text-white mb-4">
-            Module Retrieval Failed
+            Lesson Not Found
           </h1>
           <p className="text-gray-400 mb-8">
-            The requested archive ID &quot;{moduleId}&quot; does not exist in
-            our system.
+            We couldn't find the lesson &quot;{moduleId}&quot;. Let's get you back on track.
           </p>
           <div className="mt-4">
             <MechanicaButton
@@ -50,7 +49,7 @@ export default function ModuleViewer() {
               variant="mechanical"
               size="lg"
             >
-              Return to Library
+              Back to Learning Hub
             </MechanicaButton>
           </div>
         </div>
@@ -83,11 +82,11 @@ export default function ModuleViewer() {
                 href="/learning-hub"
                 className="text-gray-400 hover:text-white transition-colors flex items-center text-sm font-medium"
               >
-                ← Library
+                ← Learning Hub
               </Link>
               <div className="h-4 w-px bg-gray-600 hidden sm:block"></div>
               <span className="text-blue-300 font-bold uppercase tracking-widest text-xs hidden sm:block">
-                Module: {currentModule.title}
+                Lesson: {currentModule.title}
               </span>
             </div>
             {/* Progress Bar Mock */}
@@ -108,7 +107,7 @@ export default function ModuleViewer() {
             <div className="lg:col-span-3">
               <div className="bg-slate-800/50 backdrop-blur border border-blue-500/20 rounded-xl p-4 sticky top-24">
                 <h3 className="text-xs font-black uppercase tracking-[0.2em] text-gray-500 mb-4 px-2">
-                  Data Segments
+                  Topics
                 </h3>
                 <div className="space-y-2">
                   {currentModule.lessons.map((lesson, idx) => (
@@ -128,7 +127,7 @@ export default function ModuleViewer() {
                   {/* Locked Items Mock */}
                   <div className="pt-4 mt-4 border-t border-gray-700/50 opacity-50">
                     <div className="w-full text-left px-4 py-2 text-xs font-medium text-gray-500 flex items-center gap-2 cursor-not-allowed">
-                      <span>🔒</span> Final Assessment
+                      <span>🔒</span> Check Your Understanding
                     </div>
                   </div>
                 </div>
@@ -147,7 +146,7 @@ export default function ModuleViewer() {
                   <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
                     <div>
                       <span className="inline-block px-2 py-1 rounded bg-blue-900/50 border border-blue-500/30 text-[10px] font-black uppercase tracking-widest text-blue-300 mb-2">
-                        Current Segment 01
+                        Current Topic 01
                       </span>
                       <h1 className="text-2xl sm:text-3xl font-bold text-white font-serif tracking-tight">
                         {currentModule.lessons[0].title}
@@ -168,28 +167,21 @@ export default function ModuleViewer() {
 
                     <div className="my-8 p-6 bg-slate-800/80 rounded-xl border-l-4 border-amber-500 shadow-lg">
                       <h4 className="text-amber-400 font-bold uppercase text-xs tracking-widest mb-2 flex items-center gap-2">
-                        <span className="text-lg">💡</span> Key Concept
+                        <span className="text-lg">💡</span> Note
                       </h4>
                       <p className="text-gray-300 m-0 leading-relaxed">
-                        This section simulates the core lesson content. In a
-                        production environment, this would render rich text,
-                        interactive diagrams, or video content from the CMS.
+                        This is where you'll learn the key concepts, one simple step at a time.
                       </p>
                     </div>
 
                     <h3 className="text-xl font-bold text-white mt-12 mb-4">
-                      Initial Parameters
+                      Getting Started
                     </h3>
                     <p className="text-gray-400 mb-4 leading-relaxed">
-                      Understanding the core mechanics of this asset class
-                      requires analyzing the risk-reward ratio and standard
-                      deviation of historical returns over a significant time
-                      horizon.
+                      We know starting out can feel overwhelming, but we'll break it down so it's easy to understand.
                     </p>
                     <p className="text-gray-400 mb-4 leading-relaxed">
-                      By mastering these fundamentals, you establish the
-                      baseline required for more advanced portfolio construction
-                      techniques.
+                      Take your time. There's no rush, and you're in a safe place to learn.
                     </p>
                   </div>
 
@@ -201,7 +193,7 @@ export default function ModuleViewer() {
                       className="shadow-xl shadow-blue-500/20 w-full sm:w-auto justify-center"
                       href="/learning-hub"
                     >
-                      Complete Segment & Return
+                      Finish Topic & Return
                     </MechanicaButton>
                   </div>
                 </div>
