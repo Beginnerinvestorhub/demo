@@ -233,7 +233,7 @@ export default function HomePage() {
           <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               {/* Mechanical logo */}
-              <div className="flex justify-center items-center space-x-4 md:space-x-6 mb-12">
+              <div className="flex justify-center items-center space-x-4 md:space-x-6 mb-12 mechanica-float">
                 <div className="hidden sm:block">
                   <MechanicaGear
                     size="large"
