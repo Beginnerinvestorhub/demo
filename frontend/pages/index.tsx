@@ -280,23 +280,6 @@ export default function HomePage() {
                   </Link>
                 </div>
               </div>
-
-              {/* Demo Banner - Moved to bottom of Hero */}
-              <div className="flex justify-center" role="banner">
-                <div className="inline-flex items-center space-x-3 px-6 py-2 bg-black/30 backdrop-blur-xl border border-yellow-500/30 rounded-full shadow-2xl">
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
-                  </span>
-                  <p
-                    className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] text-yellow-100/90"
-                    role="status"
-                  >
-                    Protocol: This is a professional-grade architecture
-                    demonstration
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
 
