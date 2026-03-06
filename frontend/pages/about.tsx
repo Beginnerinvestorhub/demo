@@ -115,12 +115,20 @@ const AboutPage: React.FC = () => {
               into a rewarding, risk-free mastery loop.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <MechanicaButton variant="brass" size="lg">
-                Start Your Apprenticeship
-              </MechanicaButton>
-              <MechanicaButton variant="primary" size="lg" className="text-white border-white">
-                View Platform Tech
-              </MechanicaButton>
+              <Link href="/signup">
+                <MechanicaButton variant="brass" size="lg">
+                  Start Your Apprenticeship
+                </MechanicaButton>
+              </Link>
+              <button 
+                onClick={() => {
+                  document.getElementById('neural-blueprint')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                <MechanicaButton variant="primary" size="lg" className="text-white border-white">
+                  View Platform Tech
+                </MechanicaButton>
+              </button>
             </div>
           </div>
         </section>
@@ -176,7 +184,7 @@ const AboutPage: React.FC = () => {
           </section>
 
           {/* ─── Our Proprietary 14-Microservice Neural Blueprint ─── */}
-          <section className="py-20 bg-gray-50 border-y border-gray-200">
+          <section id="neural-blueprint" className="py-20 bg-gray-50 border-y border-gray-200">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16" data-animate>
                 <h2 className="text-4xl font-bold text-mechanica-moonlight-blue mb-4 font-serif">
@@ -438,9 +446,11 @@ const AboutPage: React.FC = () => {
               <p className="text-xl mb-8 font-medium text-gray-100">
                 Join a community of builders who are leveling up their financial future today.
               </p>
-              <MechanicaButton variant="brass" size="lg" className="shadow-xl">
-                Start Your First Quest
-              </MechanicaButton>
+              <Link href="/signup">
+                <MechanicaButton variant="brass" size="lg" className="shadow-xl">
+                  Start Your First Quest
+                </MechanicaButton>
+              </Link>
             </div>
           </section>
 
