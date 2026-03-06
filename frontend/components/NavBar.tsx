@@ -7,6 +7,7 @@ export interface NavItem {
 
 export const NAV_LINKS: NavItem[] = [
   { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
   { href: '/dashboard', label: 'My Dashboard' },
   {
     href: '/tools',
