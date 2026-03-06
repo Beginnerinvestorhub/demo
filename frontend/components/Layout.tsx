@@ -22,6 +22,7 @@ export default function Layout({ children }: LayoutProps) {
           <div>Raleigh, North Carolina</div>
           <nav className="flex gap-4">
             <Link href="/about">About</Link>
+            <Link href="/membership">Membership</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>
             <Link href="/dashboard">Dashboard</Link>
