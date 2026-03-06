@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,7 +8,30 @@ import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 
 const AboutPage: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      // Lock body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
+    } else {
+      // Re-enable scroll when closed
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isModalOpen]);
 
   useEffect(() => {
     // Smooth scroll behavior
@@ -89,6 +112,23 @@ const AboutPage: React.FC = () => {
           opacity: 0;
         }
       `}</style>
+
+      {/* ─── Lightbox Modal ─── */}
+      {isModalOpen && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md cursor-zoom-out p-4 md:p-12"
+          onClick={() => setIsModalOpen(false)}
+        >
+          <div className="relative max-w-7xl w-full h-full flex items-center justify-center">
+            <button className="absolute top-0 right-0 text-white text-4xl p-4">&times;</button>
+            <img 
+              src="/assets/images/beginner-investor-hub-architecture-blueprint.png" 
+              alt="Blueprint Fullscreen"
+              className="max-w-full max-h-full object-contain shadow-2xl border border-white/10"
+            />
+          </div>
+        </div>
+      )}
 
       <div className="min-h-screen bg-gray-50">
 
@@ -198,11 +238,16 @@ const AboutPage: React.FC = () => {
                 </p>
 
                 {/* Architecture Blueprint Visual */}
-                <div className="max-w-5xl mx-auto mb-16 p-6 bg-white rounded-2xl shadow-2xl border border-gray-100 group cursor-pointer hover:shadow-mechanica-moonlight-blue/10 transition-all">
+                <div 
+                  className="max-w-5xl mx-auto mb-16 p-6 bg-white rounded-2xl shadow-2xl border border-gray-100 group cursor-zoom-in hover:shadow-mechanica-moonlight-blue/20 transition-all"
+                  onClick={() => setIsModalOpen(true)}
+                >
                   <div className="flex items-center justify-between mb-4 border-b border-gray-50 pb-4">
                     <div className="flex items-center space-x-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">System Blueprint v1.0.4 // GCP Mesh</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">
+                        System Blueprint v1.0.4 // Click to Expand
+                      </span>
                     </div>
                     <span className="text-[10px] text-mechanica-moonlight-blue font-black uppercase tracking-widest px-2 py-0.5 bg-blue-50 rounded">Production Infrastructure</span>
                   </div>
@@ -210,6 +255,10 @@ const AboutPage: React.FC = () => {
                     src="/assets/images/beginner-investor-hub-architecture-blueprint.png" 
                     alt="BeginnerInvestorHub 14-Service Architecture Blueprint"
                     className="w-full rounded-lg"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      console.error("Failed to load blueprint image at:", target.src);
+                    }}
                   />
                   <p className="mt-4 text-[10px] text-center text-gray-400 font-mono uppercase tracking-widest">
                     Fig 1.1: Distributed Hierarchical Risk Parity (HRP) Computation Cluster
@@ -323,12 +372,13 @@ const AboutPage: React.FC = () => {
                     
                     <div className="aspect-square rounded-full border-8 border-white/5 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative z-10 flex items-center justify-center bg-white/10">
                       <img
-                        src="/assets/images/KRprofilepic.jpg"
+                        src="/assets/images/krprofilepic.jpg"
                         alt="Kevin Ringler – Founder & CEO of BeginnerInvestorHub"
                         className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                         onError={(e) => {
-                          (e.target as HTMLImageElement).style.display = 'none';
-                          // Note: The parent container will show its background/initials
+                          const target = e.target as HTMLImageElement;
+                          console.error("Failed to load profile image at:", target.src);
+                          target.style.display = 'none';
                         }}
                       />
                       <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-yellow-400 -z-10">KR</div>

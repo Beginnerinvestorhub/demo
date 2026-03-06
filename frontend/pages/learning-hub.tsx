@@ -52,9 +52,15 @@ export default function LearningHub() {
               <MechanicaGear size="xl" color="brass" speed="reverse" />
             </h1>
 
-            <p className="text-xl text-blue-200 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-xl text-blue-200 max-w-2xl mx-auto font-light leading-relaxed mb-8">
               Build your investing confidence step-by-step. No jargon, just clear learning.
             </p>
+
+            <Link href="/financial-education-index">
+              <span className="inline-block text-yellow-400 font-bold border-b-2 border-yellow-400/20 hover:border-yellow-400 transition-all cursor-pointer text-sm uppercase tracking-widest">
+                Dive into our expanded 5-level structure: View Full Index &rarr;
+              </span>
+            </Link>
           </div>
 
           {/* Modules Grid */}
