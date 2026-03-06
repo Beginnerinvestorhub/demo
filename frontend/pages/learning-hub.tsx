@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
 import { MechanicaButton } from '../components/ui/mechanicaButton';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
