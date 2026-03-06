@@ -106,7 +106,7 @@ const AboutPage: React.FC = () => {
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif">
-              Master the Machine. <br />
+              Claim Your Founding Seat. <br />
               <span className="text-yellow-400">Skip the Long Way Around.</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-4xl mx-auto">
