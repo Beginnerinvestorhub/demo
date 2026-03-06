@@ -118,7 +118,7 @@ const AboutPage: React.FC = () => {
               <MechanicaButton variant="brass" size="lg">
                 Start Your Apprenticeship
               </MechanicaButton>
-              <MechanicaButton variant="outline" size="lg" className="text-white border-white">
+              <MechanicaButton variant="primary" size="lg" className="text-white border-white">
                 View Platform Tech
               </MechanicaButton>
             </div>
