@@ -80,8 +80,31 @@ const MembershipPage: React.FC = () => {
           </div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
+            {/* Brand Header */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12">
+              <div className="hidden sm:block">
+                <MechanicaGear
+                  size="large"
+                  color="brass"
+                  speed="medium"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
+                Membership Plans
+              </div>
+              <div className="hidden sm:block">
+                <MechanicaGear
+                  size="large"
+                  color="brass"
+                  speed="reverse"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-black mb-6 font-serif leading-tight">
-              Master the Markets on <br />
+              Master the Markets on <br className="hidden md:block" />
               <span className="text-yellow-400">Your Own Terms.</span>
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto font-light">

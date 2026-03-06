@@ -28,6 +28,29 @@ export default function FinancialEducationIndexPage() {
             />
           </div>
           <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
+            {/* Brand Header */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12 text-white">
+              <div className="hidden sm:block">
+                <MechanicaGear
+                  size="large"
+                  color="brass"
+                  speed="medium"
+                  aria-hidden="true"
+                />
+              </div>
+              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
+                Global Curriculum
+              </div>
+              <div className="hidden sm:block">
+                <MechanicaGear
+                  size="large"
+                  color="brass"
+                  speed="reverse"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
+
             <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
               Complete Financial <span className="text-yellow-400">Curriculum Index</span>
             </h1>
