@@ -305,12 +305,13 @@ const AboutPage: React.FC = () => {
                       <h3 className="text-xl font-bold text-mechanica-moonlight-blue">Tier 1: Intelligent Client & Gateway</h3>
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      Our high-performance frontend, built on Next.js and React Native, interfaces with a unified API Gateway to orchestrate 
-                      asynchronous requests across our service mesh. This layer utilizes Firebase Auth for enterprise-grade, role-based access 
-                      control (RBAC), ensuring secure session management and encrypted user handshakes across all platform modules.
+                      Our high-performance frontend, built on Next.js and React Native, is deployed via Firebase Hosting with 
+                      server-side rendering and interfaces with a unified API Gateway. This layer utilizes Firebase Auth 
+                      for enterprise-grade role-based access control (RBAC), ensuring secure session management across all modules.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Next.js</span>
+                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Firebase Hosting</span>
                       <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Firebase Auth</span>
                     </div>
                   </MechanicaCard>
@@ -325,13 +326,14 @@ const AboutPage: React.FC = () => {
                       <h3 className="text-xl font-bold text-mechanica-moonlight-blue">Tier 2: Intelligence & Workhorse Tier</h3>
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      Google Vertex AI powers our proprietary Behavioral Nudge Engine, utilizing real-time inference to detect emotional 
-                      trading biases. Simultaneously, our High-Fidelity Risk Engine executes on Google Cloud Run, performing intensive 
-                      computation of institutional metrics including Sharpe Ratio, Sortino Ratio, and Value at Risk (VaR) with sub-millisecond latency.
+                      Google Vertex AI powers our Behavioral Nudge Engine to detect emotional trading biases, while our High-Fidelity Risk Engine 
+                      runs on Google Cloud Run to calculate institutional metrics like Sharpe Ratio and VaR with zero latency. All services 
+                      are built and promoted via Cloud Build pipelines triggered on merge, ensuring zero-downtime deployments.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Vertex AI</span>
                       <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Cloud Run</span>
+                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Cloud Build</span>
                     </div>
                   </MechanicaCard>
                 </div>
@@ -345,13 +347,14 @@ const AboutPage: React.FC = () => {
                       <h3 className="text-xl font-bold text-mechanica-moonlight-blue">Tier 3: Optimization & Learning Tier</h3>
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      The VARK Adaptive Learning Engine dynamically restructures educational content delivery based on individualized user 
-                      psychometrics. We leverage GCP Pub/Sub for high-throughput, asynchronous market data streaming, enabling concurrent 
-                      portfolio simulations and real-time state synchronization across the global user base.
+                      Cloud Memorystore provides the low-latency Redis layer powering asynchronous job queues and cross-service state, 
+                      while Cloud Storage persists model artifacts and high-resolution simulation outputs. We leverage GCP Pub/Sub 
+                      for high-throughput market data streaming and real-time state synchronization.
                     </p>
                     <div className="flex flex-wrap gap-2">
+                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Memorystore</span>
+                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Cloud Storage</span>
                       <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Pub/Sub</span>
-                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Adaptive Learning</span>
                     </div>
                   </MechanicaCard>
                 </div>
@@ -365,13 +368,14 @@ const AboutPage: React.FC = () => {
                       <h3 className="text-xl font-bold text-mechanica-moonlight-blue">Tier 4: Security & Persistence</h3>
                     </div>
                     <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                      Our persistence layer ensures absolute data integrity and auditability. We utilize Google Secret Manager for secure 
-                      credential rotation and environment isolation, alongside horizontally scalable databases optimized for the storage of 
-                      high-resolution simulation logs and complex behavioral profiles used for continuous model training.
+                      Our persistence layer uses Google Secret Manager for secure credential rotation and scalable databases for storing 
+                      behavioral profiles. Full-stack observability is achieved through Cloud Logging, Cloud Monitoring, and Cloud Trace 
+                      instrumented via OpenTelemetry, providing end-to-end auditability across all 14 microservices.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Secret Manager</span>
-                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">GCP SQL/Spanner</span>
+                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">Cloud Logging</span>
+                      <span className="px-2 py-1 bg-white border border-gray-200 rounded text-[10px] font-black uppercase text-gray-400">OpenTelemetry</span>
                     </div>
                   </MechanicaCard>
                 </div>
