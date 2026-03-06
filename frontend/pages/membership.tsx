@@ -203,7 +203,7 @@ const MembershipPage: React.FC = () => {
                     <h4 className="font-bold text-emerald-900 mb-1">Aural</h4>
                     <p className="text-xs text-gray-600">AI-generated audio summaries of market moves.</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-amber-500">
+                  <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-yellow-400">
                     <h4 className="font-bold text-yellow-400 mb-1">Read/Write</h4>
                     <p className="text-xs text-gray-600">Detailed whitepapers and guided journals.</p>
                   </div>

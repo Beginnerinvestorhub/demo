@@ -67,7 +67,7 @@ export default function FinancialEducationIndexPage() {
             <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-mechanica-moonlight-blue prose-headings:border-b prose-headings:pb-2 prose-headings:mb-8 prose-p:text-gray-600 prose-li:text-gray-600">
               
               <div className="mb-16 text-center">
-                <h2 className="text-3xl font-bold text-mechanica-moonlight-blue uppercase tracking-widest border-amber-400 border-b-4 inline-block mx-auto">LEVEL 1: FOUNDATIONAL BASICS</h2>
+                <h2 className="text-3xl font-bold text-mechanica-moonlight-blue uppercase tracking-widest border-yellow-400 border-b-4 inline-block mx-auto">LEVEL 1: FOUNDATIONAL BASICS</h2>
                 <div className="grid md:grid-cols-2 gap-8 mt-8 text-left">
                   <div>
                     <h3 className="text-xl font-bold mb-4 text-center">Chapter 1: Money Fundamentals</h3>
