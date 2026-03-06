@@ -117,7 +117,7 @@ const AboutPage: React.FC = () => {
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/signup">
                 <MechanicaButton variant="brass" size="lg">
-                  Start Your Apprenticeship
+                  Begin Your Apprenticeship
                 </MechanicaButton>
               </Link>
               <button 
@@ -126,7 +126,7 @@ const AboutPage: React.FC = () => {
                 }}
               >
                 <MechanicaButton variant="primary" size="lg" className="text-white border-white">
-                  View Platform Tech
+                  Audit Neural Blueprint
                 </MechanicaButton>
               </button>
             </div>
@@ -448,7 +448,7 @@ const AboutPage: React.FC = () => {
               </p>
               <Link href="/signup">
                 <MechanicaButton variant="brass" size="lg" className="shadow-xl">
-                  Start Your First Quest
+                  Join the Founderlings
                 </MechanicaButton>
               </Link>
             </div>

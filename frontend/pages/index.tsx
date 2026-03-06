@@ -259,7 +259,7 @@ export default function HomePage() {
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <div className="bg-white/10 p-2 rounded-lg backdrop-blur-sm flex flex-col sm:flex-row gap-2 w-full max-w-md">
+                <div className="bg-white/10 p-1.5 rounded-lg backdrop-blur-sm flex flex-col sm:flex-row gap-2 w-full max-w-lg items-stretch">
                   <input
                     type="email"
                     value={heroEmail}
@@ -269,11 +269,11 @@ export default function HomePage() {
                     aria-label="Email address for simulation signup"
                     tabIndex={0}
                   />
-                  <Link href="/vark-assessment">
+                  <Link href="/vark-assessment" className="flex">
                     <MechanicaButton
                       variant="mechanical"
                       size="md"
-                      className="w-full sm:w-auto whitespace-nowrap"
+                      className="w-full whitespace-nowrap"
                     >
                       Discover Your Learning Style — Free
                     </MechanicaButton>
