@@ -386,16 +386,18 @@ export default function FinancialEducationIndexPage() {
                 </div>
               </div>
 
-              <div className="mt-20 p-8 bg-gray-100 rounded-xl border-l-4 border-yellow-400">
+              <div className="mt-20 p-8 bg-gray-100 rounded-xl border-l-4 border-yellow-400 text-center">
                 <h2 className="text-2xl font-bold mb-4 border-none pb-0">Ready to Begin Your Journey?</h2>
                 <p className="mb-6">
                   Join the first 1000 Founderlings to get early access to our full curriculum and AI-powered simulation tools.
                 </p>
-                <Link href="/signup">
-                  <MechanicaButton variant="brass" size="lg">
-                    Begin Your Apprenticeship
-                  </MechanicaButton>
-                </Link>
+                <div className="flex justify-center">
+                  <Link href="/signup">
+                    <MechanicaButton variant="brass" size="lg">
+                      Begin Your Apprenticeship
+                    </MechanicaButton>
+                  </Link>
+                </div>
               </div>
 
             </div>
