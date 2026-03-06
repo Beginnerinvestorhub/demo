@@ -181,14 +181,20 @@ const AboutPage: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-2 gap-16 items-center">
 
-                {/* Video placeholder */}
+                {/* Animation Video */}
                 <div className="order-2 md:order-1" data-animate>
                   <div className="bg-gray-900 rounded-2xl aspect-video flex items-center justify-center text-white shadow-2xl overflow-hidden border-4 border-mechanica-moonlight-blue">
-                    <div className="text-center p-8">
-                      <i className="fas fa-play-circle text-6xl text-yellow-400 mb-4 animate-pulse"></i>
-                      <h3 className="text-xl font-bold mb-2">The Long Way Around</h3>
-                      <p className="text-gray-400 text-sm">Play Origin Story Animation</p>
-                    </div>
+                    <video 
+                      className="w-full h-full object-cover"
+                      controls
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    >
+                      <source src="/assets/videos/thelongwayaround.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
                   </div>
                 </div>
 
@@ -359,7 +365,7 @@ const AboutPage: React.FC = () => {
 
             <div className="max-w-7xl mx-auto px-4 relative z-10">
               <div data-animate>
-                <h2 className="text-4xl md:text-5xl font-bold mb-12 font-serif text-yellow-400">The Founder&apos;s Build</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-12 font-serif text-yellow-400 text-center">The Founder&apos;s Build</h2>
                 
                 <div className="relative block">
                   {/* Circular Image with Shape-Outside for Advanced Wrapping */}
@@ -418,8 +424,8 @@ const AboutPage: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="mt-12 flex flex-wrap items-center gap-6 clear-both">
-                    <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                  <div className="mt-12 flex flex-wrap items-center justify-center gap-6 clear-both">
+                    <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
                       <div className="flex-shrink-0 w-14 h-14 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(250,204,21,0.3)]">
                         KR
                       </div>
@@ -438,7 +444,7 @@ const AboutPage: React.FC = () => {
                       </a>
                     </div>
                     
-                    <div className="hidden lg:flex items-center space-x-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                    <div className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/20 w-full justify-center lg:w-auto">
                       <span>Established 2024</span>
                       <span className="w-1 h-1 rounded-full bg-white/20"></span>
                       <span>Raleigh, NC</span>
