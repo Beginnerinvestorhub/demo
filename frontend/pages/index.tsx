@@ -98,52 +98,59 @@ export default function HomePage() {
 
   const features = [
     {
-      title: 'Level 1 — Money Basics',
-      description: 'Start at the very beginning. Learn the fundamental concepts of money, saving, and how financial markets work in plain English.',
+      title: 'Level 1: Foundational Basics',
+      description: 'Start with the absolute essentials: Money fundamentals, budgeting (50/30/20), banking, credit, and saving strategies. No jargon, just plain English.',
       icon: '🌱',
       href: '/learning-hub',
       gearColor: 'steel' as const,
     },
     {
-      title: 'Level 2 — Investment Foundations',
-      description: 'Understand the building blocks of investing. Learn about stocks, bonds, and funds without the confusing Wall Street jargon.',
+      title: 'Level 2: Intermediate Management',
+      description: 'Advance with debt management (snowball/avalanche), insurance fundamentals, and a practical introduction to the risk/return mechanics of investing.',
       icon: '📚',
       href: '/learning-hub',
       gearColor: 'copper' as const,
     },
     {
-      title: 'Level 3 — Building Your Portfolio',
-      description: 'Practice building a diversified portfolio using our zero-risk paper trading simulator. Build confidence safely.',
+      title: 'Level 3: Advanced Investing',
+      description: 'Dive into stock market mechanics, retirement planning (401k/IRA), real estate, and tax optimization using our zero-risk simulations.',
       icon: '🏗️',
       href: '/learning-hub',
       gearColor: 'brass' as const,
     },
     {
-      title: 'Level 4 — Advanced Strategy',
-      description: 'For confident learners ready to explore advanced topics and strategies. Practice with complex scenarios when you feel ready.',
+      title: 'Level 4: Expert Strategies',
+      description: 'For those ready for advanced vehicles: options, technical analysis, portfolio management theory, and comprehensive estate planning.',
       icon: '🚀',
       href: '/learning-hub',
       gearColor: 'steel' as const,
+    },
+    {
+      title: 'Level 5: Institutional Mastery',
+      description: 'Explore pro-level topics: derivatives risk, quantitative modeling, institutional management, and multi-generational wealth preservation.',
+      icon: '🏛️',
+      href: '/learning-hub',
+      gearColor: 'brass' as const,
     },
   ];
 
   return (
     <MechanicaLayout>
       <Head>
-        <title>Start Investing Safely | BeginnerInvestorHub</title>
+        <title>Full Financial Education & Risk-Free Investing | BeginnerInvestorHub</title>
         <meta
           name="description"
-          content="A confidence-building financial education platform for scared, overwhelmed beginners. Learn investing the way your brain works—with zero risk."
+          content="Democratizing financial education through AI-powered adaptive learning. From money basics to institutional strategies, build your confidence with zero risk."
         />
 
         {/* Open Graph Tags */}
         <meta
           property="og:title"
-          content="Start Investing Safely | BeginnerInvestorHub"
+          content="Full Financial Education & Risk-Free Investing | BeginnerInvestorHub"
         />
         <meta
           property="og:description"
-          content="A confidence-building financial education platform for scared, overwhelmed beginners. Learn investing the way your brain works—with zero risk."
+          content="Master money fundamentals and institutional investing strategies with our 5-level adaptive learning journey and zero-risk simulations."
         />
         <meta property="og:type" content="website" />
         <meta
@@ -250,29 +257,29 @@ export default function HomePage() {
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-8 font-serif leading-tight">
                 Scared to Invest? <br className="hidden md:block" />
-                Start Here.
+                Start with Full Financial Education Here.
               </h1>
 
               <h2 className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto font-normal leading-relaxed">
-                Learn investing the way YOUR brain works — with zero risk.
+                We go beyond investing to cover budgeting, debt, taxes, and more—all in a beginner-friendly, simulation-based hub.
               </h2>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                <div className="bg-white/10 p-1.5 rounded-lg backdrop-blur-sm flex flex-col sm:flex-row gap-2 w-full max-w-lg items-stretch">
+                <div className="bg-white/10 p-2 rounded-lg backdrop-blur-md flex flex-col sm:flex-row gap-3 w-full max-w-2xl items-stretch">
                   <input
                     type="email"
                     value={heroEmail}
                     onChange={e => setHeroEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="px-4 py-3 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 flex-grow mechanica-text-technical"
+                    className="px-4 py-3 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 flex-grow mechanica-text-technical min-w-0"
                     aria-label="Email address for simulation signup"
                     tabIndex={0}
                   />
-                  <Link href="/vark-assessment" className="flex">
+                  <Link href="/vark-assessment" className="flex flex-shrink-0">
                     <MechanicaButton
                       variant="mechanical"
                       size="md"
-                      className="w-full whitespace-nowrap"
+                      className="w-full whitespace-nowrap shadow-xl"
                     >
                       Discover Your Learning Style — Free
                     </MechanicaButton>
@@ -403,11 +410,16 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
-                Your Learning Journey (4 Levels)
+                Your Learning Journey (5 Levels)
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Build your confidence step-by-step in a safe, guided environment. Advanced Tools — For Level 4 Learners Only.
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+                Build your confidence step-by-step in a safe, guided environment. From foundations to institutional mastery.
               </p>
+              <Link href="/financial-education-index">
+                <span className="text-mechanica-moonlight-blue font-bold border-b-2 border-mechanica-moonlight-blue/20 hover:border-mechanica-moonlight-blue transition-all cursor-pointer">
+                  View Full Curriculum Index &rarr;
+                </span>
+              </Link>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -567,8 +579,8 @@ export default function HomePage() {
                 {/* Email Signup Form */}
                 <div className="text-center">
                   <p className="text-lg text-gray-700 mb-6 font-medium">
-                    Join first 1000 Founderlings and shape the future of
-                    investing education.
+                    Join first 1000 Founderlings to access our full 5-level financial education, 
+                    from foundations to institutional strategies, with AI-personalized simulations.
                   </p>
                   <form
                     onSubmit={handleEmailSignup}
