@@ -275,7 +275,7 @@ const AboutPage: React.FC = () => {
                     <div className="flex items-center space-x-2">
                       <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                       <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">
-                        System Blueprint v1.0.4 // Click to Expand
+                        Technical Architecture Overview v1.0.4 // Click to Expand
                       </span>
                     </div>
                     <span className="text-[10px] text-mechanica-moonlight-blue font-black uppercase tracking-widest px-2 py-0.5 bg-blue-50 rounded">Production Infrastructure</span>
