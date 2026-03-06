@@ -80,8 +80,8 @@ const MembershipPage: React.FC = () => {
           </div>
           
           <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-            {/* Brand Header */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12">
+            {/* Brand Header with Animation */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12 mechanica-float">
               <div className="hidden sm:block">
                 <MechanicaGear
                   size="large"
@@ -90,9 +90,9 @@ const MembershipPage: React.FC = () => {
                   aria-hidden="true"
                 />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
                 Membership Plans
-              </div>
+              </h1>
               <div className="hidden sm:block">
                 <MechanicaGear
                   size="large"

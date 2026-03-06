@@ -146,19 +146,19 @@ const AboutPage: React.FC = () => {
           </div>
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 text-center">
-            {/* Brand Header */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12">
+            {/* Page Title with Animation */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-12 mechanica-float">
               <div className="hidden sm:block">
                 <MechanicaGear
                   size="large"
                   color="brass"
-                  speed="medium"
+                  speed="slow"
                   aria-hidden="true"
                 />
               </div>
-              <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black font-serif uppercase tracking-tighter mechanica-title-gold-chrome">
                 About The Mission
-              </div>
+              </h1>
               <div className="hidden sm:block">
                 <MechanicaGear
                   size="large"
@@ -169,11 +169,11 @@ const AboutPage: React.FC = () => {
               </div>
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 font-serif leading-tight">
+            <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-4xl mx-auto leading-relaxed">
               Claim Your Founding Seat. <br className="hidden md:block" />
               <span className="text-yellow-400">Skip the Long Way Around.</span>
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-4xl mx-auto">
+            </p>
+            <p className="text-lg md:text-xl mb-12 text-gray-200 max-w-3xl mx-auto opacity-90">
               I spent 13 years building structures with precision. Now, I'm building the
               engagement layer the financial world was always missing—turning complex markets
               into a rewarding, risk-free mastery loop.
