@@ -126,7 +126,7 @@ const AboutPage: React.FC = () => {
                 }}
               >
                 <MechanicaButton variant="primary" size="lg" className="text-white border-white">
-                  Audit Neural Blueprint
+                  Inspect System Blueprint
                 </MechanicaButton>
               </button>
             </div>
