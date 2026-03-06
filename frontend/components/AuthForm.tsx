@@ -26,6 +26,22 @@ export default function AuthForm({ mode = 'login' }: AuthFormProps) {
         await login(email, password);
       } else {
         await signup(email, password);
+        // Sync to Founderlings Google Sheet on successful signup
+        try {
+          await fetch('/api/founderlings-signup', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+              email, 
+              why: "New User Registration" 
+            }),
+          });
+        } catch (syncErr) {
+          console.error('Failed to sync signup to sheets:', syncErr);
+          // Don't block the user if sheet sync fails
+        }
       }
       // Successful auth will trigger redirect in login page
     } catch (err: unknown) {

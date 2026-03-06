@@ -1,5 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+// This is the Apps Script Web App URL you get after deploying as a web app
+// Make sure to set this in your environment variables for production
+const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz_98_Z_8_Z_8_Z_8_Z_8_Z_8_Z_8_Z/exec';
+
 const SHEET_CSV_URL =
   'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYVPJZo8ZJy6fLkPeGpAqU1m-gfCLGUDiOI8rsW1ryvOqpiAUrAed-BzUkuiqkpMbT0q98bPntSMLp/pub?output=csv';
 
@@ -9,41 +13,35 @@ export default async function handler(
 ) {
   if (req.method === 'POST') {
     try {
-      const { email } = req.body;
+      const { email, why } = req.body;
 
       if (!email || !email.includes('@')) {
         return res.status(400).json({ error: 'Valid email required' });
       }
 
-      // Get current sheet data
-      const sheetRes = await fetch(SHEET_CSV_URL);
-      if (!sheetRes.ok) {
-        return res.status(500).json({ error: 'Failed to access sheet' });
+      // Forward the request to Google Apps Script
+      const scriptRes = await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, why: why || "Signed up from landing page" }),
+      });
+
+      if (!scriptRes.ok) {
+        console.error('Apps Script error:', await scriptRes.text());
+        return res.status(500).json({ error: 'Failed to sync with backend' });
       }
 
-      const text = await sheetRes.text();
-      const rows = text
-        .trim()
-        .split('\n')
-        .filter(r => r.trim() !== '');
-
-      // Check if email already exists
-      const emailExists = rows.some(row =>
-        row.toLowerCase().includes(email.toLowerCase())
-      );
-
-      if (emailExists) {
-        return res.status(409).json({ error: 'Email already registered' });
-      }
-
-      // Add new email to sheet (in a real implementation, this would use Google Sheets API)
-      // For demo purposes, we'll just return success
-      const newCount = rows.length + 1;
+      const result = await scriptRes.json();
 
       return res.status(200).json({
         success: true,
-        message: 'Welcome to Founderlings!',
-        memberNumber: newCount,
+        message: result.status === "WAITLIST" 
+          ? "You've been added to our waitlist! We'll notify you as soon as a spot opens."
+          : "Welcome to Founderlings! Your seat is secured.",
+        status: result.status,
+        memberNumber: result.count,
         email: email,
       });
     } catch (error) {
@@ -52,10 +50,18 @@ export default async function handler(
     }
   } else if (req.method === 'GET') {
     try {
+      // We can use the public CSV for faster GET requests if enabled,
+      // or fetch directly from the script. CSV is usually cached and faster.
       const sheetRes = await fetch(SHEET_CSV_URL);
 
       if (!sheetRes.ok) {
-        return res.status(500).json({ error: 'Failed to fetch sheet' });
+        // Fallback to Apps Script if CSV export is not available
+        const scriptRes = await fetch(APPS_SCRIPT_URL);
+        if (!scriptRes.ok) {
+          return res.status(500).json({ error: 'Failed to fetch count' });
+        }
+        const data = await scriptRes.json();
+        return res.status(200).json({ count: data.count });
       }
 
       const text = await sheetRes.text();
@@ -78,3 +84,4 @@ export default async function handler(
     return res.status(405).json({ error: `Method ${req.method} not allowed` });
   }
 }
+

@@ -31,15 +31,32 @@ export default function DashboardPage() {
 
     setIsSubscribing(true);
 
-    // Simulate API call to Google Sheets
-    setTimeout(() => {
-      setIsSubscribing(false);
-      setShowConfirmation(true);
-      setEmail('');
+    try {
+      const response = await fetch('/api/founderlings-signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          email,
+          why: "Dashboard Founderlings Join" 
+        }),
+      });
 
-      // Hide confirmation after 5 seconds
-      setTimeout(() => setShowConfirmation(false), 5000);
-    }, 1500);
+      if (response.ok) {
+        setShowConfirmation(true);
+        setEmail('');
+        setTimeout(() => setShowConfirmation(false), 5000);
+      } else {
+        const data = await response.json();
+        alert(data.error || 'Something went wrong');
+      }
+    } catch (error) {
+      console.error('Email signup error:', error);
+      alert('Network error. Please try again.');
+    } finally {
+      setIsSubscribing(false);
+    }
   };
 
   // Get gamification data - call hook unconditionally
