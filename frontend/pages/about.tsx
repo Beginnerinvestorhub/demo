@@ -321,12 +321,17 @@ const AboutPage: React.FC = () => {
                     {/* Glow Effect */}
                     <div className="absolute inset-0 rounded-full bg-yellow-500/20 blur-3xl group-hover:bg-yellow-500/30 transition-all duration-700 -z-10 scale-110"></div>
                     
-                    <div className="aspect-square rounded-full border-8 border-white/5 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative z-10">
+                    <div className="aspect-square rounded-full border-8 border-white/5 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative z-10 flex items-center justify-center bg-white/10">
                       <img
                         src="/assets/images/KRprofilepic.jpg"
                         alt="Kevin Ringler – Founder & CEO of BeginnerInvestorHub"
                         className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).style.display = 'none';
+                          // Note: The parent container will show its background/initials
+                        }}
                       />
+                      <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-yellow-400 -z-10">KR</div>
                     </div>
                     
                     {/* Decorative Technical Overlay */}

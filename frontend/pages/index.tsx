@@ -175,8 +175,7 @@ export default function HomePage() {
         />
       </Head>
       {/* Hero Section */}
-      <header>
-        <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-mechanica-moonlight-blue via-mechanica-moonlight-blue-light to-mechanica-moonlight-blue-dark text-white overflow-hidden">
           {/* Mechanical background */}
           <div className="absolute inset-0 opacity-10">
             <div
@@ -286,7 +285,6 @@ export default function HomePage() {
           {/* Mechanical decorative elements */}
           <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-r from-transparent via-yellow-500 to-transparent opacity-50" />
         </section>
-      </header>
 
       <main>
         {/* Trust Signals */}
