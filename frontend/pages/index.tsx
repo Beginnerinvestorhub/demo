@@ -7,16 +7,7 @@ import { MechanicaButton } from '../components/ui/mechanicaButton';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import { MechanicaInput } from '../components/ui/mechanicaInput';
 
-interface PlatformStats {
-  portfoliosBuilt: number;
-  simulationsRun: number;
-  simulatedValue: number;
-  userSatisfaction: number;
-}
-
 export default function HomePage() {
-  const statsRef = useRef<HTMLDivElement>(null);
-  const [statsAnimated, setStatsAnimated] = useState(true);
   const [email, setEmail] = useState('');
   const [heroEmail, setHeroEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
@@ -59,42 +50,6 @@ export default function HomePage() {
       submitGuardRef.current = false;
     }
   };
-
-  const stats: PlatformStats = {
-    portfoliosBuilt: 12847,
-    simulationsRun: 45923,
-    simulatedValue: 85487293,
-    userSatisfaction: 98,
-  };
-
-  // Helper function for in-view check (simplified or from useInView hook)
-  const isElementInView = (element: HTMLElement) => {
-    const rect = element.getBoundingClientRect();
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
-
-  // Animate stats when visible
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        statsRef.current &&
-        isElementInView(statsRef.current) &&
-        !statsAnimated
-      ) {
-        setStatsAnimated(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on mount
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [statsAnimated]);
 
   const features = [
     {
@@ -311,99 +266,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Platform Stats */}
-        <section
-          ref={statsRef}
-          className="py-20 bg-gradient-to-br from-gray-50 to-amber-50"
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4 text-mechanica-moonlight-blue font-serif">
-                Our Growing Community
-              </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Join thousands building their confidence before risking real money
-              </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <MechanicaCard variant="mechanical" animated gearDecoration>
-                <div className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <MechanicaGear size="medium" color="steel" speed="medium" />
-                  </div>
-                  <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    {statsAnimated
-                      ? stats.portfoliosBuilt.toLocaleString()
-                      : '0'}
-                  </div>
-                  <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
-                    Portfolio Blueprints Created
-                  </div>
-                </div>
-              </MechanicaCard>
-
-              <MechanicaCard variant="wood" animated gearDecoration>
-                <div className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <MechanicaGear size="medium" color="brass" speed="slow" />
-                  </div>
-                  <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    {statsAnimated
-                      ? stats.simulationsRun.toLocaleString()
-                      : '0'}
-                  </div>
-                  <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
-                    Learning Simulations Run
-                  </div>
-                </div>
-              </MechanicaCard>
-
-              <MechanicaCard variant="brass" animated gearDecoration>
-                <div className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <MechanicaGear size="medium" color="copper" speed="fast" />
-                  </div>
-                  <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    $
-                    {statsAnimated
-                      ? (stats.simulatedValue / 1000000).toFixed(1)
-                      : '0'}
-                    M
-                  </div>
-                  <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
-                    Total Simulated AUM
-                  </div>
-                </div>
-              </MechanicaCard>
-
-              <MechanicaCard variant="mechanical" animated gearDecoration>
-                <div className="text-center">
-                  <div className="flex justify-center mb-4">
-                    <MechanicaGear
-                      size="medium"
-                      color="steel"
-                      speed="reverse"
-                    />
-                  </div>
-                  <div className="text-4xl font-bold text-mechanica-moonlight-blue mb-2 font-mono">
-                    {statsAnimated ? stats.userSatisfaction : '0'}%
-                  </div>
-                  <div className="text-sm font-mono text-gray-600 uppercase tracking-wide">
-                    Learner Confidence Rating
-                  </div>
-                </div>
-              </MechanicaCard>
-            </div>
-          </div>
-
-          {/* Sample Data Disclaimer */}
-          <div className="text-center mt-8">
-            <p className="text-sm font-mono text-gray-500 uppercase tracking-wide">
-              Sample demo data — not real assets
-            </p>
-          </div>
-        </section>
 
         {/* Features Section */}
         <section className="py-20 bg-white">
