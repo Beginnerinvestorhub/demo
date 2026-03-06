@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 // This is the Apps Script Web App URL you get after deploying as a web app
 // Make sure to set this in your environment variables for production
-const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbz_98_Z_8_Z_8_Z_8_Z_8_Z_8_Z_8_Z/exec';
+const APPS_SCRIPT_URL = process.env.APPS_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbxswHrs9OM0d_q1ZZIsgglSQsWf5derQmxV6PuPlMtCYWTpmoycCoytBUmCxB5ndRDY/exec';
 
 const SHEET_CSV_URL =
   'https://docs.google.com/spreadsheets/d/e/2PACX-1vQYVPJZo8ZJy6fLkPeGpAqU1m-gfCLGUDiOI8rsW1ryvOqpiAUrAed-BzUkuiqkpMbT0q98bPntSMLp/pub?output=csv';
