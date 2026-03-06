@@ -293,67 +293,92 @@ const AboutPage: React.FC = () => {
           </section>
 
           {/* ─── The Founder: Built, Not Bought ─── */}
-          <section className="py-24 bg-mechanica-moonlight-blue text-white overflow-hidden relative">
+          <section className="py-24 bg-mechanica-moonlight-blue text-white overflow-hidden relative border-y border-white/5">
+            {/* Background Texture */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+              <div className="w-full h-full" style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+            </div>
+
             <div className="max-w-7xl mx-auto px-4 relative z-10">
-              <div data-animate className="clearfix">
-                <h2 className="text-4xl font-bold mb-8 font-serif">The Founder&apos;s Build</h2>
+              <div data-animate>
+                <h2 className="text-4xl md:text-5xl font-bold mb-12 font-serif text-yellow-400">The Founder&apos;s Build</h2>
                 
-                {/* Wrapped Image and Bio */}
-                <div className="relative">
-                  {/* Circular Image Container Floated Left */}
-                  <div className="float-left mr-8 mb-6 relative">
-                    <div className="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-yellow-400/30 overflow-hidden shadow-2xl relative z-10 bg-white/10">
+                <div className="relative block">
+                  {/* Circular Image with Shape-Outside for Advanced Wrapping */}
+                  <div 
+                    className="float-left mr-12 mb-8 relative group"
+                    style={{ shapeOutside: 'circle(50%)', width: 'clamp(200px, 30vw, 320px)' }}
+                  >
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 rounded-full bg-yellow-500/20 blur-3xl group-hover:bg-yellow-500/30 transition-all duration-700 -z-10 scale-110"></div>
+                    
+                    <div className="aspect-square rounded-full border-8 border-white/5 overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.5)] relative z-10">
                       <img
                         src="/assets/images/KRprofilepic.jpg"
                         alt="Kevin Ringler – Founder & CEO of BeginnerInvestorHub"
-                        className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                        className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
                       />
                     </div>
-                    {/* Decorative Gear behind circle */}
-                    <div className="absolute -top-4 -left-4 w-full h-full opacity-20 -z-0">
-                      <MechanicaGear size="xl" color="brass" speed="slow" />
+                    
+                    {/* Decorative Technical Overlay */}
+                    <div className="absolute -bottom-4 -right-4 w-24 h-24 opacity-40 z-20 hidden md:block">
+                      <MechanicaGear size="lg" color="brass" speed="slow" />
                     </div>
                   </div>
 
-                  <div className="prose prose-invert max-w-none">
-                    <p className="text-lg mb-6 opacity-95 leading-relaxed">
+                  <div className="text-lg md:text-xl leading-relaxed space-y-6 text-gray-100 font-light">
+                    <p>
                       I spent 13 years as a master carpenter, where I learned that a structure is
                       only as strong as its foundation. When I tried to build my own financial
                       house, I realized the foundations were missing—not because they weren&apos;t
-                      there, but because nobody gave me the blueprints.
+                      there, but because nobody gave me the blueprints. 
                     </p>
-                    <p className="text-lg mb-6 opacity-95 leading-relaxed">
-                      I decided to stop taking the long way around. I taught myself to code and
-                      engineered the platform I wish I had when I started. This isn&apos;t a
-                      collection of off-the-shelf tools; it&apos;s a{' '}
-                      <strong>14-service proprietary architecture</strong> built from scratch to
-                      provide the transparency and engagement I once lacked.
+                    <p>
+                      The complexity of modern markets is often used as a barrier to entry, but I saw it 
+                      differently. To me, a market is just another structure to be mapped, measured, 
+                      and mastered. I decided to stop taking the long way around. I taught myself to code 
+                      and engineered the platform I wish I had when I started.
                     </p>
-                    <p className="text-lg mb-8 opacity-95 leading-relaxed">
-                      My mission is to democratize financial intelligence by applying the same 
-                      rigorous standards of structural engineering to the world of retail investing. 
+                    <p>
+                      This isn&apos;t a collection of off-the-shelf tools; it&apos;s a{' '}
+                      <strong className="text-yellow-400 font-bold">14-service proprietary architecture</strong> built from scratch to
+                      provide the transparency and engagement I once lacked. My mission is to 
+                      democratize financial intelligence by applying the same rigorous standards 
+                      of structural engineering to retail investing.
+                    </p>
+                    <p>
                       Every "Guardian" in our system and every line of our Risk Engine was crafted 
-                      to ensure that your learning journey is safe, precise, and rewarding.
+                      with the same precision I used to frame a roof. We&apos;ve built the engagement 
+                      layer the financial world was always missing—turning complex markets into 
+                      a rewarding, risk-free mastery loop for everyone.
                     </p>
                   </div>
 
-                  <div className="clear-both flex items-center space-x-4 p-4 bg-white/10 rounded-lg border border-white/20 inline-flex">
-                    <div className="flex-shrink-0 w-12 h-12 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-lg">
-                      KR
+                  <div className="mt-12 flex flex-wrap items-center gap-6 clear-both">
+                    <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+                      <div className="flex-shrink-0 w-14 h-14 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(250,204,21,0.3)]">
+                        KR
+                      </div>
+                      <div className="pr-6">
+                        <p className="font-bold text-xl leading-tight">Kevin Ringler</p>
+                        <p className="text-xs uppercase tracking-widest text-yellow-500 font-black mt-1">Founder &amp; CEO</p>
+                      </div>
+                      <a
+                        href="https://www.linkedin.com/in/kevin-ringler"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-[#0077b5] hover:bg-[#005582] text-white px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all hover:shadow-[0_0_20px_rgba(0,119,181,0.4)] flex items-center group"
+                      >
+                        <i className="fab fa-linkedin mr-2 text-sm group-hover:scale-110 transition-transform"></i>
+                        Connect
+                      </a>
                     </div>
-                    <div className="flex-grow pr-4">
-                      <p className="font-bold text-lg leading-tight">Kevin Ringler</p>
-                      <p className="text-sm opacity-75">Founder &amp; CEO</p>
+                    
+                    <div className="hidden lg:flex items-center space-x-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/20">
+                      <span>Established 2024</span>
+                      <span className="w-1 h-1 rounded-full bg-white/20"></span>
+                      <span>Raleigh, NC</span>
                     </div>
-                    <a
-                      href="https://www.linkedin.com/in/kevin-ringler"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-[#0077b5] hover:bg-[#005582] text-white px-3 py-1.5 rounded text-xs font-bold transition-colors flex items-center"
-                    >
-                      <i className="fab fa-linkedin mr-2"></i>
-                      Connect
-                    </a>
                   </div>
                 </div>
               </div>
