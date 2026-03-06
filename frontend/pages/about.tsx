@@ -295,31 +295,54 @@ const AboutPage: React.FC = () => {
           {/* ─── The Founder: Built, Not Bought ─── */}
           <section className="py-24 bg-mechanica-moonlight-blue text-white overflow-hidden relative">
             <div className="max-w-7xl mx-auto px-4 relative z-10">
-              <div className="grid md:grid-cols-2 gap-16 items-center">
+              <div data-animate className="clearfix">
+                <h2 className="text-4xl font-bold mb-8 font-serif">The Founder&apos;s Build</h2>
+                
+                {/* Wrapped Image and Bio */}
+                <div className="relative">
+                  {/* Circular Image Container Floated Left */}
+                  <div className="float-left mr-8 mb-6 relative">
+                    <div className="w-48 h-48 md:w-64 md:h-64 rounded-full border-4 border-yellow-400/30 overflow-hidden shadow-2xl relative z-10 bg-white/10">
+                      <img
+                        src="/assets/images/KRprofilepic.jpg"
+                        alt="Kevin Ringler – Founder & CEO of BeginnerInvestorHub"
+                        className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
+                      />
+                    </div>
+                    {/* Decorative Gear behind circle */}
+                    <div className="absolute -top-4 -left-4 w-full h-full opacity-20 -z-0">
+                      <MechanicaGear size="xl" color="brass" speed="slow" />
+                    </div>
+                  </div>
 
-                {/* Copy */}
-                <div data-animate>
-                  <h2 className="text-4xl font-bold mb-8 font-serif">The Founder&apos;s Build</h2>
-                  <p className="text-lg mb-6 opacity-90 leading-relaxed">
-                    I spent 13 years as a master carpenter, where I learned that a structure is
-                    only as strong as its foundation. When I tried to build my own financial
-                    house, I realized the foundations were missing—not because they weren&apos;t
-                    there, but because nobody gave me the blueprints.
-                  </p>
-                  <p className="text-lg mb-6 opacity-90 leading-relaxed">
-                    I decided to stop taking the long way around. I taught myself to code and
-                    engineered the platform I wish I had when I started. This isn&apos;t a
-                    collection of off-the-shelf tools; it&apos;s a{' '}
-                    <strong>14-service proprietary architecture</strong> built from scratch to
-                    provide the transparency and engagement I once lacked.
-                  </p>
+                  <div className="prose prose-invert max-w-none">
+                    <p className="text-lg mb-6 opacity-95 leading-relaxed">
+                      I spent 13 years as a master carpenter, where I learned that a structure is
+                      only as strong as its foundation. When I tried to build my own financial
+                      house, I realized the foundations were missing—not because they weren&apos;t
+                      there, but because nobody gave me the blueprints.
+                    </p>
+                    <p className="text-lg mb-6 opacity-95 leading-relaxed">
+                      I decided to stop taking the long way around. I taught myself to code and
+                      engineered the platform I wish I had when I started. This isn&apos;t a
+                      collection of off-the-shelf tools; it&apos;s a{' '}
+                      <strong>14-service proprietary architecture</strong> built from scratch to
+                      provide the transparency and engagement I once lacked.
+                    </p>
+                    <p className="text-lg mb-8 opacity-95 leading-relaxed">
+                      My mission is to democratize financial intelligence by applying the same 
+                      rigorous standards of structural engineering to the world of retail investing. 
+                      Every "Guardian" in our system and every line of our Risk Engine was crafted 
+                      to ensure that your learning journey is safe, precise, and rewarding.
+                    </p>
+                  </div>
 
-                  <div className="flex items-center space-x-4 p-4 bg-white/10 rounded-lg border border-white/20">
+                  <div className="clear-both flex items-center space-x-4 p-4 bg-white/10 rounded-lg border border-white/20 inline-flex">
                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-lg">
                       KR
                     </div>
-                    <div className="flex-grow">
-                      <p className="font-bold text-lg">Kevin Ringler</p>
+                    <div className="flex-grow pr-4">
+                      <p className="font-bold text-lg leading-tight">Kevin Ringler</p>
                       <p className="text-sm opacity-75">Founder &amp; CEO</p>
                     </div>
                     <a
@@ -331,22 +354,6 @@ const AboutPage: React.FC = () => {
                       <i className="fab fa-linkedin mr-2"></i>
                       Connect
                     </a>
-                  </div>
-                </div>
-
-                {/* Founder photo with gear decoration */}
-                <div className="relative" data-animate>
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-20">
-                    <MechanicaGear size="xl" color="brass" speed="slow" />
-                  </div>
-                  {/* Render photo if available, else branded fallback */}
-                  <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden aspect-[5/6] bg-white/10 border-2 border-white/20 flex items-center justify-center">
-                    <img
-                      src="/assets/images/KRprofilepic.jpg"
-                      alt="Kevin Ringler – Founder & CEO of BeginnerInvestorHub"
-                      className="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500"
-                    />
-                    {/* Fallback hidden by default unless img fails, but standard img doesn't have easy onError like Next Image without state */}
                   </div>
                 </div>
               </div>
