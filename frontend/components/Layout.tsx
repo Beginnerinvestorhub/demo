@@ -21,6 +21,7 @@ export default function Layout({ children }: LayoutProps) {
           <div>&copy; {currentYear || 2024} BeginnerInvestorHub.com</div>
           <div>Raleigh, North Carolina</div>
           <nav className="flex gap-4">
+            <Link href="/about">About</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms of Service</Link>
             <Link href="/dashboard">Dashboard</Link>

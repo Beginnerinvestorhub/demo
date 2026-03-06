@@ -20,7 +20,7 @@ export default NextAuth({
           credentials?.username === 'user' &&
           credentials?.password === 'password'
         ) {
-          return { id: '1', name: 'J Smith', email: 'jsmith@example.com' };
+          return { id: '1', name: 'Demo User', email: 'demo@beginnerinvestorhub.com' };
         }
         return null;
       },
