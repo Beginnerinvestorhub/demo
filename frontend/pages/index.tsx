@@ -6,6 +6,7 @@ import { MechanicaCard } from '../components/ui/mechanicaCard';
 import { MechanicaButton } from '../components/ui/mechanicaButton';
 import { MechanicaGear } from '../components/ui/mechanicaGear';
 import { MechanicaInput } from '../components/ui/mechanicaInput';
+import { modules } from '../content/education/modules';
 
 export default function HomePage() {
   const [email, setEmail] = useState('');
@@ -51,43 +52,21 @@ export default function HomePage() {
     }
   };
 
-  const features = [
-    {
-      title: 'Level 1: Foundational Basics',
-      description: 'Start with the absolute essentials: Money fundamentals, budgeting (50/30/20), banking, credit, and saving strategies. No jargon, just plain English.',
-      icon: '🌱',
-      href: '/learning-hub',
-      gearColor: 'steel' as const,
-    },
-    {
-      title: 'Level 2: Intermediate Management',
-      description: 'Advance with debt management (snowball/avalanche), insurance fundamentals, and a practical introduction to the risk/return mechanics of investing.',
-      icon: '📚',
-      href: '/learning-hub',
-      gearColor: 'copper' as const,
-    },
-    {
-      title: 'Level 3: Advanced Investing',
-      description: 'Dive into stock market mechanics, retirement planning (401k/IRA), real estate, and tax optimization using our zero-risk simulations.',
-      icon: '🏗️',
-      href: '/learning-hub',
-      gearColor: 'brass' as const,
-    },
-    {
-      title: 'Level 4: Expert Strategies',
-      description: 'For those ready for advanced vehicles: options, technical analysis, portfolio management theory, and comprehensive estate planning.',
-      icon: '🚀',
-      href: '/learning-hub',
-      gearColor: 'steel' as const,
-    },
-    {
-      title: 'Level 5: Institutional Mastery',
-      description: 'Explore pro-level topics: derivatives risk, quantitative modeling, institutional management, and multi-generational wealth preservation.',
-      icon: '🏛️',
-      href: '/learning-hub',
-      gearColor: 'brass' as const,
-    },
+  const levelUIMapping = [
+    { gearColor: 'steel' as const },
+    { gearColor: 'copper' as const },
+    { gearColor: 'brass' as const },
+    { gearColor: 'steel' as const },
+    { gearColor: 'brass' as const },
   ];
+
+  const features = modules.map((module, index) => ({
+    title: module.title,
+    description: module.description,
+    href: '/learning-hub',
+    gearColor: levelUIMapping[index]?.gearColor || 'steel',
+    chapterCount: module.lessons.length,
+  }));
 
   return (
     <MechanicaLayout>
@@ -285,7 +264,7 @@ export default function HomePage() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <MechanicaCard
                   key={index}
@@ -304,10 +283,15 @@ export default function HomePage() {
                       />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-2xl font-bold mb-3 text-mechanica-moonlight-blue font-serif">
+                      <h3 className="text-2xl font-bold mb-1 text-mechanica-moonlight-blue font-serif">
                         {feature.title}
                       </h3>
-                      <p className="text-gray-600 mb-4 leading-relaxed">
+                      <div className="mb-3">
+                        <span className="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded-md border border-blue-200">
+                          {feature.chapterCount} Chapters
+                        </span>
+                      </div>
+                      <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                         {feature.description}
                       </p>
                       <Link href={feature.href}>
