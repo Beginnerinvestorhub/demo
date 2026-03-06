@@ -356,7 +356,20 @@ const AboutPage: React.FC = () => {
             </div>
           </section>
 
-
+          {/* ─── CTA Section ─── */}
+          <section className="py-20 bg-mechanica-moonlight-blue text-white text-center">
+            <div className="max-w-4xl mx-auto px-4" data-animate>
+              <h2 className="text-4xl font-bold mb-6 font-serif text-white">
+                Ready to End the Long Way Around?
+              </h2>
+              <p className="text-xl mb-8 font-medium text-gray-100">
+                Join a community of builders who are leveling up their financial future today.
+              </p>
+              <MechanicaButton variant="brass" size="lg" className="shadow-xl">
+                Start Your First Quest
+              </MechanicaButton>
+            </div>
+          </section>
 
         </main>
       </div>
