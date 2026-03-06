@@ -279,7 +279,7 @@ const AboutPage: React.FC = () => {
                   {/* Render photo if available, else branded fallback */}
                   <div className="relative z-10 rounded-2xl shadow-2xl overflow-hidden aspect-[5/6] bg-white/10 border-2 border-white/20 flex items-center justify-center">
                     <Image
-                      src="/kevin-ringler.jpg"
+                      src="/assets/images/KRprofilepic.jpg"
                       alt="Kevin Ringler – Founder & CEO of BeginnerInvestorHub"
                       width={500}
                       height={600}
