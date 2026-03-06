@@ -264,10 +264,19 @@ const AboutPage: React.FC = () => {
                     <div className="flex-shrink-0 w-12 h-12 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-lg">
                       KR
                     </div>
-                    <div>
+                    <div className="flex-grow">
                       <p className="font-bold text-lg">Kevin Ringler</p>
                       <p className="text-sm opacity-75">Founder &amp; CEO</p>
                     </div>
+                    <a
+                      href="https://www.linkedin.com/in/kevin-ringler"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-[#0077b5] hover:bg-[#005582] text-white px-3 py-1.5 rounded text-xs font-bold transition-colors flex items-center"
+                    >
+                      <i className="fab fa-linkedin mr-2"></i>
+                      Connect
+                    </a>
                   </div>
                 </div>
 
@@ -310,29 +319,37 @@ const AboutPage: React.FC = () => {
                 <h2 className="text-4xl font-bold text-mechanica-moonlight-blue mb-4 font-serif">
                   The 7 Guardians
                 </h2>
-                <p className="text-xl text-gray-600">
-                  Autonomous agents that ensure your learning platform never fails.
+                <p className="text-xl text-gray-600 mb-6">
+                  Autonomous agents built on Google Cloud Platform to ensure your learning platform never fails.
                 </p>
+                <div className="flex flex-wrap justify-center gap-3 text-[10px] font-black uppercase tracking-widest text-gray-400">
+                  <span className="px-2 py-1 bg-gray-100 rounded border border-gray-200">Vertex AI</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded border border-gray-200">Gemini 1.5 Pro</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded border border-gray-200">Cloud Run</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded border border-gray-200">BigQuery</span>
+                  <span className="px-2 py-1 bg-gray-100 rounded border border-gray-200">Pub/Sub</span>
+                </div>
               </div>
 
               {/* flex + wrap so 7 items center gracefully on last row */}
               <div className="flex flex-wrap justify-center gap-4 max-w-5xl mx-auto">
                 {[
-                  'TrafficController',
-                  'ProviderArbiter',
-                  'QualitySteward',
-                  'GovernanceEngine',
-                  'PsychometricSteward',
-                  'RebalancingGuardian',
-                  'CircuitBreaker',
+                  { name: 'TrafficController', desc: 'Cloud Run dynamic scaling' },
+                  { name: 'ProviderArbiter', desc: 'Vertex AI endpoint governance' },
+                  { name: 'QualitySteward', desc: 'BigQuery data integrity audits' },
+                  { name: 'GovernanceEngine', desc: 'IAM & Secret Manager protocols' },
+                  { name: 'PsychometricSteward', desc: 'Gemini-powered learning paths' },
+                  { name: 'RebalancingGuardian', desc: 'Portfolio telemetry monitoring' },
+                  { name: 'CircuitBreaker', desc: 'Automated error isolation' },
                 ].map((guardian) => (
                   <div
-                    key={guardian}
-                    className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(25%-0.75rem)] p-4 border border-gray-200 rounded-lg text-center hover:bg-gray-50 hover:border-mechanica-moonlight-blue transition-colors"
+                    key={guardian.name}
+                    className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(25%-0.75rem)] p-6 border border-gray-200 rounded-lg text-center hover:bg-gray-50 hover:border-mechanica-moonlight-blue transition-all group"
                     data-animate
                   >
-                    <i className="fas fa-shield-alt text-mechanica-moonlight-blue text-xl mb-2 block"></i>
-                    <p className="text-sm font-bold text-gray-800">{guardian}</p>
+                    <i className="fas fa-shield-alt text-mechanica-moonlight-blue text-xl mb-3 block group-hover:scale-110 transition-transform"></i>
+                    <p className="text-sm font-bold text-gray-800 mb-1">{guardian.name}</p>
+                    <p className="text-[10px] text-gray-500 font-medium uppercase tracking-tight">{guardian.desc}</p>
                   </div>
                 ))}
               </div>

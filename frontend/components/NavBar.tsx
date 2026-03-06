@@ -9,6 +9,7 @@ export const NAV_LINKS: NavItem[] = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/dashboard', label: 'My Dashboard' },
+  { href: '/contact', label: 'Partnerships' },
   {
     href: '/tools',
     label: 'Tools',
