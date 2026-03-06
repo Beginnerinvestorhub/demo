@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Money Fundamentals"
 source_file: "Chapter 1.docx"
 level: 1

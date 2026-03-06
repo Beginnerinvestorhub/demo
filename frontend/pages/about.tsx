@@ -171,7 +171,7 @@ const AboutPage: React.FC = () => {
 
             <p className="text-xl md:text-2xl mb-8 text-gray-100 max-w-4xl mx-auto leading-relaxed">
               Claim Your Founding Seat. <br className="hidden md:block" />
-              <span className="text-yellow-400">Skip the Long Way Around.</span>
+              <span className="text-yellow-500">Skip the Long Way Around.</span>
             </p>
             <p className="text-lg md:text-xl mb-12 text-gray-200 max-w-3xl mx-auto opacity-90">
               I spent 13 years building structures with precision. Now, I'm building the
@@ -392,7 +392,7 @@ const AboutPage: React.FC = () => {
 
             <div className="max-w-7xl mx-auto px-4 relative z-10">
               <div data-animate>
-                <h2 className="text-4xl md:text-5xl font-bold mb-12 font-serif text-yellow-400 text-center">The Founder&apos;s Build</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-12 font-serif text-yellow-500 text-center">The Founder&apos;s Build</h2>
                 
                 <div className="relative block">
                   {/* Circular Image with Shape-Outside for Advanced Wrapping */}
@@ -414,7 +414,7 @@ const AboutPage: React.FC = () => {
                           target.style.display = 'none';
                         }}
                       />
-                      <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-yellow-400 -z-10">KR</div>
+                      <div className="absolute inset-0 flex items-center justify-center text-4xl font-bold text-yellow-500 -z-10">KR</div>
                     </div>
                     
                     {/* Decorative Technical Overlay */}
@@ -438,7 +438,7 @@ const AboutPage: React.FC = () => {
                     </p>
                     <p>
                       This isn&apos;t a collection of off-the-shelf tools; it&apos;s a{' '}
-                      <strong className="text-yellow-400 font-bold">14-service proprietary architecture</strong> built from scratch to
+                      <strong className="text-yellow-500 font-bold">14-service proprietary architecture</strong> built from scratch to
                       provide the transparency and engagement I once lacked. My mission is to 
                       democratize financial intelligence by applying the same rigorous standards 
                       of structural engineering to retail investing.
@@ -453,7 +453,7 @@ const AboutPage: React.FC = () => {
 
                   <div className="mt-12 flex flex-wrap items-center justify-center gap-6 clear-both">
                     <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm shadow-xl">
-                      <div className="flex-shrink-0 w-14 h-14 rounded-full bg-yellow-400 text-gray-900 flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(250,204,21,0.3)]">
+                      <div className="flex-shrink-0 w-14 h-14 rounded-full bg-yellow-500 text-gray-900 flex items-center justify-center font-bold text-xl shadow-[0_0_20px_rgba(250,204,21,0.3)]">
                         KR
                       </div>
                       <div className="pr-6">

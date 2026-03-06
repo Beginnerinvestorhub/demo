@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Credit Basics"
 source_file: "Chapter 4- Credit Basics.docx"
 level: 1

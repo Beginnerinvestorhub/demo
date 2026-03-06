@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Introduction to Investing"
 source_file: "Chapter 10- Introduction to Investing.docx"
 level: 2

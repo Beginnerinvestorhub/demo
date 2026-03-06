@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Personal Finance Basics"
 source_file: "Chapter 2- Personal Finance Basics.docx"
 level: 1

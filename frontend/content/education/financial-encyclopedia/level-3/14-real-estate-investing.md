@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Real Estate Investing"
 source_file: "Chapter 14- Real Estate Investing.docx"
 level: 3

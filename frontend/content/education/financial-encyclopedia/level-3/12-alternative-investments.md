@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Alternative Investments"
 source_file: "Chapter 12.docx"
 level: 3

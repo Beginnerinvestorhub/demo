@@ -51,7 +51,7 @@ export default function AchievementNotification({
         subtitle: badge.name,
         description: badge.description,
         points: badge.points,
-        color: 'bg-gradient-to-r from-yellow-400 to-orange-500',
+        color: 'bg-gradient-to-r from-yellow-500 to-orange-500',
       };
     }
 

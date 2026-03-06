@@ -105,7 +105,7 @@ const MembershipPage: React.FC = () => {
 
             <h1 className="text-4xl md:text-6xl font-black mb-6 font-serif leading-tight">
               Master the Markets on <br className="hidden md:block" />
-              <span className="text-yellow-400">Your Own Terms.</span>
+              <span className="text-yellow-500">Your Own Terms.</span>
             </h1>
             <p className="text-xl md:text-2xl mb-12 text-gray-100 max-w-3xl mx-auto font-light">
               Stop guessing. Start learning with tools designed for how you think.
@@ -118,7 +118,7 @@ const MembershipPage: React.FC = () => {
                 onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'annual' : 'monthly')}
                 className="w-14 h-8 bg-white/10 rounded-full relative p-1 border border-white/20 transition-all"
               >
-                <div className={`w-6 h-6 bg-yellow-400 rounded-full transition-all duration-300 ${billingCycle === 'annual' ? 'translate-x-6' : 'translate-x-0'}`}></div>
+                <div className={`w-6 h-6 bg-yellow-500 rounded-full transition-all duration-300 ${billingCycle === 'annual' ? 'translate-x-6' : 'translate-x-0'}`}></div>
               </button>
               <span className={`text-sm font-bold uppercase tracking-widest ${billingCycle === 'annual' ? 'text-white' : 'text-white/50'}`}>
                 Annual <span className="text-emerald-400 ml-1">(Save 20%)</span>
@@ -134,10 +134,10 @@ const MembershipPage: React.FC = () => {
               <MechanicaCard 
                 key={plan.name} 
                 variant="mechanical" 
-                className={`flex flex-col h-full ${plan.popular ? 'border-yellow-400 border-2 shadow-2xl scale-105' : 'border-gray-200 shadow-xl'}`}
+                className={`flex flex-col h-full ${plan.popular ? 'border-yellow-500 border-2 shadow-2xl scale-105' : 'border-gray-200 shadow-xl'}`}
               >
                 {plan.popular && (
-                  <div className="bg-yellow-400 text-gray-900 text-[10px] font-black uppercase tracking-[0.2em] py-1 text-center absolute top-0 left-0 right-0">
+                  <div className="bg-yellow-500 text-gray-900 text-[10px] font-black uppercase tracking-[0.2em] py-1 text-center absolute top-0 left-0 right-0">
                     Most Strategic Choice
                   </div>
                 )}
@@ -187,7 +187,7 @@ const MembershipPage: React.FC = () => {
               <div>
                 <h2 className="text-4xl font-bold text-mechanica-moonlight-blue mb-6 font-serif">
                   Step 1: The VARK Edge <br />
-                  <span className="text-yellow-400 text-2xl uppercase tracking-widest font-black">(Included in All Plans)</span>
+                  <span className="text-yellow-500 text-2xl uppercase tracking-widest font-black">(Included in All Plans)</span>
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We don&rsquo;t believe in one-size-fits-all finance. Our platform adapts to 
@@ -203,8 +203,8 @@ const MembershipPage: React.FC = () => {
                     <h4 className="font-bold text-emerald-900 mb-1">Aural</h4>
                     <p className="text-xs text-gray-600">AI-generated audio summaries of market moves.</p>
                   </div>
-                  <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-yellow-400">
-                    <h4 className="font-bold text-yellow-400 mb-1">Read/Write</h4>
+                  <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-yellow-500">
+                    <h4 className="font-bold text-yellow-500 mb-1">Read/Write</h4>
                     <p className="text-xs text-gray-600">Detailed whitepapers and guided journals.</p>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-purple-500">
@@ -215,7 +215,7 @@ const MembershipPage: React.FC = () => {
               </div>
               
               <div className="relative">
-                <div className="absolute inset-0 bg-yellow-400/5 blur-3xl rounded-full scale-150"></div>
+                <div className="absolute inset-0 bg-yellow-500/5 blur-3xl rounded-full scale-150"></div>
                 <div className="relative z-10 bg-slate-900 rounded-3xl p-8 shadow-2xl border border-white/10 overflow-hidden">
                   <div className="flex items-center justify-between mb-8">
                     <div className="flex space-x-2">
@@ -228,7 +228,7 @@ const MembershipPage: React.FC = () => {
                   <div className="space-y-6">
                     <div className="h-4 bg-white/5 rounded w-3/4"></div>
                     <div className="h-4 bg-white/5 rounded w-full"></div>
-                    <div className="h-20 bg-yellow-400/10 rounded-xl border border-yellow-400/20 flex items-center justify-center">
+                    <div className="h-20 bg-yellow-500/10 rounded-xl border border-yellow-500/20 flex items-center justify-center">
                       <MechanicaGear size="lg" color="brass" speed="medium" />
                     </div>
                     <div className="h-4 bg-white/5 rounded w-5/6"></div>

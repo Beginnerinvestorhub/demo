@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Technical & Fundamental Analysis"
 source_file: "Chapter 17- Technical & Fundamental Analysis.docx"
 level: 4

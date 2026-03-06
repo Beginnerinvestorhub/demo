@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Banking Fundamentals"
 source_file: "Chapter 3- banking Fundamentals.docx"
 level: 1

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Tax Optimization"
 source_file: "Chapter 15- Tax Optimization.docx"
 level: 3

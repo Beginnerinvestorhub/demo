@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Insurance Fundamentals"
 source_file: "Chapter 9- Insurance Fundamentals.docx"
 level: 2
@@ -20,4 +20,4 @@ Insurance transfers the financial risk of a major loss (illness, accident, fire)
 ## 9.3 Core Insurance Types
 * **Health Insurance**: Prevents medical bankruptcy.
 * **Auto/Home**: Protects your largest physical assets.
-* **Disability**: Protects your most valuable asset—your ability to earn an income.
+* **Disability**: Protects your most valuable asset�your ability to earn an income.

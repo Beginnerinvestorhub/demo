@@ -475,7 +475,7 @@ export default function RiskAssessmentForm({
         ) : (
           <button
             type="submit"
-            className="px-10 py-3 bg-yellow-500 text-mechanica-moonlight-blue font-extrabold rounded-xl shadow-lg hover:bg-yellow-400 hover:shadow-xl hover:-translate-y-0.5 transition-all uppercase tracking-[0.2em] text-sm"
+            className="px-10 py-3 bg-yellow-500 text-mechanica-moonlight-blue font-extrabold rounded-xl shadow-lg hover:bg-yellow-500 hover:shadow-xl hover:-translate-y-0.5 transition-all uppercase tracking-[0.2em] text-sm"
             disabled={loading}
           >
             {loading ? 'Initializing...' : 'Deploy Assessment'}

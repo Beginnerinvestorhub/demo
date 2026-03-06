@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Debt Management"
 source_file: "Chapter 7-Debt Management.docx"
 level: 2

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Sample Appendix"
 source_file: "Appendix Sample document.pdf"
 level: appendices

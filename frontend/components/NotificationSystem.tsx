@@ -27,7 +27,7 @@ const NotificationIcon: React.FC<{ type: Notification['type'] }> = ({
       return <XCircleIcon className={`${iconClass} text-red-400`} />;
     case 'warning':
       return (
-        <ExclamationTriangleIcon className={`${iconClass} text-yellow-400`} />
+        <ExclamationTriangleIcon className={`${iconClass} text-yellow-500`} />
       );
     case 'info':
       return <InformationCircleIcon className={`${iconClass} text-blue-400`} />;

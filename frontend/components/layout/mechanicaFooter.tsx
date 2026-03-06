@@ -138,21 +138,21 @@ export const MechanicaFooter: React.FC = () => {
             <div className="flex items-center justify-center space-x-8 text-xs text-gray-400 uppercase tracking-widest">
               <Link
                 href="/terms"
-                className="hover:text-yellow-400 transition-colors duration-200"
+                className="hover:text-yellow-500 transition-colors duration-200"
               >
                 Terms
               </Link>
               <span className="text-gray-600">•</span>
               <Link
                 href="/privacy"
-                className="hover:text-yellow-400 transition-colors duration-200"
+                className="hover:text-yellow-500 transition-colors duration-200"
               >
                 Privacy
               </Link>
               <span className="text-gray-600">•</span>
               <Link
                 href="/contact"
-                className="hover:text-yellow-400 transition-colors duration-200"
+                className="hover:text-yellow-500 transition-colors duration-200"
               >
                 Contact
               </Link>

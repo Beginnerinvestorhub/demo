@@ -271,7 +271,7 @@ export default function HomePage() {
                     value={heroEmail}
                     onChange={e => setHeroEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="px-4 py-3 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 flex-grow mechanica-text-technical min-w-0"
+                    className="px-4 py-3 rounded-md bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-yellow-500 flex-grow mechanica-text-technical min-w-0"
                     aria-label="Email address for simulation signup"
                     tabIndex={0}
                   />
@@ -665,7 +665,7 @@ export default function HomePage() {
                 speed="slow"
                 aria-label="Animated decorative gear"
               />
-              <div className="text-5xl font-bold font-serif text-yellow-400">
+              <div className="text-5xl font-bold font-serif text-yellow-500">
                 Start Your Journey
               </div>
               <MechanicaGear

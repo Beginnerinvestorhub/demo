@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Credit Mastery"
 source_file: "_Chapter 8- Credit Mastery (1).docx"
 level: 2

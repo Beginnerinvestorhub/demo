@@ -407,7 +407,7 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
             <MechanicaGear size="xl" color="steel" speed="slow" />
           </div>
 
-          <h3 className="text-lg font-black uppercase tracking-widest text-yellow-400 mb-6 flex items-center">
+          <h3 className="text-lg font-black uppercase tracking-widest text-yellow-500 mb-6 flex items-center">
             <span className="mr-3">⚙️</span> Component Assembly Form
           </h3>
 
@@ -423,7 +423,7 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
                 onChange={e =>
                   setNewAsset({ ...newAsset, ticker: e.target.value })
                 }
-                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono uppercase"
+                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-500/50 transition-all font-mono uppercase"
               />
             </div>
             <div className="space-y-2">
@@ -437,7 +437,7 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
                 onChange={e =>
                   setNewAsset({ ...newAsset, amount: e.target.value })
                 }
-                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono"
+                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-500/50 transition-all font-mono"
               />
             </div>
             <div className="space-y-2">
@@ -451,7 +451,7 @@ const PortfolioMonitor = React.memo(function PortfolioMonitor() {
                 onChange={e =>
                   setNewAsset({ ...newAsset, price: e.target.value })
                 }
-                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-400/50 transition-all font-mono"
+                className="w-full bg-white/5 border-2 border-white/10 rounded-xl px-4 py-3 text-white placeholder-white/20 focus:outline-none focus:border-yellow-500/50 transition-all font-mono"
               />
             </div>
             <div className="flex items-end">

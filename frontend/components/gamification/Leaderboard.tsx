@@ -69,7 +69,7 @@ export default function Leaderboard() {
               <div
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
                   index === 0
-                    ? 'bg-yellow-400 text-yellow-900'
+                    ? 'bg-yellow-500 text-yellow-900'
                     : index === 1
                       ? 'bg-gray-300 text-gray-700'
                       : index === 2

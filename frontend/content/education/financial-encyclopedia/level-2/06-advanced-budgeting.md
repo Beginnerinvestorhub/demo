@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Banking Deep Dive"
 source_file: "Chapter 6.docx"
 level: 2

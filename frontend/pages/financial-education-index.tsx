@@ -53,7 +53,7 @@ export default function FinancialEducationIndexPage() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
-              Financial <span className="text-yellow-400">Curriculum Index</span>
+              Financial <span className="text-yellow-500">Curriculum Index</span>
             </h1>
             <p className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
               At BeginnerInvestorHub, we offer full financial education to empower beginners—from money basics to institutional strategies. 
@@ -68,7 +68,7 @@ export default function FinancialEducationIndexPage() {
             <div className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-mechanica-moonlight-blue prose-headings:border-b prose-headings:pb-2 prose-headings:mb-8 prose-p:text-gray-600 prose-li:text-gray-600">
               
               <div className="mb-16 text-center">
-                <h2 className="text-3xl font-bold text-mechanica-moonlight-blue uppercase tracking-widest border-yellow-400 border-b-4 inline-block mx-auto">LEVEL 1: FOUNDATIONAL BASICS</h2>
+                <h2 className="text-3xl font-bold text-mechanica-moonlight-blue uppercase tracking-widest border-yellow-500 border-b-4 inline-block mx-auto">LEVEL 1: FOUNDATIONAL BASICS</h2>
                 <div className="grid md:grid-cols-2 gap-8 mt-8 text-left">
                   <div>
                     <h3 className="text-xl font-bold mb-4 text-center">Chapter 1: Money Fundamentals</h3>
@@ -387,7 +387,7 @@ export default function FinancialEducationIndexPage() {
                 </div>
               </div>
 
-              <div className="mt-20 p-8 bg-gray-100 rounded-xl border-l-4 border-yellow-400 text-center">
+              <div className="mt-20 p-8 bg-gray-100 rounded-xl border-l-4 border-yellow-500 text-center">
                 <h2 className="text-2xl font-bold mb-4 border-none pb-0">Ready to Begin Your Journey?</h2>
                 <p className="mb-6">
                   Join the first 1000 Founderlings to get early access to our full curriculum and AI-powered simulation tools.

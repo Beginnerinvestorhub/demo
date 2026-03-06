@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Stock Market Deep Dive"
 source_file: "Chapter 11- Stock Market Deep Dive (1).docx"
 level: 3
