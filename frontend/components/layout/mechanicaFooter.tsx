@@ -39,12 +39,6 @@ export const MechanicaFooter: React.FC = () => {
                 Membership
               </Link>
               <Link
-                href="/contact"
-                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block"
-              >
-                Partnerships (B2B)
-              </Link>
-              <Link
                 href="/tools"
                 className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:translate-x-1 inline-block"
               >
@@ -107,6 +101,18 @@ export const MechanicaFooter: React.FC = () => {
                 className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block"
               >
                 Privacy Policy
+              </Link>
+              <Link
+                href="/contact"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block"
+              >
+                Partnerships (B2B)
+              </Link>
+              <Link
+                href="/faq"
+                className="text-gray-400 hover:text-white transition-all duration-300 text-sm font-medium hover:-translate-x-1 inline-block"
+              >
+                FAQ
               </Link>
               <Link
                 href="/contact"

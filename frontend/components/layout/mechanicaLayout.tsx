@@ -148,7 +148,7 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <ul className="flex space-x-8">
-                {NAV_LINKS.slice(0, 6)
+                {NAV_LINKS
                   .filter(item => user || item.label !== 'My Dashboard')
                   .map(item => (
                     <li key={item.href}>
@@ -199,7 +199,7 @@ export const MechanicaLayout: React.FC<MechanicaLayoutProps> = ({
           {mobileMenuOpen && (
             <div className="md:hidden bg-white border-b border-gray-200 animate-in slide-in-from-top-2 duration-300">
               <ul className="px-4 py-4 space-y-3">
-                {NAV_LINKS.slice(0, 6)
+                {NAV_LINKS
                   .filter(item => user || item.label !== 'My Dashboard')
                   .map(item => (
                     <li key={item.href}>

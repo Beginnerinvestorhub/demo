@@ -187,7 +187,7 @@ const MembershipPage: React.FC = () => {
               <div>
                 <h2 className="text-4xl font-bold text-mechanica-moonlight-blue mb-6 font-serif">
                   Step 1: The VARK Edge <br />
-                  <span className="text-yellow-500 text-2xl uppercase tracking-widest font-black">(Included in All Plans)</span>
+                  <span className="text-yellow-400 text-2xl uppercase tracking-widest font-black">(Included in All Plans)</span>
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                   We don&rsquo;t believe in one-size-fits-all finance. Our platform adapts to 
@@ -204,7 +204,7 @@ const MembershipPage: React.FC = () => {
                     <p className="text-xs text-gray-600">AI-generated audio summaries of market moves.</p>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-amber-500">
-                    <h4 className="font-bold text-amber-900 mb-1">Read/Write</h4>
+                    <h4 className="font-bold text-yellow-400 mb-1">Read/Write</h4>
                     <p className="text-xs text-gray-600">Detailed whitepapers and guided journals.</p>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-xl border-l-4 border-purple-500">

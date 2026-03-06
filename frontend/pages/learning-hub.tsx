@@ -64,8 +64,8 @@ export default function LearningHub() {
             </Link>
           </div>
 
-          {/* Modules Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {/* Modules Grid - Flex centered for orphan management */}
+          <div className="flex flex-wrap justify-center gap-8 max-w-7xl mx-auto">
             {modules.map((module, index) => {
               // Simple locking logic:
               // If index is 0, it's always unlocked (Level 1).
@@ -76,7 +76,7 @@ export default function LearningHub() {
               return (
                 <div
                   key={module.id}
-                  className="relative group perspective-1000"
+                  className="relative group perspective-1000 w-full md:w-[calc(50%-2rem)] lg:w-[calc(33.333%-2rem)] min-w-[300px]"
                 >
                   {/* Holographic Border Effect */}
                   <div
