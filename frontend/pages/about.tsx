@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { MechanicaButton } from '../components/ui/mechanicaButton';
 import { MechanicaLayout } from '../components/layout/mechanicaLayout';
 import { MechanicaCard } from '../components/ui/mechanicaCard';
